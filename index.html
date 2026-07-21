@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- ===========================================================
+     REMOVE THIS TAG ON LAUNCH DAY
+     It keeps the site out of Google and other search engines
+     while you're still working on it. Delete the single <meta>
+     line below (and this comment) when you're ready to go public,
+     then commit and push. Takes effect within minutes.
+     =========================================================== -->
+<meta name="robots" content="noindex, nofollow">
+
+<title>Neutron — Adobe Creative Suite on Linux</title>
+<meta name="description" content="Neutron is a compatibility engine that runs Adobe Creative Suite applications on Linux. Premiere Pro, Photoshop, and Lightroom are stable enough for client work today.">
+
+<meta property="og:title" content="Neutron — Adobe Creative Suite on Linux">
+<meta property="og:description" content="A compatibility engine for running Adobe Creative Suite on Linux. Premiere Pro, Photoshop, and Lightroom are usable today.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://neutronproject.org">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* =========================================================
+   EDIT HERE — FUNDING BAR
+   Change the number below when the funding total moves.
+   It must be a percentage, e.g. 4% or 27% or 100%.
+   To work it out: current monthly total divided by 3000,
+   times 100. ($450 / 3000) x 100 = 15%  ->  write 15%
+   Then also update the "$0 of $3,000 / month" text further
+   down the page (search the file for: goal-num).
+   ========================================================= */
+:root{ --funding-progress:4%; }
+
+:root{
+  color-scheme:dark;
+  --paper:#0A0E16;      /* deep space, not flat black */
+  --paper-2:#0F1522;
+  --ink:#E9EEF6;
+  --ink-dim:#9AA8BC;
+  --ink-faint:#5F6E85;
+  --line:#1E2942;
+  --line-soft:#161E31;
+
+  --red:#FC3D21;      /* NASA insignia red */
+  --red-deep:#FF5C42; /* hover: brighter, not darker, on dark bg */
+  --navy:#10234A;     /* mission band — lighter than base so it still reads as a band */
+  --navy-2:#162F5C;
+  --sky:#7FB8FF;      /* telemetry on navy */
+  --amber:#E8A13C;
+
+  --f-display:'Bebas Neue',system-ui,sans-serif;
+  --f-body:'Public Sans',system-ui,sans-serif;
+  --f-mono:'IBM Plex Mono',ui-monospace,monospace;
+
+  --gut:clamp(20px,5vw,64px);
+  --max:1180px;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+}
+
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--f-body);
+  font-size:16px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+
+a{color:inherit}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px;border-radius:2px}
+
+.wrap{max-width:var(--max);margin:0 auto;padding-inline:var(--gut)}
+
+/* ---------- particle field ---------- */
+#starfield{
+  position:fixed;inset:0;z-index:0;pointer-events:none;
+}
+main,footer{position:relative;z-index:1}
+
+/* ---------- telemetry labels ---------- */
+.eyebrow{
+  font-family:var(--f-mono);
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--ink-faint);
+  margin:0 0 20px;
+  display:flex;align-items:center;gap:10px;
+}
+.eyebrow::before{
+  content:"";width:22px;height:1px;background:var(--red);flex:none;
+}
+
+/* ---------- nav ---------- */
+header.nav{
+  position:sticky;top:0;z-index:50;
+  background:rgba(10,14,22,.85);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.nav-in{
+  max-width:var(--max);margin:0 auto;padding:14px var(--gut);
+  display:flex;align-items:center;gap:28px;
+}
+.mark{
+  font-family:var(--f-display);font-weight:400;font-size:19px;
+  letter-spacing:.16em;text-decoration:none;margin-right:auto;
+  display:flex;align-items:center;gap:10px;
+}
+.mark svg{flex:none;display:block}
+.nav a.lnk{
+  font-size:14px;font-weight:500;color:var(--ink-dim);text-decoration:none;
+  transition:color .15s;
+}
+.nav a.lnk:hover{color:var(--red)}
+@media(max-width:720px){.nav a.lnk{display:none}}
+
+/* ---------- hero ---------- */
+.hero{
+  border-bottom:1px solid var(--line);
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(720px 400px at 82% 30%,rgba(252,61,33,.07),transparent 68%);
+}
+.hero-in{
+  position:relative;z-index:1;
+  padding:clamp(64px,10vw,120px) 0 clamp(52px,8vw,92px);
+  max-width:700px;
+}
+h1{
+  font-family:var(--f-display);
+  font-weight:400;
+  font-size:clamp(54px,8.6vw,104px);
+  line-height:.94;
+  letter-spacing:.012em;
+  margin:0 0 26px;
+}
+h1 em{font-style:normal;color:var(--red)}
+
+.lede{
+  font-size:clamp(17px,2vw,19px);
+  color:var(--ink-dim);
+  max-width:58ch;
+  margin:0 0 18px;
+}
+.lede strong{color:var(--ink);font-weight:600}
+
+.proof{
+  font-family:var(--f-mono);
+  font-size:13px;
+  color:var(--ink-dim);
+  position:relative;
+  padding:12px 18px;
+  margin:0 0 36px;
+  max-width:58ch;
+  line-height:1.7;
+}
+.proof::before,.proof::after{
+  content:"";position:absolute;width:14px;height:14px;
+}
+.proof::before{top:0;left:0;border-top:1px solid var(--red);border-left:1px solid var(--red)}
+.proof::after{bottom:0;right:0;border-bottom:1px solid var(--red);border-right:1px solid var(--red)}
+
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{
+  display:inline-flex;align-items:center;gap:9px;
+  font-family:var(--f-body);font-size:15px;font-weight:600;
+  padding:13px 26px;border-radius:24px;text-decoration:none;
+  border:1px solid transparent;transition:transform .12s,background .15s,border-color .15s,color .15s;
+}
+.btn:active{transform:translateY(1px)}
+.btn-a{background:var(--red);color:#fff}
+.btn-a:hover{background:var(--red-deep)}
+.btn-b{border-color:var(--ink);color:var(--ink)}
+.btn-b:hover{border-color:var(--red);color:var(--red)}
+
+/* orbital figure */
+/* magnetosphere figure — after the Neutron mark */
+.orbit{
+  position:absolute;right:calc(-1 * clamp(40px,6vw,90px));top:50%;
+  transform:translateY(-50%);
+  width:clamp(340px,42vw,620px);height:auto;
+  pointer-events:none;
+}
+@media(max-width:900px){.orbit{opacity:.22;right:-140px}}
+.orbit .lobe{fill:none;stroke:var(--line);stroke-width:2}
+.orbit .lobe-hi{stroke:var(--ink-faint);stroke-width:2.5}
+.orbit .lobe-in{stroke-width:1.5}
+.orbit .nucleus{fill:var(--ink)}
+.orbit .gap{fill:none;stroke:var(--paper);stroke-width:9}
+.orbit .mover{fill:var(--red)}
+.orbit text{
+  font-family:var(--f-mono);font-size:9px;letter-spacing:.12em;
+  fill:var(--ink-faint);
+}
+.orbit .tick{stroke:var(--ink-faint);stroke-width:1}
+@media (prefers-reduced-motion:reduce){.orbit .mover{display:none}}
+
+/* ---------- section frame ---------- */
+section{padding:clamp(56px,8vw,96px) 0;border-bottom:1px solid var(--line)}
+h2{
+  font-family:var(--f-display);font-weight:400;
+  font-size:clamp(34px,4.6vw,56px);
+  letter-spacing:.015em;line-height:1.02;
+  margin:0 0 14px;
+}
+.sec-note{color:var(--ink-dim);max-width:62ch;margin:0 0 40px}
+
+/* ---------- status board ---------- */
+.board{
+  border:1px solid var(--line);border-radius:3px;overflow:hidden;
+  background:rgba(13,18,28,.82);
+}
+.board-head{
+  display:flex;justify-content:space-between;align-items:center;gap:16px;
+  padding:12px 22px;background:rgba(255,255,255,.03);border-bottom:1px solid var(--line);
+  font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-faint);
+}
+.board-head .live{display:flex;align-items:center;gap:8px}
+.board-head .live::before{
+  content:"";width:7px;height:7px;border-radius:50%;background:var(--red);
+}
+.row{
+  display:grid;
+  grid-template-columns:1.15fr 130px 1.9fr;
+  gap:20px;align-items:baseline;
+  padding:19px 22px;
+  border-bottom:1px solid var(--line-soft);
+  transition:background .15s;
+}
+.row:last-child{border-bottom:none}
+.row:hover{background:rgba(255,255,255,.03)}
+.app{
+  font-family:var(--f-display);font-weight:400;font-size:21px;
+  letter-spacing:.03em;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;
+}
+.tier{
+  font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;
+  text-transform:uppercase;font-weight:500;
+  padding:2px 8px;border-radius:3px;
+}
+.t-beta{color:#4ADE94;background:rgba(43,182,115,.14)}
+.t-partial{color:#F0B45C;background:rgba(232,161,60,.14)}
+.t-likely{color:#8FB6EC;background:rgba(91,135,196,.16)}
+.t-broken{color:#FF7A64;background:rgba(252,61,33,.14)}
+.t-none{color:var(--ink-faint);background:var(--paper-2)}
+
+/* release picker */
+.relpick{display:flex;align-items:center;gap:10px}
+.relpick label{
+  font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-faint);
+}
+.relpick select{
+  font-family:var(--f-mono);font-size:12px;letter-spacing:.04em;
+  color:var(--ink);background:rgba(10,20,40,.85);
+  border:1px solid var(--line);border-radius:2px;
+  padding:6px 30px 6px 10px;cursor:pointer;
+  appearance:none;-webkit-appearance:none;
+  background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='7'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%238B97AD' stroke-width='1.5'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 10px center;
+  transition:border-color .15s;
+}
+.relpick select:hover{border-color:var(--ink-faint)}
+.relpick select:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+.relset[hidden]{display:none}
+@media(max-width:600px){
+  .board-head{flex-wrap:wrap;gap:10px}
+  .relpick label{display:none}
+}
+
+.bar{display:flex;gap:3px;align-items:center}
+.seg{height:8px;flex:1;border-radius:1px;background:var(--line-soft)}
+.seg.on-beta{background:#2BB673}
+.seg.on-partial{background:var(--amber)}
+.seg.on-likely{background:#5B87C4}
+.seg.on-broken{background:#FF4F33}
+
+.row-feature{
+  border-top:1px solid var(--line);
+  background:rgba(255,255,255,.015);
+}
+.row-feature .app::after{
+  content:"workflow";
+  font-family:var(--f-mono);font-size:9.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-faint);
+  align-self:center;
+}
+
+.detail{color:var(--ink-dim);font-size:14.5px;line-height:1.55}
+
+@media(max-width:760px){
+  .row{grid-template-columns:1fr;gap:9px;padding:17px 18px}
+  .bar{max-width:200px}
+}
+
+.legend{
+  display:flex;flex-wrap:wrap;gap:22px;margin-top:24px;
+  font-family:var(--f-mono);font-size:12px;color:var(--ink-faint);
+}
+.legend span{display:flex;align-items:center;gap:8px}
+.chip{width:20px;height:6px;border-radius:1px}
+
+/* ---------- requirements ---------- */
+.reqs{margin-top:40px;padding-top:26px;border-top:1px solid var(--line)}
+.req{display:grid;grid-template-columns:190px 1fr;gap:24px}
+.reqkey{
+  font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ink-faint);padding-top:3px;
+}
+.reqval p{
+  margin:0;color:var(--ink-dim);font-size:15px;line-height:1.62;max-width:68ch;
+}
+.reqval b{color:var(--ink);font-weight:600}
+
+.why{margin-top:12px}
+.why summary{
+  font-family:var(--f-mono);font-size:12px;letter-spacing:.06em;
+  color:var(--sky);cursor:pointer;list-style:none;
+  display:inline-flex;align-items:center;gap:8px;
+  padding:3px 0;transition:color .15s;
+}
+.why summary::-webkit-details-marker{display:none}
+.why summary::before{
+  content:"+";font-size:13px;line-height:1;color:var(--sky);
+  transition:transform .18s;
+}
+.why[open] summary::before{content:"–"}
+.why summary:hover{color:#A9CFFF}
+.why p{
+  margin:12px 0 0;padding-left:16px;
+  border-left:1px solid var(--line);
+  font-size:14.5px;color:var(--ink-dim);max-width:66ch;
+}
+
+.specstrip{
+  list-style:none;margin:28px 0 0;padding:18px 0 0;
+  border-top:1px solid var(--line-soft);
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px 32px;
+}
+.specstrip li{
+  font-family:var(--f-mono);font-size:12px;line-height:1.6;color:var(--ink-dim);
+  text-align:center;
+}
+.specstrip span{
+  display:block;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink-faint);margin-bottom:5px;
+}
+.specstrip b{color:var(--sky);font-weight:500}
+
+.deckstrip{
+  margin-top:22px;padding-top:20px;
+  border-top:1px solid var(--line-soft);
+  text-align:center;
+}
+.deckstrip span{
+  display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ink-faint);margin-bottom:6px;
+}
+.deckstrip p{
+  font-family:var(--f-mono);font-size:12px;line-height:1.7;color:var(--ink-dim);
+  margin:0 auto;max-width:64ch;
+}
+.deckstrip b{color:var(--sky);font-weight:500}
+@media(max-width:700px){
+  .req{grid-template-columns:1fr;gap:8px}
+  .reqkey{padding-top:0}
+}
+
+/* ---------- why linux ---------- */
+.reasons{border-top:1px solid var(--line)}
+.reason{
+  display:grid;grid-template-columns:88px 1fr;gap:8px;
+  padding:34px 0;border-bottom:1px solid var(--line);
+}
+.rnum{
+  font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;
+  color:var(--red);padding-top:6px;
+}
+.reason h3{
+  font-family:var(--f-display);font-weight:400;
+  font-size:clamp(24px,2.8vw,32px);letter-spacing:.02em;line-height:1.08;
+  margin:0 0 12px;color:var(--ink);
+}
+.reason p{
+  margin:0 0 14px;color:var(--ink-dim);max-width:66ch;font-size:15.5px;
+}
+.reason p:last-child{margin-bottom:0}
+@media(max-width:700px){
+  .reason{grid-template-columns:1fr;gap:10px;padding:28px 0}
+  .rnum{padding-top:0}
+}
+
+.caveat{
+  font-family:var(--f-mono);font-size:12.5px;line-height:1.7;
+  color:var(--ink-faint);max-width:70ch;margin:34px 0 0;
+  padding-left:16px;border-left:1px solid var(--line);
+}
+
+/* ---------- projects ---------- */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:18px}
+.card{
+  background:rgba(13,18,28,.82);border:1px solid var(--line);border-radius:3px;
+  padding:30px 28px;display:flex;flex-direction:column;
+  transition:border-color .15s,box-shadow .2s,transform .2s;
+}
+.card:hover{
+  border-color:var(--ink-faint);
+  box-shadow:0 10px 34px rgba(0,0,0,.45);
+  transform:translateY(-2px);
+}
+.card-top{display:flex;align-items:baseline;gap:12px;margin-bottom:4px;flex-wrap:wrap}
+.card h3{
+  font-family:var(--f-display);font-weight:400;font-size:30px;
+  letter-spacing:.02em;margin:0;
+}
+.role{
+  font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--red);
+}
+.lic{
+  font-family:var(--f-mono);font-size:11px;color:var(--ink-faint);
+  margin:2px 0 14px;
+}
+.card p{margin:0 0 18px;color:var(--ink-dim);font-size:15px;flex:1}
+.card .go{
+  font-family:var(--f-mono);font-size:13px;color:var(--ink);font-weight:500;
+  text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:2px;
+  align-self:flex-start;
+  transition:border-color .15s,color .15s;
+}
+.card .go:hover{border-color:var(--red);color:var(--red)}
+
+/* ---------- architecture: mission band ---------- */
+.mission{
+  background:rgba(16,35,74,.88);
+  color:#E9EFF8;
+  border-bottom:none;
+  position:relative;overflow:hidden;
+}
+.mission .wrap{position:relative;z-index:1}
+.mission .eyebrow{color:var(--sky)}
+.mission .eyebrow::before{background:var(--sky)}
+.mission h2{color:#fff}
+.mission .sec-note{color:#A9BBD6}
+
+.arch{
+  margin:0;padding:clamp(22px,3vw,40px);
+  background:rgba(8,18,40,.66);
+  border:1px solid rgba(127,184,255,.16);
+  border-radius:3px;
+}
+.arch svg{display:block;width:100%;height:auto}
+
+/* zone labels */
+.arch .zone{
+  font-family:var(--f-mono);font-size:11px;letter-spacing:.24em;
+  fill:#7089B0;
+}
+.arch .zone-hot{fill:var(--red)}
+.arch .zonesub{
+  font-family:var(--f-mono);font-size:10.5px;letter-spacing:.06em;fill:#55688A;
+}
+.arch .rule{stroke:rgba(127,184,255,.14);stroke-width:1}
+.arch .rule-hot{stroke:rgba(252,61,33,.30)}
+.arch .rule-inner{stroke:rgba(127,184,255,.12)}
+
+/* blocks */
+.arch .box{
+  fill:rgba(22,46,88,.42);stroke:rgba(127,184,255,.26);stroke-width:1;
+}
+.arch .box-ghost{fill:rgba(22,46,88,.14);stroke-dasharray:4 4;stroke:rgba(127,184,255,.20)}
+.arch .box-hot{fill:rgba(252,61,33,.06);stroke:rgba(252,61,33,.55);stroke-width:1.2}
+
+.arch .nm{
+  font-family:var(--f-display);font-size:26px;letter-spacing:.035em;fill:#E7EFFB;
+}
+.arch .nm-ghost{fill:#93A9CA}
+.arch .nm-hot{fill:#FFF3F1}
+.arch .sub{
+  font-family:var(--f-mono);font-size:11px;letter-spacing:.03em;fill:#7F97BB;
+}
+.arch .sub-hot{fill:#C9A79F}
+
+/* wires */
+.arch .wire{fill:none;stroke:rgba(127,184,255,.38);stroke-width:1.2}
+.arch .head{fill:rgba(127,184,255,.62)}
+
+/* boundary band */
+.arch .bound{stroke:var(--red);stroke-width:1.2;stroke-dasharray:8 6;opacity:.85}
+.arch .boundtag{fill:#0B1730;stroke:var(--red);stroke-width:1}
+.arch .boundtxt{
+  font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;fill:#FF7A64;
+}
+.arch .boundnote{
+  font-family:var(--f-mono);font-size:10.5px;letter-spacing:.05em;fill:#6B80A4;
+}
+
+/* runtime shell */
+.arch .shell{
+  fill:rgba(22,46,88,.24);stroke:rgba(127,184,255,.26);stroke-width:1;
+}
+.arch .shellname{
+  font-family:var(--f-display);font-size:23px;letter-spacing:.035em;fill:#E7EFFB;
+}
+.arch .shelltag{
+  font-family:var(--f-mono);font-size:10px;letter-spacing:.2em;fill:#55688A;
+}
+.arch .app{fill:rgba(252,61,33,.09);stroke:rgba(252,61,33,.45);stroke-width:1}
+.arch .appnm{
+  font-family:var(--f-display);font-size:20px;letter-spacing:.035em;fill:#FFD9D1;
+}
+.arch .appsub{
+  font-family:var(--f-mono);font-size:10px;letter-spacing:.03em;fill:#B08D86;
+}
+.arch .chip{fill:rgba(10,22,44,.55);stroke:rgba(127,184,255,.24);stroke-width:1}
+.arch .chiptxt{
+  font-family:var(--f-mono);font-size:11.5px;letter-spacing:.04em;
+  fill:#AFC4E2;text-anchor:middle;
+}
+.arch .mid{text-anchor:middle}
+
+/* substrate */
+.arch .base{
+  font-family:var(--f-mono);font-size:13px;letter-spacing:.06em;fill:#8FA6C8;
+}
+.arch .basedot{font-family:var(--f-mono);font-size:13px;fill:#3E4F6D}
+
+.arch figcaption{
+  font-family:var(--f-mono);font-size:12px;line-height:1.75;
+  color:#7F97BB;margin-top:26px;padding-top:20px;
+  border-top:1px solid rgba(127,184,255,.14);max-width:78ch;
+}
+
+@media(max-width:820px){
+  .arch{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .arch svg{width:880px;max-width:none}
+  .arch figcaption{width:880px}
+}
+
+/* ---------- support ---------- */
+.tiers{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-bottom:28px}
+.tier-card{
+  background:rgba(13,18,28,.82);border:1px solid var(--line);border-radius:3px;
+  padding:26px 24px;transition:border-color .15s,box-shadow .2s;
+}
+.tier-card:hover{border-color:var(--ink-faint);box-shadow:0 8px 26px rgba(0,0,0,.4)}
+.tier-card h4{
+  font-family:var(--f-display);font-size:22px;font-weight:400;letter-spacing:.03em;margin:0 0 8px;
+}
+.tier-card p{margin:0;color:var(--ink-dim);font-size:14px}
+.tier-card a{
+  display:inline-block;margin-top:14px;font-family:var(--f-mono);font-size:12.5px;
+  color:var(--red-deep);font-weight:500;text-decoration:none;border-bottom:1px solid transparent;
+}
+.tier-card a:hover{border-color:var(--red-deep)}
+.tier-card .hint{
+  margin-top:12px;font-size:12.5px;color:var(--ink-faint);line-height:1.5;
+}
+.tier-card .hint b{
+  font-family:var(--f-mono);font-weight:600;font-size:11.5px;
+  letter-spacing:.06em;color:var(--ink);
+}
+
+.goal{
+  border:1px solid var(--line);border-radius:3px;padding:24px 26px;
+  background:rgba(15,21,34,.82);
+}
+.goal-top{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:12px;flex-wrap:wrap}
+.goal-lbl{font-family:var(--f-display);font-weight:400;font-size:20px;letter-spacing:.03em}
+.goal-num{font-family:var(--f-mono);font-size:13px;color:var(--ink-dim)}
+.track{height:8px;background:var(--paper);border-radius:2px;overflow:hidden;border:1px solid var(--line)}
+.fill{height:100%;width:var(--funding-progress);min-width:4px;background:var(--red);border-radius:2px;transition:width .4s ease}
+.goal p{margin:12px 0 0;font-size:14px;color:var(--ink-dim)}
+
+/* ---------- footer ---------- */
+footer{
+  background:var(--navy);color:#A9BBD6;
+  padding:44px 0 60px;
+}
+.foot{display:flex;flex-wrap:wrap;gap:26px;align-items:baseline;font-family:var(--f-mono);font-size:12.5px}
+.foot a{color:#D5E1F2;text-decoration:none}
+.foot a:hover{color:var(--sky)}
+.foot .sp{margin-left:auto;color:#6E82A3}
+.disclaimer{
+  margin-top:26px;font-size:12px;color:#6E82A3;
+  max-width:70ch;line-height:1.6;
+}
+</style>
+</head>
+<body>
+
+<canvas id="starfield" aria-hidden="true"></canvas>
+
+<header class="nav">
+  <div class="nav-in">
+    <a href="#top" class="mark">
+      <svg width="24" height="22" viewBox="0 0 26 22" aria-hidden="true">
+        <ellipse cx="7" cy="11" rx="6" ry="9.5" fill="none" stroke="#E9EEF6" stroke-width="1.5"/>
+        <ellipse cx="19" cy="11" rx="6" ry="9.5" fill="none" stroke="#E9EEF6" stroke-width="1.5"/>
+        <circle cx="13" cy="11" r="5.2" fill="#0A0E16"/>
+        <circle cx="13" cy="11" r="4" fill="#E9EEF6"/>
+        <circle cx="21.5" cy="4.5" r="1.8" fill="#FC3D21"/>
+      </svg>
+      NEUTRON
+    </a>
+    <a class="lnk" href="#status">Status</a>
+    <a class="lnk" href="#why">Why Linux</a>
+    <a class="lnk" href="#projects">Projects</a>
+    <a class="lnk" href="#how">Architecture</a>
+    <a class="lnk" href="#support">Support</a>
+    <a class="lnk" href="https://github.com/Nico-LaFoucate/Neutron">GitHub</a>
+  </div>
+</header>
+
+<main id="top">
+
+<div class="hero">
+  <svg class="orbit" viewBox="0 0 600 600" aria-hidden="true">
+    <!-- left field lobes -->
+    <path id="lobeL" class="lobe lobe-hi" d="M305,300 a140,250 0 1,0 -280,0 a140,250 0 1,0 280,0"/>
+    <ellipse class="lobe" cx="188" cy="300" rx="102" ry="182"/>
+    <ellipse class="lobe lobe-in" cx="212" cy="300" rx="68" ry="120"/>
+    <!-- right field lobes -->
+    <path id="lobeR" class="lobe lobe-hi" d="M575,300 a140,250 0 1,0 -280,0 a140,250 0 1,0 280,0"/>
+    <ellipse class="lobe" cx="412" cy="300" rx="102" ry="182"/>
+    <ellipse class="lobe lobe-in" cx="388" cy="300" rx="68" ry="120"/>
+    <!-- nucleus with gap ring, as in the mark -->
+    <circle class="gap" cx="300" cy="300" r="96"/>
+    <circle class="nucleus" cx="300" cy="300" r="92"/>
+    <!-- charged particles riding the outer field lines -->
+    <circle class="mover" r="4.5">
+      <animateMotion dur="26s" repeatCount="indefinite" rotate="auto">
+        <mpath href="#lobeL"/>
+      </animateMotion>
+    </circle>
+    <circle class="mover" r="4.5">
+      <animateMotion dur="34s" repeatCount="indefinite" rotate="auto" keyPoints="0.5;1;0.5" keyTimes="0;0.5;1" calcMode="linear">
+        <mpath href="#lobeR"/>
+      </animateMotion>
+    </circle>
+    <!-- annotation -->
+    <line class="tick" x1="300" y1="10" x2="300" y2="22"/>
+    <line class="tick" x1="300" y1="578" x2="300" y2="590"/>
+    <text x="314" y="18">N-01</text>
+    <text x="314" y="592">DIPOLE FIELD REF</text>
+  </svg>
+
+  <div class="wrap">
+    <div class="hero-in">
+      <p class="eyebrow">Compatibility engine · Alpha</p>
+      <h1>Adobe Creative Suite,<br>running on <em>Linux</em>.</h1>
+      <p class="lede">Neutron is a compatibility engine built on Wine, DXVK, and vkd3d-proton, patched specifically for the way Adobe applications talk to Windows. <strong>Collider</strong> is the launcher. <strong>Mud Hut</strong> installs the apps.</p>
+      <p class="proof">Premiere Pro, Photoshop, and Lightroom have been used to deliver paid client work on this stack. Other suite applications are untested or non-functional.</p>
+      <div class="btns">
+        <a class="btn btn-a" href="#status">Check app support</a>
+        <a class="btn btn-b" href="https://github.com/Nico-LaFoucate/Collider">Get Collider</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="status">
+  <div class="wrap">
+    <p class="eyebrow">Application support</p>
+    <h2>What actually works</h2>
+    <p class="sec-note">Status reflects real use on the reference environment, not theoretical compatibility. Support is tracked per release — a fix landing on one version does not automatically carry to the next.</p>
+
+    <div class="board">
+      <div class="board-head">
+        <span class="live">Status board</span>
+        <div class="relpick">
+          <label for="release">Release</label>
+          <select id="release" aria-label="Select Creative Cloud release">
+            <option value="2025" selected>Creative Cloud 2025</option>
+            <option value="2026">Creative Cloud 2026</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- ================= CC 2025 ================= -->
+      <div class="relset" data-rel="2025">
+        <div class="row">
+          <div class="app">Premiere Pro <span class="tier t-beta">Beta</span></div>
+          <div class="bar"><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg"></span></div>
+          <div class="detail">Stable for editing and delivery. Used for paid client work. Playback pacing and panel rendering are solved; native export muxing is still outstanding.</div>
+        </div>
+        <div class="row">
+          <div class="app">Photoshop <span class="tier t-beta">Beta</span></div>
+          <div class="bar"><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg"></span></div>
+          <div class="detail">Stable for day-to-day work. Some UXP-based panels and GPU-accelerated features are incomplete.</div>
+        </div>
+        <div class="row">
+          <div class="app">Lightroom Classic <span class="tier t-beta">Beta</span></div>
+          <div class="bar"><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg"></span></div>
+          <div class="detail">Stable for cataloging, developing, and export. Minor issues remain.</div>
+        </div>
+        <div class="row">
+          <div class="app">Illustrator <span class="tier t-partial">Partial</span></div>
+          <div class="bar"><span class="seg on-partial"></span><span class="seg on-partial"></span><span class="seg"></span><span class="seg"></span><span class="seg"></span></div>
+          <div class="detail">Launches and reaches the interface, but creating a new document fails. Not usable yet.</div>
+        </div>
+        <div class="row">
+          <div class="app">Animate <span class="tier t-partial">Partial</span></div>
+          <div class="bar"><span class="seg on-partial"></span><span class="seg on-partial"></span><span class="seg"></span><span class="seg"></span><span class="seg"></span></div>
+          <div class="detail">Launches and reaches the interface, but creating a new document fails. Not usable yet.</div>
+        </div>
+        <div class="row">
+          <div class="app">After Effects <span class="tier t-broken">Not working</span></div>
+          <div class="bar"><span class="seg on-broken"></span><span class="seg"></span><span class="seg"></span><span class="seg"></span><span class="seg"></span></div>
+          <div class="detail">Confirmed non-functional. Compatibility work has not started.</div>
+        </div>
+        <div class="row">
+          <div class="app">Media Encoder <span class="tier t-broken">Not working</span></div>
+          <div class="bar"><span class="seg on-broken"></span><span class="seg"></span><span class="seg"></span><span class="seg"></span><span class="seg"></span></div>
+          <div class="detail">Confirmed non-functional. Compatibility work has not started.</div>
+        </div>
+        <div class="row">
+          <div class="app">Lightroom CC <span class="tier t-none">Untested</span></div>
+          <div class="bar"><span class="seg"></span><span class="seg"></span><span class="seg"></span><span class="seg"></span><span class="seg"></span></div>
+          <div class="detail">Not yet evaluated. Distinct from Lightroom Classic and untried.</div>
+        </div>
+        <div class="row row-feature">
+          <div class="app">Dynamic Link <span class="tier t-none">Untested</span></div>
+          <div class="bar"><span class="seg"></span><span class="seg"></span><span class="seg"></span><span class="seg"></span><span class="seg"></span></div>
+          <div class="detail">Not yet evaluated. Blocked in practice on this release — the link depends on After Effects and Media Encoder, both confirmed non-functional.</div>
+        </div>
+      </div>
+
+      <!-- ================= CC 2026 ================= -->
+      <div class="relset" data-rel="2026" hidden>
+        <div class="row">
+          <div class="app">Photoshop <span class="tier t-beta">Beta</span></div>
+          <div class="bar"><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg"></span></div>
+          <div class="detail">Stable for day-to-day work. The only 2026 application verified on this stack so far.</div>
+        </div>
+        <div class="row">
+          <div class="app">Premiere Pro <span class="tier t-likely">Likely</span></div>
+          <div class="bar"><span class="seg on-likely"></span><span class="seg on-likely"></span><span class="seg"></span><span class="seg"></span><span class="seg"></span></div>
+          <div class="detail">Not yet tested on 2026. Expected to reach at least alpha on the fixes built for 2025, but unverified — treat as unknown until confirmed.</div>
+        </div>
+        <div class="row">
+          <div class="app">Lightroom Classic <span class="tier t-likely">Likely</span></div>
+          <div class="bar"><span class="seg on-likely"></span><span class="seg on-likely"></span><span class="seg"></span><span class="seg"></span><span class="seg"></span></div>
+          <div class="detail">Not yet tested on 2026. Expected to reach at least alpha on the fixes built for 2025, but unverified — treat as unknown until confirmed.</div>
+        </div>
+        <div class="row">
+          <div class="app">Illustrator <span class="tier t-none">Untested</span></div>
+          <div class="bar"><span class="seg"></span><span class="seg"></span><span class="seg"></span><span class="seg"></span><span class="seg"></span></div>
+          <div class="detail">Not yet evaluated on this release.</div>
+        </div>
+        <div class="row">
+          <div class="app">Animate <span class="tier t-none">Untested</span></div>
+          <div class="bar"><span class="seg"></span><span class="seg"></span><span class="seg"></span><span class="seg"></span><span class="seg"></span></div>
+          <div class="detail">Not yet evaluated on this release.</div>
+        </div>
+        <div class="row">
+          <div class="app">After Effects <span class="tier t-none">Untested</span></div>
+          <div class="bar"><span class="seg"></span><span class="seg"></span><span class="seg"></span><span class="seg"></span><span class="seg"></span></div>
+          <div class="detail">Not yet evaluated on this release.</div>
+        </div>
+        <div class="row">
+          <div class="app">Media Encoder <span class="tier t-none">Untested</span></div>
+          <div class="bar"><span class="seg"></span><span class="seg"></span><span class="seg"></span><span class="seg"></span><span class="seg"></span></div>
+          <div class="detail">Not yet evaluated on this release.</div>
+        </div>
+        <div class="row">
+          <div class="app">Lightroom CC <span class="tier t-none">Untested</span></div>
+          <div class="bar"><span class="seg"></span><span class="seg"></span><span class="seg"></span><span class="seg"></span><span class="seg"></span></div>
+          <div class="detail">Not yet evaluated. Distinct from Lightroom Classic and untried.</div>
+        </div>
+        <div class="row row-feature">
+          <div class="app">Dynamic Link <span class="tier t-none">Untested</span></div>
+          <div class="bar"><span class="seg"></span><span class="seg"></span><span class="seg"></span><span class="seg"></span><span class="seg"></span></div>
+          <div class="detail">Not yet evaluated. Requires After Effects and Media Encoder, neither of which has been tested on this release.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="legend">
+      <span><i class="chip" style="background:#2BB673"></i>Beta — usable for real work</span>
+      <span><i class="chip" style="background:var(--amber)"></i>Partial — launches, major gaps</span>
+      <span><i class="chip" style="background:#5B87C4"></i>Likely — inherited fixes, unverified</span>
+      <span><i class="chip" style="background:#FF4F33"></i>Not working — confirmed broken</span>
+      <span><i class="chip" style="background:var(--line-soft);border:1px solid var(--line)"></i>Untested — assume broken</span>
+    </div>
+
+    <div class="reqs">
+      <div class="req">
+        <span class="reqkey">Display server</span>
+        <div class="reqval">
+          <p><b>Wayland.</b> Every fix here is developed and verified on a Wayland session. X11 has worked well in earlier testing and will likely keep working, but it is unverified — stability and usability there can't be guaranteed.</p>
+          <details class="why">
+            <summary>Why Wayland, specifically</summary>
+            <p>X11 applies a single global scaling factor across every connected display, so a mixed-resolution setup can only ever be correct on one of them. A colorist running a 4K reference monitor beside a 1080p interface display, or an illustrator working across a laptop panel and a pen display, hits that limit immediately — and it is architectural, not a bug awaiting a fix. Multi-monitor at differing resolutions and scales is ordinary in professional creative work, so Wayland is the target.</p>
+          </details>
+        </div>
+      </div>
+
+      <ul class="specstrip">
+        <li><span>Reference environment</span> CachyOS · KDE Plasma (Wayland) · RTX 5070 on nvidia-open · ntsync kernel</li>
+        <li><span>Other setups</span> Expected to work, being brought up, not yet validated</li>
+        <li><span>Licensing</span> Bring your own Adobe subscription — no Adobe code is distributed</li>
+      </ul>
+      <div class="deckstrip">
+        <span>Steam Deck</span>
+        <p>Build available and Photoshop verified; other apps are included but untried. The AMD graphics path is early and not yet fully explored — GPU-accelerated features may behave differently than on the NVIDIA reference setup until that work is done. <b>Testers welcome.</b></p>
+      </div>
+    </div>
+  </section>
+
+<section id="why">
+  <div class="wrap">
+    <p class="eyebrow">Why Linux</p>
+    <h2>The apps were never<br>the reason you stayed.</h2>
+    <p class="sec-note">Adobe's own forums have carried the same request for eight years running, from paying subscribers. The wording barely changes: I want to move to Linux, and Creative Cloud is the only thing stopping me. Neutron exists because that sentence should have an answer.</p>
+
+    <div class="reasons">
+
+      <article class="reason">
+        <span class="rnum">R1</span>
+        <div>
+          <h3>You already decided. Adobe was the lock.</h3>
+          <p>Nobody needs to be sold on this. Designers, editors, and students have been saying it publicly for years — one subscriber put it as plainly as it can be put: the only reason they still run Windows is Creative Cloud, and they'd drop it the day the suite ran elsewhere. The workarounds people reach for — a virtual machine, a second computer, dual booting — all cost either money or momentum. Neutron is the attempt to remove the lock rather than route around it.</p>
+        </div>
+      </article>
+
+      <article class="reason">
+        <span class="rnum">R2</span>
+        <div>
+          <h3>Your hardware shouldn't expire on someone else's schedule.</h3>
+          <p>Windows 10 support ended and took a generation of capable workstations with it — machines that fail an upgrade check over a firmware module, not over performance. The Mac side of the trade has its own version: sealed machines, memory soldered at purchase, and the standing advice to buy every upgrade you might ever need on day one because you will never add one later. Between the two, a working editor is asked to replace an entire computer to solve what used to be a $90 problem.</p>
+          <p>Linux installs on the machine that got left behind. Add memory when a timeline demands it. Change the GPU. Add drives. Keep the tower for a decade and repair it in place. If you're currently weighing an expensive Mac refresh against moving to PC, this is the third option — the same Adobe apps, on hardware you specify.</p>
+        </div>
+      </article>
+
+      <article class="reason">
+        <span class="rnum">R3</span>
+        <div>
+          <h3>The workstation should work for you.</h3>
+          <p>Consumer Windows now ships telemetry you can reduce but not switch off, promotional content threaded through the shell, and updates that arrive on Microsoft's timetable rather than yours. For a hobbyist that's an irritation. Mid-render, mid-deadline, on a machine you bought for one purpose, it's billable time. A Linux workstation runs the processes you put there and reboots when you say so.</p>
+        </div>
+      </article>
+
+      <article class="reason">
+        <span class="rnum">R4</span>
+        <div>
+          <h3>Most of the pro stack is already here.</h3>
+          <p>Resolve ships a native Linux build and has for years. Blender, Houdini, Nuke, Krita, Inkscape, ffmpeg, and the entire color and encoding toolchain are native, and Autodesk Flame has run on Linux for decades — colorists and finishers have quietly worked this way the whole time. For most creative pipelines Adobe was the last missing piece, not the first.</p>
+        </div>
+      </article>
+
+    </div>
+
+    <p class="caveat">Worth saying plainly: this is a compatibility layer, not a native port. It is alpha software, some applications don't run at all, and the ones that do still have rough edges. The status board above is the honest version.</p>
+  </div>
+</section>
+
+<section id="projects" style="background:rgba(15,21,34,.72)">
+  <div class="wrap">
+    <p class="eyebrow">Three projects, one stack</p>
+    <h2>How the pieces divide</h2>
+    <p class="sec-note">Each project owns one job and does not reach into the others. That separation is deliberate: it keeps compatibility work testable without a GUI, and keeps the launcher replaceable.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-top">
+          <h3>Neutron</h3>
+          <span class="role">Engine</span>
+        </div>
+        <span class="lic">LGPL v2.1</span>
+        <p>Neutron-Wine, DXVK, vkd3d-proton, a DirectComposition bridge, and an nvcuda wrapper — plus every Adobe-specific fix, from locale loader patches to display handling. Everything is exposed through a command-line interface. No GUI required.</p>
+        <a class="go" href="https://github.com/Nico-LaFoucate/Neutron">github.com/Nico-LaFoucate/Neutron →</a>
+      </div>
+      <div class="card">
+        <div class="card-top">
+          <h3>Collider</h3>
+          <span class="role">Launcher</span>
+        </div>
+        <span class="lic">Apache 2.0</span>
+        <p>A desktop application that finds your installed apps, checks that a prefix is healthy, launches it, and supervises it until it exits. It calls the Neutron CLI for anything compatibility-related and holds no fixes of its own.</p>
+        <a class="go" href="https://github.com/Nico-LaFoucate/Collider">github.com/Nico-LaFoucate/Collider →</a>
+      </div>
+      <div class="card">
+        <div class="card-top">
+          <h3>Mud Hut</h3>
+          <span class="role">Installer</span>
+        </div>
+        <span class="lic">Ships inside Collider</span>
+        <p>A command-line installer that gets Adobe applications onto your machine without hand-building a prefix. It ships inside Collider as one-click install, and runs standalone for anyone who prefers a terminal.</p>
+        <a class="go" href="https://github.com/Nico-LaFoucate/Mud-Hut">github.com/Nico-LaFoucate/Mud-Hut →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="how" class="mission">
+  <div class="wrap">
+    <p class="eyebrow">Architecture</p>
+    <h2>Where the fixes live</h2>
+    <p class="sec-note">Neither Wine nor Adobe is broken. The defects live in the seam between two healthy systems, and that seam is where Neutron patches. One rule holds the project together: the launcher never touches compatibility.</p>
+
+<figure class="arch">
+<svg viewBox="0 0 1000 870" role="img" aria-labelledby="archtitle archdesc">
+  <title id="archtitle">Neutron architecture</title>
+  <desc id="archdesc">Three entry points — the Collider GUI launcher, the Mud Hut installer, or a terminal — all call the Neutron command line interface. A contract boundary separates them from the engine: nothing above the line owns compatibility logic. Below it, Neutron owns prefixes, environment, registry and Wine binary selection. Neutron drives the runtime, in which Neutron-Wine hosts the Adobe application alongside DXVK, vkd3d-proton, a DirectComposition bridge and an nvcuda wrapper. The runtime sits on Vulkan, the GPU, and the Linux kernel.</desc>
+
+  <!-- ============================================================
+       TIER 1 — COCKPIT
+       ============================================================ -->
+  <text class="zone mid" x="500" y="46">COCKPIT</text>
+  <text class="zonesub mid" x="500" y="66">entry points</text>
+  <line class="rule" x1="60" y1="84" x2="940" y2="84"/>
+
+  <rect class="box" x="60" y="110" width="270" height="76"/>
+  <text class="nm mid" x="195" y="146">Collider</text>
+  <text class="sub mid" x="195" y="168">GUI launcher · Apache 2.0</text>
+
+  <rect class="box" x="365" y="110" width="270" height="76"/>
+  <text class="nm mid" x="500" y="146">Mud Hut</text>
+  <text class="sub mid" x="500" y="168">CLI installer</text>
+
+  <rect class="box box-ghost" x="670" y="110" width="270" height="76"/>
+  <text class="nm nm-ghost mid" x="805" y="146">your terminal</text>
+  <text class="sub mid" x="805" y="168">neutron, invoked directly</text>
+
+  <!-- feeds: down, along a single bus, into one spine -->
+  <path class="wire" d="M195,186 V214"/>
+  <path class="wire" d="M500,186 V214"/>
+  <path class="wire" d="M805,186 V214"/>
+  <path class="wire" d="M195,214 H805"/>
+  <path class="wire" d="M500,214 V250"/>
+  <polygon class="head" points="500,260 493,246 507,246"/>
+
+  <!-- ============================================================
+       BOUNDARY — its own band, nothing else lives here
+       ============================================================ -->
+  <line class="bound" x1="60" y1="292" x2="372" y2="292"/>
+  <line class="bound" x1="628" y1="292" x2="940" y2="292"/>
+  <rect class="boundtag" x="388" y="278" width="224" height="28" rx="2"/>
+  <text class="boundtxt mid" x="500" y="297">CONTRACT · neutron CLI</text>
+  <text class="boundnote mid" x="500" y="326">nothing above owns compatibility logic</text>
+
+  <!-- ============================================================
+       TIER 2 — ENGINE
+       ============================================================ -->
+  <text class="zone zone-hot mid" x="500" y="352">ENGINE</text>
+  <text class="zonesub mid" x="500" y="372">Neutron · LGPL v2.1</text>
+  <line class="rule rule-hot" x1="60" y1="390" x2="940" y2="390"/>
+
+  <rect class="box box-hot" x="60" y="416" width="880" height="80"/>
+  <text class="nm nm-hot mid" x="500" y="452">neutron</text>
+  <text class="sub sub-hot mid" x="500" y="476">prefixes · environment · registry · Wine binary selection · every compat fix</text>
+
+  <path class="wire" d="M500,496 V532"/>
+  <polygon class="head" points="500,542 493,528 507,528"/>
+
+  <!-- ============================================================
+       TIER 3 — RUNTIME
+       ============================================================ -->
+  <rect class="shell" x="60" y="560" width="880" height="150"/>
+  <text class="shellname mid" x="500" y="596">Neutron-Wine</text>
+  
+  <line class="rule rule-inner" x1="84" y1="614" x2="916" y2="614"/>
+
+  <rect class="app" x="66" y="638" width="270" height="52" rx="2"/>
+  <text class="appnm mid" x="201" y="660">Adobe application</text>
+  <text class="appsub mid" x="201" y="678">Premiere · Photoshop · Lightroom</text>
+
+  <rect class="chip" x="360" y="646" width="122" height="36" rx="2"/>
+  <text class="chiptxt" x="421" y="669">DXVK</text>
+
+  <rect class="chip" x="506" y="646" width="160" height="36" rx="2"/>
+  <text class="chiptxt" x="586" y="669">vkd3d-proton</text>
+
+  <rect class="chip" x="690" y="646" width="150" height="36" rx="2"/>
+  <text class="chiptxt" x="765" y="669">dcomp bridge</text>
+
+  <rect class="chip" x="864" y="646" width="70" height="36" rx="2"/>
+  <text class="chiptxt" x="899" y="669">nvcuda</text>
+
+  <path class="wire" d="M500,710 V746"/>
+  <polygon class="head" points="500,756 493,742 507,742"/>
+
+  <!-- ============================================================
+       TIER 4 — SUBSTRATE
+       ============================================================ -->
+  <line class="rule" x1="60" y1="774" x2="940" y2="774"/>
+  <text class="zone mid" x="500" y="806">SUBSTRATE</text>
+  <text class="base mid" x="500" y="836">Vulkan  ·  your GPU  ·  Linux kernel</text>
+  
+  
+  
+  
+  
+  
+</svg>
+<figcaption>The dashed line is the whole design. Collider and Mud Hut can be replaced, rewritten, or removed without touching a single compatibility fix — and every fix Neutron gains reaches all three entry points at once. Calls travel down; status comes back as JSON.</figcaption>
+</figure>
+  </div>
+</section>
+
+<section id="support">
+  <div class="wrap">
+    <p class="eyebrow">Funding</p>
+    <h2>Make this someone's full-time job</h2>
+    <p class="sec-note">Neutron is maintained by one person working alongside a freelance creative career. Funding converts that into sustained, full-time compatibility work — faster fixes, more applications, and regression testing that keeps working apps working.</p>
+
+    <div class="tiers">
+      <div class="tier-card">
+        <h4>Patreon</h4>
+        <p>Monthly support with early builds, roadmap input, and direct access to development discussion.</p>
+        <a href="https://patreon.com/neutronproject">Become a patron →</a>
+      </div>
+      <div class="tier-card">
+        <h4>GitHub Sponsors</h4>
+        <p>Sponsor directly through GitHub, one-time or recurring. Same tiers, zero platform friction.</p>
+        <a href="https://github.com/sponsors/Nico-LaFoucate">Sponsor on GitHub →</a>
+      </div>
+      <div class="tier-card">
+        <h4>Studios and companies</h4>
+        <p>If your team depends on this stack, invoiced sponsorship and prioritized compatibility work are available.</p>
+        <a href="mailto:FicusMediaGroup@gmail.com?subject=NEUTRON%20-%20">FicusMediaGroup@gmail.com →</a>
+        <p class="hint">Put <b>NEUTRON</b> or <b>COLLIDER</b> in the subject line so it reaches the right place.</p>
+      </div>
+    </div>
+
+    <div class="goal">
+      <div class="goal-top">
+        <span class="goal-lbl">Full-time development</span>
+        <span class="goal-num">$0 of $3,000 / month</span>
+      </div>
+      <div class="track"><div class="fill"></div></div>
+      <p>At $3,000/month, Neutron becomes the primary work rather than the evening work.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <a href="https://github.com/Nico-LaFoucate/Neutron">Neutron</a>
+      <a href="https://github.com/Nico-LaFoucate/Collider">Collider</a>
+      <a href="https://github.com/Nico-LaFoucate/Mud-Hut">Mud Hut</a>
+      <a href="https://github.com/Nico-LaFoucate/Neutron/blob/main/docs/ESSENTIAL.md">Docs</a>
+      <span class="sp">Neutron LGPL v2.1 · Collider Apache 2.0</span>
+    </div>
+    <p class="disclaimer">Neutron is an independent project and is not affiliated with, endorsed by, or sponsored by Adobe Inc. Adobe, Premiere Pro, Photoshop, and Lightroom are trademarks of Adobe Inc. You must own a valid license for any Adobe software you run. Neutron distributes no Adobe code.</p>
+  </div>
+</footer>
+
+</main>
+<script>
+(function(){
+  var sel = document.getElementById('release');
+  if(!sel) return;
+  var sets = document.querySelectorAll('.relset');
+  function show(v){
+    for (var i=0;i<sets.length;i++){
+      sets[i].hidden = (sets[i].getAttribute('data-rel') !== v);
+    }
+  }
+  sel.addEventListener('change', function(){ show(sel.value); });
+  show(sel.value);
+})();
+</script>
+
+<script>
+(function(){
+  var c = document.getElementById('starfield');
+  var x = c.getContext('2d');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var W, H, dpr, parts = [], clusters = [], t = 0, raf = null;
+
+  // triangular-ish gaussian for stipple falloff
+  function gauss(){ return (Math.random()+Math.random()+Math.random()-1.5)/1.5; }
+
+  function seed(){
+    parts = []; clusters = [];
+    var count = Math.min(820, Math.round(W*H/2700));
+    var k = 6 + Math.floor(Math.random()*3);
+    for (var i=0;i<k;i++){
+      clusters.push({
+        x: Math.random()*W, y: Math.random()*H,
+        r: 90 + Math.random()*240,
+        vx: (Math.random()-.5)*.03, vy: (Math.random()-.5)*.03
+      });
+    }
+    for (var j=0;j<count;j++){
+      var px, py, cl = null;
+      if (Math.random() < .62){
+        cl = clusters[Math.floor(Math.random()*clusters.length)];
+        var a = Math.random()*6.2832, d = Math.abs(gauss())*cl.r;
+        px = cl.x + Math.cos(a)*d; py = cl.y + Math.sin(a)*d;
+      } else { px = Math.random()*W; py = Math.random()*H; }
+      parts.push({
+        x: px, y: py,
+        r: .4 + Math.pow(Math.random(),1.6)*1.7,       /* mostly fine dust, few big */
+        vx: (Math.random()-.5)*.07, vy: (Math.random()-.5)*.07,
+        ph: Math.random()*6.2832,
+        tw: .35 + Math.random()*1.7,                    /* twinkle rate */
+        red: Math.random() < .02
+      });
+    }
+  }
+
+  function resize(){
+    dpr = Math.min(window.devicePixelRatio||1, 2);
+    W = window.innerWidth; H = window.innerHeight;
+    c.width = W*dpr; c.height = H*dpr;
+    x.setTransform(dpr,0,0,dpr,0,0);
+    seed();
+    if (reduce) draw(); /* static single frame */
+  }
+
+  function draw(){
+    x.clearRect(0,0,W,H);
+    t += .016;
+    for (var i=0;i<clusters.length;i++){
+      var cl = clusters[i];
+      cl.x += cl.vx; cl.y += cl.vy;
+      if (cl.x < -cl.r) cl.x = W+cl.r; if (cl.x > W+cl.r) cl.x = -cl.r;
+      if (cl.y < -cl.r) cl.y = H+cl.r; if (cl.y > H+cl.r) cl.y = -cl.r;
+    }
+    for (var j=0;j<parts.length;j++){
+      var p = parts[j];
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < -5) p.x = W+5; if (p.x > W+5) p.x = -5;
+      if (p.y < -5) p.y = H+5; if (p.y > H+5) p.y = -5;
+      var base = .07 + .27*(p.r/2.1);
+      var a = reduce ? base : base*(.34 + .66*Math.sin(t*p.tw + p.ph));
+      x.globalAlpha = Math.max(a, .03);
+      x.fillStyle = p.red ? '#FC3D21' : '#D9E4F4';
+      x.beginPath(); x.arc(p.x, p.y, p.r, 0, 6.2832); x.fill();
+    }
+    x.globalAlpha = 1;
+  }
+
+  function loop(){ draw(); raf = requestAnimationFrame(loop); }
+
+  document.addEventListener('visibilitychange', function(){
+    if (reduce) return;
+    if (document.hidden){ cancelAnimationFrame(raf); }
+    else { loop(); }
+  });
+
+  window.addEventListener('resize', resize);
+  resize();
+  if (!reduce) loop();
+})();
+</script>
+</body>
+</html>
