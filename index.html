@@ -535,6 +535,19 @@ h2{
 }
 .arch .mid{text-anchor:middle}
 
+/* narrow canvas is 420 units wide vs 1000, so type must shrink to match apparent size */
+.arch-narrow .zone{font-size:9px;letter-spacing:.2em}
+.arch-narrow .zonesub{font-size:8.5px}
+.arch-narrow .nm{font-size:17px}
+.arch-narrow .sub{font-size:8.5px}
+.arch-narrow .boundtxt{font-size:8.5px;letter-spacing:.1em}
+.arch-narrow .boundnote{font-size:8.5px}
+.arch-narrow .shellname{font-size:15px}
+.arch-narrow .appnm{font-size:13px}
+.arch-narrow .appsub{font-size:8px}
+.arch-narrow .chiptxt{font-size:9px}
+.arch-narrow .base{font-size:10px}
+
 /* substrate */
 .arch .base{
   font-family:var(--f-mono);font-size:13px;letter-spacing:.06em;fill:#8FA6C8;
@@ -547,10 +560,12 @@ h2{
   border-top:1px solid rgba(127,184,255,.14);max-width:78ch;
 }
 
+.arch svg.arch-narrow{display:none}
 @media(max-width:820px){
-  .arch{overflow-x:auto;-webkit-overflow-scrolling:touch}
-  .arch svg{width:880px;max-width:none}
-  .arch figcaption{width:880px}
+  .arch{padding:18px 14px}
+  .arch svg.arch-wide{display:none}
+  .arch svg.arch-narrow{display:block}
+  .arch figcaption{width:auto;font-size:11.5px}
 }
 
 /* ---------- support ---------- */
@@ -916,7 +931,7 @@ footer{
     <p class="sec-note">Neither Wine nor Adobe is broken. The defects live in the seam between two healthy systems, and that seam is where Neutron patches. One rule holds the project together: the launcher never touches compatibility.</p>
 
 <figure class="arch">
-<svg viewBox="0 0 1000 870" role="img" aria-labelledby="archtitle archdesc">
+<svg class="arch-wide" viewBox="0 0 1000 870" role="img" aria-labelledby="archtitle archdesc">
   <title id="archtitle">Neutron architecture</title>
   <desc id="archdesc">Three entry points — the Collider GUI launcher, the Mud Hut installer, or a terminal — all call the Neutron command line interface. A contract boundary separates them from the engine: nothing above the line owns compatibility logic. Below it, Neutron owns prefixes, environment, registry and Wine binary selection. Neutron drives the runtime, in which Neutron-Wine hosts the Adobe application alongside DXVK, vkd3d-proton, a DirectComposition bridge and an nvcuda wrapper. The runtime sits on Vulkan, the GPU, and the Linux kernel.</desc>
 
@@ -1009,6 +1024,77 @@ footer{
   
   
   
+</svg>
+
+<svg class="arch-narrow" viewBox="0 0 420 1000" role="img" aria-labelledby="archtitle2 archdesc2">
+  <title id="archtitle2">Neutron architecture</title>
+  <desc id="archdesc2">Three entry points — the Collider GUI launcher, the Mud Hut installer, or a terminal — all call the Neutron command line interface. A contract boundary separates them from the engine: nothing above the line owns compatibility logic. Below it, Neutron owns prefixes, environment, registry and Wine binary selection, and drives the runtime, in which Neutron-Wine hosts the Adobe application alongside DXVK, vkd3d-proton, a DirectComposition bridge and an nvcuda wrapper. The runtime sits on Vulkan, the GPU, and the Linux kernel.</desc>
+
+  <!-- COCKPIT -->
+  <text class="zone mid" x="210" y="26">COCKPIT</text>
+  <text class="zonesub mid" x="210" y="44">entry points</text>
+  <line class="rule" x1="24" y1="60" x2="396" y2="60"/>
+
+  <rect class="box" x="24" y="80" width="372" height="58"/>
+  <text class="nm mid" x="210" y="108">Collider</text>
+  <text class="sub mid" x="210" y="127">GUI launcher · Apache 2.0</text>
+
+  <rect class="box" x="24" y="150" width="372" height="58"/>
+  <text class="nm mid" x="210" y="178">Mud Hut</text>
+  <text class="sub mid" x="210" y="197">CLI installer</text>
+
+  <rect class="box box-ghost" x="24" y="220" width="372" height="58"/>
+  <text class="nm nm-ghost mid" x="210" y="248">your terminal</text>
+  <text class="sub mid" x="210" y="267">neutron, invoked directly</text>
+
+  <path class="wire" d="M210,278 V308"/>
+  <polygon class="head" points="210,318 203,304 217,304"/>
+
+  <!-- BOUNDARY -->
+  <line class="bound" x1="24" y1="348" x2="102" y2="348"/>
+  <line class="bound" x1="318" y1="348" x2="396" y2="348"/>
+  <rect class="boundtag" x="110" y="334" width="200" height="28" rx="2"/>
+  <text class="boundtxt mid" x="210" y="353">CONTRACT · neutron CLI</text>
+  <text class="boundnote mid" x="210" y="382">nothing above owns compatibility logic</text>
+
+  <!-- ENGINE -->
+  <text class="zone zone-hot mid" x="210" y="424">ENGINE</text>
+  <text class="zonesub mid" x="210" y="442">Neutron · LGPL v2.1</text>
+  <line class="rule rule-hot" x1="24" y1="458" x2="396" y2="458"/>
+
+  <rect class="box box-hot" x="24" y="478" width="372" height="96"/>
+  <text class="nm nm-hot mid" x="210" y="510">neutron</text>
+  <text class="sub mid" x="210" y="532">prefixes · environment · registry</text>
+  <text class="sub mid" x="210" y="550">Wine binary selection · every compat fix</text>
+
+  <path class="wire" d="M210,574 V604"/>
+  <polygon class="head" points="210,614 203,600 217,600"/>
+
+  <!-- RUNTIME -->
+  <rect class="shell" x="24" y="632" width="372" height="238"/>
+  <text class="shellname mid" x="210" y="664">Neutron-Wine</text>
+  <line class="rule rule-inner" x1="44" y1="680" x2="376" y2="680"/>
+
+  <rect class="app" x="44" y="698" width="332" height="52" rx="2"/>
+  <text class="appnm mid" x="210" y="720">Adobe application</text>
+  <text class="appsub mid" x="210" y="738">Premiere · Photoshop · Lightroom</text>
+
+  <rect class="chip" x="44" y="764" width="160" height="34" rx="2"/>
+  <text class="chiptxt" x="124" y="786">DXVK</text>
+  <rect class="chip" x="216" y="764" width="160" height="34" rx="2"/>
+  <text class="chiptxt" x="296" y="786">vkd3d-proton</text>
+  <rect class="chip" x="44" y="810" width="160" height="34" rx="2"/>
+  <text class="chiptxt" x="124" y="832">dcomp bridge</text>
+  <rect class="chip" x="216" y="810" width="160" height="34" rx="2"/>
+  <text class="chiptxt" x="296" y="832">nvcuda</text>
+
+  <path class="wire" d="M210,870 V900"/>
+  <polygon class="head" points="210,910 203,896 217,896"/>
+
+  <!-- SUBSTRATE -->
+  <line class="rule" x1="24" y1="930" x2="396" y2="930"/>
+  <text class="zone mid" x="210" y="958">SUBSTRATE</text>
+  <text class="base mid" x="210" y="984">Vulkan · your GPU · Linux kernel</text>
 </svg>
 <figcaption>The dashed line is the whole design. Collider and Mud Hut can be replaced, rewritten, or removed without touching a single compatibility fix — and every fix Neutron gains reaches all three entry points at once. Calls travel down; status comes back as JSON.</figcaption>
 </figure>
