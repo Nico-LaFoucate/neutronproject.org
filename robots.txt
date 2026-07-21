@@ -1,0 +1,8 @@
+# PRE-LAUNCH — blocks all search engine crawlers.
+# ON LAUNCH DAY: replace the two lines below with:
+#
+#   User-agent: *
+#   Allow: /
+#
+User-agent: *
+Disallow: /
