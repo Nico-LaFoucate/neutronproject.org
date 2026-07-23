@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- REMOVE THIS TAG ON LAUNCH DAY (matches index.html) -->
+<meta name="robots" content="noindex, nofollow">
+<title>Wiki — Neutron</title>
+<meta name="description" content="The Neutron project wiki: how the stack works, what each part does, the fixes behind it, and how to troubleshoot — organized by component.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:dark;
+  --paper:#0A0E16; --paper-2:#0F1522;
+  --ink:#E9EEF6; --ink-dim:#9AA8BC; --ink-faint:#5F6E85;
+  --line:#1E2942; --line-soft:#161E31;
+  --red:#FC3D21; --red-deep:#FF5C42;
+  --navy:#10234A; --sky:#7FB8FF; --amber:#E8A13C; --green:#4ADE94;
+  --f-display:'Bebas Neue',system-ui,sans-serif;
+  --f-body:'Public Sans',system-ui,sans-serif;
+  --f-mono:'IBM Plex Mono',ui-monospace,monospace;
+  --gut:clamp(16px,4vw,40px); --sidebar:280px; --measure:72ch;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.66;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--red);outline-offset:2px;border-radius:2px}
+#starfield{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.7}
+
+/* nav */
+header.nav{position:sticky;top:0;z-index:50;background:rgba(10,14,22,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;gap:22px;padding:12px var(--gut)}
+.mark{font-family:var(--f-display);font-weight:400;font-size:19px;letter-spacing:.16em;margin-right:auto;display:flex;align-items:center;gap:10px}
+.nav a.lnk{font-size:14px;font-weight:500;color:var(--ink-dim);transition:color .15s}
+.nav a.lnk:hover,.nav a.lnk[aria-current="page"]{color:var(--red)}
+.menu-btn{display:none;background:none;border:1px solid var(--line);color:var(--ink);border-radius:4px;padding:6px 10px;font-family:var(--f-mono);font-size:12px;cursor:pointer}
+@media(max-width:860px){.nav a.lnk.hide-sm{display:none}.menu-btn{display:inline-block}}
+
+/* shell */
+.shell{position:relative;z-index:1;display:grid;grid-template-columns:var(--sidebar) minmax(0,1fr);max-width:1320px;margin:0 auto;align-items:start}
+.scrim{display:none}  /* hidden by default so it never occupies a grid cell; shown only as the mobile drawer overlay */
+aside{position:sticky;top:53px;height:calc(100vh - 53px);overflow-y:auto;border-right:1px solid var(--line);padding:22px 14px 60px}
+.content{min-width:0;padding:clamp(28px,4vw,52px) var(--gut) 80px;max-width:calc(var(--measure) + 120px)}
+
+/* sidebar search */
+.search{position:relative;margin:0 6px 18px}
+.search input{width:100%;font-family:var(--f-mono);font-size:12.5px;color:var(--ink);background:rgba(10,20,40,.7);border:1px solid var(--line);border-radius:5px;padding:8px 10px 8px 30px}
+.search input::placeholder{color:var(--ink-faint)}
+.search input:focus{border-color:var(--ink-faint);outline:none}
+.search svg{position:absolute;left:9px;top:9px;opacity:.5}
+
+/* sidebar tree */
+.grp{font-family:var(--f-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);margin:20px 8px 8px;display:flex;align-items:center;gap:8px}
+.grp::before{content:"";width:14px;height:1px;background:var(--red)}
+.grp:first-child{margin-top:0}
+.grp.toggle{cursor:pointer;user-select:none}
+.grp.toggle::before{display:none}
+.grp .chev{color:var(--red);font-size:9px;width:12px;display:inline-block;text-align:center}
+.grp.toggle:hover{color:var(--ink-dim)}
+.snode>a{display:flex;align-items:center;gap:8px;padding:7px 8px;border-radius:5px;font-size:14.5px;font-weight:600;color:var(--ink-dim);transition:background .12s,color .12s}
+.snode>a:hover{background:rgba(255,255,255,.04);color:var(--ink)}
+.snode.active>a{color:var(--ink)}
+.snode .kind{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);margin-left:auto;font-weight:500}
+.cat{margin:2px 0 2px 10px;border-left:1px solid var(--line-soft);padding-left:6px}
+.cat>a{display:block;padding:5px 8px;border-radius:5px;font-size:13.5px;color:var(--ink-dim);transition:background .12s,color .12s}
+.cat>a:hover{background:rgba(255,255,255,.04);color:var(--ink)}
+.cat.active>a{color:var(--sky)}
+.arts{margin:1px 0 4px 8px;border-left:1px solid var(--line-soft);padding-left:6px}
+.arts a{display:flex;align-items:center;gap:7px;padding:4px 8px;border-radius:5px;font-size:13px;color:var(--ink-faint);transition:background .12s,color .12s}
+.arts a:hover{background:rgba(255,255,255,.04);color:var(--ink-dim)}
+.arts a.active{color:var(--red);background:rgba(252,61,33,.08)}
+.dot{width:6px;height:6px;border-radius:50%;flex:none}
+.dot.fix,.dot.feature{background:var(--green)}.dot.issue{background:var(--amber)}.dot.guide{background:var(--sky)}.dot.stub{background:var(--ink-faint);opacity:.5}
+.noresult{color:var(--ink-faint);font-size:13px;padding:8px}
+
+/* content */
+.crumb{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.04em;color:var(--ink-faint);margin:0 0 18px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.crumb a:hover{color:var(--red)}
+.crumb .sep{opacity:.5}
+.badge{display:inline-block;font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:3px 9px;border-radius:3px;vertical-align:middle}
+.b-fix,.b-feature{color:var(--green);background:rgba(43,182,115,.14)}
+.b-issue{color:var(--amber);background:rgba(232,161,60,.14)}
+.b-guide{color:var(--sky);background:rgba(91,135,196,.16)}
+.b-stub{color:var(--ink-faint);background:var(--paper-2)}
+h1.title{font-family:var(--f-display);font-weight:400;font-size:clamp(34px,5vw,58px);letter-spacing:.012em;line-height:1;margin:10px 0 6px}
+.subtitle{color:var(--ink-dim);font-size:clamp(15px,2vw,17px);margin:0 0 30px;max-width:var(--measure)}
+.content h2{font-family:var(--f-display);font-weight:400;font-size:clamp(24px,3vw,32px);letter-spacing:.015em;margin:34px 0 10px}
+.content h3{font-family:var(--f-display);font-weight:400;font-size:clamp(19px,2.4vw,24px);letter-spacing:.02em;color:var(--ink);margin:26px 0 8px}
+.content p{max-width:var(--measure);margin:0 0 16px}
+.content ul,.content ol{max-width:var(--measure);padding-left:22px}
+.content li{margin:0 0 8px}
+.content strong{color:var(--ink);font-weight:600}
+.content a.ln{color:var(--sky);border-bottom:1px solid rgba(127,184,255,.3)}
+.content a.ln:hover{border-color:var(--sky)}
+code{font-family:var(--f-mono);font-size:.9em;background:rgba(127,184,255,.10);color:#BFD6F5;padding:1px 5px;border-radius:3px}
+.callout{max-width:var(--measure);border:1px solid var(--line);border-left:2px solid var(--red);border-radius:3px;background:rgba(13,18,28,.7);padding:15px 18px;margin:0 0 20px}
+.callout .k{font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin:0 0 6px}
+.callout p{margin:0}
+.metrics{max-width:var(--measure);border:1px solid var(--line);border-radius:3px;overflow:hidden;margin:0 0 20px;background:rgba(13,18,28,.82)}
+.metrics .mhead{padding:10px 16px;background:rgba(255,255,255,.03);border-bottom:1px solid var(--line);font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint)}
+.mrow{display:grid;grid-template-columns:1.5fr 1fr auto;gap:12px;align-items:baseline;padding:12px 16px;border-bottom:1px solid var(--line-soft)}
+.mrow:last-child{border-bottom:none}.mrow .lbl{font-size:13.5px;color:var(--ink-dim)}.mrow .val{font-family:var(--f-mono);font-size:13.5px}.mrow .delta{font-family:var(--f-mono);font-size:12px;color:var(--green);justify-self:end}.mrow.slow .val{color:var(--amber)}
+.codebox{max-width:var(--measure);font-family:var(--f-mono);font-size:13px;line-height:1.6;color:#CBD8EE;background:#070B12;border:1px solid var(--line);border-radius:4px;padding:13px 15px;margin:0 0 20px;overflow-x:auto;white-space:pre}
+.codebox .c{color:var(--ink-faint)}.codebox .r{color:var(--red-deep)}
+
+/* cards (landing pages) */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin:22px 0;max-width:900px}
+.card{border:1px solid var(--line);border-radius:6px;padding:18px;background:rgba(13,18,28,.6);transition:border-color .15s,transform .12s;display:block}
+.card:hover{border-color:var(--ink-faint);transform:translateY(-2px)}
+.card .ct{font-family:var(--f-display);font-size:22px;letter-spacing:.02em;margin:0 0 4px;display:flex;align-items:center;gap:9px}
+.card .ck{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint)}
+.card p{font-size:13.5px;color:var(--ink-dim);margin:8px 0 0}
+.stub-note{max-width:var(--measure);border:1px dashed var(--line);border-radius:5px;padding:18px 20px;color:var(--ink-dim);background:rgba(15,21,34,.4);font-size:14.5px}
+.stub-note b{color:var(--ink)}
+
+/* footer */
+footer{position:relative;z-index:1;border-top:1px solid var(--line);padding:30px 0}
+.foot{display:flex;flex-wrap:wrap;gap:16px 24px;align-items:center;font-family:var(--f-mono);font-size:12px;padding:0 var(--gut);max-width:1320px;margin:0 auto}
+.foot a{color:var(--ink-dim)}.foot a:hover{color:var(--red)}.foot .sp{color:var(--ink-faint);margin-left:auto}
+
+@media(max-width:860px){
+  .shell{grid-template-columns:1fr}
+  aside{position:fixed;top:53px;left:0;width:min(320px,86vw);z-index:40;background:var(--paper-2);transform:translateX(-102%);transition:transform .2s;border-right:1px solid var(--line)}
+  aside.open{transform:none}
+  .content{max-width:none}
+  .scrim{display:none;position:fixed;inset:53px 0 0;background:rgba(0,0,0,.5);z-index:39}
+  .scrim.show{display:block}
+}
+</style>
+</head>
+<body>
+<canvas id="starfield" aria-hidden="true"></canvas>
+
+<header class="nav">
+  <div class="nav-in">
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation">☰ Menu</button>
+    <a href="/" class="mark">
+      <svg width="24" height="22" viewBox="0 0 26 22" aria-hidden="true">
+        <ellipse cx="7" cy="11" rx="6" ry="9.5" fill="none" stroke="#E9EEF6" stroke-width="1.5"/>
+        <ellipse cx="19" cy="11" rx="6" ry="9.5" fill="none" stroke="#E9EEF6" stroke-width="1.5"/>
+        <circle cx="13" cy="11" r="5.2" fill="#0A0E16"/><circle cx="13" cy="11" r="4" fill="#E9EEF6"/>
+        <circle cx="21.5" cy="4.5" r="1.8" fill="#FC3D21"/>
+      </svg>NEUTRON
+    </a>
+    <a class="lnk hide-sm" href="/#status">Status</a>
+    <a class="lnk hide-sm" href="/#how">Architecture</a>
+    <a class="lnk" href="/wiki/" aria-current="page">Wiki</a>
+    <a class="lnk hide-sm" href="https://github.com/Nico-LaFoucate/Neutron">GitHub</a>
+  </div>
+</header>
+
+<div class="shell">
+  <div class="scrim" id="scrim"></div>
+  <aside id="sidebar"></aside>
+  <main class="content" id="content"></main>
+</div>
+
+<footer><div class="foot">
+  <a href="/">Home</a>
+  <a href="https://github.com/Nico-LaFoucate/Neutron">Neutron</a>
+  <a href="https://github.com/Nico-LaFoucate/Collider">Collider</a>
+  <a href="https://github.com/Nico-LaFoucate/Mud-Hut">Mud Hut</a>
+  <span class="sp">Neutron LGPL v2.1 · Collider Apache 2.0</span>
+</div></footer>
+
+<script>
+/* =====================================================================
+   WIKI CONTENT
+   Structure: groups -> sections -> categories -> articles.
+   To add an article: drop an {slug,title,status,sub,html} into a category's
+   `arts`. status: 'guide' | 'feature' | 'fix' | 'issue' | 'stub'.
+   Everything renders from this object — the shell never needs editing.
+   ===================================================================== */
+const STUB = '<div class="stub-note"><b>This page is being written.</b> The structure is in place; the content is on its way. If you have notes or hit something relevant here, that feedback shapes what gets written first.</div>';
+
+const WIKI = {
+  groups: [
+    {label:'Start here', sections:['start']},
+    {label:'The stack',  sections:['neutron','collider','mudhut']},
+    {label:'Applications', sections:['photoshop','lightroom','premiere','aftereffects']},
+  ],
+  sections: {
+    start: { title:'Getting Started', kind:'Guide', blurb:'What Neutron is, and how to get an Adobe app running.', cats:[
+      {slug:'basics', title:'Basics', arts:[
+        {slug:'what-is-neutron', title:'What is Neutron?', status:'guide', sub:'The three pieces, in one minute.', html:`
+          <p>Neutron is a <strong>compatibility engine</strong> that runs Adobe Creative Suite applications on Linux. It is built on Wine, DXVK, and vkd3d-proton, and patched specifically for the way Adobe applications talk to Windows.</p>
+          <p>It comes as three separate pieces, each owning one job:</p>
+          <ul>
+            <li><strong><a class="ln" href="#/neutron">Neutron</a></strong> — the engine. Neutron-Wine plus DXVK, vkd3d-proton, a DirectComposition bridge, an nvcuda wrapper, and every Adobe-specific fix. Driven entirely through a command line; no GUI required.</li>
+            <li><strong><a class="ln" href="#/collider">Collider</a></strong> — the launcher. A desktop app that finds your installed apps, checks a prefix is healthy, launches it, and supervises it. It calls Neutron for anything compatibility-related and holds no fixes of its own.</li>
+            <li><strong><a class="ln" href="#/mudhut">Mud Hut</a></strong> — the installer. Gets Adobe apps onto your machine without hand-building a prefix. One-click inside Collider, or standalone in a terminal.</li>
+          </ul>
+          <p>Premiere Pro, Photoshop, and Lightroom have been used for paid client work on this stack. See each application's page for its current status.</p>`},
+        {slug:'install-collider', title:'Installing Collider', status:'guide', sub:'From a clean Linux machine to your first Adobe launch — the whole stack, end to end.', html:`
+          <p><strong>Collider</strong> is the graphical front door to the whole stack. You install one app, and it sets up everything underneath it — the <a class="ln" href="#/neutron">Neutron</a> compatibility engine, its patched Wine runtime, and a healthy Adobe environment — then installs and launches your Adobe apps. No terminal required. This page walks the whole thing end to end.</p>
+          <div class="callout"><p class="k">Experimental alpha — read this first</p><p>Neutron is early research, developed and tested on a single machine (an NVIDIA RTX 5070 on CachyOS + KDE Wayland). It runs real work in testing, but it is <strong>not</strong> stable or validated across hardware, distributions, or app versions — and you must bring your own <strong>legally licensed</strong> Adobe software. Treat this as a preview of the intended experience, not a finished product.</p></div>
+
+          <h2>Before you begin</h2>
+          <p>You'll want these in place first:</p>
+          <ul>
+            <li><strong>A modern Linux distribution</strong> — CachyOS, Arch, or Ubuntu 22.04+. KDE on <strong>Wayland</strong> is the reference desktop.</li>
+            <li><strong>A Vulkan-capable GPU with current drivers.</strong> NVIDIA (with the open driver) is the primary, best-tested path; AMD is supported by Vulkan but far less validated.</li>
+            <li><strong>A valid Adobe Creative Cloud subscription</strong> — or an existing Adobe installation you can copy from.</li>
+            <li><strong>A few gigabytes of free disk</strong> for the runtime, the environment, and your apps.</li>
+          </ul>
+
+          <h2>Step 1 — Install Collider</h2>
+          <p>Download the latest Collider release for your distribution and open it. Collider is an ordinary desktop application — there's nothing to configure yet.</p>
+          <p>On first launch it runs a <strong>plain-English compatibility check</strong>: it looks at your GPU, driver, and desktop session and tells you, in words, whether your system is ready — and what to change if it isn't.</p>
+          <div class="callout"><p class="k">During the alpha</p><p>The graphical Collider installer is still being finalized. Until it lands, the stack is driven directly through the Neutron command line. If you want to try it today, start from the <a class="ln" href="#/neutron">Neutron engine</a> pages or the project's repository for the current developer-preview steps.</p></div>
+
+          <h2>Step 2 — Let Collider set up Neutron</h2>
+          <p>Collider is the cockpit; <strong>Neutron is the engine</strong>. The first time you use it, Collider fetches and verifies the Neutron engine and its patched Wine runtime — the compatibility layer that makes Adobe apps run — and prepares a clean, Adobe-ready environment (a <em>prefix</em>). This happens automatically, and only once.</p>
+          <p>Under the hood this is the same work the <code>neutron</code> command line does — download and checksum the runtime, then provision the environment with the right fonts, libraries, and display settings — but you never touch a terminal. When it finishes, the compatibility check turns green.</p>
+
+          <h2>Step 3 — Add your Adobe apps</h2>
+          <p>With the engine ready, add the apps you own. Collider is designed to support several ways to get Adobe software in — pick whichever matches how you already have it:</p>
+          <ul>
+            <li><strong>Sign in with Adobe</strong> — download straight from Adobe's servers using your Creative Cloud subscription.</li>
+            <li><strong>Copy from Windows</strong> — point Collider at an existing Windows install (a dual-boot drive, a backup, or a mounted disc image) and it migrates the app in place.</li>
+            <li><strong>Offline installer</strong> — use an offline Adobe installer package you already have.</li>
+            <li><strong>Import a prefix</strong> — bring an app in from an existing Proton or Wine prefix.</li>
+          </ul>
+          <p>Whichever you choose, you must own a valid license — <strong>Neutron distributes no Adobe code.</strong></p>
+          <div class="callout"><p class="k">One environment, full interoperability</p><p>All your apps share a single Adobe environment, so <strong>Dynamic Link</strong> keeps working between them — send a Premiere sequence to After Effects, round-trip a Photoshop layer, and so on.</p></div>
+
+          <h2>Step 4 — Launch</h2>
+          <p>Each installed app appears as a tile in your library. Click <strong>Launch</strong>. Collider quietly does the rest: it applies the native display fix, starts Adobe's background licensing and IPC services, and hands off to the app. When you close the app, Collider shuts those services back down.</p>
+
+          <h2>What Collider is handling for you</h2>
+          <p>The point of the launcher is that everything the Neutron investigation figured out by hand happens automatically:</p>
+          <ul>
+            <li>One shared Adobe environment, so Dynamic Link works across the suite.</li>
+            <li>Snapshot and rollback before updates, and <strong>update gating</strong> — Adobe updates are held until Neutron confirms the new version still works.</li>
+            <li>Per-app GPU, display (Wayland / XWayland), and color controls.</li>
+            <li>One-click migration from an existing Windows installation.</li>
+          </ul>
+
+          <h2>Where this stands</h2>
+          <p>The apps furthest along are <a class="ln" href="#/premiere">Premiere Pro</a>, <a class="ln" href="#/photoshop">Photoshop</a>, and <a class="ln" href="#/lightroom">Lightroom Classic</a> — all alpha, all doing real work in testing. After Effects is partial; others are experimental. For the honest, current status of each, see the <strong>Applications</strong> section, or the <a class="ln" href="/#status">status board</a> on the home page.</p>
+          <p>Once Collider is installed and an app launches, head to <a class="ln" href="#/start/basics/first-app">Running your first app</a>.</p>`},
+        {slug:'first-app', title:'Running your first app', status:'guide', sub:'You clicked Launch — here’s what to expect, and how to get to real work.', html:`
+          <p>You've <a class="ln" href="#/start/basics/install-collider">installed Collider</a>, added an app, and hit <strong>Launch</strong>. Collider has already applied the display fix and started Adobe's background services — so from here, it should feel like the app you already know. Here's what to expect on that first run, and how to get to actual work.</p>
+
+          <h2>First launch: sign in to Adobe</h2>
+          <p>The app opens to its normal Adobe home screen. The first time, it asks you to <strong>sign in with your Adobe ID</strong> — the same Creative Cloud account you'd use on Windows or macOS. This is what activates your license; Neutron doesn't replace or bypass it.</p>
+          <p>Sign-in happens in an embedded browser window, so give it a moment to load. You only do this once — Collider is designed to keep you signed in across the whole suite, so the next app you open is already authenticated.</p>
+          <div class="callout"><p class="k">You bring the license</p><p>Neutron distributes no Adobe software and circumvents nothing. You run the genuine app, signed into your own valid subscription.</p></div>
+
+          <h2>What “working” looks like</h2>
+          <p>Each app behaves like its Windows counterpart. Quick starts for the three that are furthest along — all <strong>alpha</strong>, all doing real work in testing:</p>
+          <h3>Premiere Pro</h3>
+          <p>Import your media, cut on the timeline, and play back in the program monitor. GPU and CUDA (Mercury) acceleration are on, and export encodes with hardware <strong>NVENC</strong> and muxes into valid MP4 files <strong>natively</strong> — no extra steps at export time. See the <a class="ln" href="#/premiere">Premiere page</a>.</p>
+          <h3>Photoshop</h3>
+          <p><strong>File → New</strong> brings up the full workspace — canvas and panels docked — and drawing goes straight to the GPU. There's some warm-up lag and the occasional redraw artifact; details on the <a class="ln" href="#/photoshop">Photoshop page</a>.</p>
+          <h3>Lightroom Classic</h3>
+          <p>Import your RAW files — drag in a folder or plug in an SD card — then develop with GPU acceleration, run <strong>AI Denoise</strong>, and round-trip to Photoshop with <strong>Edit In</strong>. See the <a class="ln" href="#/lightroom">Lightroom page</a> for what's confirmed working.</p>
+
+          <h2>Getting your files in and out</h2>
+          <p>Your Linux home folder is available inside the app's open and save dialogs, so you can point at the same media and save projects to the same places you'd use natively. Keep working files on a fast local disk for the best performance — the app is reading and writing through the compatibility layer, and a slow network share will feel slow.</p>
+
+          <h2>GPU, export, and the helpers you don’t manage</h2>
+          <p>GPU acceleration is on by default, and Collider keeps Adobe's licensing and IPC services alive while you work, shutting them down when you close the app. Video export needs no hand-holding: Premiere muxes its NVENC exports into valid MP4 files <strong>natively</strong>. (This used to need a muxing helper you pointed at the export path — a fix in Neutron's C-runtime layer removed that step entirely.)</p>
+
+          <h2>If something isn’t right</h2>
+          <p>This is experimental alpha, so a few things are expected and a few are worth checking:</p>
+          <ul>
+            <li><strong>Some warm-up lag and occasional redraw artifacts are normal</strong> right now, especially in the first moments after launch.</li>
+            <li><strong>If an app won't start or the GPU isn't used,</strong> re-run Collider's compatibility check — it calls out driver, GPU, or desktop-session problems in plain English.</li>
+            <li><strong>For anything app-specific</strong> — a feature that's greyed out, a panel that misbehaves — check that app's page under <strong>Applications</strong>; known issues and their status live there.</li>
+            <li><strong>A given feature may simply not be validated yet.</strong> The <a class="ln" href="/#status">status board</a> is the honest, current picture of what's been confirmed.</li>
+          </ul>
+
+          <h2>Where to go next</h2>
+          <p>Head into the <strong>Applications</strong> section for the current status, notable fixes, and known issues of each app — that's where the detail lives, and where new pages land as more of the suite comes online.</p>`},
+      ]},
+    ]},
+
+    neutron: { title:'Neutron', kind:'Engine', blurb:'The compatibility engine: Neutron-Wine, the graphics stack, and every Adobe-specific fix — all behind one CLI.', cats:[
+      {slug:'overview', title:'Overview', arts:[
+        {slug:'what-it-is', title:'What Neutron does', status:'guide', sub:'The engine, and the one rule that holds it together.', html:`
+          <p>Neutron is the engine everything else calls. It bundles <strong>Neutron-Wine</strong> (an owned Wine fork), <strong>DXVK</strong> and <strong>vkd3d-proton</strong> (Direct3D → Vulkan), a <strong>DirectComposition bridge</strong>, and an <strong>nvcuda wrapper</strong> — plus every Adobe-specific fix, from locale-loader patches to display handling.</p>
+          <p>All of it is exposed through a single command-line interface. There is no GUI requirement: the <code>neutron</code> CLI owns prefixes, environment, registry, and Wine-binary selection, and everything above it (Collider, Mud&nbsp;Hut, your terminal) just calls down into it.</p>
+          <div class="callout"><p class="k">The one rule</p><p>The launcher never touches compatibility. Every fix lives in the engine, so it reaches all three entry points at once — and the launcher stays replaceable.</p></div>`},
+      ]},
+      {slug:'architecture', title:'Architecture', arts:[
+        {slug:'where-fixes-live', title:'Where the fixes live', status:'guide', sub:'Neither Wine nor Adobe is broken — the defect is in the seam.', html:`
+          <p>Neither Wine nor Adobe is broken on its own. The defects live in the <strong>seam</strong> between two healthy systems, and that seam is where Neutron patches. The stack is four tiers:</p>
+          <h3>Cockpit — entry points</h3>
+          <p>The Collider GUI, the Mud&nbsp;Hut installer, or a plain terminal. Nothing here owns compatibility logic.</p>
+          <h3>Contract — the neutron CLI</h3>
+          <p>A hard boundary. Calls travel down; status comes back as JSON. Above the line: convenience. Below the line: compatibility.</p>
+          <h3>Engine — Neutron</h3>
+          <p>Owns prefixes, environment, registry, Wine-binary selection, and every compat fix.</p>
+          <h3>Runtime</h3>
+          <p>Neutron-Wine hosts the Adobe application alongside DXVK, vkd3d-proton, the dcomp bridge, and the nvcuda wrapper.</p>
+          <h3>Substrate</h3>
+          <p>Vulkan, your GPU, and the Linux kernel.</p>
+          <p>Because the launcher and installer sit above the contract line, they can be rewritten or removed without touching a single fix — and every fix Neutron gains reaches all three entry points at once.</p>`},
+      ]},
+      {slug:'features', title:'Features', arts:[
+        {slug:'native-canvas', title:'Native GPU canvas & present path', status:'stub', sub:'Drawing straight to the GPU under Wayland.', html:STUB},
+        {slug:'ai-features', title:'AI/ML features running natively', status:'stub', sub:'Camera Raw Denoise and AI masking on Linux.', html:STUB},
+      ]},
+      {slug:'fixes', title:'Fixes', arts:[
+        {slug:'edit-in-lag', title:'The ten-second menu', status:'fix', sub:'Why Lightroom’s “Edit in Photoshop” hung — and how a quarter-second file read explains it.', html:`
+          <p>In Lightroom Classic, opening <strong>Photo → Edit In</strong> took about <strong>ten seconds</strong> before the submenu appeared. No error, no spinner, no crash — the menu just froze, every single time. That "no error, just slow" shape is worth recognizing: it usually means something correct is happening, just far too many times.</p>
+          <h2>What was actually happening</h2>
+          <p>Every Windows program carries a tiny tag inside it called a <strong>version resource</strong> — the "Product version 26.9.0.15" you see in a file's Properties. It is well under a kilobyte. When Lightroom builds its "Edit in Photoshop" menu, it reads that tag out of <code>Photoshop.exe</code> to label the item.</p>
+          <p>The catch was <em>how</em> Wine fetched it. To read that tiny tag, Wine loaded the <strong>entire program into memory in "image" mode</strong> — the heavyweight way Windows loads a program it is about to <em>run</em>, laying out every section at its correct address. Fine for a normal app. But <strong><code>Photoshop.exe</code> is 208 megabytes.</strong> Laying all of that out to read a sub-kilobyte tag took ~60&nbsp;ms — done four times per lookup. That is roughly a quarter-second.</p>
+          <p>The reason it became <em>ten</em> seconds: Lightroom re-checks this every time it validates the menu, and opening the submenu triggers validation about <strong>forty times</strong>.</p>
+          <h2>The fix</h2>
+          <p>There is a lightweight way to open a file just to read data out of it — "as a data file." Nothing is laid out in advance; only the bytes you touch are read. We switched Wine's version-info code to that mode, after proving both modes return <strong>byte-for-byte identical</strong> data:</p>
+          <div class="metrics"><div class="mhead">Reading Photoshop.exe’s version — measured</div>
+            <div class="mrow slow"><span class="lbl">Before — “image” mapping</span><span class="val">121.7 ms</span><span class="delta">&nbsp;</span></div>
+            <div class="mrow"><span class="lbl">After — “data file” mapping</span><span class="val">0.42 ms</span><span class="delta">288× faster</span></div>
+            <div class="mrow"><span class="lbl">Edit-In submenu open</span><span class="val">~10 s → ~0.1 s</span><span class="delta">gone</span></div></div>
+          <p>Same version out, same everything — the menu just opens instantly now. The change lives in Wine itself, so it speeds up anything that reads version info from a large file. Shipped in runtime <code>11.10-12</code>.</p>
+          <div class="callout"><p class="k">Diagnose this class yourself</p><p>If an Adobe app <em>pauses</em> with no error while building a menu or a picker — especially anything that detects other installed apps — suspect repeated reads of a large binary. Launch with <code>WINEDEBUG=+timestamp,+file</code> and watch for the same big <code>.exe</code> opened over and over, with tens-of-ms gaps, right where it hangs. The gaps are the cost; the repetition is the multiplier.</p></div>`},
+      ]},
+      {slug:'issues', title:'Known Issues', arts:[
+        {slug:'owned-popups', title:'Owned/modal dialogs not shown (Wayland)', status:'issue', sub:'Some modal dialogs render but never display.', html:STUB},
+      ]},
+      {slug:'runtimes', title:'Runtimes & Builds', arts:[
+        {slug:'versioned-runtimes', title:'How runtimes are versioned', status:'guide', sub:'Proton-style: the repo is the recipe, releases are prebuilt trees.', html:`
+          <p>Neutron ships Wine the Proton-GE way. The <strong>neutron-wine</strong> repo is the <em>recipe</em> — a patch set plus a pinned upstream Wine base — and each release is a <strong>prebuilt, self-contained Wine tree</strong> attached to a versioned release. You never build Wine; the engine downloads and verifies a tarball.</p>
+          <p>Versions look like <code>11.10-12</code>: the <code>11.10</code> tracks the upstream Wine base, and the <code>-12</code> is the Neutron revision — it bumps whenever the patch set changes. Because every runtime is reproducible from the tracked patch set, a fix is never a hand-swapped binary; it is a patch that rebuilds cleanly into the next release.</p>
+          <p>An app is pinned to the runtime it was last booted against — launching against a different one triggers a prefix update, so the engine keeps that mapping deliberate.</p>`},
+      ]},
+    ]},
+
+    collider: { title:'Collider', kind:'Launcher', blurb:'The desktop launcher: finds your apps, checks the prefix is healthy, launches and supervises — and holds no compatibility logic of its own.', cats:[
+      {slug:'overview', title:'Overview', arts:[
+        {slug:'what-it-is', title:'What Collider is', status:'guide', sub:'The launcher, and why it deliberately knows nothing about fixes.', html:`
+          <p>Collider is a desktop application that finds your installed apps, checks that a prefix is healthy, launches it, and supervises it until it exits. For anything compatibility-related it calls the <a class="ln" href="#/neutron">Neutron</a> CLI — it holds no fixes of its own.</p>
+          <p>That separation is the point: the launcher can be rewritten or replaced without touching a single compatibility fix, and every fix Neutron gains shows up in Collider for free. Licensed Apache&nbsp;2.0.</p>`},
+      ]},
+      {slug:'features', title:'Features', arts:[
+        {slug:'appearance', title:'Appearance & theming', status:'stub', sub:'Color themes and custom app icons.', html:STUB},
+        {slug:'app-widgets', title:'Per-app widgets', status:'stub', sub:'A tinted tile for each installed app.', html:STUB},
+      ]},
+      {slug:'setup', title:'Setup', arts:[ {slug:'install', title:'Installing Collider', status:'stub', sub:'', html:STUB} ]},
+      {slug:'issues', title:'Known Issues', arts:[ {slug:'placeholder', title:'Known issues', status:'stub', sub:'', html:STUB} ]},
+    ]},
+
+    mudhut: { title:'Mud Hut', kind:'Installer', blurb:'The installer: gets Adobe apps onto your machine without hand-building a prefix. Ships inside Collider, and runs standalone in a terminal.', cats:[
+      {slug:'overview', title:'Overview', arts:[
+        {slug:'what-it-is', title:'What Mud Hut is', status:'guide', sub:'One-click Adobe install, no manual prefix.', html:`
+          <p>Mud Hut is a command-line installer that gets Adobe applications onto your machine without hand-building a Wine prefix. It ships inside <a class="ln" href="#/collider">Collider</a> as one-click install, and runs standalone for anyone who prefers a terminal.</p>
+          <p>Under the hood it leans on Neutron's <code>prefix provision</code> — the single, reproducible recipe for making a prefix Adobe-ready — so an install done through Mud Hut and one done by hand end up in the same known-good state.</p>`},
+      ]},
+      {slug:'features', title:'Features', arts:[ {slug:'placeholder', title:'Capabilities', status:'stub', sub:'', html:STUB} ]},
+      {slug:'troubleshooting', title:'Troubleshooting', arts:[ {slug:'placeholder', title:'Common install problems', status:'stub', sub:'When an install doesn’t go cleanly.', html:STUB} ]},
+    ]},
+
+    photoshop: { title:'Photoshop', kind:'Application', blurb:'Status, fixes, and known issues for Adobe Photoshop on Neutron.', cats:[
+      {slug:'status', title:'Status', arts:[ {slug:'overview', title:'What works', status:'stub', sub:'', html:STUB} ]},
+      {slug:'fixes', title:'Fixes', arts:[ {slug:'placeholder', title:'Notable fixes', status:'stub', sub:'', html:STUB} ]},
+      {slug:'issues', title:'Known Issues', arts:[ {slug:'placeholder', title:'Known issues', status:'stub', sub:'', html:STUB} ]},
+    ]},
+
+    lightroom: { title:'Lightroom Classic', kind:'Application', blurb:'Status, fixes, and known issues for Adobe Lightroom Classic on Neutron.', cats:[
+      {slug:'status', title:'Status', arts:[
+        {slug:'overview', title:'What works', status:'feature', sub:'Where Lightroom Classic stands today.', html:`
+          <p>Lightroom Classic is in good shape on Neutron. Confirmed working:</p>
+          <ul>
+            <li><strong>Boots and imports at scale</strong> — clean startup, 1000+ RAW files imported at once, SD-card hotplug auto-detected. GPU auto-detected and enabled.</li>
+            <li><strong>Develop performance</strong> — smooth zoom and slider response (the earlier stepping is fixed).</li>
+            <li><strong>AI features run natively</strong> — Camera Raw <em>Denoise</em> (Photo → Enhance) and AI <em>masking</em> (Select Subject / Sky) both work.</li>
+            <li><strong>Edit in Photoshop</strong> — round-trips correctly, and the submenu opens instantly (see the <a class="ln" href="#/neutron/fixes/edit-in-lag">ten-second menu</a> fix).</li>
+            <li><strong>Copy Settings, masking popups, filmstrip scrolling</strong> across large catalogs — all working.</li>
+            <li><strong>Batch export.</strong></li>
+          </ul>
+          <p>Remaining rough edges are cosmetic: the window can render off-center until the app finishes loading, panels come in a little slowly on launch, and the color-grading wheels and some scrollbars are slightly finicky. None block real work.</p>`},
+      ]},
+      {slug:'fixes', title:'Fixes', arts:[
+        {slug:'edit-in-lag', title:'The ten-second Edit-In menu', status:'fix', sub:'Filed in full under Neutron → Fixes.', html:`<p>This fix lives in the engine — read it in full at <a class="ln" href="#/neutron/fixes/edit-in-lag">Neutron → Fixes → The ten-second menu</a>.</p>`},
+      ]},
+      {slug:'issues', title:'Known Issues', arts:[ {slug:'placeholder', title:'Known issues', status:'stub', sub:'The cosmetic rough edges, detailed.', html:STUB} ]},
+    ]},
+
+    premiere: { title:'Premiere Pro', kind:'Application', blurb:'Status, fixes, and known issues for Adobe Premiere Pro on Neutron.', cats:[
+      {slug:'status', title:'Status', arts:[ {slug:'overview', title:'What works', status:'stub', sub:'', html:STUB} ]},
+      {slug:'issues', title:'Known Issues', arts:[ {slug:'placeholder', title:'Known issues', status:'stub', sub:'', html:STUB} ]},
+    ]},
+
+    aftereffects: { title:'After Effects', kind:'Application', blurb:'Status and known issues for Adobe After Effects on Neutron.', cats:[
+      {slug:'status', title:'Status', arts:[ {slug:'overview', title:'What works', status:'stub', sub:'', html:STUB} ]},
+      {slug:'issues', title:'Known Issues', arts:[ {slug:'placeholder', title:'Known issues', status:'stub', sub:'', html:STUB} ]},
+    ]},
+  }
+};
+
+/* ============================ router + render ============================ */
+const $ = s => document.querySelector(s);
+const el = (t,c,h)=>{const e=document.createElement(t); if(c)e.className=c; if(h!=null)e.innerHTML=h; return e;};
+const BADGE={fix:'Fixed',feature:'Feature',issue:'Known issue',guide:'Guide',stub:'Being written'};
+
+function parseHash(){
+  const p = location.hash.replace(/^#\/?/,'').split('/').filter(Boolean).map(decodeURIComponent);
+  return {sec:p[0]||null, cat:p[1]||null, art:p[2]||null};
+}
+function findArt(sec,cat,art){
+  const S=WIKI.sections[sec]; if(!S) return null;
+  const C=S.cats.find(c=>c.slug===cat); if(!C) return null;
+  const A=C.arts.find(a=>a.slug===art); return A?{S,C,A}:null;
+}
+function firstArt(sec,cat){ const C=WIKI.sections[sec].cats.find(c=>c.slug===cat); return C&&C.arts[0]?C.arts[0].slug:null; }
+
+function renderSidebar(r){
+  const box=$('#sidebar'); box.innerHTML='';
+  const search=el('div','search','<svg width="13" height="13" viewBox="0 0 13 13"><circle cx="5.5" cy="5.5" r="4" fill="none" stroke="#8B97AD" stroke-width="1.3"/><line x1="8.5" y1="8.5" x2="12" y2="12" stroke="#8B97AD" stroke-width="1.3"/></svg><input id="q" placeholder="Search the wiki…" autocomplete="off">');
+  box.appendChild(search);
+  const tree=el('div','tree'); box.appendChild(tree);
+  const q=$('#q'); q.value=window._q||'';
+  q.addEventListener('input',()=>{window._q=q.value; drawTree(tree,r,q.value.trim().toLowerCase()); });
+  drawTree(tree,r,(window._q||'').trim().toLowerCase());
+}
+const groupOpen={'Start here':true,'The stack':true,'Applications':false};
+function drawTree(tree,r,query){
+  tree.innerHTML='';
+  if(query){
+    const hits=[];
+    for(const sk in WIKI.sections){const S=WIKI.sections[sk];
+      for(const C of S.cats) for(const A of C.arts){
+        if((A.title+' '+(A.sub||'')+' '+S.title+' '+C.title).toLowerCase().includes(query))
+          hits.push({sk,ck:C.slug,ak:A.slug,A,S,C});
+      }}
+    if(!hits.length){tree.appendChild(el('div','noresult','No matches.'));return;}
+    hits.slice(0,40).forEach(h=>{
+      const a=el('a',null,`<span class="dot ${h.A.status}"></span>${h.A.title}`);
+      a.href=`#/${h.sk}/${h.ck}/${h.ak}`; a.className='';
+      const w=el('div','arts'); w.style.margin='0 0 4px 0'; w.appendChild(a);
+      const lbl=el('div','grp',`${h.S.title} · ${h.C.title}`); lbl.style.margin='10px 8px 2px';
+      tree.appendChild(lbl); tree.appendChild(w);
+    });
+    return;
+  }
+  window._r=r;
+  WIKI.groups.forEach(g=>{
+    const activeIn=g.sections.includes(r.sec);
+    const open=activeIn||!!groupOpen[g.label];
+    const hdr=el('div','grp toggle',`<span class="chev">${open?'▾':'▸'}</span>${g.label}`);
+    hdr.addEventListener('click',()=>{groupOpen[g.label]=!open;drawTree(tree,window._r,(window._q||'').trim().toLowerCase());});
+    tree.appendChild(hdr);
+    if(!open) return;
+    g.sections.forEach(sk=>{
+      const S=WIKI.sections[sk]; const active=r.sec===sk;
+      const node=el('div','snode'+(active?' active':''));
+      const a=el('a',null,`${S.title}<span class="kind">${S.kind}</span>`); a.href=`#/${sk}`;
+      node.appendChild(a); tree.appendChild(node);
+      if(active){
+        S.cats.forEach(C=>{
+          const cActive=r.cat===C.slug;
+          const cat=el('div','cat'+(cActive?' active':''));
+          const ca=el('a',null,C.title); ca.href=`#/${sk}/${C.slug}`;
+          cat.appendChild(ca); tree.appendChild(cat);
+          if(cActive){
+            const arts=el('div','arts');
+            C.arts.forEach(A=>{
+              const aa=el('a',(r.art===A.slug?'active':''),`<span class="dot ${A.status}"></span>${A.title}`);
+              aa.href=`#/${sk}/${C.slug}/${A.slug}`; arts.appendChild(aa);
+            });
+            tree.appendChild(arts);
+          }
+        });
+      }
+    });
+  });
+}
+
+function crumb(parts){ // parts: [{t,href}]
+  return '<nav class="crumb">'+parts.map((p,i)=>
+    (i?'<span class="sep">/</span>':'')+(p.href?`<a href="${p.href}">${p.t}</a>`:`<span>${p.t}</span>`)
+  ).join(' ')+'</nav>';
+}
+
+function renderContent(r){
+  const c=$('#content'); let h='';
+  if(!r.sec){ // home
+    h+=crumb([{t:'Wiki'}]);
+    h+='<h1 class="title">Neutron Wiki</h1><p class="subtitle">How the stack works, what each part does, the fixes behind it, and how to troubleshoot — organized by the part of the stack you’re looking at. Pick a component, then a category, then the specific thing.</p>';
+    WIKI.groups.forEach(g=>{
+      h+=`<h2>${g.label}</h2><div class="cards">`;
+      g.sections.forEach(sk=>{const S=WIKI.sections[sk];
+        h+=`<a class="card" href="#/${sk}"><div class="ct">${S.title}</div><div class="ck">${S.kind}</div><p>${S.blurb}</p></a>`;});
+      h+='</div>';
+    });
+    c.innerHTML=h; return;
+  }
+  const S=WIKI.sections[r.sec];
+  if(!S){ c.innerHTML=crumb([{t:'Wiki',href:'#/'}])+'<h1 class="title">Not found</h1><p class="subtitle">That page doesn’t exist yet.</p>'; return; }
+  if(!r.cat){ // section landing
+    h+=crumb([{t:'Wiki',href:'#/'},{t:S.title}]);
+    h+=`<h1 class="title">${S.title}</h1><p class="subtitle">${S.blurb}</p><div class="cards">`;
+    S.cats.forEach(C=>{
+      h+=`<a class="card" href="#/${r.sec}/${C.slug}"><div class="ct">${C.title}</div><p>${C.arts.length} ${C.arts.length===1?'article':'articles'}</p></a>`;});
+    h+='</div>'; c.innerHTML=h; return;
+  }
+  const C=S.cats.find(x=>x.slug===r.cat);
+  if(!C){ c.innerHTML=crumb([{t:'Wiki',href:'#/'},{t:S.title,href:'#/'+r.sec}])+'<h1 class="title">Not found</h1>'; return; }
+  if(!r.art){ // category landing -> list its articles (no redirect)
+    h+=crumb([{t:'Wiki',href:'#/'},{t:S.title,href:'#/'+r.sec},{t:C.title}]);
+    h+=`<h1 class="title">${C.title}</h1><p class="subtitle">${S.title}</p><div class="cards">`;
+    C.arts.forEach(A=>{
+      h+=`<a class="card" href="#/${r.sec}/${r.cat}/${A.slug}"><div class="ct"><span class="dot ${A.status}"></span>${A.title}</div><div class="ck">${BADGE[A.status]||''}</div>${A.sub?`<p>${A.sub}</p>`:''}</a>`;});
+    h+='</div>'; c.innerHTML=h; return;
+  }
+  const hit=findArt(r.sec,r.cat,r.art);
+  if(!hit){ c.innerHTML=crumb([{t:'Wiki',href:'#/'},{t:S.title,href:'#/'+r.sec}])+'<h1 class="title">Not found</h1>'; return; }
+  const {A}=hit;
+  h+=crumb([{t:'Wiki',href:'#/'},{t:S.title,href:'#/'+r.sec},{t:C.title,href:`#/${r.sec}/${r.cat}`},{t:A.title}]);
+  h+=`<div><span class="badge b-${A.status}">${BADGE[A.status]||''}</span></div>`;
+  h+=`<h1 class="title">${A.title}</h1>`;
+  if(A.sub) h+=`<p class="subtitle">${A.sub}</p>`;
+  h+=A.html;
+  c.innerHTML=h;
+  c.scrollTop=0; window.scrollTo(0,0);
+}
+
+function route(){
+  const r=parseHash();
+  renderSidebar(r);
+  renderContent(r);
+  document.title=(r.art&&findArt(r.sec,r.cat,r.art)?findArt(r.sec,r.cat,r.art).A.title+' — ':'')+'Neutron Wiki';
+  closeDrawer();
+}
+window.addEventListener('hashchange',route);
+window.addEventListener('DOMContentLoaded',route);
+
+/* mobile drawer */
+function closeDrawer(){ $('#sidebar').classList.remove('open'); $('#scrim').classList.remove('show'); }
+$('#menuBtn').addEventListener('click',()=>{ $('#sidebar').classList.toggle('open'); $('#scrim').classList.toggle('show'); });
+$('#scrim').addEventListener('click',closeDrawer);
+
+/* starfield (shared, subtle) */
+(function(){var c=$('#starfield');if(!c)return;var x=c.getContext('2d');var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;var W,H,dpr,parts=[],t=0,raf=null;
+function seed(){parts=[];var n=Math.min(500,Math.round(W*H/4200));for(var i=0;i<n;i++)parts.push({x:Math.random()*W,y:Math.random()*H,r:.4+Math.pow(Math.random(),1.7)*1.5,vx:(Math.random()-.5)*.05,vy:(Math.random()-.5)*.05,ph:Math.random()*6.28,tw:.3+Math.random()*1.5,red:Math.random()<.02});}
+function resize(){dpr=Math.min(devicePixelRatio||1,2);W=innerWidth;H=innerHeight;c.width=W*dpr;c.height=H*dpr;x.setTransform(dpr,0,0,dpr,0,0);seed();if(reduce)draw();}
+function draw(){x.clearRect(0,0,W,H);t+=.016;for(var i=0;i<parts.length;i++){var p=parts[i];p.x+=p.vx;p.y+=p.vy;if(p.x<-5)p.x=W+5;if(p.x>W+5)p.x=-5;if(p.y<-5)p.y=H+5;if(p.y>H+5)p.y=-5;var b=.06+.24*(p.r/1.9);var a=reduce?b:b*(.34+.66*Math.sin(t*p.tw+p.ph));x.globalAlpha=Math.max(a,.03);x.fillStyle=p.red?'#FC3D21':'#D9E4F4';x.beginPath();x.arc(p.x,p.y,p.r,0,6.28);x.fill();}x.globalAlpha=1;}
+function loop(){draw();raf=requestAnimationFrame(loop);}
+document.addEventListener('visibilitychange',function(){if(reduce)return;if(document.hidden)cancelAnimationFrame(raf);else loop();});
+addEventListener('resize',resize);resize();if(!reduce)loop();})();
+</script>
+</body>
+</html>
