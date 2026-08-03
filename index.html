@@ -761,7 +761,7 @@ footer{
         <div class="row">
           <div class="app">After Effects <span class="tier t-beta">Beta</span></div>
           <div class="bar"><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg"></span></div>
-          <div class="detail">The composition viewer renders, with rulers, guides and layer handles drawn over it, and the canvas keeps pace with the display. Workspace, panels, menus, project import and a Render Queue that exports and muxes correctly all behave. The blank viewer turned out to be two separate gaps, both of which After Effects treats as fatal and responds to by switching off its own hardware drawing for the rest of the session: Direct2D was missing the unpremultiply effect it asks for on every frame, and the CUDA-to-Direct3D bridge its on-canvas overlay draws through was unimplemented. Not yet used for a paid job, and two things remain — the Direct3D 12 presentation path is slower than the OpenGL one, so the OpenGL backend is selected instead, and heavy drawing can still stutter.</div>
+          <div class="detail">The composition viewer and its on-canvas overlays render, at display refresh rate. Not yet used for a paid job; heavy drawing can stutter.</div>
         </div>
         <div class="row">
           <div class="app">Media Encoder <span class="tier t-beta">Beta</span></div>
