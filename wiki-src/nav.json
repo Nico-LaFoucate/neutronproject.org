@@ -20,6 +20,15 @@
                 "first-app",
                 "planned"
               ]
+            },
+            {
+              "slug": "help",
+              "title": "Help",
+              "articles": [
+                "known-issues",
+                "troubleshooting",
+                "report-a-problem"
+              ]
             }
           ]
         }
@@ -69,7 +78,7 @@
               "slug": "issues",
               "title": "Known Issues",
               "articles": [
-                "owned-popups"
+                "known-issues"
               ]
             },
             {

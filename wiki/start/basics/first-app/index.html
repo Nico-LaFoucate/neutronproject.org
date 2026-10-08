@@ -44,6 +44,7 @@
 <div class="snode active"><a href="/wiki/start/">Getting Started<span class="kind">Guide</span></a></div>
 <div class="cat active"><a href="/wiki/start/basics/">Basics</a></div>
 <div class="arts"><a href="/wiki/start/basics/what-is-neutron/"><span class="dot guide"></span>What is Neutron?</a><a href="/wiki/start/basics/install-collider/"><span class="dot guide"></span>Installing Collider</a><a href="/wiki/start/basics/display-scale/"><span class="dot guide"></span>Choosing a display scale</a><a class="active" aria-current="page" href="/wiki/start/basics/first-app/"><span class="dot guide"></span>Running your first app</a><a href="/wiki/start/basics/planned/"><span class="dot guide"></span>Planned</a></div>
+<div class="cat"><a href="/wiki/start/help/">Help</a></div>
 </div>
 <div class="grp toggle" role="button" tabindex="0" aria-expanded="true" data-group="The stack"><span class="chev">▾</span>The stack</div>
 <div class="grp-body">
@@ -71,7 +72,7 @@
 <p>You sign in inside the Adobe app, the same as on Windows. Neutron never touches your Adobe account or login. Sign-in happens in an embedded browser window, so give it a moment to load.</p>
 <div class="callout"><p class="k">You bring the license</p><p>Neutron distributes no Adobe software and circumvents nothing. You run the genuine app, signed into your own valid subscription. Neutron never modifies Adobe's program files; it changes one display setting in Adobe's own preferences (<code>DS.DisableDirectXDisplay</code> in <code>Debug Database.txt</code>) and adds three compatibility flags to aescripts panels' <code>manifest.xml</code> (original backed up).</p></div>
 <h2>What “working” looks like</h2>
-<p>Each app behaves like its Windows counterpart. Quick starts for the three that are furthest along — all <strong>alpha</strong>, all doing real work in testing:</p>
+<p>Each app behaves like its Windows counterpart. Quick starts for the three that are furthest along — all <strong>beta</strong>, all doing real work in testing:</p>
 <h3>Premiere Pro</h3>
 <p>Import your media, cut on the timeline, and play back in the program monitor. GPU and CUDA (Mercury) acceleration are on, and export encodes with hardware <strong>NVENC</strong> and muxes into valid MP4 files <strong>natively</strong> — no extra steps at export time. See the <a class="ln" href="/wiki/premiere/">Premiere page</a>.</p>
 <h3>Photoshop</h3>
@@ -83,13 +84,13 @@
 <h2>GPU, export, and the helpers you don’t manage</h2>
 <p>GPU acceleration is on by default, and Collider keeps Adobe's licensing and IPC services alive while you work, shutting them down when you close the app. Video export needs no hand-holding: Premiere muxes its NVENC exports into valid MP4 files <strong>natively</strong>. (This used to need a muxing helper you pointed at the export path — a fix in Neutron's C-runtime layer removed that step entirely.)</p>
 <h2>If something isn’t right</h2>
-<p>This is experimental alpha, so a few things are expected and a few are worth checking:</p>
+<p>This is beta software, so a few things are expected and a few are worth checking:</p>
 <ul>
 <li><strong>Some warm-up lag and occasional redraw artifacts are normal</strong> right now, especially in the first moments after launch.</li>
-<li><strong>If an app won't start or the GPU isn't used,</strong> re-run Collider's compatibility check — it calls out driver, GPU, or desktop-session problems in plain English.</li>
-<li><strong>For anything app-specific</strong> — a feature that's grayed out, a panel that misbehaves — check that app's page under <strong>Applications</strong>; known issues and their status live there.</li>
+<li><strong>If an app won't start or the GPU isn't used,</strong> run the health check, <code>neutron doctor --prefix &lt;prefix&gt;</code>; see <a class="ln" href="/wiki/start/help/troubleshooting/">Troubleshooting</a>.</li>
+<li><strong>For anything app-specific</strong> — a feature that's grayed out, a panel that misbehaves — check <a class="ln" href="/wiki/start/help/known-issues/">Known issues</a> and that app's page under <strong>Applications</strong>.</li>
 <li><strong>A given feature may simply not be validated yet.</strong> The <a class="ln" href="/#status">status board</a> is the honest, current picture of what's been confirmed.</li>
-<li><strong>To report a problem,</strong> open an issue on the <a class="ln" href="https://github.com/Nico-LaFoucate/Neutron/issues">Neutron repository</a>. Questions go in its <a class="ln" href="https://github.com/Nico-LaFoucate/Neutron/discussions">Discussions</a>.</li>
+<li><strong>To report a problem,</strong> see <a class="ln" href="/wiki/start/help/report-a-problem/">Report a problem</a>: each part of Neutron has its own issue tracker.</li>
 </ul>
 <h2>Where to go next</h2>
 <p>Head into the <strong>Applications</strong> section for the current status, notable fixes, and known issues of each app — that's where the detail lives, and where new pages land as more of the suite comes online.</p>

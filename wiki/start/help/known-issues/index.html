@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Owned/modal dialogs not shown (Wayland) — Neutron Wiki</title>
-<meta name="description" content="Some modal dialogs render but never display.">
-<link rel="canonical" href="https://neutronproject.org/wiki/neutron/issues/owned-popups/">
+<title>Known issues — Neutron Wiki</title>
+<meta name="description" content="Current problems across the apps, and what to do about them.">
+<link rel="canonical" href="https://neutronproject.org/wiki/start/help/known-issues/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -39,20 +39,16 @@
   <aside id="sidebar">
 <div class="search"><svg width="13" height="13" viewBox="0 0 13 13"><circle cx="5.5" cy="5.5" r="4" fill="none" stroke="#8B97AD" stroke-width="1.3"/><line x1="8.5" y1="8.5" x2="12" y2="12" stroke="#8B97AD" stroke-width="1.3"/></svg><input id="q" placeholder="Search the wiki…" autocomplete="off" aria-label="Search the wiki"></div>
 <div class="tree" id="tree">
-<div class="grp toggle" role="button" tabindex="0" aria-expanded="true" data-group="Start here"><span class="chev">▾</span>Start here</div>
+<div class="grp toggle" role="button" tabindex="0" aria-expanded="true" data-group="Start here" data-active><span class="chev">▾</span>Start here</div>
 <div class="grp-body">
-<div class="snode"><a href="/wiki/start/">Getting Started<span class="kind">Guide</span></a></div>
+<div class="snode active"><a href="/wiki/start/">Getting Started<span class="kind">Guide</span></a></div>
+<div class="cat"><a href="/wiki/start/basics/">Basics</a></div>
+<div class="cat active"><a href="/wiki/start/help/">Help</a></div>
+<div class="arts"><a class="active" aria-current="page" href="/wiki/start/help/known-issues/"><span class="dot issue"></span>Known issues</a><a href="/wiki/start/help/troubleshooting/"><span class="dot guide"></span>Troubleshooting</a><a href="/wiki/start/help/report-a-problem/"><span class="dot guide"></span>Report a problem</a></div>
 </div>
-<div class="grp toggle" role="button" tabindex="0" aria-expanded="true" data-group="The stack" data-active><span class="chev">▾</span>The stack</div>
+<div class="grp toggle" role="button" tabindex="0" aria-expanded="true" data-group="The stack"><span class="chev">▾</span>The stack</div>
 <div class="grp-body">
-<div class="snode active"><a href="/wiki/neutron/">Neutron<span class="kind">Engine</span></a></div>
-<div class="cat"><a href="/wiki/neutron/overview/">Overview</a></div>
-<div class="cat"><a href="/wiki/neutron/architecture/">Architecture</a></div>
-<div class="cat"><a href="/wiki/neutron/features/">Features</a></div>
-<div class="cat"><a href="/wiki/neutron/fixes/">Fixes</a></div>
-<div class="cat active"><a href="/wiki/neutron/issues/">Known Issues</a></div>
-<div class="arts"><a class="active" aria-current="page" href="/wiki/neutron/issues/owned-popups/"><span class="dot issue"></span>Owned/modal dialogs not shown (Wayland)</a></div>
-<div class="cat"><a href="/wiki/neutron/runtimes/">Runtimes &amp; Builds</a></div>
+<div class="snode"><a href="/wiki/neutron/">Neutron<span class="kind">Engine</span></a></div>
 <div class="snode"><a href="/wiki/collider/">Collider<span class="kind">Launcher</span></a></div>
 <div class="snode"><a href="/wiki/mudhut/">Mud Hut<span class="kind">Installer</span></a></div>
 </div>
@@ -66,11 +62,28 @@
 </div>
   </aside>
   <main class="content" id="content">
-<nav class="crumb"><a href="/wiki/">Wiki</a> <span class="sep">/</span><a href="/wiki/neutron/">Neutron</a> <span class="sep">/</span><a href="/wiki/neutron/issues/">Known Issues</a> <span class="sep">/</span><span>Owned/modal dialogs not shown (Wayland)</span></nav>
+<nav class="crumb"><a href="/wiki/">Wiki</a> <span class="sep">/</span><a href="/wiki/start/">Getting Started</a> <span class="sep">/</span><a href="/wiki/start/help/">Help</a> <span class="sep">/</span><span>Known issues</span></nav>
 <div><span class="badge b-issue">Known issue</span></div>
-<h1 class="title">Owned/modal dialogs not shown (Wayland)</h1>
-<p class="subtitle">Some modal dialogs render but never display.</p>
-<div class="stub-note"><b>This page is being written.</b> The structure is in place; the content is on its way. If you have notes or hit something relevant here, that feedback shapes what gets written first.</div>
+<h1 class="title">Known issues</h1>
+<p class="subtitle">Current problems across the apps, and what to do about them.</p>
+<p>Only problems seen on current builds are listed here. Problems that have been fixed are under <a class="ln" href="/wiki/neutron/fixes/notable-fixes/">Notable fixes</a>.</p>
+<h2>All apps</h2>
+<ul>
+<li><strong>At a display scale that isn't a Windows step, parts of the interface land slightly off.</strong> In Premiere Pro, the marked in/out range on the timeline ruler drifts to the right of the selection. Set your desktop to 100, 125, 150, 175, 200, 225, 250 or 300% (see <a class="ln" href="/wiki/start/basics/display-scale/">Choosing a display scale</a>). This comes from inside the app, not from Neutron.</li>
+</ul>
+<h2>Animate</h2>
+<ul>
+<li><strong>The home screen is blank.</strong> Start from File → New or File → Open. This is Adobe's own bug: the home screen is blank on Windows too.</li>
+<li><strong>File → New does nothing for about the first 15 seconds after launch.</strong> Wait, or try again after a moment. This comes from inside the app, not from Neutron.</li>
+</ul>
+<h2>Lightroom Classic</h2>
+<ul>
+<li><strong>The interface takes several seconds to paint in when the app starts.</strong> Wait for it to finish. This comes from inside the app, not from Neutron.</li>
+</ul>
+<h2>Premiere Pro</h2>
+<ul>
+<li><strong>Fast wheel-scrubbing on the timeline feels a bit late and jumpy.</strong> No workaround yet.</li>
+</ul>
   </main>
 </div>
 
