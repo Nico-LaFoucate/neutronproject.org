@@ -44,7 +44,7 @@ This is experimental alpha, so a few things are expected and a few are worth che
 
 - **Some warm-up lag and occasional redraw artifacts are normal** right now, especially in the first moments after launch.
 - **If an app won't start or the GPU isn't used,** re-run Collider's compatibility check — it calls out driver, GPU, or desktop-session problems in plain English.
-- **For anything app-specific** — a feature that's greyed out, a panel that misbehaves — check that app's page under **Applications**; known issues and their status live there.
+- **For anything app-specific** — a feature that's grayed out, a panel that misbehaves — check that app's page under **Applications**; known issues and their status live there.
 - **A given feature may simply not be validated yet.** The [status board](/#status) is the honest, current picture of what's been confirmed.
 - **To report a problem,** open an issue on the [Neutron repository](https://github.com/Nico-LaFoucate/Neutron/issues). Questions go in its [Discussions](https://github.com/Nico-LaFoucate/Neutron/discussions).
 
