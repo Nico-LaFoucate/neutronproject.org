@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>What is Neutron? — Neutron Wiki</title>
-<meta name="description" content="The three pieces, in one minute.">
-<link rel="canonical" href="https://neutronproject.org/wiki/start/basics/what-is-neutron/">
+<title>Planned — Neutron Wiki</title>
+<meta name="description" content="What’s planned but not built yet. No dates.">
+<link rel="canonical" href="https://neutronproject.org/wiki/start/basics/planned/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -43,7 +43,7 @@
 <div class="grp-body">
 <div class="snode active"><a href="/wiki/start/">Getting Started<span class="kind">Guide</span></a></div>
 <div class="cat active"><a href="/wiki/start/basics/">Basics</a></div>
-<div class="arts"><a class="active" aria-current="page" href="/wiki/start/basics/what-is-neutron/"><span class="dot guide"></span>What is Neutron?</a><a href="/wiki/start/basics/install-collider/"><span class="dot guide"></span>Installing Collider</a><a href="/wiki/start/basics/first-app/"><span class="dot guide"></span>Running your first app</a><a href="/wiki/start/basics/planned/"><span class="dot guide"></span>Planned</a></div>
+<div class="arts"><a href="/wiki/start/basics/what-is-neutron/"><span class="dot guide"></span>What is Neutron?</a><a href="/wiki/start/basics/install-collider/"><span class="dot guide"></span>Installing Collider</a><a href="/wiki/start/basics/first-app/"><span class="dot guide"></span>Running your first app</a><a class="active" aria-current="page" href="/wiki/start/basics/planned/"><span class="dot guide"></span>Planned</a></div>
 </div>
 <div class="grp toggle" role="button" tabindex="0" aria-expanded="true" data-group="The stack"><span class="chev">▾</span>The stack</div>
 <div class="grp-body">
@@ -61,18 +61,17 @@
 </div>
   </aside>
   <main class="content" id="content">
-<nav class="crumb"><a href="/wiki/">Wiki</a> <span class="sep">/</span><a href="/wiki/start/">Getting Started</a> <span class="sep">/</span><a href="/wiki/start/basics/">Basics</a> <span class="sep">/</span><span>What is Neutron?</span></nav>
+<nav class="crumb"><a href="/wiki/">Wiki</a> <span class="sep">/</span><a href="/wiki/start/">Getting Started</a> <span class="sep">/</span><a href="/wiki/start/basics/">Basics</a> <span class="sep">/</span><span>Planned</span></nav>
 <div><span class="badge b-guide">Guide</span></div>
-<h1 class="title">What is Neutron?</h1>
-<p class="subtitle">The three pieces, in one minute.</p>
-<p>Neutron is a <strong>compatibility engine</strong> that runs Adobe Creative Suite applications on Linux. It is built on Wine, DXVK, and vkd3d-proton, and patched specifically for the way Adobe applications talk to Windows.</p>
-<p>It comes as three separate pieces, each owning one job:</p>
+<h1 class="title">Planned</h1>
+<p class="subtitle">What’s planned but not built yet. No dates.</p>
 <ul>
-<li><strong><a class="ln" href="/wiki/neutron/">Neutron</a></strong> — the engine. Neutron-Wine plus DXVK, vkd3d-proton, a DirectComposition bridge, an nvcuda wrapper, and every Adobe-specific fix. Driven entirely through a command line; no GUI required.</li>
-<li><strong><a class="ln" href="/wiki/collider/">Collider</a></strong> — the launcher. A desktop app that finds your installed apps, checks a prefix is healthy, launches it, and supervises it. It calls Neutron for anything compatibility-related and holds no fixes of its own.</li>
-<li><strong><a class="ln" href="/wiki/mudhut/">Mud Hut</a></strong> — the installer. Gets Adobe apps onto your machine without hand-building a prefix. One-click inside Collider, or standalone in a terminal.</li>
+<li>Lightroom (cloud) support</li>
+<li>AMD and Intel GPU validation</li>
+<li>Snapshot and rollback, and holding Adobe updates until they’re verified</li>
+<li>Per-app GPU and color controls</li>
+<li>Distro packages (AUR)</li>
 </ul>
-<p>Premiere Pro, Photoshop, and Lightroom have been used for paid client work on this stack. See each application's page for its current status.</p>
   </main>
 </div>
 

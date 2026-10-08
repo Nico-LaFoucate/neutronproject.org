@@ -36,7 +36,7 @@ Under the hood this is the same work the `neutron` command line does — downloa
 With the engine ready, add the apps you own. Collider is designed to support several ways to get Adobe software in — pick whichever matches how you already have it:
 
 - **Download from Adobe** — download straight from Adobe's servers. No sign-in is needed to install; you sign in later, inside the app.
-- **Copy from Windows** — point Collider at an existing Windows install (a dual-boot drive, a backup, or a mounted disc image) and it migrates the app in place.
+- **Copy from a Windows install** — point Collider at an existing Windows install (a dual-boot drive, a backup, or a mounted disc image) and it migrates the app in place.
 - **Offline installer** — use an offline Adobe installer package you already have.
 - **Import a prefix** — bring an app in from an existing Proton or Wine prefix.
 
@@ -53,9 +53,9 @@ Each installed app appears as a tile in your library. Click **Launch**. Collider
 The point of the launcher is that everything the Neutron investigation figured out by hand happens automatically:
 
 - One shared Adobe environment, so Dynamic Link works across the suite.
-- Snapshot and rollback before updates, and **update gating** — Adobe updates are held until Neutron confirms the new version still works.
-- Per-app GPU, display (Wayland / XWayland), and color controls.
-- One-click migration from an existing Windows installation.
+- Copying an app over from an existing Windows install (Mud Hut's **Copy from a Windows install** method).
+
+What's planned but not built yet is listed under [Planned](/wiki/start/basics/planned/).
 
 ## Where this stands
 
