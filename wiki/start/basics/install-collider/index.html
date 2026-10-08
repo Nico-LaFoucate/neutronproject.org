@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Installing Collider — Neutron Wiki</title>
+<meta name="description" content="From a clean Linux machine to your first Adobe launch — the whole stack, end to end.">
+<link rel="canonical" href="https://neutronproject.org/wiki/start/basics/install-collider/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/wiki/wiki.css">
+<noscript><style>.grp-body[hidden]{display:block}.search{display:none}</style></noscript>
+</head>
+<body>
+<canvas id="starfield" aria-hidden="true"></canvas>
+
+<header class="nav">
+  <div class="nav-in">
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation">☰ Menu</button>
+    <a href="/" class="mark">
+      <svg width="24" height="22" viewBox="0 0 26 22" aria-hidden="true">
+        <ellipse cx="7" cy="11" rx="6" ry="9.5" fill="none" stroke="#E9EEF6" stroke-width="1.5"/>
+        <ellipse cx="19" cy="11" rx="6" ry="9.5" fill="none" stroke="#E9EEF6" stroke-width="1.5"/>
+        <circle cx="13" cy="11" r="5.2" fill="#0A0E16"/><circle cx="13" cy="11" r="4" fill="#E9EEF6"/>
+        <circle cx="21.5" cy="4.5" r="1.8" fill="#FC3D21"/>
+      </svg>NEUTRON
+    </a>
+    <a class="lnk hide-sm" href="/#status">Status</a>
+    <a class="lnk hide-sm" href="/#how">Architecture</a>
+    <a class="lnk" href="/wiki/" aria-current="page">Wiki</a>
+    <a class="lnk hide-sm" href="https://github.com/Nico-LaFoucate/Neutron">GitHub</a>
+  </div>
+</header>
+
+<div class="shell">
+  <div class="scrim" id="scrim"></div>
+  <aside id="sidebar">
+<div class="search"><svg width="13" height="13" viewBox="0 0 13 13"><circle cx="5.5" cy="5.5" r="4" fill="none" stroke="#8B97AD" stroke-width="1.3"/><line x1="8.5" y1="8.5" x2="12" y2="12" stroke="#8B97AD" stroke-width="1.3"/></svg><input id="q" placeholder="Search the wiki…" autocomplete="off" aria-label="Search the wiki"></div>
+<div class="tree" id="tree">
+<div class="grp toggle" role="button" tabindex="0" aria-expanded="true" data-group="Start here" data-active><span class="chev">▾</span>Start here</div>
+<div class="grp-body">
+<div class="snode active"><a href="/wiki/start/">Getting Started<span class="kind">Guide</span></a></div>
+<div class="cat active"><a href="/wiki/start/basics/">Basics</a></div>
+<div class="arts"><a href="/wiki/start/basics/what-is-neutron/"><span class="dot guide"></span>What is Neutron?</a><a class="active" aria-current="page" href="/wiki/start/basics/install-collider/"><span class="dot guide"></span>Installing Collider</a><a href="/wiki/start/basics/first-app/"><span class="dot guide"></span>Running your first app</a></div>
+</div>
+<div class="grp toggle" role="button" tabindex="0" aria-expanded="true" data-group="The stack"><span class="chev">▾</span>The stack</div>
+<div class="grp-body">
+<div class="snode"><a href="/wiki/neutron/">Neutron<span class="kind">Engine</span></a></div>
+<div class="snode"><a href="/wiki/collider/">Collider<span class="kind">Launcher</span></a></div>
+<div class="snode"><a href="/wiki/mudhut/">Mud Hut<span class="kind">Installer</span></a></div>
+</div>
+<div class="grp toggle" role="button" tabindex="0" aria-expanded="false" data-group="Applications"><span class="chev">▸</span>Applications</div>
+<div class="grp-body" hidden>
+<div class="snode"><a href="/wiki/photoshop/">Photoshop<span class="kind">Application</span></a></div>
+<div class="snode"><a href="/wiki/lightroom/">Lightroom Classic<span class="kind">Application</span></a></div>
+<div class="snode"><a href="/wiki/premiere/">Premiere Pro<span class="kind">Application</span></a></div>
+<div class="snode"><a href="/wiki/aftereffects/">After Effects<span class="kind">Application</span></a></div>
+</div>
+</div>
+  </aside>
+  <main class="content" id="content">
+<nav class="crumb"><a href="/wiki/">Wiki</a> <span class="sep">/</span><a href="/wiki/start/">Getting Started</a> <span class="sep">/</span><a href="/wiki/start/basics/">Basics</a> <span class="sep">/</span><span>Installing Collider</span></nav>
+<div><span class="badge b-guide">Guide</span></div>
+<h1 class="title">Installing Collider</h1>
+<p class="subtitle">From a clean Linux machine to your first Adobe launch — the whole stack, end to end.</p>
+<p><strong>Collider</strong> is the graphical front door to the whole stack. You install one app, and it sets up everything underneath it — the <a class="ln" href="/wiki/neutron/">Neutron</a> compatibility engine, its patched Wine runtime, and a healthy Adobe environment — then installs and launches your Adobe apps. No terminal required. This page walks the whole thing end to end.</p>
+<div class="callout"><p class="k">Experimental alpha — read this first</p><p>Neutron is early research, developed and tested on a single machine (an NVIDIA RTX 5070 on CachyOS + KDE Wayland). It runs real work in testing, but it is <strong>not</strong> stable or validated across hardware, distributions, or app versions — and you must bring your own <strong>legally licensed</strong> Adobe software. Treat this as a preview of the intended experience, not a finished product.</p></div>
+<h2>Before you begin</h2>
+<p>You'll want these in place first:</p>
+<ul>
+<li><strong>A modern Linux distribution</strong> — CachyOS, Arch, or Ubuntu 22.04+. KDE on <strong>Wayland</strong> is the reference desktop.</li>
+<li><strong>A Vulkan-capable GPU with current drivers.</strong> NVIDIA (with the open driver) is the primary, best-tested path; AMD is supported by Vulkan but far less validated.</li>
+<li><strong>A valid Adobe Creative Cloud subscription</strong> — or an existing Adobe installation you can copy from.</li>
+<li><strong>A few gigabytes of free disk</strong> for the runtime, the environment, and your apps.</li>
+</ul>
+<h2>Step 1 — Install Collider</h2>
+<p>Download the latest Collider release for your distribution and open it. Collider is an ordinary desktop application — there's nothing to configure yet.</p>
+<p>On first launch it runs a <strong>plain-English compatibility check</strong>: it looks at your GPU, driver, and desktop session and tells you, in words, whether your system is ready — and what to change if it isn't.</p>
+<div class="callout"><p class="k">During the alpha</p><p>The graphical Collider installer is still being finalized. Until it lands, the stack is driven directly through the Neutron command line. If you want to try it today, start from the <a class="ln" href="/wiki/neutron/">Neutron engine</a> pages or the project's repository for the current developer-preview steps.</p></div>
+<h2>Step 2 — Let Collider set up Neutron</h2>
+<p>Collider is the cockpit; <strong>Neutron is the engine</strong>. The first time you use it, Collider fetches and verifies the Neutron engine and its patched Wine runtime — the compatibility layer that makes Adobe apps run — and prepares a clean, Adobe-ready environment (a <em>prefix</em>). This happens automatically, and only once.</p>
+<p>Under the hood this is the same work the <code>neutron</code> command line does — download and checksum the runtime, then provision the environment with the right fonts, libraries, and display settings — but you never touch a terminal. When it finishes, the compatibility check turns green.</p>
+<h2>Step 3 — Add your Adobe apps</h2>
+<p>With the engine ready, add the apps you own. Collider is designed to support several ways to get Adobe software in — pick whichever matches how you already have it:</p>
+<ul>
+<li><strong>Sign in with Adobe</strong> — download straight from Adobe's servers using your Creative Cloud subscription.</li>
+<li><strong>Copy from Windows</strong> — point Collider at an existing Windows install (a dual-boot drive, a backup, or a mounted disc image) and it migrates the app in place.</li>
+<li><strong>Offline installer</strong> — use an offline Adobe installer package you already have.</li>
+<li><strong>Import a prefix</strong> — bring an app in from an existing Proton or Wine prefix.</li>
+</ul>
+<p>Whichever you choose, you must own a valid license — <strong>Neutron distributes no Adobe code.</strong></p>
+<div class="callout"><p class="k">One environment, full interoperability</p><p>All your apps share a single Adobe environment, so <strong>Dynamic Link</strong> keeps working between them — send a Premiere sequence to After Effects, round-trip a Photoshop layer, and so on.</p></div>
+<h2>Step 4 — Launch</h2>
+<p>Each installed app appears as a tile in your library. Click <strong>Launch</strong>. Collider quietly does the rest: it applies the native display fix, starts Adobe's background licensing and IPC services, and hands off to the app. When you close the app, Collider shuts those services back down.</p>
+<h2>What Collider is handling for you</h2>
+<p>The point of the launcher is that everything the Neutron investigation figured out by hand happens automatically:</p>
+<ul>
+<li>One shared Adobe environment, so Dynamic Link works across the suite.</li>
+<li>Snapshot and rollback before updates, and <strong>update gating</strong> — Adobe updates are held until Neutron confirms the new version still works.</li>
+<li>Per-app GPU, display (Wayland / XWayland), and color controls.</li>
+<li>One-click migration from an existing Windows installation.</li>
+</ul>
+<h2>Where this stands</h2>
+<p>The apps furthest along are <a class="ln" href="/wiki/premiere/">Premiere Pro</a>, <a class="ln" href="/wiki/photoshop/">Photoshop</a>, and <a class="ln" href="/wiki/lightroom/">Lightroom Classic</a> — all alpha, all doing real work in testing. After Effects is now usable too — its composition viewer renders and the canvas keeps pace; others are experimental. For the honest, current status of each, see the <strong>Applications</strong> section, or the <a class="ln" href="/#status">status board</a> on the home page.</p>
+<p>Once Collider is installed and an app launches, head to <a class="ln" href="/wiki/start/basics/first-app/">Running your first app</a>.</p>
+  </main>
+</div>
+
+<footer><div class="foot">
+  <a href="/">Home</a>
+  <a href="https://github.com/Nico-LaFoucate/Neutron">Neutron</a>
+  <a href="https://github.com/Nico-LaFoucate/Collider">Collider</a>
+  <a href="https://github.com/Nico-LaFoucate/Mud-Hut">Mud Hut</a>
+  <span class="sp">Neutron LGPL v2.1 · Collider Apache 2.0</span>
+</div></footer>
+
+<script src="/wiki/wiki.js"></script>
+</body>
+</html>

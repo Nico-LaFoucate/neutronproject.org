@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>The ten-second menu — Neutron Wiki</title>
+<meta name="description" content="Why Lightroom’s “Edit in Photoshop” hung — and how a quarter-second file read explains it.">
+<link rel="canonical" href="https://neutronproject.org/wiki/neutron/fixes/edit-in-lag/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/wiki/wiki.css">
+<noscript><style>.grp-body[hidden]{display:block}.search{display:none}</style></noscript>
+</head>
+<body>
+<canvas id="starfield" aria-hidden="true"></canvas>
+
+<header class="nav">
+  <div class="nav-in">
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation">☰ Menu</button>
+    <a href="/" class="mark">
+      <svg width="24" height="22" viewBox="0 0 26 22" aria-hidden="true">
+        <ellipse cx="7" cy="11" rx="6" ry="9.5" fill="none" stroke="#E9EEF6" stroke-width="1.5"/>
+        <ellipse cx="19" cy="11" rx="6" ry="9.5" fill="none" stroke="#E9EEF6" stroke-width="1.5"/>
+        <circle cx="13" cy="11" r="5.2" fill="#0A0E16"/><circle cx="13" cy="11" r="4" fill="#E9EEF6"/>
+        <circle cx="21.5" cy="4.5" r="1.8" fill="#FC3D21"/>
+      </svg>NEUTRON
+    </a>
+    <a class="lnk hide-sm" href="/#status">Status</a>
+    <a class="lnk hide-sm" href="/#how">Architecture</a>
+    <a class="lnk" href="/wiki/" aria-current="page">Wiki</a>
+    <a class="lnk hide-sm" href="https://github.com/Nico-LaFoucate/Neutron">GitHub</a>
+  </div>
+</header>
+
+<div class="shell">
+  <div class="scrim" id="scrim"></div>
+  <aside id="sidebar">
+<div class="search"><svg width="13" height="13" viewBox="0 0 13 13"><circle cx="5.5" cy="5.5" r="4" fill="none" stroke="#8B97AD" stroke-width="1.3"/><line x1="8.5" y1="8.5" x2="12" y2="12" stroke="#8B97AD" stroke-width="1.3"/></svg><input id="q" placeholder="Search the wiki…" autocomplete="off" aria-label="Search the wiki"></div>
+<div class="tree" id="tree">
+<div class="grp toggle" role="button" tabindex="0" aria-expanded="true" data-group="Start here"><span class="chev">▾</span>Start here</div>
+<div class="grp-body">
+<div class="snode"><a href="/wiki/start/">Getting Started<span class="kind">Guide</span></a></div>
+</div>
+<div class="grp toggle" role="button" tabindex="0" aria-expanded="true" data-group="The stack" data-active><span class="chev">▾</span>The stack</div>
+<div class="grp-body">
+<div class="snode active"><a href="/wiki/neutron/">Neutron<span class="kind">Engine</span></a></div>
+<div class="cat"><a href="/wiki/neutron/overview/">Overview</a></div>
+<div class="cat"><a href="/wiki/neutron/architecture/">Architecture</a></div>
+<div class="cat"><a href="/wiki/neutron/features/">Features</a></div>
+<div class="cat active"><a href="/wiki/neutron/fixes/">Fixes</a></div>
+<div class="arts"><a class="active" aria-current="page" href="/wiki/neutron/fixes/edit-in-lag/"><span class="dot fix"></span>The ten-second menu</a></div>
+<div class="cat"><a href="/wiki/neutron/issues/">Known Issues</a></div>
+<div class="cat"><a href="/wiki/neutron/runtimes/">Runtimes &amp; Builds</a></div>
+<div class="snode"><a href="/wiki/collider/">Collider<span class="kind">Launcher</span></a></div>
+<div class="snode"><a href="/wiki/mudhut/">Mud Hut<span class="kind">Installer</span></a></div>
+</div>
+<div class="grp toggle" role="button" tabindex="0" aria-expanded="false" data-group="Applications"><span class="chev">▸</span>Applications</div>
+<div class="grp-body" hidden>
+<div class="snode"><a href="/wiki/photoshop/">Photoshop<span class="kind">Application</span></a></div>
+<div class="snode"><a href="/wiki/lightroom/">Lightroom Classic<span class="kind">Application</span></a></div>
+<div class="snode"><a href="/wiki/premiere/">Premiere Pro<span class="kind">Application</span></a></div>
+<div class="snode"><a href="/wiki/aftereffects/">After Effects<span class="kind">Application</span></a></div>
+</div>
+</div>
+  </aside>
+  <main class="content" id="content">
+<nav class="crumb"><a href="/wiki/">Wiki</a> <span class="sep">/</span><a href="/wiki/neutron/">Neutron</a> <span class="sep">/</span><a href="/wiki/neutron/fixes/">Fixes</a> <span class="sep">/</span><span>The ten-second menu</span></nav>
+<div><span class="badge b-fix">Fixed</span></div>
+<h1 class="title">The ten-second menu</h1>
+<p class="subtitle">Why Lightroom’s “Edit in Photoshop” hung — and how a quarter-second file read explains it.</p>
+<p>In Lightroom Classic, opening <strong>Photo → Edit In</strong> took about <strong>ten seconds</strong> before the submenu appeared. No error, no spinner, no crash — the menu just froze, every single time. That "no error, just slow" shape is worth recognizing: it usually means something correct is happening, just far too many times.</p>
+<h2>What was actually happening</h2>
+<p>Every Windows program carries a tiny tag inside it called a <strong>version resource</strong> — the "Product version 26.9.0.15" you see in a file's Properties. It is well under a kilobyte. When Lightroom builds its "Edit in Photoshop" menu, it reads that tag out of <code>Photoshop.exe</code> to label the item.</p>
+<p>The catch was <em>how</em> Wine fetched it. To read that tiny tag, Wine loaded the <strong>entire program into memory in "image" mode</strong> — the heavyweight way Windows loads a program it is about to <em>run</em>, laying out every section at its correct address. Fine for a normal app. But <strong><code>Photoshop.exe</code> is 208 megabytes.</strong> Laying all of that out to read a sub-kilobyte tag took ~60&nbsp;ms — done four times per lookup. That is roughly a quarter-second.</p>
+<p>The reason it became <em>ten</em> seconds: Lightroom re-checks this every time it validates the menu, and opening the submenu triggers validation about <strong>forty times</strong>.</p>
+<h2>The fix</h2>
+<p>There is a lightweight way to open a file just to read data out of it — "as a data file." Nothing is laid out in advance; only the bytes you touch are read. We switched Wine's version-info code to that mode, after proving both modes return <strong>byte-for-byte identical</strong> data:</p>
+<div class="metrics"><div class="mhead">Reading Photoshop.exe’s version — measured</div><div class="mrow slow"><span class="lbl">Before — “image” mapping</span><span class="val">121.7 ms</span><span class="delta">&nbsp;</span></div><div class="mrow"><span class="lbl">After — “data file” mapping</span><span class="val">0.42 ms</span><span class="delta">288× faster</span></div><div class="mrow"><span class="lbl">Edit-In submenu open</span><span class="val">~10 s → ~0.1 s</span><span class="delta">gone</span></div></div>
+<p>Same version out, same everything — the menu just opens instantly now. The change lives in Wine itself, so it speeds up anything that reads version info from a large file. Shipped in runtime <code>11.10-12</code>.</p>
+<div class="callout"><p class="k">Diagnose this class yourself</p><p>If an Adobe app <em>pauses</em> with no error while building a menu or a picker — especially anything that detects other installed apps — suspect repeated reads of a large binary. Launch with <code>WINEDEBUG=+timestamp,+file</code> and watch for the same big <code>.exe</code> opened over and over, with tens-of-ms gaps, right where it hangs. The gaps are the cost; the repetition is the multiplier.</p></div>
+  </main>
+</div>
+
+<footer><div class="foot">
+  <a href="/">Home</a>
+  <a href="https://github.com/Nico-LaFoucate/Neutron">Neutron</a>
+  <a href="https://github.com/Nico-LaFoucate/Collider">Collider</a>
+  <a href="https://github.com/Nico-LaFoucate/Mud-Hut">Mud Hut</a>
+  <span class="sp">Neutron LGPL v2.1 · Collider Apache 2.0</span>
+</div></footer>
+
+<script src="/wiki/wiki.js"></script>
+</body>
+</html>

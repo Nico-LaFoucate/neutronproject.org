@@ -1,0 +1,258 @@
+{
+  "groups": [
+    {
+      "label": "Start here",
+      "open": true,
+      "sections": [
+        {
+          "slug": "start",
+          "title": "Getting Started",
+          "kind": "Guide",
+          "blurb": "What Neutron is, and how to get an Adobe app running.",
+          "categories": [
+            {
+              "slug": "basics",
+              "title": "Basics",
+              "articles": [
+                "what-is-neutron",
+                "install-collider",
+                "first-app"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "The stack",
+      "open": true,
+      "sections": [
+        {
+          "slug": "neutron",
+          "title": "Neutron",
+          "kind": "Engine",
+          "blurb": "The compatibility engine: Neutron-Wine, the graphics stack, and every Adobe-specific fix — all behind one CLI.",
+          "categories": [
+            {
+              "slug": "overview",
+              "title": "Overview",
+              "articles": [
+                "what-it-is"
+              ]
+            },
+            {
+              "slug": "architecture",
+              "title": "Architecture",
+              "articles": [
+                "where-fixes-live"
+              ]
+            },
+            {
+              "slug": "features",
+              "title": "Features",
+              "articles": [
+                "native-canvas",
+                "ai-features"
+              ]
+            },
+            {
+              "slug": "fixes",
+              "title": "Fixes",
+              "articles": [
+                "edit-in-lag"
+              ]
+            },
+            {
+              "slug": "issues",
+              "title": "Known Issues",
+              "articles": [
+                "owned-popups"
+              ]
+            },
+            {
+              "slug": "runtimes",
+              "title": "Runtimes & Builds",
+              "articles": [
+                "versioned-runtimes"
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "collider",
+          "title": "Collider",
+          "kind": "Launcher",
+          "blurb": "The desktop launcher: finds your apps, checks the prefix is healthy, launches and supervises — and holds no compatibility logic of its own.",
+          "categories": [
+            {
+              "slug": "overview",
+              "title": "Overview",
+              "articles": [
+                "what-it-is"
+              ]
+            },
+            {
+              "slug": "features",
+              "title": "Features",
+              "articles": [
+                "appearance",
+                "app-widgets"
+              ]
+            },
+            {
+              "slug": "setup",
+              "title": "Setup",
+              "articles": [
+                "install"
+              ]
+            },
+            {
+              "slug": "issues",
+              "title": "Known Issues",
+              "articles": [
+                "placeholder"
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "mudhut",
+          "title": "Mud Hut",
+          "kind": "Installer",
+          "blurb": "The installer: gets Adobe apps onto your machine without hand-building a prefix. Ships inside Collider, and runs standalone in a terminal.",
+          "categories": [
+            {
+              "slug": "overview",
+              "title": "Overview",
+              "articles": [
+                "what-it-is"
+              ]
+            },
+            {
+              "slug": "features",
+              "title": "Features",
+              "articles": [
+                "placeholder"
+              ]
+            },
+            {
+              "slug": "troubleshooting",
+              "title": "Troubleshooting",
+              "articles": [
+                "placeholder"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Applications",
+      "open": false,
+      "sections": [
+        {
+          "slug": "photoshop",
+          "title": "Photoshop",
+          "kind": "Application",
+          "blurb": "Status, fixes, and known issues for Adobe Photoshop on Neutron.",
+          "categories": [
+            {
+              "slug": "status",
+              "title": "Status",
+              "articles": [
+                "overview"
+              ]
+            },
+            {
+              "slug": "fixes",
+              "title": "Fixes",
+              "articles": [
+                "placeholder"
+              ]
+            },
+            {
+              "slug": "issues",
+              "title": "Known Issues",
+              "articles": [
+                "placeholder"
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "lightroom",
+          "title": "Lightroom Classic",
+          "kind": "Application",
+          "blurb": "Status, fixes, and known issues for Adobe Lightroom Classic on Neutron.",
+          "categories": [
+            {
+              "slug": "status",
+              "title": "Status",
+              "articles": [
+                "overview"
+              ]
+            },
+            {
+              "slug": "fixes",
+              "title": "Fixes",
+              "articles": [
+                "edit-in-lag"
+              ]
+            },
+            {
+              "slug": "issues",
+              "title": "Known Issues",
+              "articles": [
+                "placeholder"
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "premiere",
+          "title": "Premiere Pro",
+          "kind": "Application",
+          "blurb": "Status, fixes, and known issues for Adobe Premiere Pro on Neutron.",
+          "categories": [
+            {
+              "slug": "status",
+              "title": "Status",
+              "articles": [
+                "overview"
+              ]
+            },
+            {
+              "slug": "issues",
+              "title": "Known Issues",
+              "articles": [
+                "placeholder"
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "aftereffects",
+          "title": "After Effects",
+          "kind": "Application",
+          "blurb": "Status and known issues for Adobe After Effects on Neutron.",
+          "categories": [
+            {
+              "slug": "status",
+              "title": "Status",
+              "articles": [
+                "overview"
+              ]
+            },
+            {
+              "slug": "issues",
+              "title": "Known Issues",
+              "articles": [
+                "placeholder"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
