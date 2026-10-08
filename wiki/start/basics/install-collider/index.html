@@ -43,7 +43,7 @@
 <div class="grp-body">
 <div class="snode active"><a href="/wiki/start/">Getting Started<span class="kind">Guide</span></a></div>
 <div class="cat active"><a href="/wiki/start/basics/">Basics</a></div>
-<div class="arts"><a href="/wiki/start/basics/what-is-neutron/"><span class="dot guide"></span>What is Neutron?</a><a class="active" aria-current="page" href="/wiki/start/basics/install-collider/"><span class="dot guide"></span>Installing Collider</a><a href="/wiki/start/basics/first-app/"><span class="dot guide"></span>Running your first app</a><a href="/wiki/start/basics/planned/"><span class="dot guide"></span>Planned</a></div>
+<div class="arts"><a href="/wiki/start/basics/what-is-neutron/"><span class="dot guide"></span>What is Neutron?</a><a class="active" aria-current="page" href="/wiki/start/basics/install-collider/"><span class="dot guide"></span>Installing Collider</a><a href="/wiki/start/basics/display-scale/"><span class="dot guide"></span>Choosing a display scale</a><a href="/wiki/start/basics/first-app/"><span class="dot guide"></span>Running your first app</a><a href="/wiki/start/basics/planned/"><span class="dot guide"></span>Planned</a></div>
 </div>
 <div class="grp toggle" role="button" tabindex="0" aria-expanded="true" data-group="The stack"><span class="chev">▾</span>The stack</div>
 <div class="grp-body">
@@ -65,34 +65,37 @@
 <div><span class="badge b-guide">Guide</span></div>
 <h1 class="title">Installing Collider</h1>
 <p class="subtitle">From a clean Linux machine to your first Adobe launch — the whole stack, end to end.</p>
-<p><strong>Collider</strong> is the graphical front door to the whole stack. You install one app, and it sets up everything underneath it — the <a class="ln" href="/wiki/neutron/">Neutron</a> compatibility engine, its patched Wine runtime, and a healthy Adobe environment — then installs and launches your Adobe apps. No terminal required. This page walks the whole thing end to end.</p>
-<div class="callout"><p class="k">Experimental alpha — read this first</p><p>Neutron is early research. Tested on three machines, all CachyOS with KDE Plasma (Wayland) and NVIDIA GPUs. It runs real work in testing, but it is <strong>not</strong> stable or validated across hardware, distributions, or app versions — and you must bring your own <strong>legally licensed</strong> Adobe software. Treat this as a preview of the intended experience, not a finished product.</p></div>
+<p><strong>Collider</strong> is the graphical front door to the whole stack. One command, <code>neutron setup</code>, installs everything underneath it — the <a class="ln" href="/wiki/neutron/">Neutron</a> compatibility engine, its patched Wine runtime, the Mud Hut installer and Collider itself — and from then on you install and launch your Adobe apps from Collider. This page walks the whole thing end to end.</p>
+<div class="callout"><p class="k">Beta — read this first</p><p>Neutron is in beta. Tested on three machines, all CachyOS with KDE Plasma (Wayland) and NVIDIA GPUs. It runs real work in testing, but it is <strong>not</strong> stable or validated across hardware, distributions, or app versions — and you must bring your own <strong>legally licensed</strong> Adobe software. Treat this as a preview of the intended experience, not a finished product.</p></div>
 <h2>Before you begin</h2>
 <p>You'll want these in place first:</p>
 <ul>
-<li><strong>A modern Linux distribution</strong> — CachyOS, Arch, or Ubuntu 22.04+. KDE on <strong>Wayland</strong> is the reference desktop.</li>
+<li><strong>A 64-bit Linux distribution with glibc 2.39 or newer</strong>: Ubuntu 24.04 or later, Fedora 40 or later, current Arch, CachyOS or Manjaro, or openSUSE Tumbleweed.</li>
+<li><strong>A Wayland session.</strong> X11 isn't supported.</li>
+<li><strong>KDE Plasma is the supported desktop.</strong> Other Wayland desktops (GNOME, Sway, Hyprland) are untested; they may work, expect rough edges, <a class="ln" href="https://github.com/Nico-LaFoucate/Neutron/issues">reports welcome</a>.</li>
 <li><strong>A Vulkan-capable GPU with current drivers.</strong> NVIDIA (with the open driver) is the tested path. AMD and Intel GPUs aren't validated yet; <a class="ln" href="https://github.com/Nico-LaFoucate/Neutron/issues">reports welcome</a>.</li>
-<li><strong>A valid Adobe Creative Cloud subscription</strong> — or an existing Adobe installation you can copy from.</li>
+<li><strong>Python 3</strong> and <strong>cabextract</strong>.</li>
+<li><strong>Your own licensed Adobe apps.</strong> You sign in inside each app, the same as on Windows.</li>
+<li><strong>A display scale that's a Windows step</strong> (100, 125, 150, 175, 200, 225, 250 or 300%). See <a class="ln" href="/wiki/start/basics/display-scale/">Choosing a display scale</a>.</li>
 <li><strong>A few gigabytes of free disk</strong> for the runtime, the environment, and your apps.</li>
 </ul>
-<h2>Step 1 — Install Collider</h2>
-<p>Download the latest Collider release for your distribution and open it. Collider is an ordinary desktop application — there's nothing to configure yet.</p>
-<p>On first launch it runs a <strong>plain-English compatibility check</strong>: it looks at your GPU, driver, and desktop session and tells you, in words, whether your system is ready — and what to change if it isn't.</p>
-<div class="callout"><p class="k">During the alpha</p><p>The graphical Collider installer is still being finalized. Until it lands, the stack is driven directly through the Neutron command line. If you want to try it today, start from the <a class="ln" href="/wiki/neutron/">Neutron engine</a> pages or the project's repository for the current developer-preview steps.</p></div>
-<h2>Step 2 — Let Collider set up Neutron</h2>
-<p>Collider is the cockpit; <strong>Neutron is the engine</strong>. The first time you use it, Collider fetches and verifies the Neutron engine and its patched Wine runtime — the compatibility layer that makes Adobe apps run — and prepares a clean, Adobe-ready environment (a <em>prefix</em>). This happens automatically, and only once.</p>
-<p>Under the hood this is the same work the <code>neutron</code> command line does — download and checksum the runtime, then provision the environment with the right fonts, libraries, and display settings — but you never touch a terminal. When it finishes, the compatibility check turns green.</p>
-<h2>Step 3 — Add your Adobe apps</h2>
-<p>With the engine ready, add the apps you own. Collider is designed to support several ways to get Adobe software in — pick whichever matches how you already have it:</p>
+<h2>Step 1 — Install Neutron</h2>
+<p>In a terminal:</p>
+<div class="codebox">curl -LO https://github.com/Nico-LaFoucate/neutron/releases/latest/download/neutron
+python3 neutron setup</div>
+<p><code>neutron setup</code> downloads neutron-wine and the Mud Hut installer from GitHub, Microsoft's Visual C++ runtimes, GDI+ and core fonts from Microsoft, and Adobe's Creative Cloud package from Adobe, and installs Collider with a menu entry. It may ask for your password once, to turn on ntsync, which makes the apps much faster.</p>
+<p>If you started from the Collider app instead, its <strong>Set up</strong> button runs the same setup.</p>
+<h2>Step 2 — Add your Adobe apps</h2>
+<p>Open <strong>Neutron Collider</strong> from your menu and go to its <strong>Mud Hut</strong> tab. Pick whichever matches how you already have your apps:</p>
 <ul>
+<li><strong>Copy from an existing Windows install</strong> — point Mud Hut at a licensed Windows Adobe install (a dual-boot drive, a backup, or a mounted disc image) and copy the app in.</li>
+<li><strong>Install from an offline package</strong> — use an offline Adobe installer package you already have.</li>
 <li><strong>Download from Adobe</strong> — download straight from Adobe's servers. No sign-in is needed to install; you sign in later, inside the app.</li>
-<li><strong>Copy from a Windows install</strong> — point Collider at an existing Windows install (a dual-boot drive, a backup, or a mounted disc image) and it migrates the app in place.</li>
-<li><strong>Offline installer</strong> — use an offline Adobe installer package you already have.</li>
-<li><strong>Import a prefix</strong> — bring an app in from an existing Proton or Wine prefix.</li>
 </ul>
+<p>Already have a Wine prefix with Adobe apps in it? Point Collider at it with <strong>Choose existing…</strong>.</p>
 <p>Whichever you choose, you must own a valid license — <strong>Neutron distributes no Adobe code.</strong></p>
 <div class="callout"><p class="k">One environment, full interoperability</p><p>All your apps share a single Adobe environment, so <strong>Dynamic Link</strong> keeps working between them — send a Premiere sequence to After Effects, round-trip a Photoshop layer, and so on.</p></div>
-<h2>Step 4 — Launch</h2>
+<h2>Step 3 — Launch</h2>
 <p>Each installed app appears as a tile in your library. Click <strong>Launch</strong>. Collider quietly does the rest: it applies the native display fix, starts Adobe's background licensing and IPC services, and hands off to the app. When you close the app, Collider shuts those services back down.</p>
 <h2>What Collider is handling for you</h2>
 <p>The point of the launcher is that everything the Neutron investigation figured out by hand happens automatically:</p>
@@ -101,8 +104,10 @@
 <li>Copying an app over from an existing Windows install (Mud Hut's <strong>Copy from a Windows install</strong> method).</li>
 </ul>
 <p>What's planned but not built yet is listed under <a class="ln" href="/wiki/start/basics/planned/">Planned</a>.</p>
+<h2>Updating and uninstalling</h2>
+<p><code>neutron update</code> (or <strong>Update</strong> in Collider's Preferences) updates everything and moves your prefixes to the new runtime. <code>neutron uninstall</code> (or <strong>Uninstall…</strong>) removes Neutron; it asks before deleting any prefix, and keeps them unless you say so. ntsync stays on.</p>
 <h2>Where this stands</h2>
-<p>The apps furthest along are <a class="ln" href="/wiki/premiere/">Premiere Pro</a>, <a class="ln" href="/wiki/photoshop/">Photoshop</a>, and <a class="ln" href="/wiki/lightroom/">Lightroom Classic</a> — all alpha, all doing real work in testing. After Effects is now usable too — its composition viewer renders and the canvas keeps pace; others are experimental. For the honest, current status of each, see the <strong>Applications</strong> section, or the <a class="ln" href="/#status">status board</a> on the home page.</p>
+<p>The apps furthest along are <a class="ln" href="/wiki/premiere/">Premiere Pro</a>, <a class="ln" href="/wiki/photoshop/">Photoshop</a>, and <a class="ln" href="/wiki/lightroom/">Lightroom Classic</a> — all beta, all doing real work in testing. After Effects, Illustrator, Media Encoder and Animate run too, but haven't yet carried a paid job. For the honest, current status of each, see the <strong>Applications</strong> section, or the <a class="ln" href="/#status">status board</a> on the home page.</p>
 <p>Once Collider is installed and an app launches, head to <a class="ln" href="/wiki/start/basics/first-app/">Running your first app</a>.</p>
   </main>
 </div>

@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Basics · Getting Started — Neutron Wiki</title>
-<meta name="description" content="What Neutron is, and how to get an Adobe app running.">
-<link rel="canonical" href="https://neutronproject.org/wiki/start/basics/">
+<title>Choosing a display scale — Neutron Wiki</title>
+<meta name="description" content="Use a Windows scale step: 100, 125, 150, 175, 200, 225, 250 or 300%.">
+<link rel="canonical" href="https://neutronproject.org/wiki/start/basics/display-scale/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -43,7 +43,7 @@
 <div class="grp-body">
 <div class="snode active"><a href="/wiki/start/">Getting Started<span class="kind">Guide</span></a></div>
 <div class="cat active"><a href="/wiki/start/basics/">Basics</a></div>
-<div class="arts"><a href="/wiki/start/basics/what-is-neutron/"><span class="dot guide"></span>What is Neutron?</a><a href="/wiki/start/basics/install-collider/"><span class="dot guide"></span>Installing Collider</a><a href="/wiki/start/basics/display-scale/"><span class="dot guide"></span>Choosing a display scale</a><a href="/wiki/start/basics/first-app/"><span class="dot guide"></span>Running your first app</a><a href="/wiki/start/basics/planned/"><span class="dot guide"></span>Planned</a></div>
+<div class="arts"><a href="/wiki/start/basics/what-is-neutron/"><span class="dot guide"></span>What is Neutron?</a><a href="/wiki/start/basics/install-collider/"><span class="dot guide"></span>Installing Collider</a><a class="active" aria-current="page" href="/wiki/start/basics/display-scale/"><span class="dot guide"></span>Choosing a display scale</a><a href="/wiki/start/basics/first-app/"><span class="dot guide"></span>Running your first app</a><a href="/wiki/start/basics/planned/"><span class="dot guide"></span>Planned</a></div>
 </div>
 <div class="grp toggle" role="button" tabindex="0" aria-expanded="true" data-group="The stack"><span class="chev">▾</span>The stack</div>
 <div class="grp-body">
@@ -61,8 +61,20 @@
 </div>
   </aside>
   <main class="content" id="content">
-<nav class="crumb"><a href="/wiki/">Wiki</a> <span class="sep">/</span><a href="/wiki/start/">Getting Started</a> <span class="sep">/</span><span>Basics</span></nav>
-<h1 class="title">Basics</h1><p class="subtitle">Getting Started</p><div class="cards"><a class="card" href="/wiki/start/basics/what-is-neutron/"><div class="ct"><span class="dot guide"></span>What is Neutron?</div><div class="ck">Guide</div><p>The three pieces, in one minute.</p></a><a class="card" href="/wiki/start/basics/install-collider/"><div class="ct"><span class="dot guide"></span>Installing Collider</div><div class="ck">Guide</div><p>From a clean Linux machine to your first Adobe launch — the whole stack, end to end.</p></a><a class="card" href="/wiki/start/basics/display-scale/"><div class="ct"><span class="dot guide"></span>Choosing a display scale</div><div class="ck">Guide</div><p>Use a Windows scale step: 100, 125, 150, 175, 200, 225, 250 or 300%.</p></a><a class="card" href="/wiki/start/basics/first-app/"><div class="ct"><span class="dot guide"></span>Running your first app</div><div class="ck">Guide</div><p>You clicked Launch — here’s what to expect, and how to get to real work.</p></a><a class="card" href="/wiki/start/basics/planned/"><div class="ct"><span class="dot guide"></span>Planned</div><div class="ck">Guide</div><p>What’s planned but not built yet. No dates.</p></a></div>
+<nav class="crumb"><a href="/wiki/">Wiki</a> <span class="sep">/</span><a href="/wiki/start/">Getting Started</a> <span class="sep">/</span><a href="/wiki/start/basics/">Basics</a> <span class="sep">/</span><span>Choosing a display scale</span></nav>
+<div><span class="badge b-guide">Guide</span></div>
+<h1 class="title">Choosing a display scale</h1>
+<p class="subtitle">Use a Windows scale step: 100, 125, 150, 175, 200, 225, 250 or 300%.</p>
+<p>Neutron follows your desktop's display scale. Set it to one of the steps Windows offers: <strong>100, 125, 150, 175, 200, 225, 250 or 300%</strong>. Adobe's apps lay out their interface exactly only at those steps.</p>
+<p>At other scales (170%, for example), parts of the interface land slightly off. In Premiere Pro, the marked in/out range on the timeline ruler drifts to the right of the selection. This comes from inside the app, not from Neutron; Windows users never see it because Windows only offers these steps.</p>
+<p>To check, run <code>neutron display</code>. It shows the scale Neutron will use and warns when it isn't a Windows step.</p>
+<p>In Collider, leave <strong>Display scale</strong> on <strong>Auto (match desktop)</strong>. Best results: set the same scale in your desktop's display settings. Picking a different scale in Collider doesn't fix it: your desktop then resizes the window, and it looks blurry.</p>
+<h2>Not every desktop offers every step</h2>
+<ul>
+<li><strong>GNOME 49 and newer</strong> can't do 175% on 4K, 1440p or 1080p screens.</li>
+<li><strong>Hyprland</strong> can't do 175% on 4K, 1440p or 1080p screens, or 150% on 1440p.</li>
+</ul>
+<p>On those screens, pick another Windows step.</p>
   </main>
 </div>
 
