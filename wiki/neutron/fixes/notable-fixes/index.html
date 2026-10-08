@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Neutron — Neutron Wiki</title>
-<meta name="description" content="The compatibility engine: Neutron-Wine, the graphics stack, and every Adobe-specific fix — all behind one CLI.">
-<link rel="canonical" href="https://neutronproject.org/wiki/neutron/">
+<title>Notable fixes — Neutron Wiki</title>
+<meta name="description" content="Problems you’d have seen on earlier builds, one line each.">
+<link rel="canonical" href="https://neutronproject.org/wiki/neutron/fixes/notable-fixes/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -49,7 +49,8 @@
 <div class="cat"><a href="/wiki/neutron/overview/">Overview</a></div>
 <div class="cat"><a href="/wiki/neutron/architecture/">Architecture</a></div>
 <div class="cat"><a href="/wiki/neutron/features/">Features</a></div>
-<div class="cat"><a href="/wiki/neutron/fixes/">Fixes</a></div>
+<div class="cat active"><a href="/wiki/neutron/fixes/">Fixes</a></div>
+<div class="arts"><a class="active" aria-current="page" href="/wiki/neutron/fixes/notable-fixes/"><span class="dot fix"></span>Notable fixes</a><a href="/wiki/neutron/fixes/edit-in-lag/"><span class="dot fix"></span>The ten-second menu</a></div>
 <div class="cat"><a href="/wiki/neutron/issues/">Known Issues</a></div>
 <div class="cat"><a href="/wiki/neutron/runtimes/">Runtimes &amp; Builds</a></div>
 <div class="snode"><a href="/wiki/collider/">Collider<span class="kind">Launcher</span></a></div>
@@ -65,8 +66,46 @@
 </div>
   </aside>
   <main class="content" id="content">
-<nav class="crumb"><a href="/wiki/">Wiki</a> <span class="sep">/</span><span>Neutron</span></nav>
-<h1 class="title">Neutron</h1><p class="subtitle">The compatibility engine: Neutron-Wine, the graphics stack, and every Adobe-specific fix — all behind one CLI.</p><div class="cards"><a class="card" href="/wiki/neutron/overview/"><div class="ct">Overview</div><p>1 article</p></a><a class="card" href="/wiki/neutron/architecture/"><div class="ct">Architecture</div><p>1 article</p></a><a class="card" href="/wiki/neutron/features/"><div class="ct">Features</div><p>2 articles</p></a><a class="card" href="/wiki/neutron/fixes/"><div class="ct">Fixes</div><p>2 articles</p></a><a class="card" href="/wiki/neutron/issues/"><div class="ct">Known Issues</div><p>1 article</p></a><a class="card" href="/wiki/neutron/runtimes/"><div class="ct">Runtimes &amp; Builds</div><p>1 article</p></a></div>
+<nav class="crumb"><a href="/wiki/">Wiki</a> <span class="sep">/</span><a href="/wiki/neutron/">Neutron</a> <span class="sep">/</span><a href="/wiki/neutron/fixes/">Fixes</a> <span class="sep">/</span><span>Notable fixes</span></nav>
+<div><span class="badge b-fix">Fixed</span></div>
+<h1 class="title">Notable fixes</h1>
+<p class="subtitle">Problems you’d have seen on earlier builds, one line each.</p>
+<p>Where a fix has a full write-up, it’s linked.</p>
+<ul>
+<li><strong>All apps</strong> — Dragging files in from the Linux file manager didn’t work. Fixed.</li>
+<li><strong>All apps</strong> — Extension panels (CEP) didn’t show up in their dock. Fixed for most panels.</li>
+<li><strong>All apps</strong> — A Wine Mono installer popup appeared. Fixed.</li>
+<li><strong>aescripts + aeplugins manager</strong> — It crashed when started. Fixed. Installing plugins through it hasn’t been tested yet.</li>
+<li><strong>After Effects</strong> — The composition viewer stayed blank. Fixed.</li>
+<li><strong>After Effects</strong> — Creating a new composition failed with a direct2d drawbot error. Fixed.</li>
+<li><strong>After Effects</strong> — The splash screen never appeared. Fixed.</li>
+<li><strong>After Effects 2026</strong> — The composition viewer didn’t render, because the display setting was written to the preferences file it doesn’t read. Fixed.</li>
+<li><strong>After Effects and Media Encoder</strong> — Short labels wrapped onto a second line. Fixed.</li>
+<li><strong>Illustrator</strong> — The whole window was sheared: the interface skewed a little further with every row. Fixed.</li>
+<li><strong>Illustrator and Animate</strong> — The main window was a solid white block. Fixed.</li>
+<li><strong>Lightroom Classic</strong> — Photo → Edit In took about ten seconds to open. Fixed: <a class="ln" href="/wiki/neutron/fixes/edit-in-lag/">the ten-second menu</a>.</li>
+<li><strong>Lightroom Classic</strong> — Edit In → Photoshop was grayed out. Fixed.</li>
+<li><strong>Lightroom Classic</strong> — AI Denoise and AI masking didn’t work. Fixed.</li>
+<li><strong>Lightroom Classic</strong> — Zoom and the Develop sliders lagged and moved in steps. Fixed.</li>
+<li><strong>Lightroom Classic</strong> — The filmstrip stopped scrolling partway through a large catalog. Fixed.</li>
+<li><strong>Lightroom Classic</strong> — The Copy Settings dialog showed a blank list instead of checkboxes. Fixed.</li>
+<li><strong>Lightroom Classic</strong> — The Develop histogram was a flat green block with no channel curves. Fixed.</li>
+<li><strong>Lightroom Classic</strong> — The filmstrip’s shading floated over other apps’ windows. Fixed.</li>
+<li><strong>Photoshop</strong> — Drawing on the canvas lagged. Fixed.</li>
+<li><strong>Photoshop</strong> — Menu item names overlapped their keyboard shortcuts. Fixed.</li>
+<li><strong>Photoshop</strong> — Scroll bars flashed the wrong color on hover. Fixed.</li>
+<li><strong>Photoshop 2026</strong> — A maximized window sat a few pixels off. Fixed.</li>
+<li><strong>Premiere Pro</strong> — Exports needed a separate muxing step before they were valid MP4 files. Fixed.</li>
+<li><strong>Premiere Pro</strong> — Scrubbing the timeline lagged. Fixed.</li>
+<li><strong>Premiere Pro</strong> — Rounded buttons and scroll bars were drawn misshapen. Fixed.</li>
+<li><strong>Premiere Pro</strong> — The home screen showed only gray placeholders. Fixed.</li>
+<li><strong>Premiere Pro</strong> — The menu-bar dropdowns (File, Edit…) had their bottom cut off. Fixed.</li>
+<li><strong>Premiere Pro</strong> — Timeline clips and other parts of the interface vanished, often on hover. Fixed.</li>
+<li><strong>Premiere Pro</strong> — The timeline’s time ruler was missing. Fixed.</li>
+<li><strong>Premiere Pro</strong> — Clicking back into Premiere from another app made it lose focus again. Fixed.</li>
+<li><strong>Premiere Pro</strong> — The mouse pointer disappeared when moving into a menu. Fixed.</li>
+<li><strong>Premiere Pro</strong> — One Backspace deleted two characters. Fixed.</li>
+</ul>
   </main>
 </div>
 
