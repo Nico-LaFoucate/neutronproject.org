@@ -19,7 +19,7 @@ You'll want these in place first:
 - **Python 3** and **cabextract**.
 - **Your own licensed Adobe apps.** You sign in inside each app, the same as on Windows.
 - **A display scale that's a Windows step** (100, 125, 150, 175, 200, 225, 250 or 300%). See [Choosing a display scale](/wiki/start/basics/display-scale/).
-- **A few gigabytes of free disk** for the runtime, the environment, and your apps.
+- **Free disk space:** About 8 GB, plus your Adobe apps.
 
 ## Step 1 — Install Neutron
 

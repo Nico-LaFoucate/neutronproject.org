@@ -15,7 +15,9 @@ Edit wiki-src/, never wiki/: everything under wiki/ is generated and overwritten
     wiki-src/wiki.js         copied to wiki/wiki.js with the search index filled in
 
 Each article is served at /wiki/<section>/<category>/<article>/. Old /wiki/#/... links
-are sent to the new address by a small script on /wiki/.
+are sent to the new address by a small script on /wiki/. Empty "being written" articles
+are still built, so old links keep working, but they are left out of the sidebar, the
+listings, search and the sitemap; so is a category with nothing else in it.
 
 Markdown: paragraphs, "## " and "### " headings, "- " lists, **bold**, *italic*,
 `code` and [text](/wiki/...) links. A block that starts with an HTML tag such as
@@ -158,6 +160,8 @@ def load():
                     a = read_article(p)
                     a["slug"] = slug
                     c["arts"].append(a)
+                c["shown"] = [a for a in c["arts"] if not a["stub"]]
+            s["shown"] = [c for c in s["categories"] if c["shown"]]
             sections.append(s)
     listed = {(s["slug"], c["slug"], a["slug"]) for s in sections for c in s["categories"] for a in c["arts"]}
     for p in (SRC / "pages").rglob("*.md"):
@@ -190,7 +194,7 @@ def sidebar(nav, sec=None, cat=None, art=None):
                      % (" active" if active else "", url(s["slug"]), esc(s["title"]), esc(s["kind"])))
             if not active:
                 continue
-            for c in s["categories"]:
+            for c in s["shown"]:
                 c_active = c["slug"] == cat
                 h.append('<div class="cat%s"><a href="%s">%s</a></div>'
                          % (" active" if c_active else "", url(s["slug"], c["slug"]), esc(c["title"])))
@@ -199,7 +203,7 @@ def sidebar(nav, sec=None, cat=None, art=None):
                         '<a%s href="%s"><span class="dot %s"></span>%s</a>'
                         % (' class="active" aria-current="page"' if a["slug"] == art else "",
                            url(s["slug"], c["slug"], a["slug"]), a["status"], esc(a["title"]))
-                        for a in c["arts"])
+                        for a in c["shown"])
                     h.append('<div class="arts">%s</div>' % links)
         h.append("</div>")
     h.append("</div>")
@@ -252,8 +256,8 @@ def build():
         sk = s["slug"]
         routes.append(sk)
         cards = "".join('<a class="card" href="%s"><div class="ct">%s</div><p>%d %s</p></a>'
-                        % (url(sk, c["slug"]), esc(c["title"]), len(c["arts"]),
-                           "article" if len(c["arts"]) == 1 else "articles") for c in s["categories"])
+                        % (url(sk, c["slug"]), esc(c["title"]), len(c["shown"]),
+                           "article" if len(c["shown"]) == 1 else "articles") for c in s["shown"])
         emit((sk,), "%s — %s" % (s["title"], HOME_TITLE), s["blurb"],
              crumb([("Wiki", url()), (s["title"], None)])
              + '\n<h1 class="title">%s</h1><p class="subtitle">%s</p><div class="cards">%s</div>'
@@ -264,16 +268,17 @@ def build():
             cards = "".join('<a class="card" href="%s"><div class="ct"><span class="dot %s"></span>%s</div>'
                             '<div class="ck">%s</div>%s</a>'
                             % (url(sk, ck, a["slug"]), a["status"], esc(a["title"]), BADGE[a["status"]],
-                               "<p>%s</p>" % esc(a["sub"]) if a["sub"] else "") for a in c["arts"])
+                               "<p>%s</p>" % esc(a["sub"]) if a["sub"] else "") for a in c["shown"])
             emit((sk, ck), "%s · %s — %s" % (c["title"], s["title"], HOME_TITLE), s["blurb"],
                  crumb([("Wiki", url()), (s["title"], url(sk)), (c["title"], None)])
                  + '\n<h1 class="title">%s</h1><p class="subtitle">%s</p><div class="cards">%s</div>'
-                 % (esc(c["title"]), esc(s["title"]), cards))
+                 % (esc(c["title"]), esc(s["title"]), cards), in_sitemap=bool(c["shown"]))
             for a in c["arts"]:
                 ak = a["slug"]
                 routes.append("%s/%s/%s" % (sk, ck, ak))
-                index.append({"t": a["title"], "s": a["sub"], "S": s["title"], "C": c["title"],
-                              "h": url(sk, ck, ak), "st": a["status"]})
+                if not a["stub"]:
+                    index.append({"t": a["title"], "s": a["sub"], "S": s["title"], "C": c["title"],
+                                  "h": url(sk, ck, ak), "st": a["status"]})
                 body = (crumb([("Wiki", url()), (s["title"], url(sk)), (c["title"], url(sk, ck)), (a["title"], None)])
                         + '\n<div><span class="badge b-%s">%s</span></div>\n<h1 class="title">%s</h1>\n'
                         % (a["status"], BADGE[a["status"]], esc(a["title"]))

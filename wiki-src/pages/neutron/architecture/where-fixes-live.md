@@ -1,10 +1,10 @@
 ---
 title: Where the fixes live
 status: guide
-sub: Neither Wine nor Adobe is broken — the defect is in the seam.
+sub: Adobe's apps aren't broken: they run fine on Windows. Wherever they misbehave under Wine, the gap is on Wine's side, and that's where Neutron patches.
 ---
 
-Neither Wine nor Adobe is broken on its own. The defects live in the **seam** between two healthy systems, and that seam is where Neutron patches. The stack is four tiers:
+The stack is five tiers:
 
 ### Cockpit — entry points
 
