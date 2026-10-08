@@ -66,12 +66,12 @@
 <h1 class="title">Installing Collider</h1>
 <p class="subtitle">From a clean Linux machine to your first Adobe launch — the whole stack, end to end.</p>
 <p><strong>Collider</strong> is the graphical front door to the whole stack. You install one app, and it sets up everything underneath it — the <a class="ln" href="/wiki/neutron/">Neutron</a> compatibility engine, its patched Wine runtime, and a healthy Adobe environment — then installs and launches your Adobe apps. No terminal required. This page walks the whole thing end to end.</p>
-<div class="callout"><p class="k">Experimental alpha — read this first</p><p>Neutron is early research, developed and tested on a single machine (an NVIDIA RTX 5070 on CachyOS + KDE Wayland). It runs real work in testing, but it is <strong>not</strong> stable or validated across hardware, distributions, or app versions — and you must bring your own <strong>legally licensed</strong> Adobe software. Treat this as a preview of the intended experience, not a finished product.</p></div>
+<div class="callout"><p class="k">Experimental alpha — read this first</p><p>Neutron is early research. Tested on three machines, all CachyOS with KDE Plasma (Wayland) and NVIDIA GPUs. It runs real work in testing, but it is <strong>not</strong> stable or validated across hardware, distributions, or app versions — and you must bring your own <strong>legally licensed</strong> Adobe software. Treat this as a preview of the intended experience, not a finished product.</p></div>
 <h2>Before you begin</h2>
 <p>You'll want these in place first:</p>
 <ul>
 <li><strong>A modern Linux distribution</strong> — CachyOS, Arch, or Ubuntu 22.04+. KDE on <strong>Wayland</strong> is the reference desktop.</li>
-<li><strong>A Vulkan-capable GPU with current drivers.</strong> NVIDIA (with the open driver) is the primary, best-tested path; AMD is supported by Vulkan but far less validated.</li>
+<li><strong>A Vulkan-capable GPU with current drivers.</strong> NVIDIA (with the open driver) is the tested path. AMD and Intel GPUs aren't validated yet; <a class="ln" href="https://github.com/Nico-LaFoucate/Neutron/issues">reports welcome</a>.</li>
 <li><strong>A valid Adobe Creative Cloud subscription</strong> — or an existing Adobe installation you can copy from.</li>
 <li><strong>A few gigabytes of free disk</strong> for the runtime, the environment, and your apps.</li>
 </ul>
@@ -85,7 +85,7 @@
 <h2>Step 3 — Add your Adobe apps</h2>
 <p>With the engine ready, add the apps you own. Collider is designed to support several ways to get Adobe software in — pick whichever matches how you already have it:</p>
 <ul>
-<li><strong>Sign in with Adobe</strong> — download straight from Adobe's servers using your Creative Cloud subscription.</li>
+<li><strong>Download from Adobe</strong> — download straight from Adobe's servers. No sign-in is needed to install; you sign in later, inside the app.</li>
 <li><strong>Copy from Windows</strong> — point Collider at an existing Windows install (a dual-boot drive, a backup, or a mounted disc image) and it migrates the app in place.</li>
 <li><strong>Offline installer</strong> — use an offline Adobe installer package you already have.</li>
 <li><strong>Import a prefix</strong> — bring an app in from an existing Proton or Wine prefix.</li>
@@ -114,7 +114,10 @@
   <a href="https://github.com/Nico-LaFoucate/Collider">Collider</a>
   <a href="https://github.com/Nico-LaFoucate/Mud-Hut">Mud Hut</a>
   <span class="sp">Neutron LGPL v2.1 · Collider Apache 2.0</span>
-</div></footer>
+</div>
+<p class="legal">Neutron is an independent project by Nico LaFoucate and Ficus Media Group. Adobe and its product names are trademarks of Adobe Inc. Neutron is not affiliated with or endorsed by Adobe.</p>
+<p class="legal">Wiki + site text: <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Logos and Neutron/Collider/Mud Hut branding: reserved. Site code (HTML/CSS/JS): <a href="https://opensource.org/license/mit">MIT</a>.</p>
+</footer>
 
 <script src="/wiki/wiki.js"></script>
 </body>

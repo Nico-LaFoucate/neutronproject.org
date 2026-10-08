@@ -6,14 +6,14 @@ sub: From a clean Linux machine to your first Adobe launch — the whole stack, 
 
 **Collider** is the graphical front door to the whole stack. You install one app, and it sets up everything underneath it — the [Neutron](/wiki/neutron/) compatibility engine, its patched Wine runtime, and a healthy Adobe environment — then installs and launches your Adobe apps. No terminal required. This page walks the whole thing end to end.
 
-<div class="callout"><p class="k">Experimental alpha — read this first</p><p>Neutron is early research, developed and tested on a single machine (an NVIDIA RTX 5070 on CachyOS + KDE Wayland). It runs real work in testing, but it is <strong>not</strong> stable or validated across hardware, distributions, or app versions — and you must bring your own <strong>legally licensed</strong> Adobe software. Treat this as a preview of the intended experience, not a finished product.</p></div>
+<div class="callout"><p class="k">Experimental alpha — read this first</p><p>Neutron is early research. Tested on three machines, all CachyOS with KDE Plasma (Wayland) and NVIDIA GPUs. It runs real work in testing, but it is <strong>not</strong> stable or validated across hardware, distributions, or app versions — and you must bring your own <strong>legally licensed</strong> Adobe software. Treat this as a preview of the intended experience, not a finished product.</p></div>
 
 ## Before you begin
 
 You'll want these in place first:
 
 - **A modern Linux distribution** — CachyOS, Arch, or Ubuntu 22.04+. KDE on **Wayland** is the reference desktop.
-- **A Vulkan-capable GPU with current drivers.** NVIDIA (with the open driver) is the primary, best-tested path; AMD is supported by Vulkan but far less validated.
+- **A Vulkan-capable GPU with current drivers.** NVIDIA (with the open driver) is the tested path. AMD and Intel GPUs aren't validated yet; [reports welcome](https://github.com/Nico-LaFoucate/Neutron/issues).
 - **A valid Adobe Creative Cloud subscription** — or an existing Adobe installation you can copy from.
 - **A few gigabytes of free disk** for the runtime, the environment, and your apps.
 
@@ -35,7 +35,7 @@ Under the hood this is the same work the `neutron` command line does — downloa
 
 With the engine ready, add the apps you own. Collider is designed to support several ways to get Adobe software in — pick whichever matches how you already have it:
 
-- **Sign in with Adobe** — download straight from Adobe's servers using your Creative Cloud subscription.
+- **Download from Adobe** — download straight from Adobe's servers. No sign-in is needed to install; you sign in later, inside the app.
 - **Copy from Windows** — point Collider at an existing Windows install (a dual-boot drive, a backup, or a mounted disc image) and it migrates the app in place.
 - **Offline installer** — use an offline Adobe installer package you already have.
 - **Import a prefix** — bring an app in from an existing Proton or Wine prefix.

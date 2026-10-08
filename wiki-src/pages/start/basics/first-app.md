@@ -8,11 +8,11 @@ You've [installed Collider](/wiki/start/basics/install-collider/), added an app,
 
 ## First launch: sign in to Adobe
 
-The app opens to its normal Adobe home screen. The first time, it asks you to **sign in with your Adobe ID** — the same Creative Cloud account you'd use on Windows or macOS. This is what activates your license; Neutron doesn't replace or bypass it.
+The app opens to its normal Adobe home screen and asks you to **sign in with your Adobe ID** — the same Creative Cloud account you'd use on Windows or macOS. This is what activates your license; Neutron doesn't replace or bypass it.
 
-Sign-in happens in an embedded browser window, so give it a moment to load. You only do this once — Collider is designed to keep you signed in across the whole suite, so the next app you open is already authenticated.
+You sign in inside the Adobe app, the same as on Windows. Neutron never touches your Adobe account or login. Sign-in happens in an embedded browser window, so give it a moment to load.
 
-<div class="callout"><p class="k">You bring the license</p><p>Neutron distributes no Adobe software and circumvents nothing. You run the genuine app, signed into your own valid subscription.</p></div>
+<div class="callout"><p class="k">You bring the license</p><p>Neutron distributes no Adobe software and circumvents nothing. You run the genuine app, signed into your own valid subscription. Neutron never modifies Adobe's program files; it changes one display setting in Adobe's own preferences (<code>DS.DisableDirectXDisplay</code> in <code>Debug Database.txt</code>) and adds three compatibility flags to aescripts panels' <code>manifest.xml</code> (original backed up).</p></div>
 
 ## What “working” looks like
 
@@ -46,6 +46,7 @@ This is experimental alpha, so a few things are expected and a few are worth che
 - **If an app won't start or the GPU isn't used,** re-run Collider's compatibility check — it calls out driver, GPU, or desktop-session problems in plain English.
 - **For anything app-specific** — a feature that's greyed out, a panel that misbehaves — check that app's page under **Applications**; known issues and their status live there.
 - **A given feature may simply not be validated yet.** The [status board](/#status) is the honest, current picture of what's been confirmed.
+- **To report a problem,** open an issue on the [Neutron repository](https://github.com/Nico-LaFoucate/Neutron/issues). Questions go in its [Discussions](https://github.com/Nico-LaFoucate/Neutron/discussions).
 
 ## Where to go next
 

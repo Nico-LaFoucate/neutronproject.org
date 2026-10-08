@@ -67,9 +67,9 @@
 <p class="subtitle">You clicked Launch — here’s what to expect, and how to get to real work.</p>
 <p>You've <a class="ln" href="/wiki/start/basics/install-collider/">installed Collider</a>, added an app, and hit <strong>Launch</strong>. Collider has already applied the display fix and started Adobe's background services — so from here, it should feel like the app you already know. Here's what to expect on that first run, and how to get to actual work.</p>
 <h2>First launch: sign in to Adobe</h2>
-<p>The app opens to its normal Adobe home screen. The first time, it asks you to <strong>sign in with your Adobe ID</strong> — the same Creative Cloud account you'd use on Windows or macOS. This is what activates your license; Neutron doesn't replace or bypass it.</p>
-<p>Sign-in happens in an embedded browser window, so give it a moment to load. You only do this once — Collider is designed to keep you signed in across the whole suite, so the next app you open is already authenticated.</p>
-<div class="callout"><p class="k">You bring the license</p><p>Neutron distributes no Adobe software and circumvents nothing. You run the genuine app, signed into your own valid subscription.</p></div>
+<p>The app opens to its normal Adobe home screen and asks you to <strong>sign in with your Adobe ID</strong> — the same Creative Cloud account you'd use on Windows or macOS. This is what activates your license; Neutron doesn't replace or bypass it.</p>
+<p>You sign in inside the Adobe app, the same as on Windows. Neutron never touches your Adobe account or login. Sign-in happens in an embedded browser window, so give it a moment to load.</p>
+<div class="callout"><p class="k">You bring the license</p><p>Neutron distributes no Adobe software and circumvents nothing. You run the genuine app, signed into your own valid subscription. Neutron never modifies Adobe's program files; it changes one display setting in Adobe's own preferences (<code>DS.DisableDirectXDisplay</code> in <code>Debug Database.txt</code>) and adds three compatibility flags to aescripts panels' <code>manifest.xml</code> (original backed up).</p></div>
 <h2>What “working” looks like</h2>
 <p>Each app behaves like its Windows counterpart. Quick starts for the three that are furthest along — all <strong>alpha</strong>, all doing real work in testing:</p>
 <h3>Premiere Pro</h3>
@@ -89,6 +89,7 @@
 <li><strong>If an app won't start or the GPU isn't used,</strong> re-run Collider's compatibility check — it calls out driver, GPU, or desktop-session problems in plain English.</li>
 <li><strong>For anything app-specific</strong> — a feature that's greyed out, a panel that misbehaves — check that app's page under <strong>Applications</strong>; known issues and their status live there.</li>
 <li><strong>A given feature may simply not be validated yet.</strong> The <a class="ln" href="/#status">status board</a> is the honest, current picture of what's been confirmed.</li>
+<li><strong>To report a problem,</strong> open an issue on the <a class="ln" href="https://github.com/Nico-LaFoucate/Neutron/issues">Neutron repository</a>. Questions go in its <a class="ln" href="https://github.com/Nico-LaFoucate/Neutron/discussions">Discussions</a>.</li>
 </ul>
 <h2>Where to go next</h2>
 <p>Head into the <strong>Applications</strong> section for the current status, notable fixes, and known issues of each app — that's where the detail lives, and where new pages land as more of the suite comes online.</p>
@@ -101,7 +102,10 @@
   <a href="https://github.com/Nico-LaFoucate/Collider">Collider</a>
   <a href="https://github.com/Nico-LaFoucate/Mud-Hut">Mud Hut</a>
   <span class="sp">Neutron LGPL v2.1 · Collider Apache 2.0</span>
-</div></footer>
+</div>
+<p class="legal">Neutron is an independent project by Nico LaFoucate and Ficus Media Group. Adobe and its product names are trademarks of Adobe Inc. Neutron is not affiliated with or endorsed by Adobe.</p>
+<p class="legal">Wiki + site text: <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Logos and Neutron/Collider/Mud Hut branding: reserved. Site code (HTML/CSS/JS): <a href="https://opensource.org/license/mit">MIT</a>.</p>
+</footer>
 
 <script src="/wiki/wiki.js"></script>
 </body>

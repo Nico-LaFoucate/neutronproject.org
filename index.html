@@ -633,6 +633,8 @@ footer{
   margin-top:26px;font-size:12px;color:#6E82A3;
   max-width:70ch;line-height:1.6;
 }
+.disclaimer + .disclaimer{margin-top:10px}
+.disclaimer a{color:#A9BBD6}
 </style>
 </head>
 <body>
@@ -704,7 +706,7 @@ footer{
       <p class="eyebrow">Compatibility engine · Alpha</p>
       <h1>Adobe Creative Suite,<br>running on <em>Linux</em>.</h1>
       <p class="lede">Neutron is a compatibility engine built on Wine, DXVK, and vkd3d-proton, patched specifically for the way Adobe applications talk to Windows. <strong>Collider</strong> is the launcher. <strong>Mud Hut</strong> installs the apps.</p>
-      <p class="proof">Premiere Pro, Photoshop, and Lightroom have been used to deliver paid client work on this stack. After Effects, Media Encoder, Illustrator and Animate all run — including Dynamic Link between Premiere and After Effects — but have not yet carried a paid job. Everything here has been tested on one machine: an NVIDIA GPU on Arch with KDE Wayland.</p>
+      <p class="proof">Premiere Pro, Photoshop, and Lightroom have been used to deliver paid client work on this stack. After Effects, Media Encoder, Illustrator and Animate all run — including Dynamic Link between Premiere and After Effects — but have not yet carried a paid job. Tested on three machines, all CachyOS with KDE Plasma (Wayland) and NVIDIA GPUs.</p>
       <div class="btns">
         <a class="btn btn-a" href="#status">Check app support</a>
         <a class="btn btn-b" href="https://github.com/Nico-LaFoucate/Collider">Get Collider</a>
@@ -852,7 +854,7 @@ footer{
 
       <ul class="specstrip">
         <li><span>Reference environment</span> CachyOS · KDE Plasma (Wayland) · RTX 5070 on nvidia-open · ntsync kernel</li>
-        <li><span>Other setups</span> Expected to work, being brought up, not yet validated</li>
+        <li><span>Other setups</span> AMD and Intel GPUs, other distros and other desktops aren't validated yet. <a href="https://github.com/Nico-LaFoucate/Neutron/issues">Reports welcome</a></li>
         <li><span>Licensing</span> Bring your own Adobe subscription — no Adobe code is distributed</li>
       </ul>
       <div class="deckstrip">
@@ -1166,10 +1168,12 @@ footer{
       <a href="https://github.com/Nico-LaFoucate/Neutron">Neutron</a>
       <a href="https://github.com/Nico-LaFoucate/Collider">Collider</a>
       <a href="https://github.com/Nico-LaFoucate/Mud-Hut">Mud Hut</a>
-      <a href="https://github.com/Nico-LaFoucate/Neutron/blob/main/docs/ESSENTIAL.md">Docs</a>
+      <a href="/wiki/">Docs</a>
       <span class="sp">Neutron LGPL v2.1 · Collider Apache 2.0</span>
     </div>
-    <p class="disclaimer">Neutron is an independent project and is not affiliated with, endorsed by, or sponsored by Adobe Inc. Adobe, Premiere Pro, Photoshop, and Lightroom are trademarks of Adobe Inc. You must own a valid license for any Adobe software you run. Neutron distributes no Adobe code.</p>
+    <p class="disclaimer">Neutron is an independent project by Nico LaFoucate and Ficus Media Group. Adobe and its product names are trademarks of Adobe Inc. Neutron is not affiliated with or endorsed by Adobe. You must own a valid license for any Adobe software you run. Neutron distributes no Adobe code and modifies no Adobe software.*</p>
+    <p class="disclaimer">Wiki + site text: <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Logos and Neutron/Collider/Mud Hut branding: reserved. Site code (HTML/CSS/JS): <a href="https://opensource.org/license/mit">MIT</a>.</p>
+    <p class="disclaimer">* Neutron never modifies Adobe's program files; it changes one display setting in Adobe's own preferences (DS.DisableDirectXDisplay in Debug Database.txt) and adds three compatibility flags to aescripts panels' manifest.xml (original backed up).</p>
   </div>
 </footer>
 
