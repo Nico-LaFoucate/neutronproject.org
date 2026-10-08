@@ -139,7 +139,7 @@
           "slug": "mudhut",
           "title": "Mud Hut",
           "kind": "Installer",
-          "blurb": "The installer: gets Adobe apps onto your machine without hand-building a prefix. Ships inside Collider, and runs standalone in a terminal.",
+          "blurb": "The installer: gets Adobe apps onto your machine without hand-building a prefix. Collider runs it from its Mud Hut tab; it also runs standalone in a terminal.",
           "categories": [
             {
               "slug": "overview",
