@@ -25,17 +25,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
-/* =========================================================
-   EDIT HERE — FUNDING BAR
-   Change the number below when the funding total moves.
-   It must be a percentage, e.g. 4% or 27% or 100%.
-   To work it out: current monthly total divided by 3000,
-   times 100. ($450 / 3000) x 100 = 15%  ->  write 15%
-   Then also update the "$0 of $3,000 / month" text further
-   down the page (search the file for: goal-num).
-   ========================================================= */
-:root{ --funding-progress:4%; }
-
 :root{
   color-scheme:dark;
   --paper:#0A0E16;      /* deep space, not flat black */
@@ -609,17 +598,6 @@ h2{
   letter-spacing:.06em;color:var(--ink);
 }
 
-.goal{
-  border:1px solid var(--line);border-radius:3px;padding:24px 26px;
-  background:rgba(15,21,34,.82);
-}
-.goal-top{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:12px;flex-wrap:wrap}
-.goal-lbl{font-family:var(--f-display);font-weight:400;font-size:20px;letter-spacing:.03em}
-.goal-num{font-family:var(--f-mono);font-size:13px;color:var(--ink-dim)}
-.track{height:8px;background:var(--paper);border-radius:2px;overflow:hidden;border:1px solid var(--line)}
-.fill{height:100%;width:var(--funding-progress);min-width:4px;background:var(--red);border-radius:2px;transition:width .4s ease}
-.goal p{margin:12px 0 0;font-size:14px;color:var(--ink-dim)}
-
 /* ---------- footer ---------- */
 footer{
   background:var(--navy);color:#A9BBD6;
@@ -1129,35 +1107,31 @@ footer{
 <section id="support">
   <div class="wrap">
     <p class="eyebrow">Funding</p>
-    <h2>Make this someone's full-time job</h2>
-    <p class="sec-note">Neutron is maintained by one person working alongside a freelance creative career. Funding converts that into sustained, full-time compatibility work — faster fixes, more applications, and regression testing that keeps working apps working.</p>
+    <h2>Help keep Neutron going</h2>
+    <p class="sec-note">Neutron was made for free, and every donation helps keep the project alive and in development.</p>
 
     <div class="tiers">
       <div class="tier-card">
         <h4>Patreon</h4>
-        <p>Monthly support with early builds, roadmap input, and direct access to development discussion.</p>
+        <p>Monthly support through Patreon.</p>
         <a href="https://patreon.com/neutronproject">Become a patron →</a>
       </div>
       <div class="tier-card">
         <h4>GitHub Sponsors</h4>
-        <p>Sponsor directly through GitHub, one-time or recurring. Same tiers, zero platform friction.</p>
+        <p>Sponsor directly through GitHub, one-time or recurring.</p>
         <a href="https://github.com/sponsors/Nico-LaFoucate">Sponsor on GitHub →</a>
       </div>
       <div class="tier-card">
+        <h4>Ko-fi</h4>
+        <p>Donate through Ko-fi.</p>
+        <a href="https://ko-fi.com/neutroncollider">Support on Ko-fi →</a>
+      </div>
+      <div class="tier-card">
         <h4>Studios and companies</h4>
-        <p>If your team depends on this stack, invoiced sponsorship and prioritized compatibility work are available.</p>
+        <p>For businesses that want to sponsor the project, or get in touch about funding a specific part of its development.</p>
         <a href="mailto:contact@neutronproject.org?subject=NEUTRON%20-%20">contact@neutronproject.org →</a>
-        <p class="hint">Put <b>NEUTRON</b> or <b>COLLIDER</b> in the subject line so it reaches the right place.</p>
+        <p class="hint">Put <b>NEUTRON</b> or <b>COLLIDER</b> in the subject line so it reaches the right place. Bug reports go to GitHub Issues, not this address.</p>
       </div>
-    </div>
-
-    <div class="goal">
-      <div class="goal-top">
-        <span class="goal-lbl">Full-time development</span>
-        <span class="goal-num">$0 of $3,000 / month</span>
-      </div>
-      <div class="track"><div class="fill"></div></div>
-      <p>At $3,000/month, Neutron becomes the primary work rather than the evening work.</p>
     </div>
   </div>
 </section>
