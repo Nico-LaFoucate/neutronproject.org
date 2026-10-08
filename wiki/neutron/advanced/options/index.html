@@ -72,16 +72,16 @@
 <h1 class="title">Advanced options</h1>
 <p class="subtitle">Switches for testing and troubleshooting. Each one has a cost.</p>
 <p>These are for testing and troubleshooting. The normal guides never need them, and each one can make things worse.</p>
-<h2>Turn one fix off: <code>--without</code></h2>
+<h2>Turn one fix off</h2>
 <p><code>neutron launch &lt;app&gt; --without &lt;fix&gt;</code> launches with one of Neutron's shipped fixes turned off, for that launch only. <code>neutron gates</code> lists the fixes you can turn off. Use it to check whether a fix is behind a problem you're seeing.</p>
 <p><strong>Risk:</strong> with the fix off, the app can misbehave in exactly the way that fix exists to prevent.</p>
-<h2>Launch on a different runtime: <code>--allow-restamp</code></h2>
+<h2>Launch on a different runtime</h2>
 <p><code>neutron launch &lt;app&gt; --allow-restamp</code> launches even when the installed runtime isn't the one the prefix was set up with.</p>
 <p><strong>Risk:</strong> Wine updates the prefix and reverts Neutron's patched files in it, so apps can break until you run <code>neutron prefix provision &lt;prefix&gt;</code>. Use it only when you're deliberately moving a prefix to a new runtime; <code>neutron update</code> normally does that for you.</p>
-<h2>Pick a runtime version: <code>NEUTRON_WINE_VERSION</code></h2>
+<h2>Pick a runtime version</h2>
 <p>Set <code>NEUTRON_WINE_VERSION=&lt;version&gt;</code> to use a specific installed neutron-wine runtime instead of the newest one. The app menu entries pin their version the same way.</p>
 <p><strong>Risk:</strong> a prefix set up with a different runtime refuses to launch on it (see <code>--allow-restamp</code>).</p>
-<h2>Launch on X11: <code>NEUTRON_ALLOW_X11=1</code></h2>
+<h2>Launch on X11</h2>
 <p>X11 isn't supported. Setting <code>NEUTRON_ALLOW_X11=1</code> lets an app launch in an X11 session anyway.</p>
 <p><strong>Risk:</strong> every graphics fix Neutron ships lives in its Wayland driver, so none of them apply. It also switches the prefix's graphics driver to X11; a later Wayland launch switches it back. You're on your own: bug reports from X11 sessions aren't supported.</p>
   </main>
