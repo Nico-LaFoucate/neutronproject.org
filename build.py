@@ -30,9 +30,9 @@ import sys
 from pathlib import Path
 
 SITE_URL = "https://neutronproject.org"
-# Pre-launch: every wiki page carries noindex and no sitemap is written.
-# Launch day: set this to True and rebuild (see robots.txt as well).
-INDEXABLE = False
+# True: pages are indexable and sitemap.xml is written.
+# False (pre-launch): every wiki page carries noindex and there is no sitemap.
+INDEXABLE = True
 
 ROOT = Path(__file__).resolve().parent
 SRC = ROOT / "wiki-src"
