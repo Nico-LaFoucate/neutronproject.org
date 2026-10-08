@@ -35,6 +35,7 @@ Where a fix has a full write-up, it’s linked.
 - **Premiere Pro** — The home screen showed only gray placeholders. Fixed.
 - **Premiere Pro** — The menu-bar dropdowns (File, Edit…) had their bottom cut off. Fixed.
 - **Premiere Pro** — Timeline clips and other parts of the interface vanished, often on hover. Fixed.
+- **Premiere Pro** — FabFilter and other VST plugin windows sank behind the Program Monitor. Fixed.
 - **Premiere Pro** — The timeline’s time ruler was missing. Fixed.
 - **Premiere Pro** — Clicking back into Premiere from another app made it lose focus again. Fixed.
 - **Premiere Pro** — The mouse pointer disappeared when moving into a menu. Fixed.

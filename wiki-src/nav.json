@@ -63,7 +63,8 @@
               "title": "Features",
               "articles": [
                 "native-canvas",
-                "ai-features"
+                "ai-features",
+                "plugins"
               ]
             },
             {
@@ -86,6 +87,13 @@
               "title": "Runtimes & Builds",
               "articles": [
                 "versioned-runtimes"
+              ]
+            },
+            {
+              "slug": "advanced",
+              "title": "Advanced",
+              "articles": [
+                "options"
               ]
             }
           ]

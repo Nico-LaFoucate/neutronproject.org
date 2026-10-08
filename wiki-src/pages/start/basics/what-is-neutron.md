@@ -12,4 +12,4 @@ It comes as three separate pieces, each owning one job:
 - **[Collider](/wiki/collider/)** — the launcher. A desktop app that finds your installed apps, checks a prefix is healthy, launches it, and supervises it. It calls Neutron for anything compatibility-related and holds no fixes of its own.
 - **[Mud Hut](/wiki/mudhut/)** — the installer. Gets Adobe apps onto your machine without hand-building a prefix. One-click inside Collider, or standalone in a terminal.
 
-Premiere Pro, Photoshop, and Lightroom have been used for paid client work on this stack. See each application's page for its current status.
+Premiere Pro, Photoshop, and Lightroom Classic have been used for paid client work on this stack. See each application's page for its current status.

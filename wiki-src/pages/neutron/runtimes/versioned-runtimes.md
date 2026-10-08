@@ -8,4 +8,4 @@ Neutron ships Wine the Proton-GE way. The **neutron-wine** repo is the *recipe* 
 
 Versions look like `11.10-12`: the `11.10` tracks the upstream Wine base, and the `-12` is the Neutron revision — it bumps whenever the patch set changes. Because every runtime is reproducible from the tracked patch set, a fix is never a hand-swapped binary; it is a patch that rebuilds cleanly into the next release.
 
-An app is pinned to the runtime it was last booted against — launching against a different one triggers a prefix update, so the engine keeps that mapping deliberate.
+Each prefix is tied to the runtime it was set up with, and an app won't launch against a different one. `neutron update` installs the newest runtime and moves your prefixes to it; for a single prefix, run `neutron prefix provision <prefix>`.

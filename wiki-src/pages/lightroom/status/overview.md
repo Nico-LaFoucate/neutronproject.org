@@ -13,4 +13,4 @@ Lightroom Classic is in good shape on Neutron. Confirmed working:
 - **Copy Settings, masking popups, filmstrip scrolling** across large catalogs — all working.
 - **Batch export.**
 
-Remaining rough edges are cosmetic: the window can render off-center until the app finishes loading, panels come in a little slowly on launch, and the color-grading wheels and some scrollbars are slightly finicky. None block real work.
+The interface takes several seconds to paint in when the app starts; that comes from inside the app, not from Neutron. See [Known issues](/wiki/start/help/known-issues/).

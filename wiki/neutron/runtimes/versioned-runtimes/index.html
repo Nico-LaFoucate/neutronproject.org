@@ -53,6 +53,7 @@
 <div class="cat"><a href="/wiki/neutron/issues/">Known Issues</a></div>
 <div class="cat active"><a href="/wiki/neutron/runtimes/">Runtimes &amp; Builds</a></div>
 <div class="arts"><a class="active" aria-current="page" href="/wiki/neutron/runtimes/versioned-runtimes/"><span class="dot guide"></span>How runtimes are versioned</a></div>
+<div class="cat"><a href="/wiki/neutron/advanced/">Advanced</a></div>
 <div class="snode"><a href="/wiki/collider/">Collider<span class="kind">Launcher</span></a></div>
 <div class="snode"><a href="/wiki/mudhut/">Mud Hut<span class="kind">Installer</span></a></div>
 </div>
@@ -72,7 +73,7 @@
 <p class="subtitle">Proton-style: the repo is the recipe, releases are prebuilt trees.</p>
 <p>Neutron ships Wine the Proton-GE way. The <strong>neutron-wine</strong> repo is the <em>recipe</em> — a patch set plus a pinned upstream Wine base — and each release is a <strong>prebuilt, self-contained Wine tree</strong> attached to a versioned release. You never build Wine; the engine downloads and verifies a tarball.</p>
 <p>Versions look like <code>11.10-12</code>: the <code>11.10</code> tracks the upstream Wine base, and the <code>-12</code> is the Neutron revision — it bumps whenever the patch set changes. Because every runtime is reproducible from the tracked patch set, a fix is never a hand-swapped binary; it is a patch that rebuilds cleanly into the next release.</p>
-<p>An app is pinned to the runtime it was last booted against — launching against a different one triggers a prefix update, so the engine keeps that mapping deliberate.</p>
+<p>Each prefix is tied to the runtime it was set up with, and an app won't launch against a different one. <code>neutron update</code> installs the newest runtime and moves your prefixes to it; for a single prefix, run <code>neutron prefix provision &lt;prefix&gt;</code>.</p>
   </main>
 </div>
 
@@ -81,7 +82,7 @@
   <a href="https://github.com/Nico-LaFoucate/Neutron">Neutron</a>
   <a href="https://github.com/Nico-LaFoucate/Collider">Collider</a>
   <a href="https://github.com/Nico-LaFoucate/Mud-Hut">Mud Hut</a>
-  <span class="sp">Neutron LGPL v2.1 · Collider Apache 2.0</span>
+  <span class="sp">Neutron and neutron-wine LGPL-2.1-or-later · Collider and Mud Hut Apache 2.0</span>
 </div>
 <p class="legal">Neutron is an independent project by Nico LaFoucate and Ficus Media Group. Adobe and its product names are trademarks of Adobe Inc. Neutron is not affiliated with or endorsed by Adobe.</p>
 <p class="legal">Wiki + site text: <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Logos and Neutron/Collider/Mud Hut branding: reserved. Site code (HTML/CSS/JS): <a href="https://opensource.org/license/mit">MIT</a>.</p>

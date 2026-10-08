@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Troubleshooting · Mud Hut — Neutron Wiki</title>
-<meta name="description" content="The installer: gets Adobe apps onto your machine without hand-building a prefix. Ships inside Collider, and runs standalone in a terminal.">
-<link rel="canonical" href="https://neutronproject.org/wiki/mudhut/troubleshooting/">
+<title>Advanced options — Neutron Wiki</title>
+<meta name="description" content="Switches for testing and troubleshooting. Each one has a cost.">
+<link rel="canonical" href="https://neutronproject.org/wiki/neutron/advanced/options/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -45,13 +45,17 @@
 </div>
 <div class="grp toggle" role="button" tabindex="0" aria-expanded="true" data-group="The stack" data-active><span class="chev">▾</span>The stack</div>
 <div class="grp-body">
-<div class="snode"><a href="/wiki/neutron/">Neutron<span class="kind">Engine</span></a></div>
+<div class="snode active"><a href="/wiki/neutron/">Neutron<span class="kind">Engine</span></a></div>
+<div class="cat"><a href="/wiki/neutron/overview/">Overview</a></div>
+<div class="cat"><a href="/wiki/neutron/architecture/">Architecture</a></div>
+<div class="cat"><a href="/wiki/neutron/features/">Features</a></div>
+<div class="cat"><a href="/wiki/neutron/fixes/">Fixes</a></div>
+<div class="cat"><a href="/wiki/neutron/issues/">Known Issues</a></div>
+<div class="cat"><a href="/wiki/neutron/runtimes/">Runtimes &amp; Builds</a></div>
+<div class="cat active"><a href="/wiki/neutron/advanced/">Advanced</a></div>
+<div class="arts"><a class="active" aria-current="page" href="/wiki/neutron/advanced/options/"><span class="dot guide"></span>Advanced options</a></div>
 <div class="snode"><a href="/wiki/collider/">Collider<span class="kind">Launcher</span></a></div>
-<div class="snode active"><a href="/wiki/mudhut/">Mud Hut<span class="kind">Installer</span></a></div>
-<div class="cat"><a href="/wiki/mudhut/overview/">Overview</a></div>
-<div class="cat"><a href="/wiki/mudhut/features/">Features</a></div>
-<div class="cat active"><a href="/wiki/mudhut/troubleshooting/">Troubleshooting</a></div>
-<div class="arts"><a href="/wiki/mudhut/troubleshooting/placeholder/"><span class="dot guide"></span>Common install problems</a></div>
+<div class="snode"><a href="/wiki/mudhut/">Mud Hut<span class="kind">Installer</span></a></div>
 </div>
 <div class="grp toggle" role="button" tabindex="0" aria-expanded="false" data-group="Applications"><span class="chev">▸</span>Applications</div>
 <div class="grp-body" hidden>
@@ -63,8 +67,23 @@
 </div>
   </aside>
   <main class="content" id="content">
-<nav class="crumb"><a href="/wiki/">Wiki</a> <span class="sep">/</span><a href="/wiki/mudhut/">Mud Hut</a> <span class="sep">/</span><span>Troubleshooting</span></nav>
-<h1 class="title">Troubleshooting</h1><p class="subtitle">Mud Hut</p><div class="cards"><a class="card" href="/wiki/mudhut/troubleshooting/placeholder/"><div class="ct"><span class="dot guide"></span>Common install problems</div><div class="ck">Guide</div><p>When an install doesn’t go cleanly.</p></a></div>
+<nav class="crumb"><a href="/wiki/">Wiki</a> <span class="sep">/</span><a href="/wiki/neutron/">Neutron</a> <span class="sep">/</span><a href="/wiki/neutron/advanced/">Advanced</a> <span class="sep">/</span><span>Advanced options</span></nav>
+<div><span class="badge b-guide">Guide</span></div>
+<h1 class="title">Advanced options</h1>
+<p class="subtitle">Switches for testing and troubleshooting. Each one has a cost.</p>
+<p>These are for testing and troubleshooting. The normal guides never need them, and each one can make things worse.</p>
+<h2>Turn one fix off: <code>--without</code></h2>
+<p><code>neutron launch &lt;app&gt; --without &lt;fix&gt;</code> launches with one of Neutron's shipped fixes turned off, for that launch only. <code>neutron gates</code> lists the fixes you can turn off. Use it to check whether a fix is behind a problem you're seeing.</p>
+<p><strong>Risk:</strong> with the fix off, the app can misbehave in exactly the way that fix exists to prevent.</p>
+<h2>Launch on a different runtime: <code>--allow-restamp</code></h2>
+<p><code>neutron launch &lt;app&gt; --allow-restamp</code> launches even when the installed runtime isn't the one the prefix was set up with.</p>
+<p><strong>Risk:</strong> Wine updates the prefix and reverts Neutron's patched files in it, so apps can break until you run <code>neutron prefix provision &lt;prefix&gt;</code>. Use it only when you're deliberately moving a prefix to a new runtime; <code>neutron update</code> normally does that for you.</p>
+<h2>Pick a runtime version: <code>NEUTRON_WINE_VERSION</code></h2>
+<p>Set <code>NEUTRON_WINE_VERSION=&lt;version&gt;</code> to use a specific installed neutron-wine runtime instead of the newest one. The app menu entries pin their version the same way.</p>
+<p><strong>Risk:</strong> a prefix set up with a different runtime refuses to launch on it (see <code>--allow-restamp</code>).</p>
+<h2>Launch on X11: <code>NEUTRON_ALLOW_X11=1</code></h2>
+<p>X11 isn't supported. Setting <code>NEUTRON_ALLOW_X11=1</code> lets an app launch in an X11 session anyway.</p>
+<p><strong>Risk:</strong> every graphics fix Neutron ships lives in its Wayland driver, so none of them apply. It also switches the prefix's graphics driver to X11; a later Wayland launch switches it back. You're on your own: bug reports from X11 sessions aren't supported.</p>
   </main>
 </div>
 
