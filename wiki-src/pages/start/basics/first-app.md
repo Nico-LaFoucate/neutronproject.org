@@ -24,7 +24,7 @@ Import your media, cut on the timeline, and play back in the program monitor. GP
 
 ### Photoshop
 
-**File → New** brings up the full workspace — canvas and panels docked — and drawing goes straight to the GPU. There's some warm-up lag and the occasional redraw artifact; details on the [Photoshop page](/wiki/photoshop/).
+**File → New** brings up the full workspace — canvas and panels docked — and drawing goes straight to the GPU. More on the [Photoshop page](/wiki/photoshop/).
 
 ### Lightroom Classic
 
@@ -40,9 +40,8 @@ GPU acceleration is on by default, and Collider keeps Adobe's licensing and IPC 
 
 ## If something isn’t right
 
-This is beta software, so a few things are expected and a few are worth checking:
+This is beta software, so a few things are worth checking:
 
-- **Some warm-up lag and occasional redraw artifacts are normal** right now, especially in the first moments after launch.
 - **If an app won't start or the GPU isn't used,** run the health check, `neutron doctor --prefix <prefix>`; see [Troubleshooting](/wiki/start/help/troubleshooting/).
 - **For anything app-specific** — a feature that's grayed out, a panel that misbehaves — check [Known issues](/wiki/start/help/known-issues/) and that app's page under **Applications**.
 - **A given feature may simply not be validated yet.** The [status board](/#status) is the honest, current picture of what's been confirmed.

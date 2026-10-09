@@ -75,7 +75,7 @@
 <h3>Premiere Pro</h3>
 <p>Import your media, cut on the timeline, and play back in the program monitor. GPU and CUDA (Mercury) acceleration are on, and export encodes with hardware <strong>NVENC</strong> and muxes into valid MP4 files <strong>natively</strong> — no extra steps at export time. See the <a class="ln" href="/wiki/premiere/">Premiere page</a>.</p>
 <h3>Photoshop</h3>
-<p><strong>File → New</strong> brings up the full workspace — canvas and panels docked — and drawing goes straight to the GPU. There's some warm-up lag and the occasional redraw artifact; details on the <a class="ln" href="/wiki/photoshop/">Photoshop page</a>.</p>
+<p><strong>File → New</strong> brings up the full workspace — canvas and panels docked — and drawing goes straight to the GPU. More on the <a class="ln" href="/wiki/photoshop/">Photoshop page</a>.</p>
 <h3>Lightroom Classic</h3>
 <p>Import your RAW files — drag in a folder or plug in an SD card — then develop with GPU acceleration, run <strong>AI Denoise</strong>, and round-trip to Photoshop with <strong>Edit In</strong>. See the <a class="ln" href="/wiki/lightroom/">Lightroom page</a> for what's confirmed working.</p>
 <h2>Getting your files in and out</h2>
@@ -83,9 +83,8 @@
 <h2>GPU, export, and the helpers you don’t manage</h2>
 <p>GPU acceleration is on by default, and Collider keeps Adobe's licensing and IPC services alive while you work, shutting them down when you close the app. Video export needs no hand-holding: Premiere muxes its NVENC exports into valid MP4 files <strong>natively</strong>. (This used to need a muxing helper you pointed at the export path — a fix in Neutron's C-runtime layer removed that step entirely.)</p>
 <h2>If something isn’t right</h2>
-<p>This is beta software, so a few things are expected and a few are worth checking:</p>
+<p>This is beta software, so a few things are worth checking:</p>
 <ul>
-<li><strong>Some warm-up lag and occasional redraw artifacts are normal</strong> right now, especially in the first moments after launch.</li>
 <li><strong>If an app won't start or the GPU isn't used,</strong> run the health check, <code>neutron doctor --prefix &lt;prefix&gt;</code>; see <a class="ln" href="/wiki/start/help/troubleshooting/">Troubleshooting</a>.</li>
 <li><strong>For anything app-specific</strong> — a feature that's grayed out, a panel that misbehaves — check <a class="ln" href="/wiki/start/help/known-issues/">Known issues</a> and that app's page under <strong>Applications</strong>.</li>
 <li><strong>A given feature may simply not be validated yet.</strong> The <a class="ln" href="/#status">status board</a> is the honest, current picture of what's been confirmed.</li>
