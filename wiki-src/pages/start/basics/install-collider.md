@@ -16,6 +16,7 @@ You'll want these in place first:
 - **A Wayland session.** X11 isn't supported.
 - **KDE Plasma is the supported desktop.** Other Wayland desktops (GNOME, Sway, Hyprland) are untested; they may work, expect rough edges, [reports welcome](https://github.com/Nico-LaFoucate/Neutron/issues).
 - **A Vulkan-capable GPU with current drivers.** NVIDIA (with the open driver) is the tested path. AMD and Intel GPUs aren't validated yet; [reports welcome](https://github.com/Nico-LaFoucate/Neutron/issues).
+- **32-bit (multilib) system and graphics libraries**: Adobe's apps start 32-bit helper processes.
 - **Python 3** and **cabextract**.
 - **Your own licensed Adobe apps.** You sign in inside each app, the same as on Windows.
 - **A display scale that's a Windows step** (100, 125, 150, 175, 200, 225, 250 or 300%). See [Choosing a display scale](/wiki/start/basics/display-scale/).
