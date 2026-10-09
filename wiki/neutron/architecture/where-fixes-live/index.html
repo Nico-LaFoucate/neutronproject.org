@@ -76,9 +76,9 @@
 <h3>Contract — the neutron CLI</h3>
 <p>A hard boundary. Calls travel down; status comes back as JSON. Above the line: convenience. Below the line: compatibility.</p>
 <h3>Engine — Neutron</h3>
-<p>Owns prefixes, environment, registry, Wine-binary selection, and every compat fix.</p>
+<p>Owns prefixes, environment, registry, Wine-binary selection, and each app's launch settings.</p>
 <h3>Runtime</h3>
-<p>Neutron-Wine hosts the Adobe application alongside DXVK, vkd3d-proton, the dcomp bridge, and the nvcuda wrapper.</p>
+<p>Neutron-Wine carries the fixes and hosts the Adobe application alongside DXVK, vkd3d-proton, the dcomp bridge, and the nvcuda wrapper.</p>
 <h3>Substrate</h3>
 <p>Vulkan, your GPU, and the Linux kernel.</p>
 <p>Because the launcher and installer sit above the contract line, they can be rewritten or removed without touching a single fix — and every fix Neutron gains reaches all three entry points at once.</p>

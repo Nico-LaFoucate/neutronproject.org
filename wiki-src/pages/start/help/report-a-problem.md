@@ -27,6 +27,6 @@ Ask in Neutron's [Discussions](https://github.com/Nico-LaFoucate/Neutron/discuss
 
 ## Security problems
 
-Don't open a public issue. Report it privately through GitHub's private vulnerability reporting, on the repository's **Security** tab.
+Don't open a public issue. Report it privately through GitHub's private vulnerability reporting: [Neutron's security advisory form](https://github.com/Nico-LaFoucate/Neutron/security/advisories/new). That one form covers all four repositories.
 
 `contact@neutronproject.org` is for press and business, not support.

@@ -4,7 +4,7 @@ status: guide
 sub: You clicked Launch — here’s what to expect, and how to get to real work.
 ---
 
-You've [installed Collider](/wiki/start/basics/install-collider/), added an app, and hit **Launch**. Collider has already applied the display fix and started Adobe's background services — so from here, it should feel like the app you already know. Here's what to expect on that first run, and how to get to actual work.
+You've [installed Collider](/wiki/start/basics/install-collider/), added an app, and hit **Launch**. Collider has already applied the display fix — so from here, it should feel like the app you already know. Here's what to expect on that first run, and how to get to actual work.
 
 ## First launch: sign in to Adobe
 
@@ -16,15 +16,15 @@ You sign in inside the Adobe app, the same as on Windows. Neutron never touches 
 
 ## What “working” looks like
 
-Each app behaves like its Windows counterpart. Quick starts for the three that are furthest along — all **beta**, all doing real work in testing:
+Each app behaves like its Windows counterpart. Quick starts for the three that are furthest along — all **beta**, all used for paid client work:
 
 ### Premiere Pro
 
-Import your media, cut on the timeline, and play back in the program monitor. GPU and CUDA (Mercury) acceleration are on, and export encodes with hardware **NVENC** and muxes into valid MP4 files **natively** — no extra steps at export time. See the [Premiere page](/wiki/premiere/).
+Import your media, cut on the timeline, and play back in the program monitor. GPU and CUDA (Mercury) acceleration are on, and export encodes with hardware **NVENC** and muxes into valid MP4 files **natively** — no extra steps at export time.
 
 ### Photoshop
 
-**File → New** brings up the full workspace — canvas and panels docked — and drawing goes straight to the GPU. More on the [Photoshop page](/wiki/photoshop/).
+**File → New** brings up the full workspace — canvas and panels docked — and drawing goes straight to the GPU.
 
 ### Lightroom Classic
 
@@ -36,7 +36,7 @@ Your Linux home folder is available inside the app's open and save dialogs, so y
 
 ## GPU, export, and the helpers you don’t manage
 
-GPU acceleration is on by default, and Collider keeps Adobe's licensing and IPC services alive while you work, shutting them down when you close the app. Video export needs no hand-holding: Premiere muxes its NVENC exports into valid MP4 files **natively**. (This used to need a muxing helper you pointed at the export path — a fix in Neutron's C-runtime layer removed that step entirely.)
+GPU acceleration is on by default. Video export needs no hand-holding: Premiere muxes its NVENC exports into valid MP4 files **natively**. (This used to need a muxing helper you pointed at the export path — a fix in Neutron's C-runtime layer removed that step entirely.)
 
 ## If something isn’t right
 
@@ -49,4 +49,4 @@ This is beta software, so a few things are worth checking:
 
 ## Where to go next
 
-Head into the **Applications** section for the current status, notable fixes, and known issues of each app — that's where the detail lives, and where new pages land as more of the suite comes online.
+Current status for each app is on the [status board](/#status). Problems are on [Known issues](/wiki/start/help/known-issues/), and fixes on [Notable fixes](/wiki/neutron/fixes/notable-fixes/).

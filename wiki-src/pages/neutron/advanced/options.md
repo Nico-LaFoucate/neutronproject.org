@@ -28,4 +28,4 @@ Set `NEUTRON_WINE_VERSION=<version>` to use a specific installed neutron-wine ru
 
 X11 isn't supported. Setting `NEUTRON_ALLOW_X11=1` lets an app launch in an X11 session anyway.
 
-**Risk:** every graphics fix Neutron ships lives in its Wayland driver, so none of them apply. It also switches the prefix's graphics driver to X11; a later Wayland launch switches it back. You're on your own: bug reports from X11 sessions aren't supported.
+**Risk:** many of Neutron's display and window fixes live in its Wayland driver, so they don't apply. It also switches the prefix's graphics driver to X11; a later Wayland launch switches it back. You're on your own: bug reports from X11 sessions aren't supported.

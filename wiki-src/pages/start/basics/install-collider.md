@@ -6,7 +6,7 @@ sub: From a clean Linux machine to your first Adobe launch — the whole stack, 
 
 **Collider** is the graphical front door to the whole stack. One command, `neutron setup`, installs everything underneath it — the [Neutron](/wiki/neutron/) compatibility engine, its patched Wine runtime, the Mud Hut installer and Collider itself — and from then on you install and launch your Adobe apps from Collider. This page walks the whole thing end to end.
 
-<div class="callout"><p class="k">Beta — read this first</p><p>Neutron is in beta. Tested on three machines, all CachyOS with KDE Plasma (Wayland) and NVIDIA GPUs. It runs real work in testing, but it is <strong>not</strong> stable or validated across hardware, distributions, or app versions — and you must bring your own <strong>legally licensed</strong> Adobe software. Treat this as a preview of the intended experience, not a finished product.</p></div>
+<div class="callout"><p class="k">Beta — read this first</p><p>Neutron is in beta. Tested on three machines, all CachyOS with KDE Plasma (Wayland) and NVIDIA GPUs. AMD and Intel GPUs, other distributions and other desktops aren't validated yet. Things break, and you must bring your own <strong>legally licensed</strong> Adobe software.</p></div>
 
 ## Before you begin
 
@@ -28,7 +28,7 @@ In a terminal:
 <div class="codebox">curl -LO https://github.com/Nico-LaFoucate/neutron/releases/latest/download/neutron
 python3 neutron setup</div>
 
-`neutron setup` downloads neutron-wine and the Mud Hut installer from GitHub, Microsoft's Visual C++ runtimes, GDI+ and core fonts from Microsoft, and Adobe's Creative Cloud package from Adobe, and installs Collider with a menu entry. It may ask for your password once, to turn on ntsync, which makes the apps much faster.
+`neutron setup` downloads neutron-wine and the Mud Hut installer from GitHub, Microsoft's Visual C++ runtimes and GDI+ from Microsoft, Microsoft's core fonts (their original installers, from a pinned mirror), and Adobe's Creative Cloud package from Adobe, and installs Collider with a menu entry. It may ask for your password once, to turn on ntsync, which makes the apps much faster.
 
 If you started from the Collider app instead, its **Set up** button runs the same setup.
 
@@ -36,26 +36,26 @@ If you started from the Collider app instead, its **Set up** button runs the sam
 
 Open **Neutron Collider** from your menu and go to its **Mud Hut** tab. Pick whichever matches how you already have your apps:
 
-- **Copy from an existing Windows install** — point Mud Hut at a licensed Windows Adobe install (a dual-boot drive, a backup, or a mounted disc image) and copy the app in.
-- **Install from an offline package** — use an offline Adobe installer package you already have.
+- **Copy from an existing Windows install** — point Mud Hut at a licensed Windows Adobe install (a dual-boot drive, a backup, or a mounted C: drive) and copy the app in.
+- **Install from an offline package** — use an offline Adobe installer package or an `.iso` disc image you already have.
 - **Download from Adobe** — download straight from Adobe's servers. No sign-in is needed to install; you sign in later, inside the app.
 
 Already have a Wine prefix with Adobe apps in it? Point Collider at it with **Choose existing…**.
 
 Whichever you choose, you must own a valid license — **Neutron distributes no Adobe code.**
 
-<div class="callout"><p class="k">One environment, full interoperability</p><p>All your apps share a single Adobe environment, so <strong>Dynamic Link</strong> keeps working between them — send a Premiere sequence to After Effects, round-trip a Photoshop layer, and so on.</p></div>
+<div class="callout"><p class="k">Dynamic Link</p><p>Apps installed into the same prefix share one Adobe environment, so <strong>Dynamic Link</strong> works between Premiere Pro and After Effects: both apps have to be running. On Creative Cloud 2026 the round trip hasn't been run yet.</p></div>
 
 ## Step 3 — Launch
 
-Each installed app appears as a tile in your library. Click **Launch**. Collider quietly does the rest: it applies the native display fix, starts Adobe's background licensing and IPC services, and hands off to the app. When you close the app, Collider shuts those services back down.
+Each installed app appears as a tile in your library. Click **Launch**. Collider quietly does the rest: it applies the native display fix and hands off to the app. When you close the app, Collider has Neutron clean up after it, so Adobe's leftover background processes can't wedge the next launch.
 
 ## What Collider is handling for you
 
 The point of the launcher is that everything the Neutron investigation figured out by hand happens automatically:
 
-- One shared Adobe environment, so Dynamic Link works across the suite.
-- Copying an app over from an existing Windows install (Mud Hut's **Copy from a Windows install** method).
+- One shared Adobe environment per prefix, for Dynamic Link between Premiere Pro and After Effects.
+- Copying an app over from an existing Windows install (Mud Hut's **Copy from an existing Windows install** method).
 
 What's planned but not built yet is listed under [Planned](/wiki/start/basics/planned/).
 
@@ -65,6 +65,6 @@ What's planned but not built yet is listed under [Planned](/wiki/start/basics/pl
 
 ## Where this stands
 
-The apps furthest along are [Premiere Pro](/wiki/premiere/), [Photoshop](/wiki/photoshop/), and [Lightroom Classic](/wiki/lightroom/) — all beta, all doing real work in testing. After Effects, Illustrator, Media Encoder and Animate run too, but haven't yet carried a paid job. For the honest, current status of each, see the **Applications** section, or the [status board](/#status) on the home page.
+The apps furthest along are [Premiere Pro](/wiki/premiere/), [Photoshop](/wiki/photoshop/), and [Lightroom Classic](/wiki/lightroom/) — all beta, all used for paid client work. After Effects, Illustrator, Media Encoder and Animate run too, but haven't yet carried a paid job. For the honest, current status of each, see the [status board](/#status) on the home page.
 
 Once Collider is installed and an app launches, head to [Running your first app](/wiki/start/basics/first-app/).

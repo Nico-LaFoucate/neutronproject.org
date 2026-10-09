@@ -174,7 +174,7 @@
           "slug": "photoshop",
           "title": "Photoshop",
           "kind": "Application",
-          "blurb": "Status, fixes, and known issues for Adobe Photoshop on Neutron.",
+          "blurb": "Fixes and known issues for Adobe Photoshop on Neutron.",
           "categories": [
             {
               "slug": "status",
@@ -232,7 +232,7 @@
           "slug": "premiere",
           "title": "Premiere Pro",
           "kind": "Application",
-          "blurb": "Status, fixes, and known issues for Adobe Premiere Pro on Neutron.",
+          "blurb": "Known issues for Adobe Premiere Pro on Neutron.",
           "categories": [
             {
               "slug": "status",
@@ -254,7 +254,7 @@
           "slug": "aftereffects",
           "title": "After Effects",
           "kind": "Application",
-          "blurb": "Status and known issues for Adobe After Effects on Neutron.",
+          "blurb": "Known issues for Adobe After Effects on Neutron.",
           "categories": [
             {
               "slug": "status",

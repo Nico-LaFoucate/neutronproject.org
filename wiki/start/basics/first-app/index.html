@@ -65,23 +65,23 @@
 <div><span class="badge b-guide">Guide</span></div>
 <h1 class="title">Running your first app</h1>
 <p class="subtitle">You clicked Launch — here’s what to expect, and how to get to real work.</p>
-<p>You've <a class="ln" href="/wiki/start/basics/install-collider/">installed Collider</a>, added an app, and hit <strong>Launch</strong>. Collider has already applied the display fix and started Adobe's background services — so from here, it should feel like the app you already know. Here's what to expect on that first run, and how to get to actual work.</p>
+<p>You've <a class="ln" href="/wiki/start/basics/install-collider/">installed Collider</a>, added an app, and hit <strong>Launch</strong>. Collider has already applied the display fix — so from here, it should feel like the app you already know. Here's what to expect on that first run, and how to get to actual work.</p>
 <h2>First launch: sign in to Adobe</h2>
 <p>The app opens to its normal Adobe home screen and asks you to <strong>sign in with your Adobe ID</strong> — the same Creative Cloud account you'd use on Windows or macOS. This is what activates your license; Neutron doesn't replace or bypass it.</p>
 <p>You sign in inside the Adobe app, the same as on Windows. Neutron never touches your Adobe account or login. Sign-in happens in an embedded browser window, so give it a moment to load.</p>
 <div class="callout"><p class="k">You bring the license</p><p>Neutron distributes no Adobe software and circumvents nothing. You run the genuine app, signed into your own valid subscription. Neutron never modifies Adobe's program files; it changes one display setting in Adobe's own preferences (<code>DS.DisableDirectXDisplay</code> in <code>Debug Database.txt</code>) and adds three compatibility flags to aescripts panels' <code>manifest.xml</code> (original backed up).</p></div>
 <h2>What “working” looks like</h2>
-<p>Each app behaves like its Windows counterpart. Quick starts for the three that are furthest along — all <strong>beta</strong>, all doing real work in testing:</p>
+<p>Each app behaves like its Windows counterpart. Quick starts for the three that are furthest along — all <strong>beta</strong>, all used for paid client work:</p>
 <h3>Premiere Pro</h3>
-<p>Import your media, cut on the timeline, and play back in the program monitor. GPU and CUDA (Mercury) acceleration are on, and export encodes with hardware <strong>NVENC</strong> and muxes into valid MP4 files <strong>natively</strong> — no extra steps at export time. See the <a class="ln" href="/wiki/premiere/">Premiere page</a>.</p>
+<p>Import your media, cut on the timeline, and play back in the program monitor. GPU and CUDA (Mercury) acceleration are on, and export encodes with hardware <strong>NVENC</strong> and muxes into valid MP4 files <strong>natively</strong> — no extra steps at export time.</p>
 <h3>Photoshop</h3>
-<p><strong>File → New</strong> brings up the full workspace — canvas and panels docked — and drawing goes straight to the GPU. More on the <a class="ln" href="/wiki/photoshop/">Photoshop page</a>.</p>
+<p><strong>File → New</strong> brings up the full workspace — canvas and panels docked — and drawing goes straight to the GPU.</p>
 <h3>Lightroom Classic</h3>
 <p>Import your RAW files — drag in a folder or plug in an SD card — then develop with GPU acceleration, run <strong>AI Denoise</strong>, and round-trip to Photoshop with <strong>Edit In</strong>. See the <a class="ln" href="/wiki/lightroom/">Lightroom page</a> for what's confirmed working.</p>
 <h2>Getting your files in and out</h2>
 <p>Your Linux home folder is available inside the app's open and save dialogs, so you can point at the same media and save projects to the same places you'd use natively. Keep working files on a fast local disk for the best performance — the app is reading and writing through the compatibility layer, and a slow network share will feel slow.</p>
 <h2>GPU, export, and the helpers you don’t manage</h2>
-<p>GPU acceleration is on by default, and Collider keeps Adobe's licensing and IPC services alive while you work, shutting them down when you close the app. Video export needs no hand-holding: Premiere muxes its NVENC exports into valid MP4 files <strong>natively</strong>. (This used to need a muxing helper you pointed at the export path — a fix in Neutron's C-runtime layer removed that step entirely.)</p>
+<p>GPU acceleration is on by default. Video export needs no hand-holding: Premiere muxes its NVENC exports into valid MP4 files <strong>natively</strong>. (This used to need a muxing helper you pointed at the export path — a fix in Neutron's C-runtime layer removed that step entirely.)</p>
 <h2>If something isn’t right</h2>
 <p>This is beta software, so a few things are worth checking:</p>
 <ul>
@@ -91,7 +91,7 @@
 <li><strong>To report a problem,</strong> see <a class="ln" href="/wiki/start/help/report-a-problem/">Report a problem</a>: each part of Neutron has its own issue tracker.</li>
 </ul>
 <h2>Where to go next</h2>
-<p>Head into the <strong>Applications</strong> section for the current status, notable fixes, and known issues of each app — that's where the detail lives, and where new pages land as more of the suite comes online.</p>
+<p>Current status for each app is on the <a class="ln" href="/#status">status board</a>. Problems are on <a class="ln" href="/wiki/start/help/known-issues/">Known issues</a>, and fixes on <a class="ln" href="/wiki/neutron/fixes/notable-fixes/">Notable fixes</a>.</p>
   </main>
 </div>
 

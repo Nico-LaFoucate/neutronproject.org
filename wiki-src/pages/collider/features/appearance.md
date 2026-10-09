@@ -1,5 +1,5 @@
 ---
 title: Appearance & theming
 status: stub
-sub: Color themes and custom app icons.
+sub: Color themes and window-button icon sets for the apps' windows.
 ---

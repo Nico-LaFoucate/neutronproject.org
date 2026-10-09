@@ -16,11 +16,11 @@ A hard boundary. Calls travel down; status comes back as JSON. Above the line: c
 
 ### Engine — Neutron
 
-Owns prefixes, environment, registry, Wine-binary selection, and every compat fix.
+Owns prefixes, environment, registry, Wine-binary selection, and each app's launch settings.
 
 ### Runtime
 
-Neutron-Wine hosts the Adobe application alongside DXVK, vkd3d-proton, the dcomp bridge, and the nvcuda wrapper.
+Neutron-Wine carries the fixes and hosts the Adobe application alongside DXVK, vkd3d-proton, the dcomp bridge, and the nvcuda wrapper.
 
 ### Substrate
 

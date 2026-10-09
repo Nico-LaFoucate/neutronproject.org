@@ -1,7 +1,7 @@
 ---
 title: What Mud Hut is
 status: guide
-sub: One-click Adobe install, no manual prefix.
+sub: Installs Adobe apps without hand-building a prefix.
 ---
 
 Mud Hut is a command-line installer that gets Adobe applications onto your machine without hand-building a Wine prefix. [Collider](/wiki/collider/) runs it from its Mud Hut tab, and it runs standalone for anyone who prefers a terminal.
