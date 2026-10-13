@@ -45,7 +45,7 @@ Already have a Wine prefix with Adobe apps in it? Point Collider at it with **Ch
 
 Whichever you choose, you must own a valid license — **Neutron distributes no Adobe code.**
 
-<div class="callout"><p class="k">Dynamic Link</p><p>Apps installed into the same prefix share one Adobe environment, so <strong>Dynamic Link</strong> works between Premiere Pro and After Effects: both apps have to be running.</p></div>
+<div class="callout"><p class="k">Dynamic Link</p><p>Apps installed into the same prefix share one Adobe environment, so <strong>Dynamic Link</strong> works between Premiere Pro and After Effects, and either app can open the other.</p></div>
 
 ## Step 3 — Launch
 
