@@ -1252,15 +1252,30 @@ footer{
 
   function loop(){ draw(); raf = requestAnimationFrame(loop); }
 
-  document.addEventListener('visibilitychange', function(){
-    if (reduce) return;
-    if (document.hidden){ cancelAnimationFrame(raf); }
-    else { loop(); }
-  });
+  /* Animate only while someone is looking: the starfield and the orbit's moving particles repaint the
+     page every frame (and the header's backdrop blur with it), which kept a CPU core busy for as long
+     as the page was open, even behind other windows. They pause when the tab is hidden or the window
+     loses focus, and resume on return; the paused frame stays on screen. */
+  var orbits = Array.prototype.filter.call(document.querySelectorAll('svg'),
+      function(s){ return s.querySelector('animateMotion') && s.pauseAnimations; });
+  function start(){
+    orbits.forEach(function(s){ s.unpauseAnimations(); });
+    if (!reduce && raf === null) loop();
+  }
+  function stop(){
+    if (raf !== null){ cancelAnimationFrame(raf); raf = null; }
+    orbits.forEach(function(s){ s.pauseAnimations(); });
+  }
+  function update(){ if (!document.hidden && document.hasFocus()) start(); else stop(); }
 
-  window.addEventListener('resize', resize);
+  document.addEventListener('visibilitychange', update);
+  window.addEventListener('focus', update);
+  window.addEventListener('blur', stop);
+
+  window.addEventListener('resize', function(){ resize(); if (raf === null) draw(); });
   resize();
-  if (!reduce) loop();
+  draw();
+  update();
 })();
 </script>
 </body>
