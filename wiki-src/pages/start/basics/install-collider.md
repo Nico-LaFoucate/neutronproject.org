@@ -45,7 +45,7 @@ Already have a Wine prefix with Adobe apps in it? Point Collider at it with **Ch
 
 Whichever you choose, you must own a valid license — **Neutron distributes no Adobe code.**
 
-<div class="callout"><p class="k">Dynamic Link</p><p>Apps installed into the same prefix share one Adobe environment, so <strong>Dynamic Link</strong> works between Premiere Pro and After Effects: both apps have to be running. On Creative Cloud 2026 the round trip hasn't been run yet.</p></div>
+<div class="callout"><p class="k">Dynamic Link</p><p>Apps installed into the same prefix share one Adobe environment, so <strong>Dynamic Link</strong> works between Premiere Pro and After Effects: both apps have to be running.</p></div>
 
 ## Step 3 — Launch
 
@@ -66,6 +66,6 @@ What's planned but not built yet is listed under [Planned](/wiki/start/basics/pl
 
 ## Where this stands
 
-The apps furthest along are [Premiere Pro](/wiki/premiere/), [Photoshop](/wiki/photoshop/), and [Lightroom Classic](/wiki/lightroom/) — all beta, all used for paid client work. After Effects, Illustrator, Media Encoder and Animate run too, but haven't yet carried a paid job. For the honest, current status of each, see the [status board](/#status) on the home page.
+The apps furthest along are [Premiere Pro](/wiki/premiere/), [Photoshop](/wiki/photoshop/), and [Lightroom Classic](/wiki/lightroom/) — all beta, all used for paid client work. After Effects, Illustrator, Media Encoder, Animate, Audition and InDesign run too. For the honest, current status of each, see the [status board](/#status) on the home page.
 
 Once Collider is installed and an app launches, head to [Running your first app](/wiki/start/basics/first-app/).

@@ -12,7 +12,7 @@ Only problems seen on current builds are listed here. Problems that have been fi
 
 ## Animate
 
-- **The home screen is blank.** Start from File → New or File → Open. This is Adobe's own bug: the home screen is blank on Windows too.
+- **The home screen is sometimes blank.** Start from File → New or File → Open. This is a bug that also happens on Windows.
 - **File → New does nothing for about the first 15 seconds after launch.** Wait, or try again after a moment. This comes from inside the app, not from Neutron.
 
 ## Lightroom Classic

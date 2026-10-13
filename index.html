@@ -663,7 +663,7 @@ footer{
       <p class="eyebrow">Compatibility engine · Beta</p>
       <h1>Adobe Creative Suite,<br>running on <em>Linux</em>.</h1>
       <p class="lede">Neutron is a compatibility engine built on Wine, DXVK, and vkd3d-proton, patched specifically for the way Adobe applications talk to Windows. <strong>Collider</strong> is the launcher. <strong>Mud Hut</strong> installs the apps.</p>
-      <p class="proof">Premiere Pro, Photoshop, and Lightroom Classic have been used to deliver paid client work on this stack. After Effects, Media Encoder, Illustrator and Animate all run — including Dynamic Link between Premiere and After Effects — but have not yet carried a paid job. Tested on three machines, all CachyOS with KDE Plasma (Wayland) and NVIDIA GPUs.</p>
+      <p class="proof">Premiere Pro, Photoshop, and Lightroom Classic have been used to deliver paid client work on this stack. After Effects, Media Encoder, Illustrator, Animate, Audition and InDesign all run — including Dynamic Link between Premiere and After Effects. Tested on three machines, all CachyOS with KDE Plasma (Wayland) and NVIDIA GPUs.</p>
       <div class="btns">
         <a class="btn btn-a" href="#status">Check app support</a>
         <a class="btn btn-b" href="/wiki/start/basics/install-collider/">Get Collider</a>
@@ -710,22 +710,32 @@ footer{
         <div class="row">
           <div class="app">Illustrator <span class="tier t-beta">Beta</span></div>
           <div class="bar"><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg"></span></div>
-          <div class="detail">Documents open and the artboard, panels and toolbars render correctly. A whole-window shear — the interface skewed a little further with every row — turned out to be Wine discarding the stride Illustrator supplies with its bitmaps. Not yet used for a paid job.</div>
+          <div class="detail">Documents open and the artboard, panels and toolbars render correctly. A whole-window shear — the interface skewed a little further with every row — turned out to be Wine discarding the stride Illustrator supplies with its bitmaps.</div>
         </div>
         <div class="row">
           <div class="app">Animate <span class="tier t-beta">Beta</span></div>
           <div class="bar"><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg"></span></div>
-          <div class="detail">Canvas, panels and playback all work. Its home screen is blank — that is Adobe's own bug, blank on Windows too — so start from File → New. Not yet used for a paid job.</div>
+          <div class="detail">Canvas, panels and playback all work. Its home screen is sometimes blank — a bug that also happens on Windows — so start from File → New.</div>
         </div>
         <div class="row">
           <div class="app">After Effects <span class="tier t-beta">Beta</span></div>
           <div class="bar"><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg"></span></div>
-          <div class="detail">The composition viewer and its on-canvas overlays render, at display refresh rate. Not yet used for a paid job.</div>
+          <div class="detail">The composition viewer and its on-canvas overlays render, at display refresh rate.</div>
         </div>
         <div class="row">
           <div class="app">Media Encoder <span class="tier t-beta">Beta</span></div>
           <div class="bar"><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg"></span></div>
           <div class="detail">Renders and displays correctly, and a full export completed and muxed properly end to end. Usable for real encoding work.</div>
+        </div>
+        <div class="row">
+          <div class="app">Audition <span class="tier t-likely">Likely</span></div>
+          <div class="bar"><span class="seg on-likely"></span><span class="seg on-likely"></span><span class="seg"></span><span class="seg"></span><span class="seg"></span></div>
+          <div class="detail">Tested on Creative Cloud 2026 (see the 2026 tab). Its fixes are in Neutron's Wine, so the 2025 build should run as well, but it hasn't been tried. Launches through an experimental profile.</div>
+        </div>
+        <div class="row">
+          <div class="app">InDesign <span class="tier t-likely">Likely</span></div>
+          <div class="bar"><span class="seg on-likely"></span><span class="seg on-likely"></span><span class="seg"></span><span class="seg"></span><span class="seg"></span></div>
+          <div class="detail">Tested on Creative Cloud 2026 (see the 2026 tab). Its fixes are in Neutron's Wine, so the 2025 build should run as well, but it hasn't been tried. Launches through an experimental profile.</div>
         </div>
         <div class="row">
           <div class="app">Lightroom CC <span class="tier t-planned">Planned</span></div>
@@ -749,7 +759,7 @@ footer{
         <div class="row">
           <div class="app">Premiere Pro <span class="tier t-beta">Beta</span></div>
           <div class="bar"><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg"></span></div>
-          <div class="detail">Installed from an offline package and verified launching and running on the 2026 stack. It inherited the 2025 fixes without needing new engine work. Not yet used for a paid job on this release.</div>
+          <div class="detail">Installed from an offline package and verified launching and running on the 2026 stack. It inherited the 2025 fixes without needing new engine work.</div>
         </div>
         <div class="row">
           <div class="app">Lightroom Classic <span class="tier t-beta">Beta</span></div>
@@ -759,22 +769,32 @@ footer{
         <div class="row">
           <div class="app">Illustrator <span class="tier t-beta">Beta</span></div>
           <div class="bar"><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg"></span></div>
-          <div class="detail">Installs and runs on this release. Not yet used for a paid job on 2026.</div>
+          <div class="detail">Installs and runs on this release.</div>
         </div>
         <div class="row">
-          <div class="app">Animate <span class="tier t-none">n/a</span></div>
-          <div class="bar"><span class="seg"></span><span class="seg"></span><span class="seg"></span><span class="seg"></span><span class="seg"></span></div>
-          <div class="detail">Not part of this release — Adobe has not shipped a 2026 Animate. The 2024 build is the current one and is covered under Creative Cloud 2025.</div>
+          <div class="app">Animate <span class="tier t-beta">Beta</span></div>
+          <div class="bar"><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg"></span></div>
+          <div class="detail">Adobe stopped updating Animate in 2024, so Creative Cloud 2026 installs the same app as 2025. It runs on this release: canvas, panels and playback all work. Its home screen is sometimes blank — a bug that also happens on Windows — so start from File → New.</div>
         </div>
         <div class="row">
           <div class="app">After Effects <span class="tier t-beta">Beta</span></div>
           <div class="bar"><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg"></span></div>
-          <div class="detail">Installed from an offline package; opens a project and the composition viewer renders. Getting there needed a fix on our side: After Effects 2026 keeps two preference databases and the display setting was being written to the one it does not read. Not yet used for a paid job on this release.</div>
+          <div class="detail">Installed from an offline package; opens a project and the composition viewer renders. Getting there needed a fix on our side: After Effects 2026 keeps two preference databases and the display setting was being written to the one it does not read.</div>
         </div>
         <div class="row">
           <div class="app">Media Encoder <span class="tier t-beta">Beta</span></div>
           <div class="bar"><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg"></span></div>
-          <div class="detail">Installs and runs on this release. Not yet used for a paid job on 2026.</div>
+          <div class="detail">Installs and runs on this release.</div>
+        </div>
+        <div class="row">
+          <div class="app">Audition <span class="tier t-beta">Beta</span></div>
+          <div class="bar"><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg"></span></div>
+          <div class="detail">Runs on this release through an experimental profile: recording, playback and effects work, and its Learn panel renders.</div>
+        </div>
+        <div class="row">
+          <div class="app">InDesign <span class="tier t-beta">Beta</span></div>
+          <div class="bar"><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg"></span></div>
+          <div class="detail">Runs on this release through an experimental profile: new documents, typing and the Type → Font menu work.</div>
         </div>
         <div class="row">
           <div class="app">Lightroom CC <span class="tier t-planned">Planned</span></div>
@@ -782,9 +802,9 @@ footer{
           <div class="detail">Planned. Distinct from Lightroom Classic. You can try it early with an experimental, unsupported profile.</div>
         </div>
         <div class="row row-feature">
-          <div class="app">Dynamic Link <span class="tier t-likely">Likely</span></div>
-          <div class="bar"><span class="seg on-likely"></span><span class="seg on-likely"></span><span class="seg"></span><span class="seg"></span><span class="seg"></span></div>
-          <div class="detail">Inherits the 2025 fix. Both apps run on this release, but the round trip itself hasn't been run on 2026 yet.</div>
+          <div class="app">Dynamic Link <span class="tier t-beta">Beta</span></div>
+          <div class="bar"><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg"></span></div>
+          <div class="detail">Works the same way as on Creative Cloud 2025, where it needed no engine changes: Premiere Pro and After Effects both run on this release, and both have to be running for the link.</div>
         </div>
       </div>
     </div>
