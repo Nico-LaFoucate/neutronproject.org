@@ -66,14 +66,14 @@
 <h1 class="title">Installing Collider</h1>
 <p class="subtitle">From a clean Linux machine to your first Adobe launch — the whole stack, end to end.</p>
 <p><strong>Collider</strong> is the graphical front door to the whole stack. One command, <code>neutron setup</code>, installs everything underneath it — the <a class="ln" href="/wiki/neutron/">Neutron</a> compatibility engine, its patched Wine runtime, the Mud Hut installer and Collider itself — and from then on you install and launch your Adobe apps from Collider. This page walks the whole thing end to end.</p>
-<div class="callout"><p class="k">Beta — read this first</p><p>Neutron is in beta. Tested on three machines, all CachyOS with KDE Plasma (Wayland) and NVIDIA GPUs. AMD and Intel GPUs, other distributions and other desktops aren't validated yet. Things break, and you must bring your own <strong>legally licensed</strong> Adobe software.</p></div>
+<div class="callout"><p class="k">Beta — read this first</p><p>Neutron is in beta. It's developed and tested on CachyOS with KDE Plasma (Wayland) and NVIDIA GPUs, and users also run it on Ubuntu, Bazzite, Nobara and Arch, under GNOME and Hyprland as well as KDE. AMD GPUs are partly tested (see below); Intel GPUs haven't been tested. Things break, and you must bring your own <strong>legally licensed</strong> Adobe software.</p></div>
 <h2>Before you begin</h2>
 <p>You'll want these in place first:</p>
 <ul>
 <li><strong>A 64-bit Linux distribution with glibc 2.39 or newer</strong>: Ubuntu 24.04 or later, Fedora 40 or later, current Arch, CachyOS or Manjaro, or openSUSE Tumbleweed.</li>
 <li><strong>A Wayland session.</strong> X11 isn't supported.</li>
-<li><strong>KDE Plasma is the supported desktop.</strong> Other Wayland desktops (GNOME, Sway, Hyprland) are untested; they may work, expect rough edges, <a class="ln" href="https://github.com/Nico-LaFoucate/Neutron/issues">reports welcome</a>.</li>
-<li><strong>A Vulkan-capable GPU with current drivers.</strong> NVIDIA (with the open driver) is the tested path. AMD and Intel GPUs aren't validated yet; <a class="ln" href="https://github.com/Nico-LaFoucate/Neutron/issues">reports welcome</a>.</li>
+<li><strong>KDE Plasma, GNOME or Hyprland.</strong> Neutron is developed on KDE Plasma, and users also run it under GNOME and Hyprland. <a class="ln" href="https://github.com/Nico-LaFoucate/Neutron/issues">Reports welcome</a> from other desktops.</li>
+<li><strong>A Vulkan-capable GPU with current drivers.</strong> NVIDIA (with the open driver) is the tested path. On AMD, Photoshop 2026 and Premiere Pro 2026 use the GPU and Illustrator 2026 runs; Premiere needs AMD's ROCm OpenCL (<code>neutron doctor</code> checks for it). Hardware video encoding on AMD is new and testers haven't confirmed it yet; on Fedora and openSUSE it needs the full Mesa from RPM Fusion or Packman. Intel GPUs aren't validated yet. <a class="ln" href="https://github.com/Nico-LaFoucate/Neutron/issues">Reports welcome</a>.</li>
 <li><strong>32-bit (multilib) system and graphics libraries</strong>: Adobe's apps start 32-bit helper processes.</li>
 <li><strong>Python 3</strong> and <strong>cabextract</strong>.</li>
 <li><strong>Your own licensed Adobe apps.</strong> You sign in inside each app, the same as on Windows.</li>
@@ -103,10 +103,13 @@ python3 neutron setup</div>
 <ul>
 <li>One shared Adobe environment per prefix, for Dynamic Link between Premiere Pro and After Effects.</li>
 <li>Copying an app over from an existing Windows install (Mud Hut's <strong>Copy from an existing Windows install</strong> method).</li>
+<li>Updating your Adobe apps through Adobe's own installer, with a backup that's put back if an update fails.</li>
 </ul>
 <p>What's planned but not built yet is listed under <a class="ln" href="/wiki/start/basics/planned/">Planned</a>.</p>
 <h2>Updating and uninstalling</h2>
-<p><code>neutron update</code> (or <strong>Update</strong> in Collider's Preferences) updates everything and moves your prefixes to the new runtime. <code>neutron uninstall</code> (or <strong>Uninstall…</strong>) removes Neutron; it asks before deleting any prefix, and keeps them unless you say so. ntsync stays on.</p>
+<p><strong>Neutron:</strong> <code>neutron update</code> (or <strong>Update Neutron</strong> in Collider's Preferences) updates everything and moves your prefixes to the new runtime.</p>
+<p><strong>Your Adobe apps:</strong> Collider checks for Adobe app updates when it starts and once a day while it's open. An app's card shows its update, and <strong>Update all</strong> updates every verified update in a prefix. Nothing updates on its own. Builds Neutron hasn't verified yet are marked "not yet verified" and need one more confirmation. Updates go through Adobe's own installer, so your preferences, presets, plugins and Adobe sign-in stay as they are. A backup is kept before each update and put back automatically if anything fails; <strong>Preferences → Adobe app updates</strong> turns the check or the backup off. A new yearly version installs beside the old one, with the option to remove the old one. Close the Adobe apps in a prefix before updating it.</p>
+<p><strong>Uninstalling:</strong> <code>neutron uninstall</code> (or <strong>Uninstall…</strong>) removes Neutron; it asks before deleting any prefix, and keeps them unless you say so. ntsync stays on.</p>
 <h2>Where this stands</h2>
 <p>The apps furthest along are <a class="ln" href="/wiki/premiere/">Premiere Pro</a>, <a class="ln" href="/wiki/photoshop/">Photoshop</a>, and <a class="ln" href="/wiki/lightroom/">Lightroom Classic</a> — all beta, all used for paid client work. After Effects, Illustrator, Media Encoder, Animate, Audition and InDesign run too. For the honest, current status of each, see the <a class="ln" href="/#status">status board</a> on the home page.</p>
 <p>Once Collider is installed and an app launches, head to <a class="ln" href="/wiki/start/basics/first-app/">Running your first app</a>.</p>

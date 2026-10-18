@@ -6,7 +6,7 @@ sub: From a clean Linux machine to your first Adobe launch — the whole stack, 
 
 **Collider** is the graphical front door to the whole stack. One command, `neutron setup`, installs everything underneath it — the [Neutron](/wiki/neutron/) compatibility engine, its patched Wine runtime, the Mud Hut installer and Collider itself — and from then on you install and launch your Adobe apps from Collider. This page walks the whole thing end to end.
 
-<div class="callout"><p class="k">Beta — read this first</p><p>Neutron is in beta. Tested on three machines, all CachyOS with KDE Plasma (Wayland) and NVIDIA GPUs. AMD and Intel GPUs, other distributions and other desktops aren't validated yet. Things break, and you must bring your own <strong>legally licensed</strong> Adobe software.</p></div>
+<div class="callout"><p class="k">Beta — read this first</p><p>Neutron is in beta. It's developed and tested on CachyOS with KDE Plasma (Wayland) and NVIDIA GPUs, and users also run it on Ubuntu, Bazzite, Nobara and Arch, under GNOME and Hyprland as well as KDE. AMD GPUs are partly tested (see below); Intel GPUs haven't been tested. Things break, and you must bring your own <strong>legally licensed</strong> Adobe software.</p></div>
 
 ## Before you begin
 
@@ -14,8 +14,8 @@ You'll want these in place first:
 
 - **A 64-bit Linux distribution with glibc 2.39 or newer**: Ubuntu 24.04 or later, Fedora 40 or later, current Arch, CachyOS or Manjaro, or openSUSE Tumbleweed.
 - **A Wayland session.** X11 isn't supported.
-- **KDE Plasma is the supported desktop.** Other Wayland desktops (GNOME, Sway, Hyprland) are untested; they may work, expect rough edges, [reports welcome](https://github.com/Nico-LaFoucate/Neutron/issues).
-- **A Vulkan-capable GPU with current drivers.** NVIDIA (with the open driver) is the tested path. AMD and Intel GPUs aren't validated yet; [reports welcome](https://github.com/Nico-LaFoucate/Neutron/issues).
+- **KDE Plasma, GNOME or Hyprland.** Neutron is developed on KDE Plasma, and users also run it under GNOME and Hyprland. [Reports welcome](https://github.com/Nico-LaFoucate/Neutron/issues) from other desktops.
+- **A Vulkan-capable GPU with current drivers.** NVIDIA (with the open driver) is the tested path. On AMD, Photoshop 2026 and Premiere Pro 2026 use the GPU and Illustrator 2026 runs; Premiere needs AMD's ROCm OpenCL (`neutron doctor` checks for it). Hardware video encoding on AMD is new and testers haven't confirmed it yet; on Fedora and openSUSE it needs the full Mesa from RPM Fusion or Packman. Intel GPUs aren't validated yet. [Reports welcome](https://github.com/Nico-LaFoucate/Neutron/issues).
 - **32-bit (multilib) system and graphics libraries**: Adobe's apps start 32-bit helper processes.
 - **Python 3** and **cabextract**.
 - **Your own licensed Adobe apps.** You sign in inside each app, the same as on Windows.
@@ -57,12 +57,17 @@ The point of the launcher is that everything the Neutron investigation figured o
 
 - One shared Adobe environment per prefix, for Dynamic Link between Premiere Pro and After Effects.
 - Copying an app over from an existing Windows install (Mud Hut's **Copy from an existing Windows install** method).
+- Updating your Adobe apps through Adobe's own installer, with a backup that's put back if an update fails.
 
 What's planned but not built yet is listed under [Planned](/wiki/start/basics/planned/).
 
 ## Updating and uninstalling
 
-`neutron update` (or **Update** in Collider's Preferences) updates everything and moves your prefixes to the new runtime. `neutron uninstall` (or **Uninstall…**) removes Neutron; it asks before deleting any prefix, and keeps them unless you say so. ntsync stays on.
+**Neutron:** `neutron update` (or **Update Neutron** in Collider's Preferences) updates everything and moves your prefixes to the new runtime.
+
+**Your Adobe apps:** Collider checks for Adobe app updates when it starts and once a day while it's open. An app's card shows its update, and **Update all** updates every verified update in a prefix. Nothing updates on its own. Builds Neutron hasn't verified yet are marked "not yet verified" and need one more confirmation. Updates go through Adobe's own installer, so your preferences, presets, plugins and Adobe sign-in stay as they are. A backup is kept before each update and put back automatically if anything fails; **Preferences → Adobe app updates** turns the check or the backup off. A new yearly version installs beside the old one, with the option to remove the old one. Close the Adobe apps in a prefix before updating it.
+
+**Uninstalling:** `neutron uninstall` (or **Uninstall…**) removes Neutron; it asks before deleting any prefix, and keeps them unless you say so. ntsync stays on.
 
 ## Where this stands
 
