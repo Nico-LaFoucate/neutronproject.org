@@ -22,3 +22,4 @@ Only problems seen on current builds are listed here. Problems that have been fi
 ## Premiere Pro
 
 - **Fast wheel-scrubbing on the timeline feels a bit late and jumpy.** No workaround yet.
+- **In Premiere Pro 2026, a sequence's thumbnail in the Project panel can show "Media pending" after you close a project and open it again.** Hover over the thumbnail and the frame appears.
