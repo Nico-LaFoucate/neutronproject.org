@@ -16,10 +16,7 @@ Not sure which? Use Neutron's issues.
 ## What to include
 
 - The app, and what happened.
-- Your distro, desktop and GPU.
-- The output of `neutron --version`.
-- The output of `neutron doctor --prefix <prefix>`.
-- The newest log from `~/.local/share/neutron/logs/`. Launches from Collider, the app menu or a file write one automatically.
+- The output of `neutron report`.
 
 ## Questions
 
