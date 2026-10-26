@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Installing plugins — Neutron Wiki</title>
+<meta name="description" content="Third-party plugins, extension panels, scripts and audio plugins, from Collider or a terminal.">
+<link rel="canonical" href="https://neutronproject.org/wiki/start/basics/plugins/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/wiki/wiki.css">
+<noscript><style>.grp-body[hidden]{display:block}.search{display:none}</style></noscript>
+</head>
+<body>
+<canvas id="starfield" aria-hidden="true"></canvas>
+
+<header class="nav">
+  <div class="nav-in">
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation">☰ Menu</button>
+    <a href="/" class="mark">
+      <svg width="24" height="22" viewBox="0 0 26 22" aria-hidden="true">
+        <ellipse cx="7" cy="11" rx="6" ry="9.5" fill="none" stroke="#E9EEF6" stroke-width="1.5"/>
+        <ellipse cx="19" cy="11" rx="6" ry="9.5" fill="none" stroke="#E9EEF6" stroke-width="1.5"/>
+        <circle cx="13" cy="11" r="5.2" fill="#0A0E16"/><circle cx="13" cy="11" r="4" fill="#E9EEF6"/>
+        <circle cx="21.5" cy="4.5" r="1.8" fill="#FC3D21"/>
+      </svg>NEUTRON
+    </a>
+    <a class="lnk hide-sm" href="/#status">Status</a>
+    <a class="lnk hide-sm" href="/#how">Architecture</a>
+    <a class="lnk" href="/wiki/" aria-current="page">Wiki</a>
+    <a class="lnk hide-sm" href="https://github.com/Nico-LaFoucate/Neutron">GitHub</a>
+  </div>
+</header>
+
+<div class="shell">
+  <div class="scrim" id="scrim"></div>
+  <aside id="sidebar">
+<div class="search"><svg width="13" height="13" viewBox="0 0 13 13"><circle cx="5.5" cy="5.5" r="4" fill="none" stroke="#8B97AD" stroke-width="1.3"/><line x1="8.5" y1="8.5" x2="12" y2="12" stroke="#8B97AD" stroke-width="1.3"/></svg><input id="q" placeholder="Search the wiki…" autocomplete="off" aria-label="Search the wiki"></div>
+<div class="tree" id="tree">
+<div class="grp toggle" role="button" tabindex="0" aria-expanded="true" data-group="Start here" data-active><span class="chev">▾</span>Start here</div>
+<div class="grp-body">
+<div class="snode active"><a href="/wiki/start/">Getting Started<span class="kind">Guide</span></a></div>
+<div class="cat active"><a href="/wiki/start/basics/">Basics</a></div>
+<div class="arts"><a href="/wiki/start/basics/what-is-neutron/"><span class="dot guide"></span>What is Neutron?</a><a href="/wiki/start/basics/install-collider/"><span class="dot guide"></span>Installing Collider</a><a href="/wiki/start/basics/display-scale/"><span class="dot guide"></span>Choosing a display scale</a><a href="/wiki/start/basics/first-app/"><span class="dot guide"></span>Running your first app</a><a class="active" aria-current="page" href="/wiki/start/basics/plugins/"><span class="dot guide"></span>Installing plugins</a><a href="/wiki/start/basics/planned/"><span class="dot guide"></span>Planned</a></div>
+<div class="cat"><a href="/wiki/start/help/">Help</a></div>
+</div>
+<div class="grp toggle" role="button" tabindex="0" aria-expanded="true" data-group="The stack"><span class="chev">▾</span>The stack</div>
+<div class="grp-body">
+<div class="snode"><a href="/wiki/neutron/">Neutron<span class="kind">Engine</span></a></div>
+<div class="snode"><a href="/wiki/collider/">Collider<span class="kind">Launcher</span></a></div>
+<div class="snode"><a href="/wiki/mudhut/">Mud Hut<span class="kind">Installer</span></a></div>
+</div>
+<div class="grp toggle" role="button" tabindex="0" aria-expanded="false" data-group="Applications"><span class="chev">▸</span>Applications</div>
+<div class="grp-body" hidden>
+<div class="snode"><a href="/wiki/photoshop/">Photoshop<span class="kind">Application</span></a></div>
+<div class="snode"><a href="/wiki/lightroom/">Lightroom Classic<span class="kind">Application</span></a></div>
+<div class="snode"><a href="/wiki/premiere/">Premiere Pro<span class="kind">Application</span></a></div>
+<div class="snode"><a href="/wiki/aftereffects/">After Effects<span class="kind">Application</span></a></div>
+</div>
+</div>
+  </aside>
+  <main class="content" id="content">
+<nav class="crumb"><a href="/wiki/">Wiki</a> <span class="sep">/</span><a href="/wiki/start/">Getting Started</a> <span class="sep">/</span><a href="/wiki/start/basics/">Basics</a> <span class="sep">/</span><span>Installing plugins</span></nav>
+<div><span class="badge b-guide">Guide</span></div>
+<h1 class="title">Installing plugins</h1>
+<p class="subtitle">Third-party plugins, extension panels, scripts and audio plugins, from Collider or a terminal.</p>
+<p>Neutron puts each plugin where its Windows installer would, inside the prefix your Adobe apps run from. Hand it the plugin files, an extension package, a script, or the vendor's own Windows installer. This needs Neutron 1.0.0-beta.29 and Collider 0.1.12 or newer.</p>
+<h2>In Collider</h2>
+<ol>
+<li>Open <strong>Plugins</strong> in the sidebar, under Library. It works on the prefix selected on the <strong>Prefixes</strong> tab.</li>
+<li>Drop plugin files or folders onto the page, or use <strong>Choose files…</strong> or <strong>Choose a folder…</strong>.</li>
+<li>Each item gets a line: green when it's installed, red with the reason when it isn't.</li>
+<li>Restart the Adobe app to load what you added.</li>
+</ol>
+<p><strong>Scripts</strong> (<code>.jsx</code>, <code>.jsxbin</code>): Collider asks which app the script is for.</p>
+<p><strong>A vendor's installer</strong> (<code>.exe</code>, <code>.msi</code>): close the Adobe apps first. The installer opens its own window; click through it as you would on Windows. Collider waits until the installer and anything it opens afterward (a readme, for example) have closed.</p>
+<p>The page also lists what the prefix already holds, and has an <strong>Open folder</strong> button for each plugin folder, so you can add a plugin by hand.</p>
+<h2>From a terminal</h2>
+<div class="codebox">neutron plugins install &lt;file or folder&gt;...
+neutron plugins install --app aftereffects MyPanel.jsx
+neutron plugins list
+neutron plugins folder</div>
+<p>They work on the prefix selected in Collider; add <code>--prefix &lt;path&gt;</code> to pick another. <code>neutron plugins folder</code> prints the Linux path of each plugin folder.</p>
+<h2>Where each kind goes</h2>
+<p>All inside the prefix:</p>
+<ul>
+<li><strong><code>.aex</code> or <code>.prm</code> files, or a folder of them:</strong> <code>Program Files\Adobe\Common\Plug-ins\7.0\MediaCore</code>, shared by After Effects, Premiere Pro and Media Encoder.</li>
+<li><strong>Photoshop plugin files</strong> (<code>.8bf</code> and the other <code>.8b*</code> types): Photoshop's <code>Plug-ins</code> folder.</li>
+<li><strong><code>.aip</code> files:</strong> Illustrator's <code>Plug-ins</code> folder.</li>
+<li><strong>An extension package (<code>.zxp</code>):</strong> <code>Program Files (x86)\Common Files\Adobe\CEP\extensions</code>, in a folder named after the extension.</li>
+<li><strong>A script (<code>.jsx</code>, <code>.jsxbin</code>):</strong> the scripts folder of the app you choose (for After Effects, <code>ScriptUI Panels</code>).</li>
+<li><strong>A VST3 plugin (<code>.vst3</code> file or folder):</strong> <code>Program Files\Common Files\VST3</code>.</li>
+<li><strong>A vendor's installer (<code>.exe</code>, <code>.msi</code>):</strong> wherever the installer puts it.</li>
+</ul>
+<p>If a plugin is already there, the new one replaces it.</p>
+<h2>Audio plugins in Premiere Pro</h2>
+<p>Premiere Pro finds new audio plugins only on its very first launch. After you install one, with the vendor's installer or as a <code>.vst3</code>, load it:</p>
+<ol>
+<li>In Premiere Pro, choose <strong>Edit &gt; Preferences &gt; Audio</strong>, then <strong>Manage Audio Plug-ins…</strong>.</li>
+<li>Click <strong>Scan for Plug-Ins</strong>. The plugin appears in the list with its status.</li>
+<li>Click <strong>OK</strong>. It's now under <strong>Effects &gt; Audio Effects &gt; VST3</strong>.</li>
+</ol>
+<p>Tested with FabFilter's Windows installer: Pro-Q 4 installed, passed Premiere's scan, and processed audio on a clip with its own interface open.</p>
+<h2>Extension packages (.zxp)</h2>
+<p>Neutron checks a package's signature before it installs it. A damaged package is refused, and the extension that was already installed stays as it was.</p>
+<p>A package that isn't signed at all is installed with a note: the Adobe apps refuse to load it unless PlayerDebugMode is on, and its developer's instructions say how to turn that on.</p>
+<h2>Not supported yet</h2>
+<ul>
+<li><strong>UXP plugins</strong> (<code>.ccx</code>): these are installed by Adobe's own plugin installer, which doesn't work in Neutron prefixes yet.</li>
+<li><strong>Loose VST2 files</strong> (<code>.dll</code>): there's no single standard VST2 folder, so Neutron doesn't place them. A vendor's installer that includes VST2 plugins still puts them where it wants.</li>
+<li><strong>The aescripts + aeplugins manager</strong> runs, but installing plugins through it hasn't been tested yet.</li>
+</ul>
+<p>If a plugin won't activate, or keeps asking to be activated again, see <a class="ln" href="/wiki/start/help/troubleshooting/">Troubleshooting</a>.</p>
+  </main>
+</div>
+
+<footer><div class="foot">
+  <a href="/">Home</a>
+  <a href="https://github.com/Nico-LaFoucate/Neutron">Neutron</a>
+  <a href="https://github.com/Nico-LaFoucate/Collider">Collider</a>
+  <a href="https://github.com/Nico-LaFoucate/Mud-Hut">Mud Hut</a>
+  <span class="sp">Neutron and neutron-wine LGPL-2.1-or-later · Collider and Mud Hut Apache 2.0</span>
+</div>
+<p class="legal">Neutron is an independent project by Nico LaFoucate and Ficus Media Group. Adobe and its product names are trademarks of Adobe Inc. Neutron is not affiliated with or endorsed by Adobe.</p>
+<p class="legal">Wiki + site text: <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Logos and Neutron/Collider/Mud Hut branding: reserved. Site code (HTML/CSS/JS): <a href="https://opensource.org/license/mit">MIT</a>.</p>
+</footer>
+
+<script src="/wiki/wiki.js"></script>
+</body>
+</html>
