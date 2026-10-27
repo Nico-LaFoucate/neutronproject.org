@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tested Adobe builds — Neutron Wiki</title>
+<meta name="description" content="The Adobe app builds tested on Linux with Neutron, with dates: Photoshop, Premiere Pro, After Effects, Illustrator, Lightroom Classic, Media Encoder and Animate.">
+<link rel="canonical" href="https://neutronproject.org/wiki/start/basics/tested-builds/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Neutron">
+<meta property="og:title" content="Tested Adobe builds — Neutron Wiki">
+<meta property="og:description" content="The Adobe app builds tested on Linux with Neutron, with dates: Photoshop, Premiere Pro, After Effects, Illustrator, Lightroom Classic, Media Encoder and Animate.">
+<meta property="og:url" content="https://neutronproject.org/wiki/start/basics/tested-builds/">
+<meta property="og:image" content="https://neutronproject.org/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Wiki","item":"https://neutronproject.org/wiki/"},{"@type":"ListItem","position":2,"name":"Getting Started","item":"https://neutronproject.org/wiki/start/"},{"@type":"ListItem","position":3,"name":"Basics","item":"https://neutronproject.org/wiki/start/basics/"},{"@type":"ListItem","position":4,"name":"Tested Adobe builds","item":"https://neutronproject.org/wiki/start/basics/tested-builds/"}]},{"@type":"TechArticle","headline":"Tested Adobe builds","description":"The Adobe app builds tested on Linux with Neutron, with dates: Photoshop, Premiere Pro, After Effects, Illustrator, Lightroom Classic, Media Encoder and Animate.","url":"https://neutronproject.org/wiki/start/basics/tested-builds/","inLanguage":"en-US","isPartOf":{"@id":"https://neutronproject.org/#website"},"about":{"@id":"https://neutronproject.org/#software"}}]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/wiki/wiki.css">
+<noscript><style>.grp-body[hidden]{display:block}.search{display:none}</style></noscript>
+</head>
+<body>
+<canvas id="starfield" aria-hidden="true"></canvas>
+
+<header class="nav">
+  <div class="nav-in">
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation">☰ Menu</button>
+    <a href="/" class="mark">
+      <svg width="24" height="22" viewBox="0 0 26 22" aria-hidden="true">
+        <ellipse cx="7" cy="11" rx="6" ry="9.5" fill="none" stroke="#E9EEF6" stroke-width="1.5"/>
+        <ellipse cx="19" cy="11" rx="6" ry="9.5" fill="none" stroke="#E9EEF6" stroke-width="1.5"/>
+        <circle cx="13" cy="11" r="5.2" fill="#0A0E16"/><circle cx="13" cy="11" r="4" fill="#E9EEF6"/>
+        <circle cx="21.5" cy="4.5" r="1.8" fill="#FC3D21"/>
+      </svg>NEUTRON
+    </a>
+    <a class="lnk hide-sm" href="/#status">Status</a>
+    <a class="lnk hide-sm" href="/#how">Architecture</a>
+    <a class="lnk" href="/wiki/" aria-current="page">Wiki</a>
+    <a class="lnk hide-sm" href="https://github.com/Nico-LaFoucate/Neutron">GitHub</a>
+  </div>
+</header>
+
+<div class="shell">
+  <div class="scrim" id="scrim"></div>
+  <aside id="sidebar">
+<div class="search"><svg width="13" height="13" viewBox="0 0 13 13"><circle cx="5.5" cy="5.5" r="4" fill="none" stroke="#8B97AD" stroke-width="1.3"/><line x1="8.5" y1="8.5" x2="12" y2="12" stroke="#8B97AD" stroke-width="1.3"/></svg><input id="q" placeholder="Search the wiki…" autocomplete="off" aria-label="Search the wiki"></div>
+<div class="tree" id="tree">
+<div class="grp toggle" role="button" tabindex="0" aria-expanded="true" data-group="Start here" data-active><span class="chev">▾</span>Start here</div>
+<div class="grp-body">
+<div class="snode active"><a href="/wiki/start/">Getting Started<span class="kind">Guide</span></a></div>
+<div class="cat active"><a href="/wiki/start/basics/">Basics</a></div>
+<div class="arts"><a href="/wiki/start/basics/what-is-neutron/"><span class="dot guide"></span>What is Neutron?</a><a href="/wiki/start/basics/what-neutron-does/"><span class="dot guide"></span>What Neutron does today</a><a class="active" aria-current="page" href="/wiki/start/basics/tested-builds/"><span class="dot guide"></span>Tested Adobe builds</a><a href="/wiki/start/basics/install-collider/"><span class="dot guide"></span>Installing Collider</a><a href="/wiki/start/basics/display-scale/"><span class="dot guide"></span>Choosing a display scale</a><a href="/wiki/start/basics/first-app/"><span class="dot guide"></span>Running your first app</a><a href="/wiki/start/basics/plugins/"><span class="dot guide"></span>Installing plugins</a><a href="/wiki/start/basics/planned/"><span class="dot guide"></span>Planned</a></div>
+<div class="cat"><a href="/wiki/start/help/">Help</a></div>
+</div>
+<div class="grp toggle" role="button" tabindex="0" aria-expanded="true" data-group="The stack"><span class="chev">▾</span>The stack</div>
+<div class="grp-body">
+<div class="snode"><a href="/wiki/neutron/">Neutron<span class="kind">Engine</span></a></div>
+<div class="snode"><a href="/wiki/collider/">Collider<span class="kind">Launcher</span></a></div>
+<div class="snode"><a href="/wiki/mudhut/">Mud Hut<span class="kind">Installer</span></a></div>
+</div>
+<div class="grp toggle" role="button" tabindex="0" aria-expanded="false" data-group="Applications"><span class="chev">▸</span>Applications</div>
+<div class="grp-body" hidden>
+<div class="snode"><a href="/wiki/photoshop/">Photoshop<span class="kind">Application</span></a></div>
+<div class="snode"><a href="/wiki/lightroom/">Lightroom Classic<span class="kind">Application</span></a></div>
+<div class="snode"><a href="/wiki/premiere/">Premiere Pro<span class="kind">Application</span></a></div>
+<div class="snode"><a href="/wiki/aftereffects/">After Effects<span class="kind">Application</span></a></div>
+</div>
+</div>
+  </aside>
+  <main class="content" id="content">
+<nav class="crumb"><a href="/wiki/">Wiki</a> <span class="sep">/</span><a href="/wiki/start/">Getting Started</a> <span class="sep">/</span><a href="/wiki/start/basics/">Basics</a> <span class="sep">/</span><span>Tested Adobe builds</span></nav>
+<div><span class="badge b-guide">Guide</span></div>
+<h1 class="title">Tested Adobe builds</h1>
+<p class="subtitle">Every Adobe build Neutron has tested, with its date. Generated from the signed list Mud Hut installs from.</p>
+<p>When you install or update an app, Mud Hut uses the newest build on this list. A newer build from Adobe is labeled "Not yet tested by Neutron" and stays your choice. This page is generated from the same signed list Mud Hut reads (<a class="ln" href="https://github.com/Nico-LaFoucate/Mud-Hut/blob/main/ledger/verified.json">verified.json</a>), last updated October 25, 2026.</p>
+<h2>After Effects</h2>
+<ul>
+<li><strong>After Effects 2026:</strong> 26.5.0.89, tested October 25, 2026</li>
+<li><strong>After Effects 2026:</strong> 26.3.0.87, tested October 16, 2026</li>
+</ul>
+<h2>Animate</h2>
+<ul>
+<li><strong>Animate 2024:</strong> 24.0.15.5, tested October 25, 2026</li>
+<li><strong>Animate 2024:</strong> 24.0.13.5, tested October 16, 2026</li>
+</ul>
+<h2>Illustrator</h2>
+<ul>
+<li><strong>Illustrator 2026:</strong> 30.8.2.7, tested October 25, 2026</li>
+<li><strong>Illustrator 2026:</strong> 30.6.0.109, tested October 16, 2026</li>
+</ul>
+<h2>Lightroom Classic</h2>
+<ul>
+<li><strong>Lightroom Classic:</strong> 15.6.0 (build 202609251514), tested October 16, 2026</li>
+<li><strong>Lightroom Classic:</strong> 15.4.1 (build 202606201310), tested October 16, 2026</li>
+</ul>
+<h2>Media Encoder</h2>
+<ul>
+<li><strong>Media Encoder 2026:</strong> 26.5.2.2, tested October 25, 2026</li>
+<li><strong>Media Encoder 2026:</strong> 26.3.1.1, tested October 16, 2026</li>
+</ul>
+<h2>Photoshop</h2>
+<ul>
+<li><strong>Photoshop 2026:</strong> 27.11.0.26, tested October 16, 2026</li>
+<li><strong>Photoshop 2026:</strong> 27.8.0.13, tested October 16, 2026</li>
+</ul>
+<h2>Premiere Pro</h2>
+<ul>
+<li><strong>Premiere Pro 2026:</strong> 26.5.2.5, tested October 25, 2026</li>
+<li><strong>Premiere Pro 2026:</strong> 26.3.0.93, tested October 16, 2026</li>
+</ul>
+<p>Per-app status, including what works in each app, is on the <a class="ln" href="/#status">status board</a>.</p>
+  </main>
+</div>
+
+<footer><div class="foot">
+  <a href="/">Home</a>
+  <a href="https://github.com/Nico-LaFoucate/Neutron">Neutron</a>
+  <a href="https://github.com/Nico-LaFoucate/Collider">Collider</a>
+  <a href="https://github.com/Nico-LaFoucate/Mud-Hut">Mud Hut</a>
+  <a href="/#support">Support</a>
+  <span class="sp">Neutron and neutron-wine LGPL-2.1-or-later · Collider and Mud Hut Apache 2.0</span>
+</div>
+<p class="legal">Neutron is an independent project by Nico LaFoucate and Ficus Media Group. Adobe and its product names are trademarks of Adobe Inc. Neutron is not affiliated with or endorsed by Adobe.</p>
+<p class="legal">Wiki + site text: <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Logos and Neutron/Collider/Mud Hut branding: reserved. Site code (HTML/CSS/JS): <a href="https://opensource.org/license/mit">MIT</a>.</p>
+</footer>
+
+<script src="/wiki/wiki.js"></script>
+</body>
+</html>

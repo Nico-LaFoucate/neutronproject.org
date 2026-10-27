@@ -122,6 +122,61 @@ def markdown(text):
     return "\n".join(out)
 
 
+# ---------------------------------------------------------------- generated pages
+
+# wiki-src/data/verified.json is a copy of Mud Hut's signed list of tested Adobe builds
+# (github.com/Nico-LaFoucate/Mud-Hut, ledger/verified.json): copy it here whenever that list is republished.
+VERIFIED = SRC / "data" / "verified.json"
+APP_NAMES = {"PHSP": "Photoshop", "PPRO": "Premiere Pro", "AEFT": "After Effects", "ILST": "Illustrator",
+             "LTRM": "Lightroom Classic", "AME": "Media Encoder", "FLPR": "Animate", "AUDT": "Audition",
+             "IDSN": "InDesign"}
+# The yearly name of each app's major version (Adobe's own naming); apps not here show the version only.
+APP_YEARS = {("PHSP", "27"): 2026, ("PHSP", "26"): 2025, ("PPRO", "26"): 2026, ("PPRO", "25"): 2025,
+             ("AEFT", "26"): 2026, ("AEFT", "25"): 2025, ("ILST", "30"): 2026, ("ILST", "29"): 2025,
+             ("AME", "26"): 2026, ("AME", "25"): 2025, ("FLPR", "24"): 2024, ("AUDT", "26"): 2026,
+             ("IDSN", "21"): 2026}
+
+
+def _when(iso):
+    y, m, d = (int(x) for x in iso[:10].split("-"))
+    return "%s %d, %d" % (("January", "February", "March", "April", "May", "June", "July", "August", "September",
+                           "October", "November", "December")[m - 1], d, y)
+
+
+def _build(b):
+    """Adobe's build string, with Lightroom Classic's long date suffix written the way its About box shows it."""
+    parts = b.split(".")
+    if len(parts) == 4 and len(parts[3]) > 6:
+        return "%s (build %s)" % (".".join(parts[:3]), parts[3])
+    return b
+
+
+def tested_builds_md():
+    """The Markdown body of the Tested Adobe builds page, from the signed list. Apps the status board does not count
+    as supported (the Lightroom cloud app) are left out."""
+    d = json.loads(VERIFIED.read_text(encoding="utf-8"))
+    out = ["When you install or update an app, Mud Hut uses the newest build on this list. A newer build from Adobe is "
+           "labeled \"Not yet tested by Neutron\" and stays your choice. This page is generated from the same signed "
+           "list Mud Hut reads ([verified.json](https://github.com/Nico-LaFoucate/Mud-Hut/blob/main/ledger/verified.json)), "
+           "last updated %s." % _when(d["updated"]), ""]
+    for code in sorted((c for c in d["apps"] if c in APP_NAMES), key=lambda c: APP_NAMES[c]):
+        rows = []
+        for line, v in d["apps"][code].items():
+            for b in sorted(v.get("verified", []), reverse=True,
+                            key=lambda b: (b["date"], tuple(int(x) for x in re.findall(r"\d+", b["build"])))):
+                major = b["build"].split(".")[0]
+                year = APP_YEARS.get((code, major))
+                rows.append((b["date"], "- **%s%s:** %s, tested %s" % (
+                    APP_NAMES[code], " %d" % year if year else "", _build(b["build"]), _when(b["date"]))))
+            for b in v.get("blocked", []):
+                rows.append(("", "- **%s:** %s is held back: %s" % (APP_NAMES[code], _build(b.get("build", "?")),
+                                                                    b.get("reason", "it has a known problem"))))
+        if rows:
+            out += ["## %s" % APP_NAMES[code], ""] + [r for _, r in rows] + [""]
+    out.append("Per-app status, including what works in each app, is on the [status board](/#status).")
+    return "\n".join(out)
+
+
 def read_article(path):
     text = path.read_text(encoding="utf-8")
     m = re.match(r"---\n(.*?)\n---\n?(.*)\Z", text, re.S)
@@ -137,6 +192,8 @@ def read_article(path):
     if meta["status"] not in BADGE:
         sys.exit("%s: status must be one of %s" % (path, ", ".join(BADGE)))
     body = m.group(2).strip()
+    if meta.get("generate") == "tested-builds":
+        body = tested_builds_md()
     meta["sub"] = meta.get("sub", "")
     # `index: no`: a page that only points to another one. It is built (old links work) but kept out of search
     # engines, the sitemap and llms.txt, so the one real page is what gets found.

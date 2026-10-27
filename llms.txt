@@ -10,6 +10,7 @@ Per-app status: https://neutronproject.org/#status (the status board). The whole
 
 - [What is Neutron?](https://neutronproject.org/wiki/start/basics/what-is-neutron/): Neutron is a free, open-source compatibility engine that runs Adobe Creative Cloud apps such as Photoshop and Premiere Pro on Linux. Its three pieces, in one minute.
 - [What Neutron does today](https://neutronproject.org/wiki/start/basics/what-neutron-does/): Run Adobe Photoshop, Premiere Pro, After Effects, Illustrator and Lightroom Classic on Linux: installed from Adobe, GPU acceleration, pen tablets and plugins.
+- [Tested Adobe builds](https://neutronproject.org/wiki/start/basics/tested-builds/): The Adobe app builds tested on Linux with Neutron, with dates: Photoshop, Premiere Pro, After Effects, Illustrator, Lightroom Classic, Media Encoder and Animate.
 - [Installing Collider](https://neutronproject.org/wiki/start/basics/install-collider/): Install Neutron on Linux and get Adobe Photoshop, Premiere Pro and the other Creative Cloud apps running: requirements and steps, end to end.
 - [Choosing a display scale](https://neutronproject.org/wiki/start/basics/display-scale/): Use a Windows scale step: 100, 125, 150, 175, 200, 225, 250 or 300%.
 - [Running your first app](https://neutronproject.org/wiki/start/basics/first-app/): You clicked Launch — here’s what to expect, and how to get to real work.

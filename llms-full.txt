@@ -106,6 +106,53 @@ Neutron is free. If it helps your work, you can [support it](https://neutronproj
 
 ---
 
+## Tested Adobe builds
+
+https://neutronproject.org/wiki/start/basics/tested-builds/
+
+*Every Adobe build Neutron has tested, with its date. Generated from the signed list Mud Hut installs from.*
+
+When you install or update an app, Mud Hut uses the newest build on this list. A newer build from Adobe is labeled "Not yet tested by Neutron" and stays your choice. This page is generated from the same signed list Mud Hut reads ([verified.json](https://github.com/Nico-LaFoucate/Mud-Hut/blob/main/ledger/verified.json)), last updated October 25, 2026.
+
+## After Effects
+
+- **After Effects 2026:** 26.5.0.89, tested October 25, 2026
+- **After Effects 2026:** 26.3.0.87, tested October 16, 2026
+
+## Animate
+
+- **Animate 2024:** 24.0.15.5, tested October 25, 2026
+- **Animate 2024:** 24.0.13.5, tested October 16, 2026
+
+## Illustrator
+
+- **Illustrator 2026:** 30.8.2.7, tested October 25, 2026
+- **Illustrator 2026:** 30.6.0.109, tested October 16, 2026
+
+## Lightroom Classic
+
+- **Lightroom Classic:** 15.6.0 (build 202609251514), tested October 16, 2026
+- **Lightroom Classic:** 15.4.1 (build 202606201310), tested October 16, 2026
+
+## Media Encoder
+
+- **Media Encoder 2026:** 26.5.2.2, tested October 25, 2026
+- **Media Encoder 2026:** 26.3.1.1, tested October 16, 2026
+
+## Photoshop
+
+- **Photoshop 2026:** 27.11.0.26, tested October 16, 2026
+- **Photoshop 2026:** 27.8.0.13, tested October 16, 2026
+
+## Premiere Pro
+
+- **Premiere Pro 2026:** 26.5.2.5, tested October 25, 2026
+- **Premiere Pro 2026:** 26.3.0.93, tested October 16, 2026
+
+Per-app status, including what works in each app, is on the [status board](https://neutronproject.org/#status).
+
+---
+
 ## Installing Collider
 
 https://neutronproject.org/wiki/start/basics/install-collider/
