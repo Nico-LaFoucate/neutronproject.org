@@ -50,3 +50,5 @@ This is beta software, so a few things are worth checking:
 ## Where to go next
 
 Current status for each app is on the [status board](/#status). Problems are on [Known issues](/wiki/start/help/known-issues/), and fixes on [Notable fixes](/wiki/neutron/fixes/notable-fixes/).
+
+Neutron is free. If it helps your work, you can support it: [Patreon](https://patreon.com/neutronproject) · [GitHub Sponsors](https://github.com/sponsors/Nico-LaFoucate) · [Ko-fi](https://ko-fi.com/neutroncollider)
