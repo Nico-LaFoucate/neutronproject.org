@@ -41,7 +41,7 @@ All inside the prefix:
 - **A UXP plugin (`.ccx`):** `Program Files\Common Files\Adobe\UXP\Plugins\External`, in a folder named after the plugin and its version.
 - **A script (`.jsx`, `.jsxbin`):** the scripts folder of the app you choose (for After Effects, `ScriptUI Panels`).
 - **A VST3 plugin (`.vst3` file or folder):** `Program Files\Common Files\VST3`.
-- **A vendor's installer (`.exe`, `.msi`):** wherever the installer puts it. *`.msi` installers are experimental: only `.exe` installers are tested.*
+- **A vendor's installer (`.exe`, `.msi`):** wherever the installer puts it.
 
 If a plugin is already there, the new one replaces it. After Effects loads plugins from the shared folder: Gyroflow, Boris FX Mocha and Satori appear in its **Effect** menu.
 
@@ -57,7 +57,7 @@ Premiere Pro finds new audio plugins only on its very first launch. After you in
 <li>Click <strong>OK</strong>. It's now under <strong>Effects &gt; Audio Effects &gt; VST3</strong>.</li>
 </ol>
 
-Tested with FabFilter's Windows installer: Pro-Q 4 installed, passed Premiere's scan, and processed audio on a clip with its own interface open.
+Tested with FabFilter's Windows installer: Pro-Q 4 installed, passed Premiere's scan, and processed audio on a clip with its own interface open. Tested with plugdata's `.msi` installer: its effect, plugdata-fx, passed the scan and appears under **Effects > Audio Effects > VST3**. Premiere lists audio effects only, so a VST3 instrument the same installer adds doesn't appear.
 
 ## UXP plugins (.ccx)
 

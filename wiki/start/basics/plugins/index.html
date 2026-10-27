@@ -92,7 +92,7 @@ neutron plugins folder</div>
 <li><strong>A UXP plugin (<code>.ccx</code>):</strong> <code>Program Files\Common Files\Adobe\UXP\Plugins\External</code>, in a folder named after the plugin and its version.</li>
 <li><strong>A script (<code>.jsx</code>, <code>.jsxbin</code>):</strong> the scripts folder of the app you choose (for After Effects, <code>ScriptUI Panels</code>).</li>
 <li><strong>A VST3 plugin (<code>.vst3</code> file or folder):</strong> <code>Program Files\Common Files\VST3</code>.</li>
-<li><strong>A vendor's installer (<code>.exe</code>, <code>.msi</code>):</strong> wherever the installer puts it. <em><code>.msi</code> installers are experimental: only <code>.exe</code> installers are tested.</em></li>
+<li><strong>A vendor's installer (<code>.exe</code>, <code>.msi</code>):</strong> wherever the installer puts it.</li>
 </ul>
 <p>If a plugin is already there, the new one replaces it. After Effects loads plugins from the shared folder: Gyroflow, Boris FX Mocha and Satori appear in its <strong>Effect</strong> menu.</p>
 <p>Tested in Photoshop with G'MIC-8bf, installed as its unzipped folder: it appears under <strong>Filter > GMIC</strong> and applies its filters to the image. Tested in Illustrator with anchorGrabber, a tool plugin: it appears at the bottom of the toolbar's <strong>All Tools</strong> list (the <strong>…</strong> button), under <strong>Add Ons</strong>, and works once dragged into the toolbar.</p>
@@ -103,7 +103,7 @@ neutron plugins folder</div>
 <li>Click <strong>Scan for Plug-Ins</strong>. The plugin appears in the list with its status.</li>
 <li>Click <strong>OK</strong>. It's now under <strong>Effects &gt; Audio Effects &gt; VST3</strong>.</li>
 </ol>
-<p>Tested with FabFilter's Windows installer: Pro-Q 4 installed, passed Premiere's scan, and processed audio on a clip with its own interface open.</p>
+<p>Tested with FabFilter's Windows installer: Pro-Q 4 installed, passed Premiere's scan, and processed audio on a clip with its own interface open. Tested with plugdata's <code>.msi</code> installer: its effect, plugdata-fx, passed the scan and appears under <strong>Effects > Audio Effects > VST3</strong>. Premiere lists audio effects only, so a VST3 instrument the same installer adds doesn't appear.</p>
 <h2>UXP plugins (.ccx)</h2>
 <p>Photoshop's newer plugins come as <code>.ccx</code> files. Neutron unpacks one into the folder Photoshop loads UXP plugins from, and replaces any other version of the same plugin. Restart Photoshop: the plugin is in the <strong>Plugins</strong> menu. This needs runtime 11.10-155 or newer.</p>
 <p>Tested with an open-source plugin (Auto-Photoshop-StableDiffusion): it installed, appeared under <strong>Plugins</strong>, and its panel opened.</p>
