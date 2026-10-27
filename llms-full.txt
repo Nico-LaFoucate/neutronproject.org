@@ -2,7 +2,7 @@
 
 > Neutron runs Adobe Creative Cloud apps on Linux: Photoshop, Premiere Pro, After Effects, Illustrator, Lightroom Classic, Media Encoder and Animate (Creative Cloud 2026 and 2025), plus Audition and InDesign on 2026 through experimental profiles. It is free, open source and in beta, and built on its own patched Wine runtime. The apps are installed straight from Adobe with Adobe's own installer, and you sign in with your own Adobe account.
 
-Neutron has three parts: the `neutron` command line with its Wine runtime (the engine), Collider (the desktop app) and Mud Hut (the installer and updater). It is developed and tested on CachyOS with KDE Plasma (Wayland) and NVIDIA GPUs; users also run it on Ubuntu, Bazzite, Nobara and Arch, under GNOME and Hyprland. Neutron is not affiliated with Adobe. Not to be confused with OpenStack Neutron (cloud networking) or iZotope Neutron (an audio plugin).
+Neutron has three parts: the `neutron` command line with its Wine runtime (the engine), Collider (the desktop app) and Mud Hut (the installer and updater). It is developed and tested on CachyOS with KDE Plasma (Wayland) and NVIDIA GPUs; users also run it on Fedora, Ubuntu, Bazzite, Nobara and Arch, under GNOME and Hyprland. Neutron is not affiliated with Adobe. Not to be confused with OpenStack Neutron (cloud networking) or iZotope Neutron (an audio plugin).
 
 ## Status board (from https://neutronproject.org/#status)
 
@@ -90,7 +90,7 @@ More on each: [Photoshop](https://neutronproject.org/wiki/photoshop/status/overv
 
 ## Where it runs
 
-Neutron is developed and tested on CachyOS with KDE Plasma (Wayland) and NVIDIA GPUs. Users also run it on Ubuntu, Bazzite, Nobara and Arch, under GNOME and Hyprland.
+Neutron is developed and tested on CachyOS with KDE Plasma (Wayland) and NVIDIA GPUs. Users also run it on Fedora, Ubuntu, Bazzite, Nobara and Arch, under GNOME and Hyprland.
 
 ## How it's built
 
@@ -114,7 +114,7 @@ https://neutronproject.org/wiki/start/basics/install-collider/
 
 **Collider** is the graphical front door to the whole stack. One command, `neutron setup`, installs everything underneath it — the [Neutron](https://neutronproject.org/wiki/neutron/) compatibility engine, its patched Wine runtime, the Mud Hut installer and Collider itself — and from then on you install and launch your Adobe apps from Collider. This page walks the whole thing end to end.
 
-Beta — read this firstNeutron is in beta. It's developed and tested on CachyOS with KDE Plasma (Wayland) and NVIDIA GPUs, and users also run it on Ubuntu, Bazzite, Nobara and Arch, under GNOME and Hyprland as well as KDE. AMD GPUs are partly tested (see below); on Intel GPUs, a user reports Premiere Pro and Photoshop working. Things break, and you must bring your own legally licensed Adobe software.
+Beta — read this firstNeutron is in beta. It's developed and tested on CachyOS with KDE Plasma (Wayland) and NVIDIA GPUs, and users also run it on Fedora, Ubuntu, Bazzite, Nobara and Arch, under GNOME and Hyprland as well as KDE. AMD GPUs are partly tested (see below); on Intel GPUs, a user reports Premiere Pro and Photoshop working. Things break, and you must bring your own legally licensed Adobe software.
 
 ## Before you begin
 
@@ -386,7 +386,7 @@ Yes. Collider checks for updates and updates apps in place, so your preferences,
 
 ### Which Linux distributions and desktops work?
 
-Neutron is developed and tested on CachyOS with KDE Plasma (Wayland) and NVIDIA GPUs. Users also run it on Ubuntu, Bazzite, Nobara and Arch, under GNOME and Hyprland. You need a 64-bit distribution with glibc 2.39 or newer, and a Wayland session: X11 isn't supported.
+Neutron is developed and tested on CachyOS with KDE Plasma (Wayland) and NVIDIA GPUs. Users also run it on Fedora, Ubuntu, Bazzite, Nobara and Arch, under GNOME and Hyprland. You need a 64-bit distribution with glibc 2.39 or newer, and a Wayland session: X11 isn't supported.
 
 ### Does it work with AMD or Intel GPUs?
 
@@ -637,16 +637,6 @@ Diagnose this class yourselfIf an Adobe app pauses with no error while building 
 
 ---
 
-## Known issues
-
-https://neutronproject.org/wiki/neutron/issues/known-issues/
-
-*Listed on one page for every app.*
-
-Current known issues for every app are listed on one page: [Known issues](https://neutronproject.org/wiki/start/help/known-issues/).
-
----
-
 ## How runtimes are versioned
 
 https://neutronproject.org/wiki/neutron/runtimes/versioned-runtimes/
@@ -717,16 +707,6 @@ https://neutronproject.org/wiki/collider/setup/install/
 
 ---
 
-## Known issues
-
-https://neutronproject.org/wiki/collider/issues/placeholder/
-
-*Listed on one page for every app.*
-
-Current known issues for every app are listed on one page: [Known issues](https://neutronproject.org/wiki/start/help/known-issues/).
-
----
-
 ## What Mud Hut is
 
 https://neutronproject.org/wiki/mudhut/overview/what-it-is/
@@ -786,26 +766,6 @@ Neutron runs Adobe Photoshop on Linux: Photoshop 2026 and 2025, installed straig
 
 ---
 
-## Notable fixes
-
-https://neutronproject.org/wiki/photoshop/fixes/placeholder/
-
-*Listed with every app’s fixes under Neutron → Fixes.*
-
-Photoshop’s fixes are listed with the rest in [Neutron → Fixes → Notable fixes](https://neutronproject.org/wiki/neutron/fixes/notable-fixes/).
-
----
-
-## Known issues
-
-https://neutronproject.org/wiki/photoshop/issues/placeholder/
-
-*Listed on one page for every app.*
-
-Current known issues for every app are listed on one page: [Known issues](https://neutronproject.org/wiki/start/help/known-issues/).
-
----
-
 ## Lightroom Classic on Linux
 
 https://neutronproject.org/wiki/lightroom/status/overview/
@@ -839,16 +799,6 @@ This fix lives in the engine — read it in full at [Neutron → Fixes → The t
 
 ---
 
-## Known issues
-
-https://neutronproject.org/wiki/lightroom/issues/placeholder/
-
-*Listed on one page for every app.*
-
-Current known issues for every app are listed on one page: [Known issues](https://neutronproject.org/wiki/start/help/known-issues/).
-
----
-
 ## Premiere Pro on Linux
 
 https://neutronproject.org/wiki/premiere/status/overview/
@@ -872,16 +822,6 @@ Neutron runs Adobe Premiere Pro on Linux: Premiere Pro 2026 and 2025, installed 
 
 ---
 
-## Known issues
-
-https://neutronproject.org/wiki/premiere/issues/placeholder/
-
-*Listed on one page for every app.*
-
-Current known issues for every app are listed on one page: [Known issues](https://neutronproject.org/wiki/start/help/known-issues/).
-
----
-
 ## After Effects on Linux
 
 https://neutronproject.org/wiki/aftereffects/status/overview/
@@ -900,13 +840,3 @@ Neutron runs Adobe After Effects on Linux: After Effects 2026 and 2025, installe
 ## Get it running
 
 [Install Collider](https://neutronproject.org/wiki/start/basics/install-collider/), install After Effects from its Mud Hut tab, then see [Running your first app](https://neutronproject.org/wiki/start/basics/first-app/). Current problems across the apps are listed under [Known issues](https://neutronproject.org/wiki/start/help/known-issues/).
-
----
-
-## Known issues
-
-https://neutronproject.org/wiki/aftereffects/issues/placeholder/
-
-*Listed on one page for every app.*
-
-Current known issues for every app are listed on one page: [Known issues](https://neutronproject.org/wiki/start/help/known-issues/).

@@ -35,7 +35,7 @@ More on each: [Photoshop](/wiki/photoshop/status/overview/), [Premiere Pro](/wik
 
 ## Where it runs
 
-Neutron is developed and tested on CachyOS with KDE Plasma (Wayland) and NVIDIA GPUs. Users also run it on Ubuntu, Bazzite, Nobara and Arch, under GNOME and Hyprland.
+Neutron is developed and tested on CachyOS with KDE Plasma (Wayland) and NVIDIA GPUs. Users also run it on Fedora, Ubuntu, Bazzite, Nobara and Arch, under GNOME and Hyprland.
 
 ## How it's built
 

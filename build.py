@@ -138,6 +138,9 @@ def read_article(path):
         sys.exit("%s: status must be one of %s" % (path, ", ".join(BADGE)))
     body = m.group(2).strip()
     meta["sub"] = meta.get("sub", "")
+    # `index: no`: a page that only points to another one. It is built (old links work) but kept out of search
+    # engines, the sitemap and llms.txt, so the one real page is what gets found.
+    meta["noindex"] = meta.get("index", "").lower() == "no"
     meta["md"] = body
     meta["html"] = markdown(body) if body else STUB
     meta["stub"] = not body
@@ -270,11 +273,13 @@ def head_meta(route, title, description, trail, article=None):
     return "\n".join(out) + "\n" + json_ld({"@context": "https://schema.org", "@graph": graph})
 
 
-def page(template, nav, route, title, description, content, head_extra="", meta=""):
+def page(template, nav, route, title, description, content, head_extra="", meta="", noindex=False):
     sec, cat, art = (list(route) + [None] * 3)[:3]
     path = url(*route)
+    robots = ("" if INDEXABLE else '<meta name="robots" content="noindex, nofollow">\n') or \
+             ('<meta name="robots" content="noindex, follow">\n' if noindex else "")
     return (template
-            .replace("{{robots}}", "" if INDEXABLE else '<meta name="robots" content="noindex, nofollow">\n')
+            .replace("{{robots}}", robots)
             .replace("{{title}}", esc(title))
             .replace("{{description}}", esc(description))
             .replace("{{canonical}}", SITE_URL + path)
@@ -302,8 +307,9 @@ def build():
     def emit(route, title, description, content, head_extra="", in_sitemap=True, trail=(), article=None):
         rel = Path(*route, "index.html") if route else Path("index.html")
         trail = [("Wiki", url())] + list(trail)
+        noindex = bool(article and article["noindex"])
         files[rel] = page(template, nav, route, title, description, content, head_extra,
-                          head_meta(route, title, description, trail, article))
+                          head_meta(route, title, description, trail, article), noindex)
         if in_sitemap and route:
             sitemap_urls.append(url(*route))
 
@@ -342,7 +348,7 @@ def build():
                         + ('<p class="subtitle">%s</p>\n' % esc(a["sub"]) if a["sub"] else "")
                         + a["html"])
                 emit((sk, ck, ak), "%s — %s" % (a["title"], HOME_TITLE), a.get("description") or a["sub"] or s["blurb"], body,
-                     in_sitemap=not a["stub"],
+                     in_sitemap=not a["stub"] and not a["noindex"],
                      trail=[(s["title"], url(sk)), (c["title"], url(sk, ck)), (a["title"], url(sk, ck, ak))],
                      article=None if a["stub"] else a)
 
@@ -380,7 +386,7 @@ LLMS_SUMMARY = (
 LLMS_ABOUT = (
     "Neutron has three parts: the `neutron` command line with its Wine runtime (the engine), Collider (the desktop "
     "app) and Mud Hut (the installer and updater). It is developed and tested on CachyOS with KDE Plasma (Wayland) and "
-    "NVIDIA GPUs; users also run it on Ubuntu, Bazzite, Nobara and Arch, under GNOME and Hyprland. Neutron is not "
+    "NVIDIA GPUs; users also run it on Fedora, Ubuntu, Bazzite, Nobara and Arch, under GNOME and Hyprland. Neutron is not "
     "affiliated with Adobe. Not to be confused with OpenStack Neutron (cloud networking) or iZotope Neutron (an audio "
     "plugin).")
 LLMS_REPOS = [("Neutron: the CLI, docs and issues", "https://github.com/Nico-LaFoucate/Neutron"),
@@ -421,7 +427,7 @@ def llms_index(sections):
              "Per-app status: %s/#status (the status board). The whole wiki as one text file: %s/llms-full.txt" % (
                  SITE_URL, SITE_URL), ""]
     for s in sections:
-        arts = [(c, a) for c in s["categories"] for a in c["shown"]]
+        arts = [(c, a) for c in s["categories"] for a in c["shown"] if not a["noindex"]]
         if not arts:
             continue
         lines.append("## %s" % s["title"])
@@ -440,6 +446,8 @@ def llms_full(sections):
     for s in sections:
         for c in s["categories"]:
             for a in c["shown"]:
+                if a["noindex"]:
+                    continue
                 parts += ["---", "", "## %s" % a["title"], "",
                           "%s%s" % (SITE_URL, url(s["slug"], c["slug"], a["slug"])), ""]
                 if a["sub"]:

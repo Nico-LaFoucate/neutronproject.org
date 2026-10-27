@@ -7,7 +7,7 @@ description: Install Neutron on Linux and get Adobe Photoshop, Premiere Pro and 
 
 **Collider** is the graphical front door to the whole stack. One command, `neutron setup`, installs everything underneath it — the [Neutron](/wiki/neutron/) compatibility engine, its patched Wine runtime, the Mud Hut installer and Collider itself — and from then on you install and launch your Adobe apps from Collider. This page walks the whole thing end to end.
 
-<div class="callout"><p class="k">Beta — read this first</p><p>Neutron is in beta. It's developed and tested on CachyOS with KDE Plasma (Wayland) and NVIDIA GPUs, and users also run it on Ubuntu, Bazzite, Nobara and Arch, under GNOME and Hyprland as well as KDE. AMD GPUs are partly tested (see below); on Intel GPUs, a user reports Premiere Pro and Photoshop working. Things break, and you must bring your own <strong>legally licensed</strong> Adobe software.</p></div>
+<div class="callout"><p class="k">Beta — read this first</p><p>Neutron is in beta. It's developed and tested on CachyOS with KDE Plasma (Wayland) and NVIDIA GPUs, and users also run it on Fedora, Ubuntu, Bazzite, Nobara and Arch, under GNOME and Hyprland as well as KDE. AMD GPUs are partly tested (see below); on Intel GPUs, a user reports Premiere Pro and Photoshop working. Things break, and you must bring your own <strong>legally licensed</strong> Adobe software.</p></div>
 
 ## Before you begin
 

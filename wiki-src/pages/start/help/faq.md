@@ -28,7 +28,7 @@ Yes. Collider checks for updates and updates apps in place, so your preferences,
 
 ### Which Linux distributions and desktops work?
 
-Neutron is developed and tested on CachyOS with KDE Plasma (Wayland) and NVIDIA GPUs. Users also run it on Ubuntu, Bazzite, Nobara and Arch, under GNOME and Hyprland. You need a 64-bit distribution with glibc 2.39 or newer, and a Wayland session: X11 isn't supported.
+Neutron is developed and tested on CachyOS with KDE Plasma (Wayland) and NVIDIA GPUs. Users also run it on Fedora, Ubuntu, Bazzite, Nobara and Arch, under GNOME and Hyprland. You need a 64-bit distribution with glibc 2.39 or newer, and a Wayland session: X11 isn't supported.
 
 ### Does it work with AMD or Intel GPUs?
 
