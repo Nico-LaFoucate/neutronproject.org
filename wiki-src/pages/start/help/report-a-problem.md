@@ -18,6 +18,10 @@ Not sure which? Use Neutron's issues.
 - The app, and what happened.
 - The output of `neutron report`.
 
+## Works on your setup?
+
+Tell others how an Adobe app runs on your distribution, desktop and GPU: [share a compatibility report](https://github.com/Nico-LaFoucate/Neutron/discussions/new?category=compatibility-reports). Reports from other users are in [Compatibility reports](https://github.com/Nico-LaFoucate/Neutron/discussions/categories/compatibility-reports). They aren't tested by Neutron; the [status board](/#status) only changes after a lab test.
+
 ## Questions
 
 Ask in Neutron's [Discussions](https://github.com/Nico-LaFoucate/Neutron/discussions).

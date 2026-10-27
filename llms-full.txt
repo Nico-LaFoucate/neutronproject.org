@@ -433,7 +433,7 @@ Yes. Collider checks for updates and updates apps in place, so your preferences,
 
 ### Which Linux distributions and desktops work?
 
-Neutron is developed and tested on CachyOS with KDE Plasma (Wayland) and NVIDIA GPUs. Users also run it on Fedora, Ubuntu, Bazzite, Nobara and Arch, under GNOME and Hyprland. You need a 64-bit distribution with glibc 2.39 or newer, and a Wayland session: X11 isn't supported.
+Neutron is developed and tested on CachyOS with KDE Plasma (Wayland) and NVIDIA GPUs. Users also run it on Fedora, Ubuntu, Bazzite, Nobara and Arch, under GNOME and Hyprland. You need a 64-bit distribution with glibc 2.39 or newer, and a Wayland session: X11 isn't supported. Users' reports from their own setups are in [Compatibility reports](https://github.com/Nico-LaFoucate/Neutron/discussions/categories/compatibility-reports).
 
 ### Does it work with AMD or Intel GPUs?
 
@@ -534,6 +534,10 @@ Not sure which? Use Neutron's issues.
 
 - The app, and what happened.
 - The output of `neutron report`.
+
+## Works on your setup?
+
+Tell others how an Adobe app runs on your distribution, desktop and GPU: [share a compatibility report](https://github.com/Nico-LaFoucate/Neutron/discussions/new?category=compatibility-reports). Reports from other users are in [Compatibility reports](https://github.com/Nico-LaFoucate/Neutron/discussions/categories/compatibility-reports). They aren't tested by Neutron; the [status board](https://neutronproject.org/#status) only changes after a lab test.
 
 ## Questions
 
