@@ -4,7 +4,7 @@ status: guide
 sub: Third-party plugins, extension panels, scripts and audio plugins, from Collider or a terminal.
 ---
 
-Neutron puts each plugin where its Windows installer would, inside the prefix your Adobe apps run from. Hand it the plugin files, an extension package, a script, or the vendor's own Windows installer. This needs Neutron 1.0.0-beta.29 and Collider 0.1.12 or newer.
+Neutron puts each plugin where its Windows installer would, inside the prefix your Adobe apps run from. Hand it the plugin files, an extension package, a UXP plugin, a script, or the vendor's own Windows installer. This needs Neutron 1.0.0-beta.29 and Collider 0.1.12 or newer.
 
 ## In Collider
 
@@ -38,6 +38,7 @@ All inside the prefix:
 - **Photoshop plugin files** (`.8bf` and the other `.8b*` types): Photoshop's `Plug-ins` folder.
 - **`.aip` files:** Illustrator's `Plug-ins` folder.
 - **An extension package (`.zxp`):** `Program Files (x86)\Common Files\Adobe\CEP\extensions`, in a folder named after the extension.
+- **A UXP plugin (`.ccx`):** `Program Files\Common Files\Adobe\UXP\Plugins\External`, in a folder named after the plugin and its version.
 - **A script (`.jsx`, `.jsxbin`):** the scripts folder of the app you choose (for After Effects, `ScriptUI Panels`).
 - **A VST3 plugin (`.vst3` file or folder):** `Program Files\Common Files\VST3`.
 - **A vendor's installer (`.exe`, `.msi`):** wherever the installer puts it.
@@ -56,6 +57,14 @@ Premiere Pro finds new audio plugins only on its very first launch. After you in
 
 Tested with FabFilter's Windows installer: Pro-Q 4 installed, passed Premiere's scan, and processed audio on a clip with its own interface open.
 
+## UXP plugins (.ccx)
+
+Photoshop's newer plugins come as `.ccx` files. Neutron unpacks one into the folder Photoshop loads UXP plugins from, and replaces any other version of the same plugin. Restart Photoshop: the plugin is in the **Plugins** menu. This needs runtime 11.10-155 or newer.
+
+Tested with an open-source plugin (Auto-Photoshop-StableDiffusion): it installed, appeared under **Plugins**, and its panel opened.
+
+If the Creative Cloud app ever installed UXP plugins into the prefix, it left a plugin list behind, and Photoshop then loads only the plugins on that list. Neutron says so when it installs a `.ccx` into such a prefix.
+
 ## Extension packages (.zxp)
 
 Neutron checks a package's signature before it installs it. A damaged package is refused, and the extension that was already installed stays as it was.
@@ -64,7 +73,6 @@ A package that isn't signed at all is installed with a note: the Adobe apps refu
 
 ## Not supported yet
 
-- **UXP plugins** (`.ccx`): these are installed by Adobe's own plugin installer, which doesn't work in Neutron prefixes yet.
 - **Loose VST2 files** (`.dll`): there's no single standard VST2 folder, so Neutron doesn't place them. A vendor's installer that includes VST2 plugins still puts them where it wants.
 - **The aescripts + aeplugins manager** runs, but installing plugins through it hasn't been tested yet.
 

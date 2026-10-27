@@ -65,7 +65,7 @@
 <div><span class="badge b-guide">Guide</span></div>
 <h1 class="title">Installing plugins</h1>
 <p class="subtitle">Third-party plugins, extension panels, scripts and audio plugins, from Collider or a terminal.</p>
-<p>Neutron puts each plugin where its Windows installer would, inside the prefix your Adobe apps run from. Hand it the plugin files, an extension package, a script, or the vendor's own Windows installer. This needs Neutron 1.0.0-beta.29 and Collider 0.1.12 or newer.</p>
+<p>Neutron puts each plugin where its Windows installer would, inside the prefix your Adobe apps run from. Hand it the plugin files, an extension package, a UXP plugin, a script, or the vendor's own Windows installer. This needs Neutron 1.0.0-beta.29 and Collider 0.1.12 or newer.</p>
 <h2>In Collider</h2>
 <ol>
 <li>Open <strong>Plugins</strong> in the sidebar, under Library. It works on the prefix selected on the <strong>Prefixes</strong> tab.</li>
@@ -89,6 +89,7 @@ neutron plugins folder</div>
 <li><strong>Photoshop plugin files</strong> (<code>.8bf</code> and the other <code>.8b*</code> types): Photoshop's <code>Plug-ins</code> folder.</li>
 <li><strong><code>.aip</code> files:</strong> Illustrator's <code>Plug-ins</code> folder.</li>
 <li><strong>An extension package (<code>.zxp</code>):</strong> <code>Program Files (x86)\Common Files\Adobe\CEP\extensions</code>, in a folder named after the extension.</li>
+<li><strong>A UXP plugin (<code>.ccx</code>):</strong> <code>Program Files\Common Files\Adobe\UXP\Plugins\External</code>, in a folder named after the plugin and its version.</li>
 <li><strong>A script (<code>.jsx</code>, <code>.jsxbin</code>):</strong> the scripts folder of the app you choose (for After Effects, <code>ScriptUI Panels</code>).</li>
 <li><strong>A VST3 plugin (<code>.vst3</code> file or folder):</strong> <code>Program Files\Common Files\VST3</code>.</li>
 <li><strong>A vendor's installer (<code>.exe</code>, <code>.msi</code>):</strong> wherever the installer puts it.</li>
@@ -102,12 +103,15 @@ neutron plugins folder</div>
 <li>Click <strong>OK</strong>. It's now under <strong>Effects &gt; Audio Effects &gt; VST3</strong>.</li>
 </ol>
 <p>Tested with FabFilter's Windows installer: Pro-Q 4 installed, passed Premiere's scan, and processed audio on a clip with its own interface open.</p>
+<h2>UXP plugins (.ccx)</h2>
+<p>Photoshop's newer plugins come as <code>.ccx</code> files. Neutron unpacks one into the folder Photoshop loads UXP plugins from, and replaces any other version of the same plugin. Restart Photoshop: the plugin is in the <strong>Plugins</strong> menu. This needs runtime 11.10-155 or newer.</p>
+<p>Tested with an open-source plugin (Auto-Photoshop-StableDiffusion): it installed, appeared under <strong>Plugins</strong>, and its panel opened.</p>
+<p>If the Creative Cloud app ever installed UXP plugins into the prefix, it left a plugin list behind, and Photoshop then loads only the plugins on that list. Neutron says so when it installs a <code>.ccx</code> into such a prefix.</p>
 <h2>Extension packages (.zxp)</h2>
 <p>Neutron checks a package's signature before it installs it. A damaged package is refused, and the extension that was already installed stays as it was.</p>
 <p>A package that isn't signed at all is installed with a note: the Adobe apps refuse to load it unless PlayerDebugMode is on, and its developer's instructions say how to turn that on.</p>
 <h2>Not supported yet</h2>
 <ul>
-<li><strong>UXP plugins</strong> (<code>.ccx</code>): these are installed by Adobe's own plugin installer, which doesn't work in Neutron prefixes yet.</li>
 <li><strong>Loose VST2 files</strong> (<code>.dll</code>): there's no single standard VST2 folder, so Neutron doesn't place them. A vendor's installer that includes VST2 plugins still puts them where it wants.</li>
 <li><strong>The aescripts + aeplugins manager</strong> runs, but installing plugins through it hasn't been tested yet.</li>
 </ul>
