@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What Neutron does today — Neutron Wiki</title>
+<meta name="description" content="Everything on this page has been tested, or says it&#x27;s a user report.">
+<link rel="canonical" href="https://neutronproject.org/wiki/start/basics/what-neutron-does/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/wiki/wiki.css">
+<noscript><style>.grp-body[hidden]{display:block}.search{display:none}</style></noscript>
+</head>
+<body>
+<canvas id="starfield" aria-hidden="true"></canvas>
+
+<header class="nav">
+  <div class="nav-in">
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation">☰ Menu</button>
+    <a href="/" class="mark">
+      <svg width="24" height="22" viewBox="0 0 26 22" aria-hidden="true">
+        <ellipse cx="7" cy="11" rx="6" ry="9.5" fill="none" stroke="#E9EEF6" stroke-width="1.5"/>
+        <ellipse cx="19" cy="11" rx="6" ry="9.5" fill="none" stroke="#E9EEF6" stroke-width="1.5"/>
+        <circle cx="13" cy="11" r="5.2" fill="#0A0E16"/><circle cx="13" cy="11" r="4" fill="#E9EEF6"/>
+        <circle cx="21.5" cy="4.5" r="1.8" fill="#FC3D21"/>
+      </svg>NEUTRON
+    </a>
+    <a class="lnk hide-sm" href="/#status">Status</a>
+    <a class="lnk hide-sm" href="/#how">Architecture</a>
+    <a class="lnk" href="/wiki/" aria-current="page">Wiki</a>
+    <a class="lnk hide-sm" href="https://github.com/Nico-LaFoucate/Neutron">GitHub</a>
+  </div>
+</header>
+
+<div class="shell">
+  <div class="scrim" id="scrim"></div>
+  <aside id="sidebar">
+<div class="search"><svg width="13" height="13" viewBox="0 0 13 13"><circle cx="5.5" cy="5.5" r="4" fill="none" stroke="#8B97AD" stroke-width="1.3"/><line x1="8.5" y1="8.5" x2="12" y2="12" stroke="#8B97AD" stroke-width="1.3"/></svg><input id="q" placeholder="Search the wiki…" autocomplete="off" aria-label="Search the wiki"></div>
+<div class="tree" id="tree">
+<div class="grp toggle" role="button" tabindex="0" aria-expanded="true" data-group="Start here" data-active><span class="chev">▾</span>Start here</div>
+<div class="grp-body">
+<div class="snode active"><a href="/wiki/start/">Getting Started<span class="kind">Guide</span></a></div>
+<div class="cat active"><a href="/wiki/start/basics/">Basics</a></div>
+<div class="arts"><a href="/wiki/start/basics/what-is-neutron/"><span class="dot guide"></span>What is Neutron?</a><a class="active" aria-current="page" href="/wiki/start/basics/what-neutron-does/"><span class="dot guide"></span>What Neutron does today</a><a href="/wiki/start/basics/install-collider/"><span class="dot guide"></span>Installing Collider</a><a href="/wiki/start/basics/display-scale/"><span class="dot guide"></span>Choosing a display scale</a><a href="/wiki/start/basics/first-app/"><span class="dot guide"></span>Running your first app</a><a href="/wiki/start/basics/plugins/"><span class="dot guide"></span>Installing plugins</a><a href="/wiki/start/basics/planned/"><span class="dot guide"></span>Planned</a></div>
+<div class="cat"><a href="/wiki/start/help/">Help</a></div>
+</div>
+<div class="grp toggle" role="button" tabindex="0" aria-expanded="true" data-group="The stack"><span class="chev">▾</span>The stack</div>
+<div class="grp-body">
+<div class="snode"><a href="/wiki/neutron/">Neutron<span class="kind">Engine</span></a></div>
+<div class="snode"><a href="/wiki/collider/">Collider<span class="kind">Launcher</span></a></div>
+<div class="snode"><a href="/wiki/mudhut/">Mud Hut<span class="kind">Installer</span></a></div>
+</div>
+<div class="grp toggle" role="button" tabindex="0" aria-expanded="false" data-group="Applications"><span class="chev">▸</span>Applications</div>
+<div class="grp-body" hidden>
+<div class="snode"><a href="/wiki/photoshop/">Photoshop<span class="kind">Application</span></a></div>
+<div class="snode"><a href="/wiki/lightroom/">Lightroom Classic<span class="kind">Application</span></a></div>
+<div class="snode"><a href="/wiki/premiere/">Premiere Pro<span class="kind">Application</span></a></div>
+<div class="snode"><a href="/wiki/aftereffects/">After Effects<span class="kind">Application</span></a></div>
+</div>
+</div>
+  </aside>
+  <main class="content" id="content">
+<nav class="crumb"><a href="/wiki/">Wiki</a> <span class="sep">/</span><a href="/wiki/start/">Getting Started</a> <span class="sep">/</span><a href="/wiki/start/basics/">Basics</a> <span class="sep">/</span><span>What Neutron does today</span></nav>
+<div><span class="badge b-guide">Guide</span></div>
+<h1 class="title">What Neutron does today</h1>
+<p class="subtitle">Everything on this page has been tested, or says it&#x27;s a user report.</p>
+<p>Neutron runs the Adobe Creative Cloud apps on Linux. You install them straight from Adobe, sign in with your own account, and work the way you would on Windows. This page lists what that covers today. The <a class="ln" href="/#status">status board</a> has the detail for each app, and <a class="ln" href="/wiki/start/help/known-issues/">Known issues</a> lists what still goes wrong.</p>
+<h2>The apps</h2>
+<ul>
+<li><strong>Premiere Pro, Photoshop, After Effects, Illustrator, Lightroom Classic, Media Encoder and Animate</strong> run on Creative Cloud 2026 and 2025.</li>
+<li><strong>Audition and InDesign</strong> run on 2026 through experimental profiles.</li>
+<li><strong>Dynamic Link</strong> works both ways between Premiere Pro and After Effects.</li>
+<li>Premiere Pro, Photoshop and Lightroom Classic have been used for paid client work. After Effects has been used for day-to-day work.</li>
+</ul>
+<h2>Installing and updating</h2>
+<ul>
+<li><strong>Straight from Adobe.</strong> Mud Hut downloads an app from Adobe and installs it with Adobe's own installer. It can also install from an offline package or <code>.iso</code>, or copy an existing Windows install. You don't need the Creative Cloud app.</li>
+<li><strong>Updates that keep your setup.</strong> Collider checks for Adobe updates when it starts and once a day while it's open, and updates apps in place, so your preferences, presets, plugins and sign-in stay as they are. <strong>Update all</strong> installs every tested update in a prefix.</li>
+<li><strong>A way back.</strong> Before each update, the old version is kept and put back automatically if anything fails. You can roll back later, too.</li>
+<li><strong>Tested builds first.</strong> Neutron publishes a signed list of the Adobe builds it has tested, and new installs use the newest tested build. A newer build is labeled "Not yet tested by Neutron", and you can still choose it.</li>
+</ul>
+<h2>Working the way you do on Windows</h2>
+<ul>
+<li><strong>GPU acceleration.</strong> Premiere Pro renders on NVIDIA GPUs through CUDA and exports with NVENC hardware encoding. Photoshop draws its canvas on the GPU. On AMD, Photoshop and Premiere Pro 2026 use the GPU. A user reports Premiere Pro and Photoshop working on Intel Iris Xe.</li>
+<li><strong>Pen tablets.</strong> Pressure, tilt, the eraser and the pen's side buttons.</li>
+<li><strong>Two screens at different scales</strong>, for example a 175% main screen next to a 100% pen display. Rotated screens work too.</li>
+<li><strong>Drag and drop</strong> files from your file manager into the apps.</li>
+<li><strong>Copy and paste images</strong> between the Adobe apps and Linux apps, in both directions.</li>
+<li><strong>Plugins.</strong> Effects, panels, Photoshop and Illustrator plugins, UXP plugins, VST3 audio plugins and vendors' own Windows installers, from Collider's Plugins page. Every kind has been tested: see <a class="ln" href="/wiki/start/basics/plugins/">Installing plugins</a>.</li>
+<li><strong>Lightroom Classic</strong> imports from SD cards, and its masking, AI Denoise and Edit in Photoshop work.</li>
+</ul>
+<h2>Where it runs</h2>
+<p>Neutron is developed and tested on CachyOS with KDE Plasma (Wayland) and NVIDIA GPUs. Users also run it on Ubuntu, Bazzite, Nobara and Arch, under GNOME and Hyprland.</p>
+<h2>How it's built</h2>
+<ul>
+<li><strong>Fixes go into the engine.</strong> When an Adobe app misbehaves, the fix goes into Neutron's own Wine, which carries more than 260 patches written for these apps. Each one is documented with the test that proved it. Because the fix lives in Wine, Adobe's next update doesn't undo it.</li>
+<li><strong>Adobe's files are left alone.</strong> Neutron never modifies Adobe's program files. It changes one display setting in Adobe's own preferences, and adds three compatibility flags to aescripts panels (the original is backed up).</li>
+<li><strong>Open source and free.</strong> Neutron and its Wine runtime are LGPL-2.1; Collider and Mud Hut are Apache-2.0.</li>
+</ul>
+<h2>How fast it moves</h2>
+<p>Since its first public release on October 8, 2026: 113 releases across Neutron, its Wine runtime, Collider and Mud Hut, and 25 reported issues closed (as of October 27).</p>
+<p>Neutron is free. If it helps your work, you can <a class="ln" href="/#support">support it</a>.</p>
+  </main>
+</div>
+
+<footer><div class="foot">
+  <a href="/">Home</a>
+  <a href="https://github.com/Nico-LaFoucate/Neutron">Neutron</a>
+  <a href="https://github.com/Nico-LaFoucate/Collider">Collider</a>
+  <a href="https://github.com/Nico-LaFoucate/Mud-Hut">Mud Hut</a>
+  <span class="sp">Neutron and neutron-wine LGPL-2.1-or-later · Collider and Mud Hut Apache 2.0</span>
+</div>
+<p class="legal">Neutron is an independent project by Nico LaFoucate and Ficus Media Group. Adobe and its product names are trademarks of Adobe Inc. Neutron is not affiliated with or endorsed by Adobe.</p>
+<p class="legal">Wiki + site text: <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Logos and Neutron/Collider/Mud Hut branding: reserved. Site code (HTML/CSS/JS): <a href="https://opensource.org/license/mit">MIT</a>.</p>
+</footer>
+
+<script src="/wiki/wiki.js"></script>
+</body>
+</html>
