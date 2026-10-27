@@ -2,6 +2,7 @@
 title: What is Neutron?
 status: guide
 sub: The three pieces, in one minute.
+description: Neutron is a free, open-source compatibility engine that runs Adobe Creative Cloud apps such as Photoshop and Premiere Pro on Linux. Its three pieces, in one minute.
 ---
 
 Neutron is a **compatibility engine** that runs Adobe Creative Suite applications on Linux. It is built on Wine, DXVK, and vkd3d-proton, and patched specifically for the way Adobe applications talk to Windows.

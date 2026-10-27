@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Build the Neutron wiki: Markdown in wiki-src/ -> static pages in wiki/.
 
-    python3 build.py           regenerate wiki/ (and sitemap.xml once INDEXABLE is on)
+    python3 build.py           regenerate wiki/, sitemap.xml, llms.txt and llms-full.txt
     python3 build.py --check   exit 1 if the committed output is out of date
 
 Edit wiki-src/, never wiki/: everything under wiki/ is generated and overwritten.
@@ -138,6 +138,7 @@ def read_article(path):
         sys.exit("%s: status must be one of %s" % (path, ", ".join(BADGE)))
     body = m.group(2).strip()
     meta["sub"] = meta.get("sub", "")
+    meta["md"] = body
     meta["html"] = markdown(body) if body else STUB
     meta["stub"] = not body
     return meta
@@ -217,7 +218,59 @@ def crumb(parts):
         for i, (t, href) in enumerate(parts)) + "</nav>"
 
 
-def page(template, nav, route, title, description, content, head_extra=""):
+def plain(md):
+    """Markdown/HTML source -> plain text (for structured data)."""
+    t = re.sub(r"\[([^\]]+)\]\([^)\s]+\)", r"\1", md)
+    t = re.sub(r"<[^>]+>", " ", t)
+    t = re.sub(r"[*`]", "", t)
+    return html.unescape(re.sub(r"\s+", " ", t)).strip()
+
+
+def faq_pairs(md):
+    """("### Question", answer paragraphs) pairs of an FAQ article, in order."""
+    pairs, q, a = [], None, []
+    for line in md.split("\n") + ["## "]:
+        if line.startswith("### ") or line.startswith("## "):
+            if q:
+                pairs.append((q, plain("\n".join(a))))
+            q, a = (line[4:].strip() if line.startswith("### ") else None), []
+        elif q:
+            a.append(line)
+    return pairs
+
+
+def json_ld(obj):
+    return ('<script type="application/ld+json">%s</script>\n'
+            % json.dumps(obj, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/"))
+
+
+def head_meta(route, title, description, trail, article=None):
+    """Favicon, Open Graph/Twitter preview tags and schema.org data for one page. trail = [(name, path)]."""
+    link = SITE_URL + url(*route)
+    out = ['<link rel="icon" href="/favicon.svg" type="image/svg+xml">',
+           '<meta property="og:type" content="%s">' % ("article" if article else "website"),
+           '<meta property="og:site_name" content="Neutron">',
+           '<meta property="og:title" content="%s">' % esc(title),
+           '<meta property="og:description" content="%s">' % esc(description),
+           '<meta property="og:url" content="%s">' % link,
+           '<meta property="og:image" content="%s/og-image.png">' % SITE_URL,
+           '<meta property="og:image:width" content="1200">',
+           '<meta property="og:image:height" content="630">',
+           '<meta name="twitter:card" content="summary_large_image">']
+    graph = [{"@type": "BreadcrumbList", "itemListElement": [
+        {"@type": "ListItem", "position": i + 1, "name": n, "item": SITE_URL + p} for i, (n, p) in enumerate(trail)]}]
+    if article:
+        graph.append({"@type": "TechArticle", "headline": article["title"], "description": description,
+                      "url": link, "inLanguage": "en-US", "isPartOf": {"@id": SITE_URL + "/#website"},
+                      "about": {"@id": SITE_URL + "/#software"}})
+        if article.get("schema") == "faq":
+            graph.append({"@type": "FAQPage", "url": link, "mainEntity": [
+                {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": ans}}
+                for q, ans in faq_pairs(article["md"])]})
+    return "\n".join(out) + "\n" + json_ld({"@context": "https://schema.org", "@graph": graph})
+
+
+def page(template, nav, route, title, description, content, head_extra="", meta=""):
     sec, cat, art = (list(route) + [None] * 3)[:3]
     path = url(*route)
     return (template
@@ -225,6 +278,7 @@ def page(template, nav, route, title, description, content, head_extra=""):
             .replace("{{title}}", esc(title))
             .replace("{{description}}", esc(description))
             .replace("{{canonical}}", SITE_URL + path)
+            .replace("{{meta}}", meta)
             .replace("{{head_extra}}", head_extra)
             .replace("{{sidebar}}", sidebar(nav, sec, cat, art))
             .replace("{{content}}", content))
@@ -245,9 +299,11 @@ def build():
     template = (SRC / "template.html").read_text(encoding="utf-8")
     files, index, routes, sitemap_urls = {}, [], [], ["/", url()]
 
-    def emit(route, title, description, content, head_extra="", in_sitemap=True):
+    def emit(route, title, description, content, head_extra="", in_sitemap=True, trail=(), article=None):
         rel = Path(*route, "index.html") if route else Path("index.html")
-        files[rel] = page(template, nav, route, title, description, content, head_extra)
+        trail = [("Wiki", url())] + list(trail)
+        files[rel] = page(template, nav, route, title, description, content, head_extra,
+                          head_meta(route, title, description, trail, article))
         if in_sitemap and route:
             sitemap_urls.append(url(*route))
 
@@ -258,7 +314,7 @@ def build():
         cards = "".join('<a class="card" href="%s"><div class="ct">%s</div><p>%d %s</p></a>'
                         % (url(sk, c["slug"]), esc(c["title"]), len(c["shown"]),
                            "article" if len(c["shown"]) == 1 else "articles") for c in s["shown"])
-        emit((sk,), "%s — %s" % (s["title"], HOME_TITLE), s["blurb"],
+        emit((sk,), "%s — %s" % (s["title"], HOME_TITLE), s["blurb"], trail=[(s["title"], url(sk))], content=
              crumb([("Wiki", url()), (s["title"], None)])
              + '\n<h1 class="title">%s</h1><p class="subtitle">%s</p><div class="cards">%s</div>'
              % (esc(s["title"]), esc(s["blurb"]), cards))
@@ -270,6 +326,7 @@ def build():
                             % (url(sk, ck, a["slug"]), a["status"], esc(a["title"]), BADGE[a["status"]],
                                "<p>%s</p>" % esc(a["sub"]) if a["sub"] else "") for a in c["shown"])
             emit((sk, ck), "%s · %s — %s" % (c["title"], s["title"], HOME_TITLE), s["blurb"],
+                 trail=[(s["title"], url(sk)), (c["title"], url(sk, ck))], content=
                  crumb([("Wiki", url()), (s["title"], url(sk)), (c["title"], None)])
                  + '\n<h1 class="title">%s</h1><p class="subtitle">%s</p><div class="cards">%s</div>'
                  % (esc(c["title"]), esc(s["title"]), cards), in_sitemap=bool(c["shown"]))
@@ -284,8 +341,10 @@ def build():
                         % (a["status"], BADGE[a["status"]], esc(a["title"]))
                         + ('<p class="subtitle">%s</p>\n' % esc(a["sub"]) if a["sub"] else "")
                         + a["html"])
-                emit((sk, ck, ak), "%s — %s" % (a["title"], HOME_TITLE), a["sub"] or s["blurb"], body,
-                     in_sitemap=not a["stub"])
+                emit((sk, ck, ak), "%s — %s" % (a["title"], HOME_TITLE), a.get("description") or a["sub"] or s["blurb"], body,
+                     in_sitemap=not a["stub"],
+                     trail=[(s["title"], url(sk)), (c["title"], url(sk, ck)), (a["title"], url(sk, ck, ak))],
+                     article=None if a["stub"] else a)
 
     # wiki home
     home = [crumb([("Wiki", None)]),
@@ -300,18 +359,98 @@ def build():
     files[Path("wiki.js")] = (SRC / "wiki.js").read_text(encoding="utf-8").replace(
         "/*@INDEX@*/[]", json.dumps(index, ensure_ascii=False, separators=(",", ":")))
 
+    llms = {"llms.txt": llms_index(sections), "llms-full.txt": llms_full(sections)} if INDEXABLE else {}
+
     sitemap = None
     if INDEXABLE:
         sitemap = ('<?xml version="1.0" encoding="UTF-8"?>\n'
                    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                    + "".join("  <url><loc>%s%s</loc></url>\n" % (SITE_URL, u) for u in sitemap_urls)
                    + "</urlset>\n")
-    return files, sitemap
+    return files, sitemap, llms
+
+
+# ---------------------------------------------------------------- llms.txt (https://llmstxt.org)
+
+LLMS_SUMMARY = (
+    "Neutron runs Adobe Creative Cloud apps on Linux: Photoshop, Premiere Pro, After Effects, Illustrator, "
+    "Lightroom Classic, Media Encoder and Animate (Creative Cloud 2026 and 2025), plus Audition and InDesign on 2026 "
+    "through experimental profiles. It is free, open source and in beta, and built on its own patched Wine runtime. "
+    "The apps are installed straight from Adobe with Adobe's own installer, and you sign in with your own Adobe account.")
+LLMS_ABOUT = (
+    "Neutron has three parts: the `neutron` command line with its Wine runtime (the engine), Collider (the desktop "
+    "app) and Mud Hut (the installer and updater). It is developed and tested on CachyOS with KDE Plasma (Wayland) and "
+    "NVIDIA GPUs; users also run it on Ubuntu, Bazzite, Nobara and Arch, under GNOME and Hyprland. Neutron is not "
+    "affiliated with Adobe. Not to be confused with OpenStack Neutron (cloud networking) or iZotope Neutron (an audio "
+    "plugin).")
+LLMS_REPOS = [("Neutron: the CLI, docs and issues", "https://github.com/Nico-LaFoucate/Neutron"),
+              ("neutron-wine: the Wine runtime and every patch", "https://github.com/Nico-LaFoucate/neutron-wine"),
+              ("Collider: the desktop app", "https://github.com/Nico-LaFoucate/Collider"),
+              ("Mud Hut: the installer and updater", "https://github.com/Nico-LaFoucate/Mud-Hut")]
+
+
+def absolute(md):
+    return re.sub(r"\]\((/[^)\s]*)\)", lambda m: "](%s%s)" % (SITE_URL, m.group(1)), md)
+
+
+def md_text(md):
+    """An article's source as clean Markdown: HTML blocks become text, list items stay list items."""
+    t = re.sub(r"<li>\s*", "- ", md)
+    t = re.sub(r"</li>|</?(ol|ul|div|p|span|strong|em|b|i|details|summary)\b[^>]*>", "", t)
+    t = re.sub(r"<[^>]+>", "", t)
+    t = html.unescape(t)
+    return absolute(re.sub(r"\n{3,}", "\n\n", t).strip())
+
+
+def status_board():
+    """The home page's status board as Markdown (it is the canonical per-app status)."""
+    page_html = (ROOT / "index.html").read_text(encoding="utf-8")
+    out = []
+    for rel in re.findall(r'data-rel="(\d{4})"', page_html):
+        block = re.search(r'data-rel="%s".*?(?=data-rel="\d{4}"|<div class="legend")' % rel, page_html, re.S).group(0)
+        out.append("### Creative Cloud %s\n" % rel)
+        for app, tier, det in re.findall(r'<div class="app">(.*?)<span class="tier[^"]*">(.*?)</span>.*?'
+                                         r'<div class="detail">(.*?)</div>', block, re.S):
+            out.append("- **%s** (%s): %s" % (plain(app), plain(tier), plain(det)))
+        out.append("")
+    return "\n".join(out).strip()
+
+
+def llms_index(sections):
+    lines = ["# Neutron", "", "> " + LLMS_SUMMARY, "", LLMS_ABOUT, "",
+             "Per-app status: %s/#status (the status board). The whole wiki as one text file: %s/llms-full.txt" % (
+                 SITE_URL, SITE_URL), ""]
+    for s in sections:
+        arts = [(c, a) for c in s["categories"] for a in c["shown"]]
+        if not arts:
+            continue
+        lines.append("## %s" % s["title"])
+        lines.append("")
+        for c, a in arts:
+            lines.append("- [%s](%s%s): %s" % (a["title"], SITE_URL, url(s["slug"], c["slug"], a["slug"]),
+                                               a.get("description") or a["sub"] or s["blurb"]))
+        lines.append("")
+    lines += ["## Source code", ""] + ["- [%s](%s)" % r for r in LLMS_REPOS] + [""]
+    return "\n".join(lines)
+
+
+def llms_full(sections):
+    parts = ["# Neutron: the full wiki", "", "> " + LLMS_SUMMARY, "", LLMS_ABOUT, "",
+             "## Status board (from %s/#status)" % SITE_URL, "", status_board(), ""]
+    for s in sections:
+        for c in s["categories"]:
+            for a in c["shown"]:
+                parts += ["---", "", "## %s" % a["title"], "",
+                          "%s%s" % (SITE_URL, url(s["slug"], c["slug"], a["slug"])), ""]
+                if a["sub"]:
+                    parts += ["*%s*" % a["sub"], ""]
+                parts += [md_text(a["md"]), ""]
+    return "\n".join(parts)
 
 
 def main():
     check = "--check" in sys.argv[1:]
-    files, sitemap = build()
+    files, sitemap, llms = build()
     on_disk = {p.relative_to(OUT) for p in OUT.rglob("*") if p.is_file()} if OUT.exists() else set()
     stale = sorted(str(p) for p, text in files.items()
                    if not (OUT / p).exists() or (OUT / p).read_text(encoding="utf-8") != text)
@@ -321,6 +460,9 @@ def main():
         problems = ["changed: wiki/" + p for p in stale] + ["not generated: wiki/" + p for p in extra]
         if sitemap_stale:
             problems.append("sitemap.xml is out of date")
+        for name, text in llms.items():
+            if not (ROOT / name).exists() or (ROOT / name).read_text(encoding="utf-8") != text:
+                problems.append("%s is out of date" % name)
         if problems:
             print("Out of date; run python3 build.py\n  " + "\n  ".join(problems))
             return 1
@@ -334,6 +476,8 @@ def main():
     for d in sorted((d for d in OUT.rglob("*") if d.is_dir()), key=lambda d: -len(d.parts)):
         if not any(d.iterdir()):
             d.rmdir()
+    for name, text in llms.items():
+        (ROOT / name).write_text(text, encoding="utf-8")
     if sitemap:
         SITEMAP.write_text(sitemap, encoding="utf-8")
     elif SITEMAP.exists():

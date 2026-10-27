@@ -3,9 +3,20 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>What works — Neutron Wiki</title>
-<meta name="description" content="Known issues for Adobe Premiere Pro on Neutron.">
+<title>Premiere Pro on Linux — Neutron Wiki</title>
+<meta name="description" content="Run Adobe Premiere Pro 2026 and 2025 on Linux with Neutron: GPU rendering, NVENC export, Dynamic Link, panels and VST3 audio plugins. Free and open source.">
 <link rel="canonical" href="https://neutronproject.org/wiki/premiere/status/overview/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Neutron">
+<meta property="og:title" content="Premiere Pro on Linux — Neutron Wiki">
+<meta property="og:description" content="Run Adobe Premiere Pro 2026 and 2025 on Linux with Neutron: GPU rendering, NVENC export, Dynamic Link, panels and VST3 audio plugins. Free and open source.">
+<meta property="og:url" content="https://neutronproject.org/wiki/premiere/status/overview/">
+<meta property="og:image" content="https://neutronproject.org/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Wiki","item":"https://neutronproject.org/wiki/"},{"@type":"ListItem","position":2,"name":"Premiere Pro","item":"https://neutronproject.org/wiki/premiere/"},{"@type":"ListItem","position":3,"name":"Status","item":"https://neutronproject.org/wiki/premiere/status/"},{"@type":"ListItem","position":4,"name":"Premiere Pro on Linux","item":"https://neutronproject.org/wiki/premiere/status/overview/"}]},{"@type":"TechArticle","headline":"Premiere Pro on Linux","description":"Run Adobe Premiere Pro 2026 and 2025 on Linux with Neutron: GPU rendering, NVENC export, Dynamic Link, panels and VST3 audio plugins. Free and open source.","url":"https://neutronproject.org/wiki/premiere/status/overview/","inLanguage":"en-US","isPartOf":{"@id":"https://neutronproject.org/#website"},"about":{"@id":"https://neutronproject.org/#software"}}]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -53,16 +64,30 @@
 <div class="snode"><a href="/wiki/photoshop/">Photoshop<span class="kind">Application</span></a></div>
 <div class="snode"><a href="/wiki/lightroom/">Lightroom Classic<span class="kind">Application</span></a></div>
 <div class="snode active"><a href="/wiki/premiere/">Premiere Pro<span class="kind">Application</span></a></div>
+<div class="cat active"><a href="/wiki/premiere/status/">Status</a></div>
+<div class="arts"><a class="active" aria-current="page" href="/wiki/premiere/status/overview/"><span class="dot feature"></span>Premiere Pro on Linux</a></div>
 <div class="cat"><a href="/wiki/premiere/issues/">Known Issues</a></div>
 <div class="snode"><a href="/wiki/aftereffects/">After Effects<span class="kind">Application</span></a></div>
 </div>
 </div>
   </aside>
   <main class="content" id="content">
-<nav class="crumb"><a href="/wiki/">Wiki</a> <span class="sep">/</span><a href="/wiki/premiere/">Premiere Pro</a> <span class="sep">/</span><a href="/wiki/premiere/status/">Status</a> <span class="sep">/</span><span>What works</span></nav>
-<div><span class="badge b-stub">Being written</span></div>
-<h1 class="title">What works</h1>
-<div class="stub-note"><b>This page is being written.</b> The structure is in place; the content is on its way. If you have notes or hit something relevant here, that feedback shapes what gets written first.</div>
+<nav class="crumb"><a href="/wiki/">Wiki</a> <span class="sep">/</span><a href="/wiki/premiere/">Premiere Pro</a> <span class="sep">/</span><a href="/wiki/premiere/status/">Status</a> <span class="sep">/</span><span>Premiere Pro on Linux</span></nav>
+<div><span class="badge b-feature">Feature</span></div>
+<h1 class="title">Premiere Pro on Linux</h1>
+<p class="subtitle">What works in Adobe Premiere Pro on Linux with Neutron, and how to get it running.</p>
+<p>Neutron runs Adobe Premiere Pro on Linux: Premiere Pro 2026 and 2025, installed straight from Adobe and signed in with your own Adobe account. It's in beta, stable for editing and delivery, and it has been used for paid client work.</p>
+<h2>What works</h2>
+<ul>
+<li><strong>GPU (Mercury) rendering and timeline playback</strong> on NVIDIA GPUs, through CUDA.</li>
+<li><strong>Hardware NVENC export</strong> that muxes natively into a valid MP4.</li>
+<li><strong>Dynamic Link</strong> with After Effects, in both directions.</li>
+<li><strong>Panels</strong>: Captioneer and other third-party panels are in daily use.</li>
+<li><strong>VST3 audio plugins</strong>: tested with FabFilter Pro-Q 4 and plugdata. Load a new one with Premiere's Audio Plug-in Manager: see <a class="ln" href="/wiki/start/basics/plugins/">Installing plugins</a>.</li>
+<li><strong>GPUs</strong>: NVIDIA is the tested path. On AMD, Premiere Pro 2026 uses the GPU through AMD's ROCm OpenCL. A user reports Premiere Pro working on Intel Iris Xe with Intel's OpenCL runtime.</li>
+</ul>
+<h2>Get it running</h2>
+<p><a class="ln" href="/wiki/start/basics/install-collider/">Install Collider</a>, install Premiere Pro from its Mud Hut tab, then see <a class="ln" href="/wiki/start/basics/first-app/">Running your first app</a>. Current problems, such as a 2026 thumbnail that can show "Media pending" after a project is reopened, are listed under <a class="ln" href="/wiki/start/help/known-issues/">Known issues</a>.</p>
   </main>
 </div>
 

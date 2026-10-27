@@ -27,6 +27,7 @@
               "slug": "help",
               "title": "Help",
               "articles": [
+                "faq",
                 "known-issues",
                 "troubleshooting",
                 "report-a-problem"
@@ -176,7 +177,7 @@
           "slug": "photoshop",
           "title": "Photoshop",
           "kind": "Application",
-          "blurb": "Fixes and known issues for Adobe Photoshop on Neutron.",
+          "blurb": "Adobe Photoshop on Linux with Neutron: what works, fixes and known issues.",
           "categories": [
             {
               "slug": "status",
@@ -205,7 +206,7 @@
           "slug": "lightroom",
           "title": "Lightroom Classic",
           "kind": "Application",
-          "blurb": "Status, fixes, and known issues for Adobe Lightroom Classic on Neutron.",
+          "blurb": "Adobe Lightroom Classic on Linux with Neutron: what works, fixes and known issues.",
           "categories": [
             {
               "slug": "status",
@@ -234,7 +235,7 @@
           "slug": "premiere",
           "title": "Premiere Pro",
           "kind": "Application",
-          "blurb": "Known issues for Adobe Premiere Pro on Neutron.",
+          "blurb": "Adobe Premiere Pro on Linux with Neutron: what works and known issues.",
           "categories": [
             {
               "slug": "status",
@@ -256,7 +257,7 @@
           "slug": "aftereffects",
           "title": "After Effects",
           "kind": "Application",
-          "blurb": "Known issues for Adobe After Effects on Neutron.",
+          "blurb": "Adobe After Effects on Linux with Neutron: what works and known issues.",
           "categories": [
             {
               "slug": "status",

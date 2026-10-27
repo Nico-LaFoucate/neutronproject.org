@@ -2,6 +2,7 @@
 title: What Neutron does today
 status: guide
 sub: Everything on this page has been tested, or says it's a user report.
+description: Run Adobe Photoshop, Premiere Pro, After Effects, Illustrator and Lightroom Classic on Linux: installed from Adobe, GPU acceleration, pen tablets and plugins.
 ---
 
 Neutron runs the Adobe Creative Cloud apps on Linux. You install them straight from Adobe, sign in with your own account, and work the way you would on Windows. This page lists what that covers today. The [status board](/#status) has the detail for each app, and [Known issues](/wiki/start/help/known-issues/) lists what still goes wrong.
@@ -12,6 +13,8 @@ Neutron runs the Adobe Creative Cloud apps on Linux. You install them straight f
 - **Audition and InDesign** run on 2026 through experimental profiles.
 - **Dynamic Link** works both ways between Premiere Pro and After Effects.
 - Premiere Pro, Photoshop and Lightroom Classic have been used for paid client work. After Effects has been used for day-to-day work.
+
+More on each: [Photoshop](/wiki/photoshop/status/overview/), [Premiere Pro](/wiki/premiere/status/overview/), [After Effects](/wiki/aftereffects/status/overview/) and [Lightroom Classic](/wiki/lightroom/status/overview/) on Linux, and [common questions](/wiki/start/help/faq/).
 
 ## Installing and updating
 

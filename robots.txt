@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://neutronproject.org/sitemap.xml
+# A plain-text summary for AI agents: https://neutronproject.org/llms.txt

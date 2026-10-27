@@ -12,6 +12,7 @@
   <url><loc>https://neutronproject.org/wiki/start/basics/plugins/</loc></url>
   <url><loc>https://neutronproject.org/wiki/start/basics/planned/</loc></url>
   <url><loc>https://neutronproject.org/wiki/start/help/</loc></url>
+  <url><loc>https://neutronproject.org/wiki/start/help/faq/</loc></url>
   <url><loc>https://neutronproject.org/wiki/start/help/known-issues/</loc></url>
   <url><loc>https://neutronproject.org/wiki/start/help/troubleshooting/</loc></url>
   <url><loc>https://neutronproject.org/wiki/start/help/report-a-problem/</loc></url>
@@ -46,6 +47,8 @@
   <url><loc>https://neutronproject.org/wiki/mudhut/troubleshooting/</loc></url>
   <url><loc>https://neutronproject.org/wiki/mudhut/troubleshooting/placeholder/</loc></url>
   <url><loc>https://neutronproject.org/wiki/photoshop/</loc></url>
+  <url><loc>https://neutronproject.org/wiki/photoshop/status/</loc></url>
+  <url><loc>https://neutronproject.org/wiki/photoshop/status/overview/</loc></url>
   <url><loc>https://neutronproject.org/wiki/photoshop/fixes/</loc></url>
   <url><loc>https://neutronproject.org/wiki/photoshop/fixes/placeholder/</loc></url>
   <url><loc>https://neutronproject.org/wiki/photoshop/issues/</loc></url>
@@ -58,9 +61,13 @@
   <url><loc>https://neutronproject.org/wiki/lightroom/issues/</loc></url>
   <url><loc>https://neutronproject.org/wiki/lightroom/issues/placeholder/</loc></url>
   <url><loc>https://neutronproject.org/wiki/premiere/</loc></url>
+  <url><loc>https://neutronproject.org/wiki/premiere/status/</loc></url>
+  <url><loc>https://neutronproject.org/wiki/premiere/status/overview/</loc></url>
   <url><loc>https://neutronproject.org/wiki/premiere/issues/</loc></url>
   <url><loc>https://neutronproject.org/wiki/premiere/issues/placeholder/</loc></url>
   <url><loc>https://neutronproject.org/wiki/aftereffects/</loc></url>
+  <url><loc>https://neutronproject.org/wiki/aftereffects/status/</loc></url>
+  <url><loc>https://neutronproject.org/wiki/aftereffects/status/overview/</loc></url>
   <url><loc>https://neutronproject.org/wiki/aftereffects/issues/</loc></url>
   <url><loc>https://neutronproject.org/wiki/aftereffects/issues/placeholder/</loc></url>
 </urlset>

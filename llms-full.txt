@@ -1,0 +1,910 @@
+# Neutron: the full wiki
+
+> Neutron runs Adobe Creative Cloud apps on Linux: Photoshop, Premiere Pro, After Effects, Illustrator, Lightroom Classic, Media Encoder and Animate (Creative Cloud 2026 and 2025), plus Audition and InDesign on 2026 through experimental profiles. It is free, open source and in beta, and built on its own patched Wine runtime. The apps are installed straight from Adobe with Adobe's own installer, and you sign in with your own Adobe account.
+
+Neutron has three parts: the `neutron` command line with its Wine runtime (the engine), Collider (the desktop app) and Mud Hut (the installer and updater). It is developed and tested on CachyOS with KDE Plasma (Wayland) and NVIDIA GPUs; users also run it on Ubuntu, Bazzite, Nobara and Arch, under GNOME and Hyprland. Neutron is not affiliated with Adobe. Not to be confused with OpenStack Neutron (cloud networking) or iZotope Neutron (an audio plugin).
+
+## Status board (from https://neutronproject.org/#status)
+
+### Creative Cloud 2025
+
+- **Premiere Pro** (Beta): Stable for editing and delivery. Used for paid client work. Playback pacing, panel rendering, and native export muxing are all solved.
+- **Photoshop** (Beta): Stable for day-to-day work.
+- **Lightroom Classic** (Beta): Stable for cataloging, developing, and export. The interface takes several seconds to paint in when the app starts; this comes from inside the app, not from Neutron.
+- **Illustrator** (Beta): Documents open and the artboard, panels and toolbars render correctly. A whole-window shear — the interface skewed a little further with every row — turned out to be Wine discarding the stride Illustrator supplies with its bitmaps.
+- **Animate** (Beta): Canvas, panels and playback all work. Its home screen is sometimes blank — a bug that also happens on Windows — so start from File → New.
+- **After Effects** (Beta): The composition viewer and its on-canvas overlays render, at display refresh rate.
+- **Media Encoder** (Beta): Renders and displays correctly, and a full export completed and muxed properly end to end. Usable for real encoding work.
+- **Audition** (Likely): Tested on Creative Cloud 2026 (see the 2026 tab). Its fixes are in Neutron's Wine, so the 2025 build should run as well, but it hasn't been tried. Launches through an experimental profile.
+- **InDesign** (Likely): Tested on Creative Cloud 2026 (see the 2026 tab). Its fixes are in Neutron's Wine, so the 2025 build should run as well, but it hasn't been tried. Launches through an experimental profile.
+- **Lightroom CC** (Planned): Planned. Distinct from Lightroom Classic. You can try it early with an experimental, unsupported profile.
+- **Dynamic Link** (Beta): A full round trip between Premiere Pro and After Effects works, and either app can open the other from its Dynamic Link menu (runtime 11.10-118 or later). Comps update live across the link.
+
+### Creative Cloud 2026
+
+- **Photoshop** (Beta): Stable for day-to-day work on this release.
+- **Premiere Pro** (Beta): Runs on this release. It inherited the 2025 fixes without needing new engine work.
+- **Lightroom Classic** (Beta): Installed and launches on this release.
+- **Illustrator** (Beta): Installs and runs on this release.
+- **Animate** (Beta): Adobe stopped updating Animate in 2024, so Creative Cloud 2026 installs the same app as 2025. It runs on this release: canvas, panels and playback all work. Its home screen is sometimes blank — a bug that also happens on Windows — so start from File → New.
+- **After Effects** (Beta): Installs and runs on this release. It has been used for day-to-day work.
+- **Media Encoder** (Beta): Installs and runs on this release.
+- **Audition** (Beta): Runs on this release through an experimental profile: recording, playback and effects work, and its Learn panel renders.
+- **InDesign** (Beta): Runs on this release through an experimental profile: new documents, typing and the Type → Font menu work.
+- **Lightroom CC** (Planned): Planned. Distinct from Lightroom Classic. You can try it early with an experimental, unsupported profile.
+- **Dynamic Link** (Beta): A full round trip between Premiere Pro and After Effects works on this release, and either app can open the other from its Dynamic Link menu — tested both ways (runtime 11.10-118 or later).
+
+---
+
+## What is Neutron?
+
+https://neutronproject.org/wiki/start/basics/what-is-neutron/
+
+*The three pieces, in one minute.*
+
+Neutron is a **compatibility engine** that runs Adobe Creative Suite applications on Linux. It is built on Wine, DXVK, and vkd3d-proton, and patched specifically for the way Adobe applications talk to Windows.
+
+It comes as three separate pieces, each owning one job:
+
+- **[Neutron](https://neutronproject.org/wiki/neutron/)** — the engine. Neutron-Wine plus DXVK, vkd3d-proton, a DirectComposition bridge, an nvcuda wrapper, and every Adobe-specific fix. Driven entirely through a command line; no GUI required.
+- **[Collider](https://neutronproject.org/wiki/collider/)** — the launcher. A desktop app that finds your installed apps, checks a prefix is healthy, launches it, and supervises it. It calls Neutron for anything compatibility-related and holds no fixes of its own.
+- **[Mud Hut](https://neutronproject.org/wiki/mudhut/)** — the installer. Gets Adobe apps onto your machine without hand-building a prefix. Collider runs it from its Mud Hut tab; it also runs standalone in a terminal.
+
+Premiere Pro, Photoshop, and Lightroom Classic have been used for paid client work on this stack. See the [status board](https://neutronproject.org/#status) for each application's current status, and [What Neutron does today](https://neutronproject.org/wiki/start/basics/what-neutron-does/) for everything else it covers.
+
+---
+
+## What Neutron does today
+
+https://neutronproject.org/wiki/start/basics/what-neutron-does/
+
+*Everything on this page has been tested, or says it's a user report.*
+
+Neutron runs the Adobe Creative Cloud apps on Linux. You install them straight from Adobe, sign in with your own account, and work the way you would on Windows. This page lists what that covers today. The [status board](https://neutronproject.org/#status) has the detail for each app, and [Known issues](https://neutronproject.org/wiki/start/help/known-issues/) lists what still goes wrong.
+
+## The apps
+
+- **Premiere Pro, Photoshop, After Effects, Illustrator, Lightroom Classic, Media Encoder and Animate** run on Creative Cloud 2026 and 2025.
+- **Audition and InDesign** run on 2026 through experimental profiles.
+- **Dynamic Link** works both ways between Premiere Pro and After Effects.
+- Premiere Pro, Photoshop and Lightroom Classic have been used for paid client work. After Effects has been used for day-to-day work.
+
+More on each: [Photoshop](https://neutronproject.org/wiki/photoshop/status/overview/), [Premiere Pro](https://neutronproject.org/wiki/premiere/status/overview/), [After Effects](https://neutronproject.org/wiki/aftereffects/status/overview/) and [Lightroom Classic](https://neutronproject.org/wiki/lightroom/status/overview/) on Linux, and [common questions](https://neutronproject.org/wiki/start/help/faq/).
+
+## Installing and updating
+
+- **Straight from Adobe.** Mud Hut downloads an app from Adobe and installs it with Adobe's own installer. It can also install from an offline package or `.iso`, or copy an existing Windows install. You don't need the Creative Cloud app.
+- **Updates that keep your setup.** Collider checks for Adobe updates when it starts and once a day while it's open, and updates apps in place, so your preferences, presets, plugins and sign-in stay as they are. **Update all** installs every tested update in a prefix.
+- **A way back.** Before each update, the old version is kept and put back automatically if anything fails. You can roll back later, too.
+- **Tested builds first.** Neutron publishes a signed list of the Adobe builds it has tested, and new installs use the newest tested build. A newer build is labeled "Not yet tested by Neutron", and you can still choose it.
+
+## Working the way you do on Windows
+
+- **GPU acceleration.** Premiere Pro renders on NVIDIA GPUs through CUDA and exports with NVENC hardware encoding. Photoshop draws its canvas on the GPU. On AMD, Photoshop and Premiere Pro 2026 use the GPU. A user reports Premiere Pro and Photoshop working on Intel Iris Xe.
+- **Pen tablets.** Pressure, tilt, the eraser and the pen's side buttons.
+- **Two screens at different scales**, for example a 175% main screen next to a 100% pen display. Rotated screens work too.
+- **Drag and drop** files from your file manager into the apps.
+- **Copy and paste images** between the Adobe apps and Linux apps, in both directions.
+- **Plugins.** Effects, panels, Photoshop and Illustrator plugins, UXP plugins, VST3 audio plugins and vendors' own Windows installers, from Collider's Plugins page. Every kind has been tested: see [Installing plugins](https://neutronproject.org/wiki/start/basics/plugins/).
+- **Lightroom Classic** imports from SD cards, and its masking, AI Denoise and Edit in Photoshop work.
+
+## Where it runs
+
+Neutron is developed and tested on CachyOS with KDE Plasma (Wayland) and NVIDIA GPUs. Users also run it on Ubuntu, Bazzite, Nobara and Arch, under GNOME and Hyprland.
+
+## How it's built
+
+- **Fixes go into the engine.** When an Adobe app misbehaves, the fix goes into Neutron's own Wine, which carries more than 260 patches written for these apps. Each one is documented with the test that proved it. Because the fix lives in Wine, Adobe's next update doesn't undo it.
+- **Adobe's files are left alone.** Neutron never modifies Adobe's program files. It changes one display setting in Adobe's own preferences, and adds three compatibility flags to aescripts panels (the original is backed up).
+- **Open source and free.** Neutron and its Wine runtime are LGPL-2.1; Collider and Mud Hut are Apache-2.0.
+
+## How fast it moves
+
+Since its first public release on October 8, 2026: 113 releases across Neutron, its Wine runtime, Collider and Mud Hut, and 25 reported issues closed (as of October 27).
+
+Neutron is free. If it helps your work, you can [support it](https://neutronproject.org/#support).
+
+---
+
+## Installing Collider
+
+https://neutronproject.org/wiki/start/basics/install-collider/
+
+*From a clean Linux machine to your first Adobe launch — the whole stack, end to end.*
+
+**Collider** is the graphical front door to the whole stack. One command, `neutron setup`, installs everything underneath it — the [Neutron](https://neutronproject.org/wiki/neutron/) compatibility engine, its patched Wine runtime, the Mud Hut installer and Collider itself — and from then on you install and launch your Adobe apps from Collider. This page walks the whole thing end to end.
+
+Beta — read this firstNeutron is in beta. It's developed and tested on CachyOS with KDE Plasma (Wayland) and NVIDIA GPUs, and users also run it on Ubuntu, Bazzite, Nobara and Arch, under GNOME and Hyprland as well as KDE. AMD GPUs are partly tested (see below); on Intel GPUs, a user reports Premiere Pro and Photoshop working. Things break, and you must bring your own legally licensed Adobe software.
+
+## Before you begin
+
+You'll want these in place first:
+
+- **A 64-bit Linux distribution with glibc 2.39 or newer**: Ubuntu 24.04 or later, Fedora 40 or later, current Arch, CachyOS or Manjaro, or openSUSE Tumbleweed.
+- **A Wayland session.** X11 isn't supported.
+- **KDE Plasma, GNOME or Hyprland.** Neutron is developed on KDE Plasma, and users also run it under GNOME and Hyprland. [Reports welcome](https://github.com/Nico-LaFoucate/Neutron/issues) from other desktops.
+- **A Vulkan-capable GPU with current drivers.** NVIDIA (with the open driver) is the tested path. On AMD, Photoshop 2026 and Premiere Pro 2026 use the GPU and Illustrator 2026 runs; Premiere needs AMD's ROCm OpenCL (`neutron doctor` checks for it). Hardware video encoding on AMD is new and testers haven't confirmed it yet; on Fedora and openSUSE it needs the full Mesa from RPM Fusion or Packman. On Intel, a user reports Premiere Pro and Photoshop working on an 11th-gen Iris Xe with Intel's OpenCL runtime and media driver installed (on Fedora: `intel-opencl intel-compute-runtime intel-media-driver`). [Reports welcome](https://github.com/Nico-LaFoucate/Neutron/issues).
+- **32-bit (multilib) system and graphics libraries**: Adobe's apps start 32-bit helper processes.
+- **Python 3** and **cabextract**.
+- **Your own licensed Adobe apps.** You sign in inside each app, the same as on Windows.
+- **A display scale that's a Windows step** (100, 125, 150, 175, 200, 225, 250 or 300%). See [Choosing a display scale](https://neutronproject.org/wiki/start/basics/display-scale/).
+- **Free disk space:** About 8 GB, plus your Adobe apps.
+
+## Step 1 — Install Neutron
+
+In a terminal:
+
+curl -LO https://github.com/Nico-LaFoucate/neutron/releases/latest/download/neutron
+python3 neutron setup
+
+`neutron setup` downloads neutron-wine and the Mud Hut installer from GitHub, Microsoft's Visual C++ runtimes and GDI+ from Microsoft, Microsoft's core fonts (their original installers, from a pinned mirror), and Adobe's Creative Cloud package from Adobe, and installs Collider with a menu entry. It may ask for your password once, to turn on ntsync, which makes the apps much faster.
+
+If you started from the Collider app instead, its **Set up** button runs the same setup.
+
+## Step 2 — Add your Adobe apps
+
+Open **Neutron Collider** from your menu and go to its **Mud Hut** tab. Pick whichever matches how you already have your apps:
+
+- **Copy from an existing Windows install** — point Mud Hut at a licensed Windows Adobe install (a dual-boot drive, a backup, or a mounted C: drive) and copy the app in.
+- **Install from an offline package** — use an offline Adobe installer package or an `.iso` disc image you already have.
+- **Download from Adobe** — download straight from Adobe's servers. No sign-in is needed to install; you sign in later, inside the app.
+
+Already have a Wine prefix with Adobe apps in it? Point Collider at it with **Choose existing…**.
+
+Whichever you choose, you must own a valid license — **Neutron distributes no Adobe code.**
+
+Dynamic LinkApps installed into the same prefix share one Adobe environment, so Dynamic Link works between Premiere Pro and After Effects, and either app can open the other.
+
+## Step 3 — Launch
+
+Each installed app appears as a tile in your library. Click **Launch**. Collider quietly does the rest: it applies the native display fix and hands off to the app. When you close the app, Collider has Neutron clean up after it, so Adobe's leftover background processes can't wedge the next launch.
+
+## What Collider is handling for you
+
+The point of the launcher is that everything the Neutron investigation figured out by hand happens automatically:
+
+- One shared Adobe environment per prefix, for Dynamic Link between Premiere Pro and After Effects.
+- Copying an app over from an existing Windows install (Mud Hut's **Copy from an existing Windows install** method).
+- Updating your Adobe apps through Adobe's own installer, with a backup that's put back if an update fails.
+
+What's planned but not built yet is listed under [Planned](https://neutronproject.org/wiki/start/basics/planned/).
+
+## Updating and uninstalling
+
+**Neutron:** `neutron update` (or **Update Neutron** in Collider's Preferences) updates everything and moves your prefixes to the new runtime.
+
+**Your Adobe apps:** Collider checks for Adobe app updates when it starts and once a day while it's open. An app's card shows its update, and **Update all** updates every verified update in a prefix. Nothing updates on its own. Builds Neutron hasn't verified yet are marked "not yet verified" and need one more confirmation. Updates go through Adobe's own installer, so your preferences, presets, plugins and Adobe sign-in stay as they are. A backup is kept before each update and put back automatically if anything fails; **Preferences → Adobe app updates** turns the check or the backup off. A new yearly version installs beside the old one, with the option to remove the old one. Close the Adobe apps in a prefix before updating it.
+
+**Uninstalling:** `neutron uninstall` (or **Uninstall…**) removes Neutron; it asks before deleting any prefix, and keeps them unless you say so. ntsync stays on.
+
+## Where this stands
+
+The apps furthest along are [Premiere Pro](https://neutronproject.org/wiki/premiere/), [Photoshop](https://neutronproject.org/wiki/photoshop/), and [Lightroom Classic](https://neutronproject.org/wiki/lightroom/) — all beta, all used for paid client work. After Effects, Illustrator, Media Encoder, Animate, Audition and InDesign run too. For the honest, current status of each, see the [status board](https://neutronproject.org/#status) on the home page.
+
+Once Collider is installed and an app launches, head to [Running your first app](https://neutronproject.org/wiki/start/basics/first-app/).
+
+---
+
+## Choosing a display scale
+
+https://neutronproject.org/wiki/start/basics/display-scale/
+
+*Use a Windows scale step: 100, 125, 150, 175, 200, 225, 250 or 300%.*
+
+Neutron follows your desktop's display scale. Set it to one of the steps Windows offers: **100, 125, 150, 175, 200, 225, 250 or 300%**. Adobe's apps lay out their interface exactly only at those steps.
+
+At other scales (170%, for example), parts of the interface land slightly off. In Premiere Pro, the marked in/out range on the timeline ruler drifts to the right of the selection. This comes from inside the app, not from Neutron; Windows users never see it because Windows only offers these steps.
+
+To check, run `neutron display`. It shows the scale Neutron will use and warns when it isn't a Windows step.
+
+In Collider, leave **Display scale** on **Auto (match desktop)**. Best results: set the same scale in your desktop's display settings. Picking a different scale in Collider doesn't fix it: your desktop then resizes the window, and it looks blurry.
+
+## Not every desktop offers every step
+
+- **GNOME 49 and newer** can't do 175% on 4K, 1440p or 1080p screens.
+- **Hyprland** can't do 175% on 4K, 1440p or 1080p screens, or 150% on 1440p.
+
+On those screens, pick another Windows step.
+
+---
+
+## Running your first app
+
+https://neutronproject.org/wiki/start/basics/first-app/
+
+*You clicked Launch — here’s what to expect, and how to get to real work.*
+
+You've [installed Collider](https://neutronproject.org/wiki/start/basics/install-collider/), added an app, and hit **Launch**. Collider has already applied the display fix — so from here, it should feel like the app you already know. Here's what to expect on that first run, and how to get to actual work.
+
+## First launch: sign in to Adobe
+
+The app opens to its normal Adobe home screen and asks you to **sign in with your Adobe ID** — the same Creative Cloud account you'd use on Windows or macOS. This is what activates your license; Neutron doesn't replace or bypass it.
+
+You sign in inside the Adobe app, the same as on Windows. Neutron never touches your Adobe account or login. Sign-in happens in an embedded browser window, so give it a moment to load.
+
+You bring the licenseNeutron distributes no Adobe software and circumvents nothing. You run the genuine app, signed into your own valid subscription. Neutron never modifies Adobe's program files; it changes one display setting in Adobe's own preferences (DS.DisableDirectXDisplay in Debug Database.txt) and adds three compatibility flags to aescripts panels' manifest.xml (original backed up).
+
+## What “working” looks like
+
+Each app behaves like its Windows counterpart. Quick starts for the three that are furthest along — all **beta**, all used for paid client work:
+
+### Premiere Pro
+
+Import your media, cut on the timeline, and play back in the program monitor. GPU and CUDA (Mercury) acceleration are on, and export encodes with hardware **NVENC** and muxes into valid MP4 files **natively** — no extra steps at export time.
+
+### Photoshop
+
+**File → New** brings up the full workspace — canvas and panels docked — and drawing goes straight to the GPU.
+
+### Lightroom Classic
+
+Import your RAW files — drag in a folder or plug in an SD card — then develop with GPU acceleration, run **AI Denoise**, and round-trip to Photoshop with **Edit In**. See the [Lightroom page](https://neutronproject.org/wiki/lightroom/) for what's confirmed working.
+
+## Getting your files in and out
+
+Your Linux home folder is available inside the app's open and save dialogs, so you can point at the same media and save projects to the same places you'd use natively. Keep working files on a fast local disk for the best performance — the app is reading and writing through the compatibility layer, and a slow network share will feel slow.
+
+## GPU, export, and the helpers you don’t manage
+
+GPU acceleration is on by default. Video export needs no hand-holding: Premiere muxes its NVENC exports into valid MP4 files **natively**. (This used to need a muxing helper you pointed at the export path — a fix in Neutron's C-runtime layer removed that step entirely.)
+
+## If something isn’t right
+
+This is beta software, so a few things are worth checking:
+
+- **If an app won't start or the GPU isn't used,** run the health check, `neutron doctor --prefix `; see [Troubleshooting](https://neutronproject.org/wiki/start/help/troubleshooting/).
+- **For anything app-specific** — a feature that's grayed out, a panel that misbehaves — check [Known issues](https://neutronproject.org/wiki/start/help/known-issues/) and that app's page under **Applications**.
+- **A given feature may simply not be validated yet.** The [status board](https://neutronproject.org/#status) is the honest, current picture of what's been confirmed.
+- **To report a problem,** see [Report a problem](https://neutronproject.org/wiki/start/help/report-a-problem/): each part of Neutron has its own issue tracker.
+
+## Where to go next
+
+Current status for each app is on the [status board](https://neutronproject.org/#status). Problems are on [Known issues](https://neutronproject.org/wiki/start/help/known-issues/), and fixes on [Notable fixes](https://neutronproject.org/wiki/neutron/fixes/notable-fixes/).
+
+---
+
+## Installing plugins
+
+https://neutronproject.org/wiki/start/basics/plugins/
+
+*Third-party plugins, extension panels, scripts and audio plugins, from Collider or a terminal.*
+
+Neutron puts each plugin where its Windows installer would, inside the prefix your Adobe apps run from. Hand it the plugin files, an extension package, a UXP plugin, a script, or the vendor's own Windows installer. This needs Neutron 1.0.0-beta.29 and Collider 0.1.12 or newer.
+
+## In Collider
+
+- Open Plugins in the sidebar, under Library. It works on the prefix selected on the Prefixes tab.
+- Drop plugin files or folders onto the page, or use Choose files… or Choose a folder….
+- Each item gets a line: green when it's installed, red with the reason when it isn't.
+- Restart the Adobe app to load what you added.
+
+**Scripts** (`.jsx`, `.jsxbin`): Collider asks which app the script is for.
+
+**A vendor's installer** (`.exe`, `.msi`): close the Adobe apps first. The installer opens its own window; click through it as you would on Windows. Collider waits until the installer and anything it opens afterward (a readme, for example) have closed.
+
+The page also lists what the prefix already holds, and has an **Open folder** button for each plugin folder, so you can add a plugin by hand.
+
+## From a terminal
+
+neutron plugins install <file or folder>...
+neutron plugins install --app aftereffects MyPanel.jsx
+neutron plugins list
+neutron plugins folder
+
+They work on the prefix selected in Collider; add `--prefix ` to pick another. `neutron plugins folder` prints the Linux path of each plugin folder.
+
+## Where each kind goes
+
+All inside the prefix:
+
+- **`.aex` or `.prm` files, or a folder of them:** `Program Files\Adobe\Common\Plug-ins\7.0\MediaCore`, shared by After Effects, Premiere Pro and Media Encoder.
+- **Photoshop plugin files** (`.8bf` and the other `.8b*` types), or a folder holding one with the files it needs: Photoshop's `Plug-ins` folder.
+- **`.aip` files:** Illustrator's `Plug-ins` folder.
+- **An extension package (`.zxp`):** `Program Files (x86)\Common Files\Adobe\CEP\extensions`, in a folder named after the extension.
+- **A UXP plugin (`.ccx`):** `Program Files\Common Files\Adobe\UXP\Plugins\External`, in a folder named after the plugin and its version.
+- **A script (`.jsx`, `.jsxbin`):** the scripts folder of the app you choose (for After Effects, `ScriptUI Panels`).
+- **A VST3 plugin (`.vst3` file or folder):** `Program Files\Common Files\VST3`.
+- **A vendor's installer (`.exe`, `.msi`):** wherever the installer puts it.
+
+If a plugin is already there, the new one replaces it. After Effects loads plugins from the shared folder: Gyroflow, Boris FX Mocha and Satori appear in its **Effect** menu.
+
+Tested in Photoshop with G'MIC-8bf, installed as its unzipped folder: it appears under **Filter > GMIC** and applies its filters to the image. Tested in Illustrator with anchorGrabber, a tool plugin: it appears at the bottom of the toolbar's **All Tools** list (the **…** button), under **Add Ons**, and works once dragged into the toolbar.
+
+## Audio plugins in Premiere Pro
+
+Premiere Pro finds new audio plugins only on its very first launch. After you install one, with the vendor's installer or as a `.vst3`, load it:
+
+- In Premiere Pro, choose Edit > Preferences > Audio, then Manage Audio Plug-ins….
+- Click Scan for Plug-Ins. The plugin appears in the list with its status.
+- Click OK. It's now under Effects > Audio Effects > VST3.
+
+Tested with FabFilter's Windows installer: Pro-Q 4 installed, passed Premiere's scan, and processed audio on a clip with its own interface open. Tested with plugdata's `.msi` installer: its effect, plugdata-fx, passed the scan and appears under **Effects > Audio Effects > VST3**. Premiere lists audio effects only, so a VST3 instrument the same installer adds doesn't appear.
+
+## UXP plugins (.ccx)
+
+Photoshop's newer plugins come as `.ccx` files. Neutron unpacks one into the folder Photoshop loads UXP plugins from, and replaces any other version of the same plugin. Restart Photoshop: the plugin is in the **Plugins** menu. This needs runtime 11.10-155 or newer.
+
+Tested with an open-source plugin (Auto-Photoshop-StableDiffusion): it installed, appeared under **Plugins**, and its panel opened.
+
+If the Creative Cloud app ever installed UXP plugins into the prefix, it left a plugin list behind, and Photoshop then loads only the plugins on that list. Neutron says so when it installs a `.ccx` into such a prefix.
+
+## Extension packages (.zxp)
+
+Neutron checks a package's signature before it installs it. A damaged package is refused, and the extension that was already installed stays as it was.
+
+A package that isn't signed at all is installed with a note: the Adobe apps list it under **Window > Extensions** but refuse to load it unless PlayerDebugMode is on, and its developer's instructions say how to turn that on. Tested in Premiere Pro with Adobe's own sample panel (PProPanel): it opened only after PlayerDebugMode was turned on.
+
+## Not supported yet
+
+- **Loose VST2 files** (`.dll`): there's no single standard VST2 folder, so Neutron doesn't place them. A vendor's installer that includes VST2 plugins still puts them where it wants.
+- **The aescripts + aeplugins manager** runs, but installing plugins through it hasn't been tested yet.
+
+If a plugin won't activate, or keeps asking to be activated again, see [Troubleshooting](https://neutronproject.org/wiki/start/help/troubleshooting/).
+
+---
+
+## Planned
+
+https://neutronproject.org/wiki/start/basics/planned/
+
+*What’s planned but not built yet. No dates.*
+
+- Lightroom (cloud) support
+- AMD and Intel GPU validation
+- Per-app GPU and color controls
+- Distro packages (AUR)
+
+---
+
+## Adobe apps on Linux: common questions
+
+https://neutronproject.org/wiki/start/help/faq/
+
+*Short answers about running Photoshop, Premiere Pro and the other Adobe apps on Linux with Neutron.*
+
+### Can you run Adobe Photoshop and Premiere Pro on Linux?
+
+Yes, with Neutron. It runs Photoshop, Premiere Pro, After Effects, Illustrator, Lightroom Classic, Media Encoder and Animate on Creative Cloud 2026 and 2025, plus Audition and InDesign on 2026 through experimental profiles. Neutron is in beta; the [status board](https://neutronproject.org/#status) shows where each app stands.
+
+### Do I need Windows or a virtual machine?
+
+No. The apps run directly on Linux in Neutron's Wine runtime, with GPU acceleration.
+
+### Do I need an Adobe subscription?
+
+Yes. Bring your own Adobe subscription and sign in to your own Adobe account inside the apps. Neutron distributes no Adobe code.
+
+### How do I install the Adobe apps?
+
+[Install Collider](https://neutronproject.org/wiki/start/basics/install-collider/), then install apps from its Mud Hut tab. Mud Hut downloads them from Adobe and installs them with Adobe's own installer. You don't need the Creative Cloud app.
+
+### Do Adobe updates work?
+
+Yes. Collider checks for updates and updates apps in place, so your preferences, presets, plugins and sign-in stay as they are. It keeps the old version and puts it back if an update fails, and it labels Adobe builds Neutron hasn't tested yet.
+
+### Which Linux distributions and desktops work?
+
+Neutron is developed and tested on CachyOS with KDE Plasma (Wayland) and NVIDIA GPUs. Users also run it on Ubuntu, Bazzite, Nobara and Arch, under GNOME and Hyprland. You need a 64-bit distribution with glibc 2.39 or newer, and a Wayland session: X11 isn't supported.
+
+### Does it work with AMD or Intel GPUs?
+
+Partly. NVIDIA is the tested path. On AMD, Photoshop 2026 and Premiere Pro 2026 use the GPU (Premiere through AMD's ROCm OpenCL), and Illustrator 2026 runs. A user reports Premiere Pro and Photoshop working on Intel Iris Xe.
+
+### Do plugins work?
+
+Yes. Effects, panels, Photoshop and Illustrator plugins, UXP plugins, VST3 audio plugins and vendors' own Windows installers have each been tested. See [Installing plugins](https://neutronproject.org/wiki/start/basics/plugins/).
+
+### How is Neutron different from plain Wine?
+
+Neutron's Wine carries more than 260 patches written for the Adobe apps, each documented with the test that proved it. Around it, Mud Hut installs and updates the apps, Collider launches and manages them, and the `neutron` command line sets up each app's environment.
+
+### Is Neutron free?
+
+Yes. Neutron is free and open source: Neutron and its Wine runtime are LGPL-2.1, and Collider and Mud Hut are Apache-2.0.
+
+### Does Neutron modify Adobe's software?
+
+Neutron never modifies Adobe's program files. It changes one display setting in Adobe's own preferences, and adds three compatibility flags to aescripts panels (the original is backed up).
+
+---
+
+## Known issues
+
+https://neutronproject.org/wiki/start/help/known-issues/
+
+*Current problems across the apps, and what to do about them.*
+
+Only problems seen on current builds are listed here. Problems that have been fixed are under [Notable fixes](https://neutronproject.org/wiki/neutron/fixes/notable-fixes/).
+
+## All apps
+
+- **At a display scale that isn't a Windows step, parts of the interface land slightly off.** In Premiere Pro, the marked in/out range on the timeline ruler drifts to the right of the selection. Set your desktop to 100, 125, 150, 175, 200, 225, 250 or 300% (see [Choosing a display scale](https://neutronproject.org/wiki/start/basics/display-scale/)). This comes from inside the app, not from Neutron.
+
+## Animate
+
+- **The home screen is sometimes blank.** Start from File → New or File → Open. This is a bug that also happens on Windows.
+- **File → New does nothing for about the first 15 seconds after launch.** Wait, or try again after a moment. This comes from inside the app, not from Neutron.
+
+## Lightroom Classic
+
+- **The interface takes several seconds to paint in when the app starts.** Wait for it to finish. This comes from inside the app, not from Neutron.
+
+## Premiere Pro
+
+- **Fast wheel-scrubbing on the timeline feels a bit late and jumpy.** No workaround yet.
+- **In Premiere Pro 2026, a sequence's thumbnail in the Project panel can show "Media pending" after you close a project and open it again.** Hover over the thumbnail and the frame appears.
+
+---
+
+## Troubleshooting
+
+https://neutronproject.org/wiki/start/help/troubleshooting/
+
+*First steps when something goes wrong.*
+
+## Start with the health check
+
+Run `neutron doctor --prefix `. It checks the things that can stop an app from launching or running, and says what to do about each. Collider shows the same checks for the prefix you're using. Before an app's first launch, a line may say it's pending until that first launch; that's normal.
+
+## An app refuses to launch
+
+- **"No Wayland session detected":** log in to a Wayland session. X11 isn't supported.
+- **The runtime and the prefix don't match** (after a new runtime was installed): run `neutron update`, or `neutron prefix provision ` for one prefix.
+- **Mud Hut says neutron-wine isn't installed:** run `neutron setup` first.
+
+## A plugin won't activate, or keeps asking to be activated again
+
+Some license servers block VPN addresses. Activate the plugin with your VPN off, or exclude the Adobe app from the VPN with split tunneling. The plugin's periodic online check needs the same.
+
+## An extension panel is blank
+
+If a panel that worked goes blank after the extension updates itself, run `neutron prefix provision `, then restart the app. For other blank panels, see [Plugins and extensions](https://neutronproject.org/wiki/neutron/features/plugins/).
+
+## Still stuck
+
+Check [Known issues](https://neutronproject.org/wiki/start/help/known-issues/), then [report the problem](https://neutronproject.org/wiki/start/help/report-a-problem/).
+
+---
+
+## Report a problem
+
+https://neutronproject.org/wiki/start/help/report-a-problem/
+
+*Where each kind of problem goes, and what to include.*
+
+Each part of Neutron has its own issue tracker on GitHub:
+
+- **An Adobe app misbehaves** (it won't start, draws wrong, crashes, or a feature doesn't work): [Neutron issues](https://github.com/Nico-LaFoucate/Neutron/issues).
+- **Collider itself** (its window, buttons or settings): [Collider issues](https://github.com/Nico-LaFoucate/Collider/issues).
+- **Installing apps with Mud Hut**: [Mud Hut issues](https://github.com/Nico-LaFoucate/Mud-Hut/issues).
+- **The neutron-wine runtime itself** (downloading or building it): [neutron-wine issues](https://github.com/Nico-LaFoucate/neutron-wine/issues).
+
+Not sure which? Use Neutron's issues.
+
+## What to include
+
+- The app, and what happened.
+- The output of `neutron report`.
+
+## Questions
+
+Ask in Neutron's [Discussions](https://github.com/Nico-LaFoucate/Neutron/discussions).
+
+## Security problems
+
+Don't open a public issue. Report it privately through GitHub's private vulnerability reporting: [Neutron's security advisory form](https://github.com/Nico-LaFoucate/Neutron/security/advisories/new). That one form covers all four repositories.
+
+`contact@neutronproject.org` is for press and business, not support.
+
+---
+
+## What Neutron does
+
+https://neutronproject.org/wiki/neutron/overview/what-it-is/
+
+*The engine, and the one rule that holds it together.*
+
+Neutron is the engine everything else calls. It bundles **Neutron-Wine** (an owned Wine fork), **DXVK** and **vkd3d-proton** (Direct3D → Vulkan), a **DirectComposition bridge**, and an **nvcuda wrapper** — plus every Adobe-specific fix, from locale-loader patches to display handling.
+
+All of it is exposed through a single command-line interface. There is no GUI requirement: the `neutron` CLI owns prefixes, environment, registry, and Wine-binary selection, and everything above it (Collider, Mud Hut, your terminal) just calls down into it.
+
+The one ruleThe launcher never touches compatibility. Every fix lives in the engine, so it reaches all three entry points at once — and the launcher stays replaceable.
+
+---
+
+## Where the fixes live
+
+https://neutronproject.org/wiki/neutron/architecture/where-fixes-live/
+
+*Adobe's apps aren't broken: they run fine on Windows. Wherever they misbehave under Wine, the gap is on Wine's side, and that's where Neutron patches.*
+
+The stack is five tiers:
+
+### Cockpit — entry points
+
+The Collider GUI, the Mud Hut installer, or a plain terminal. Nothing here owns compatibility logic.
+
+### Contract — the neutron CLI
+
+A hard boundary. Calls travel down; status comes back as JSON. Above the line: convenience. Below the line: compatibility.
+
+### Engine — Neutron
+
+Owns prefixes, environment, registry, Wine-binary selection, and each app's launch settings.
+
+### Runtime
+
+Neutron-Wine carries the fixes and hosts the Adobe application alongside DXVK, vkd3d-proton, the dcomp bridge, and the nvcuda wrapper.
+
+### Substrate
+
+Vulkan, your GPU, and the Linux kernel.
+
+Because the launcher and installer sit above the contract line, they can be rewritten or removed without touching a single fix — and every fix Neutron gains reaches all three entry points at once.
+
+---
+
+## Plugins and extensions
+
+https://neutronproject.org/wiki/neutron/features/plugins/
+
+*Third-party panels and audio plugins, in daily use.*
+
+Third-party plugins are in daily use: Captioneer and other third-party panels in Premiere Pro, and VST3 audio plugins in Premiere Pro.
+
+To add plugins, see [Installing plugins](https://neutronproject.org/wiki/start/basics/plugins/).
+
+Most panels work. If one comes up blank, [report it](https://neutronproject.org/wiki/start/help/report-a-problem/) with the panel's name; some need a per-vendor compatibility fix. If a panel that worked goes blank after the extension updates itself, run `neutron prefix provision `, then restart the app.
+
+The aescripts + aeplugins manager runs. Installing plugins through it into your Adobe apps hasn't been tested yet; [reports welcome](https://github.com/Nico-LaFoucate/Neutron/issues).
+
+If a plugin won't activate, or keeps asking to be activated again, see [Troubleshooting](https://neutronproject.org/wiki/start/help/troubleshooting/).
+
+---
+
+## Notable fixes
+
+https://neutronproject.org/wiki/neutron/fixes/notable-fixes/
+
+*Problems you’d have seen on earlier builds, one line each.*
+
+Where a fix has a full write-up, it’s linked.
+
+- **All apps** — Dragging files in from the Linux file manager didn’t work. Fixed.
+- **All apps** — Extension panels (CEP) didn’t show up in their dock. Fixed for most panels.
+- **All apps** — A Wine Mono installer popup appeared. Fixed.
+- **aescripts + aeplugins manager** — It crashed when started. Fixed. Installing plugins through it hasn’t been tested yet.
+- **After Effects** — The composition viewer stayed blank. Fixed.
+- **After Effects** — Creating a new composition failed with a direct2d drawbot error. Fixed.
+- **After Effects** — The splash screen never appeared. Fixed.
+- **After Effects 2026** — The composition viewer didn’t render, because the display setting was written to the preferences file it doesn’t read. Fixed.
+- **After Effects and Media Encoder** — Short labels wrapped onto a second line. Fixed.
+- **Illustrator** — The whole window was sheared: the interface skewed a little further with every row. Fixed.
+- **Illustrator and Animate** — The main window was a solid white block. Fixed.
+- **Lightroom Classic** — Photo → Edit In took about ten seconds to open. Fixed: [the ten-second menu](https://neutronproject.org/wiki/neutron/fixes/edit-in-lag/).
+- **Lightroom Classic** — Edit In → Photoshop was grayed out. Fixed.
+- **Lightroom Classic** — AI Denoise and AI masking didn’t work. Fixed.
+- **Lightroom Classic** — Zoom and the Develop sliders lagged and moved in steps. Fixed.
+- **Lightroom Classic** — The filmstrip stopped scrolling partway through a large catalog. Fixed.
+- **Lightroom Classic** — The Copy Settings dialog showed a blank list instead of checkboxes. Fixed.
+- **Lightroom Classic** — The Develop histogram was a flat green block with no channel curves. Fixed.
+- **Lightroom Classic** — The filmstrip’s shading floated over other apps’ windows. Fixed.
+- **Photoshop** — Drawing on the canvas lagged. Fixed.
+- **Photoshop** — Menu item names overlapped their keyboard shortcuts. Fixed.
+- **Photoshop** — Scroll bars flashed the wrong color on hover. Fixed.
+- **Photoshop 2026** — A maximized window sat a few pixels off. Fixed.
+- **Premiere Pro** — Exports needed a separate muxing step before they were valid MP4 files. Fixed.
+- **Premiere Pro** — Scrubbing the timeline lagged. Fixed.
+- **Premiere Pro** — Rounded buttons and scroll bars were drawn misshapen. Fixed.
+- **Premiere Pro** — The home screen showed only gray placeholders. Fixed.
+- **Premiere Pro** — The menu-bar dropdowns (File, Edit…) had their bottom cut off. Fixed.
+- **Premiere Pro** — Timeline clips and other parts of the interface vanished, often on hover. Fixed.
+- **Premiere Pro** — FabFilter and other VST plugin windows sank behind the Program Monitor. Fixed.
+- **Premiere Pro** — The timeline’s time ruler was missing. Fixed.
+- **Premiere Pro** — Clicking back into Premiere from another app made it lose focus again. Fixed.
+- **Premiere Pro** — The mouse pointer disappeared when moving into a menu. Fixed.
+- **Premiere Pro** — One Backspace deleted two characters. Fixed.
+
+---
+
+## The ten-second menu
+
+https://neutronproject.org/wiki/neutron/fixes/edit-in-lag/
+
+*Why Lightroom’s “Edit in Photoshop” hung — and how a quarter-second file read explains it.*
+
+In Lightroom Classic, opening **Photo → Edit In** took about **ten seconds** before the submenu appeared. No error, no spinner, no crash — the menu just froze, every single time. That "no error, just slow" shape is worth recognizing: it usually means something correct is happening, just far too many times.
+
+## What was actually happening
+
+Every Windows program carries a tiny tag inside it called a **version resource** — the "Product version 26.9.0.15" you see in a file's Properties. It is well under a kilobyte. When Lightroom builds its "Edit in Photoshop" menu, it reads that tag out of `Photoshop.exe` to label the item.
+
+The catch was *how* Wine fetched it. To read that tiny tag, Wine loaded the **entire program into memory in "image" mode** — the heavyweight way Windows loads a program it is about to *run*, laying out every section at its correct address. Fine for a normal app. But **`Photoshop.exe` is 208 megabytes.** Laying all of that out to read a sub-kilobyte tag took ~60 ms — done four times per lookup. That is roughly a quarter-second.
+
+The reason it became *ten* seconds: Lightroom re-checks this every time it validates the menu, and opening the submenu triggers validation about **forty times**.
+
+## The fix
+
+There is a lightweight way to open a file just to read data out of it — "as a data file." Nothing is laid out in advance; only the bytes you touch are read. We switched Wine's version-info code to that mode, after proving both modes return **byte-for-byte identical** data:
+
+Reading Photoshop.exe’s version — measuredBefore — “image” mapping121.7 ms After — “data file” mapping0.42 ms288× fasterEdit-In submenu open~10 s → ~0.1 sgone
+
+Same version out, same everything — the menu just opens instantly now. The change lives in Wine itself, so it speeds up anything that reads version info from a large file. Shipped in runtime `11.10-12`.
+
+Diagnose this class yourselfIf an Adobe app pauses with no error while building a menu or a picker — especially anything that detects other installed apps — suspect repeated reads of a large binary. Launch with WINEDEBUG=+timestamp,+file and watch for the same big .exe opened over and over, with tens-of-ms gaps, right where it hangs. The gaps are the cost; the repetition is the multiplier.
+
+---
+
+## Known issues
+
+https://neutronproject.org/wiki/neutron/issues/known-issues/
+
+*Listed on one page for every app.*
+
+Current known issues for every app are listed on one page: [Known issues](https://neutronproject.org/wiki/start/help/known-issues/).
+
+---
+
+## How runtimes are versioned
+
+https://neutronproject.org/wiki/neutron/runtimes/versioned-runtimes/
+
+*Proton-style: the repo is the recipe, releases are prebuilt trees.*
+
+Neutron ships Wine the Proton-GE way. The **neutron-wine** repo is the *recipe* — a patch set plus a pinned upstream Wine base — and each release is a **prebuilt, self-contained Wine tree** attached to a versioned release. You never build Wine; the engine downloads and verifies a tarball.
+
+Versions look like `11.10-12`: the `11.10` tracks the upstream Wine base, and the `-12` is the Neutron revision — it bumps whenever the patch set changes. Because every runtime is reproducible from the tracked patch set, a fix is never a hand-swapped binary; it is a patch that rebuilds cleanly into the next release.
+
+Each prefix is tied to the runtime it was set up with, and an app won't launch against a different one. `neutron update` installs the newest runtime and moves your prefixes to it; for a single prefix, run `neutron prefix provision `.
+
+---
+
+## Advanced options
+
+https://neutronproject.org/wiki/neutron/advanced/options/
+
+*Switches for testing and troubleshooting. Each one has a cost.*
+
+These are for testing and troubleshooting. The normal guides never need them, and each one can make things worse.
+
+## Turn one fix off
+
+`neutron launch  --without ` launches with one of Neutron's shipped fixes turned off, for that launch only. `neutron gates` lists the fixes you can turn off. Use it to check whether a fix is behind a problem you're seeing.
+
+**Risk:** with the fix off, the app can misbehave in exactly the way that fix exists to prevent.
+
+## Launch on a different runtime
+
+`neutron launch  --allow-restamp` launches even when the installed runtime isn't the one the prefix was set up with.
+
+**Risk:** Wine updates the prefix and reverts Neutron's patched files in it, so apps can break until you run `neutron prefix provision `. Use it only when you're deliberately moving a prefix to a new runtime; `neutron update` normally does that for you.
+
+## Pick a runtime version
+
+Set `NEUTRON_WINE_VERSION=` to use a specific installed neutron-wine runtime instead of the newest one. The app menu entries pin their version the same way.
+
+**Risk:** a prefix set up with a different runtime refuses to launch on it (see `--allow-restamp`).
+
+## Launch on X11
+
+X11 isn't supported. Setting `NEUTRON_ALLOW_X11=1` lets an app launch in an X11 session anyway.
+
+**Risk:** many of Neutron's display and window fixes live in its Wayland driver, so they don't apply. It also switches the prefix's graphics driver to X11; a later Wayland launch switches it back. You're on your own: bug reports from X11 sessions aren't supported.
+
+---
+
+## What Collider is
+
+https://neutronproject.org/wiki/collider/overview/what-it-is/
+
+*The launcher, and why it deliberately knows nothing about fixes.*
+
+Collider is a desktop application that finds your installed apps, checks that a prefix is healthy, launches it, and supervises it until it exits. For anything compatibility-related it calls the [Neutron](https://neutronproject.org/wiki/neutron/) CLI — it holds no fixes of its own.
+
+That separation is the point: the launcher can be rewritten or replaced without touching a single compatibility fix, and every fix Neutron gains shows up in Collider for free. Licensed Apache 2.0.
+
+---
+
+## Installing Collider
+
+https://neutronproject.org/wiki/collider/setup/install/
+
+*Collider is installed by neutron setup.*
+
+`neutron setup` installs Collider along with the rest of the stack. The steps are in [Getting Started → Installing Collider](https://neutronproject.org/wiki/start/basics/install-collider/).
+
+---
+
+## Known issues
+
+https://neutronproject.org/wiki/collider/issues/placeholder/
+
+*Listed on one page for every app.*
+
+Current known issues for every app are listed on one page: [Known issues](https://neutronproject.org/wiki/start/help/known-issues/).
+
+---
+
+## What Mud Hut is
+
+https://neutronproject.org/wiki/mudhut/overview/what-it-is/
+
+*Installs Adobe apps without hand-building a prefix.*
+
+Mud Hut is a command-line installer that gets Adobe applications onto your machine without hand-building a Wine prefix. [Collider](https://neutronproject.org/wiki/collider/) runs it from its Mud Hut tab, and it runs standalone for anyone who prefers a terminal.
+
+Under the hood it leans on Neutron's `prefix provision` — the single, reproducible recipe for making a prefix Adobe-ready — so an install done through Mud Hut and one done by hand end up in the same known-good state.
+
+---
+
+## Capabilities
+
+https://neutronproject.org/wiki/mudhut/features/placeholder/
+
+*Three ways to get Adobe apps in.*
+
+Mud Hut installs Adobe apps three ways. None of them needs an Adobe sign-in to install.
+
+- **Copy from an existing Windows install** — point it at a licensed Windows Adobe install (a dual-boot drive, a backup, or a mounted C: drive) and copy the app in.
+- **Install from an offline package** — use an offline Adobe installer package or an `.iso` disc image you already have.
+- **Download from Adobe** — download straight from Adobe's servers. You sign in later, inside the app.
+
+---
+
+## Common install problems
+
+https://neutronproject.org/wiki/mudhut/troubleshooting/placeholder/
+
+*When an install doesn’t go cleanly.*
+
+If Mud Hut says neutron-wine isn't installed, run `neutron setup` first. For anything else, see [Troubleshooting](https://neutronproject.org/wiki/start/help/troubleshooting/), or report it on [Mud Hut's issues](https://github.com/Nico-LaFoucate/Mud-Hut/issues).
+
+---
+
+## Photoshop on Linux
+
+https://neutronproject.org/wiki/photoshop/status/overview/
+
+*What works in Adobe Photoshop on Linux with Neutron, and how to get it running.*
+
+Neutron runs Adobe Photoshop on Linux: Photoshop 2026 and 2025, installed straight from Adobe and signed in with your own Adobe account. It's in beta, stable for day-to-day work, and it has been used for paid client work.
+
+## What works
+
+- **The full workspace**, with the canvas drawn on the GPU.
+- **Pen tablets**: pressure, tilt, the eraser and the pen's side buttons.
+- **Plugins**: filters such as G'MIC-8bf appear under **Filter**, and UXP plugins (`.ccx`) under **Plugins**. Install them from Collider's Plugins page: see [Installing plugins](https://neutronproject.org/wiki/start/basics/plugins/).
+- **Copy and paste images** between Photoshop and Linux apps, in both directions, and **drag and drop** files in from your file manager.
+- **Edit in Photoshop** from Lightroom Classic.
+- **GPUs**: NVIDIA is the tested path. On AMD, Photoshop 2026 uses the GPU. A user reports Photoshop working on Intel Iris Xe.
+
+## Get it running
+
+[Install Collider](https://neutronproject.org/wiki/start/basics/install-collider/), install Photoshop from its Mud Hut tab, then see [Running your first app](https://neutronproject.org/wiki/start/basics/first-app/). Current problems across the apps are listed under [Known issues](https://neutronproject.org/wiki/start/help/known-issues/).
+
+---
+
+## Notable fixes
+
+https://neutronproject.org/wiki/photoshop/fixes/placeholder/
+
+*Listed with every app’s fixes under Neutron → Fixes.*
+
+Photoshop’s fixes are listed with the rest in [Neutron → Fixes → Notable fixes](https://neutronproject.org/wiki/neutron/fixes/notable-fixes/).
+
+---
+
+## Known issues
+
+https://neutronproject.org/wiki/photoshop/issues/placeholder/
+
+*Listed on one page for every app.*
+
+Current known issues for every app are listed on one page: [Known issues](https://neutronproject.org/wiki/start/help/known-issues/).
+
+---
+
+## Lightroom Classic on Linux
+
+https://neutronproject.org/wiki/lightroom/status/overview/
+
+*What works in Adobe Lightroom Classic on Linux with Neutron, and how to get it running.*
+
+Neutron runs Adobe Lightroom Classic on Linux, installed straight from Adobe and signed in with your own Adobe account. It's in beta, stable for cataloging, developing and export, and it has been used for paid client work. Confirmed working:
+
+- **Boots and imports at scale** — 1000+ RAW files imported at once, SD-card hotplug auto-detected. GPU auto-detected and enabled.
+- **Develop performance** — smooth zoom and slider response (the earlier stepping is fixed).
+- **AI features run natively** — Camera Raw *Denoise* (Photo → Enhance) and AI *masking* (Select Subject / Sky) both work.
+- **Edit in Photoshop** — round-trips correctly, and the submenu opens instantly (see the [ten-second menu](https://neutronproject.org/wiki/neutron/fixes/edit-in-lag/) fix).
+- **Copy Settings, masking popups, filmstrip scrolling** across large catalogs — all working.
+- **Batch export.**
+
+The interface takes several seconds to paint in when the app starts; that comes from inside the app, not from Neutron. See [Known issues](https://neutronproject.org/wiki/start/help/known-issues/).
+
+## Get it running
+
+[Install Collider](https://neutronproject.org/wiki/start/basics/install-collider/), install Lightroom Classic from its Mud Hut tab, then see [Running your first app](https://neutronproject.org/wiki/start/basics/first-app/).
+
+---
+
+## The ten-second Edit-In menu
+
+https://neutronproject.org/wiki/lightroom/fixes/edit-in-lag/
+
+*Filed in full under Neutron → Fixes.*
+
+This fix lives in the engine — read it in full at [Neutron → Fixes → The ten-second menu](https://neutronproject.org/wiki/neutron/fixes/edit-in-lag/).
+
+---
+
+## Known issues
+
+https://neutronproject.org/wiki/lightroom/issues/placeholder/
+
+*Listed on one page for every app.*
+
+Current known issues for every app are listed on one page: [Known issues](https://neutronproject.org/wiki/start/help/known-issues/).
+
+---
+
+## Premiere Pro on Linux
+
+https://neutronproject.org/wiki/premiere/status/overview/
+
+*What works in Adobe Premiere Pro on Linux with Neutron, and how to get it running.*
+
+Neutron runs Adobe Premiere Pro on Linux: Premiere Pro 2026 and 2025, installed straight from Adobe and signed in with your own Adobe account. It's in beta, stable for editing and delivery, and it has been used for paid client work.
+
+## What works
+
+- **GPU (Mercury) rendering and timeline playback** on NVIDIA GPUs, through CUDA.
+- **Hardware NVENC export** that muxes natively into a valid MP4.
+- **Dynamic Link** with After Effects, in both directions.
+- **Panels**: Captioneer and other third-party panels are in daily use.
+- **VST3 audio plugins**: tested with FabFilter Pro-Q 4 and plugdata. Load a new one with Premiere's Audio Plug-in Manager: see [Installing plugins](https://neutronproject.org/wiki/start/basics/plugins/).
+- **GPUs**: NVIDIA is the tested path. On AMD, Premiere Pro 2026 uses the GPU through AMD's ROCm OpenCL. A user reports Premiere Pro working on Intel Iris Xe with Intel's OpenCL runtime.
+
+## Get it running
+
+[Install Collider](https://neutronproject.org/wiki/start/basics/install-collider/), install Premiere Pro from its Mud Hut tab, then see [Running your first app](https://neutronproject.org/wiki/start/basics/first-app/). Current problems, such as a 2026 thumbnail that can show "Media pending" after a project is reopened, are listed under [Known issues](https://neutronproject.org/wiki/start/help/known-issues/).
+
+---
+
+## Known issues
+
+https://neutronproject.org/wiki/premiere/issues/placeholder/
+
+*Listed on one page for every app.*
+
+Current known issues for every app are listed on one page: [Known issues](https://neutronproject.org/wiki/start/help/known-issues/).
+
+---
+
+## After Effects on Linux
+
+https://neutronproject.org/wiki/aftereffects/status/overview/
+
+*What works in Adobe After Effects on Linux with Neutron, and how to get it running.*
+
+Neutron runs Adobe After Effects on Linux: After Effects 2026 and 2025, installed straight from Adobe and signed in with your own Adobe account. It's in beta, and it has been used for day-to-day work.
+
+## What works
+
+- **The composition viewer** renders, with its on-canvas overlays, rulers, guides and layer handles, at display refresh rate.
+- **Dynamic Link** with Premiere Pro, in both directions. Comps update live across the link.
+- **Plugins** from the shared plugin folder: Gyroflow, Boris FX Mocha and Satori appear in the **Effect** menu. See [Installing plugins](https://neutronproject.org/wiki/start/basics/plugins/).
+- **GPUs**: NVIDIA is the tested path. After Effects hasn't been tried on AMD or Intel GPUs yet.
+
+## Get it running
+
+[Install Collider](https://neutronproject.org/wiki/start/basics/install-collider/), install After Effects from its Mud Hut tab, then see [Running your first app](https://neutronproject.org/wiki/start/basics/first-app/). Current problems across the apps are listed under [Known issues](https://neutronproject.org/wiki/start/help/known-issues/).
+
+---
+
+## Known issues
+
+https://neutronproject.org/wiki/aftereffects/issues/placeholder/
+
+*Listed on one page for every app.*
+
+Current known issues for every app are listed on one page: [Known issues](https://neutronproject.org/wiki/start/help/known-issues/).

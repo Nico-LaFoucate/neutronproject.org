@@ -1,0 +1,73 @@
+# Neutron
+
+> Neutron runs Adobe Creative Cloud apps on Linux: Photoshop, Premiere Pro, After Effects, Illustrator, Lightroom Classic, Media Encoder and Animate (Creative Cloud 2026 and 2025), plus Audition and InDesign on 2026 through experimental profiles. It is free, open source and in beta, and built on its own patched Wine runtime. The apps are installed straight from Adobe with Adobe's own installer, and you sign in with your own Adobe account.
+
+Neutron has three parts: the `neutron` command line with its Wine runtime (the engine), Collider (the desktop app) and Mud Hut (the installer and updater). It is developed and tested on CachyOS with KDE Plasma (Wayland) and NVIDIA GPUs; users also run it on Ubuntu, Bazzite, Nobara and Arch, under GNOME and Hyprland. Neutron is not affiliated with Adobe. Not to be confused with OpenStack Neutron (cloud networking) or iZotope Neutron (an audio plugin).
+
+Per-app status: https://neutronproject.org/#status (the status board). The whole wiki as one text file: https://neutronproject.org/llms-full.txt
+
+## Getting Started
+
+- [What is Neutron?](https://neutronproject.org/wiki/start/basics/what-is-neutron/): Neutron is a free, open-source compatibility engine that runs Adobe Creative Cloud apps such as Photoshop and Premiere Pro on Linux. Its three pieces, in one minute.
+- [What Neutron does today](https://neutronproject.org/wiki/start/basics/what-neutron-does/): Run Adobe Photoshop, Premiere Pro, After Effects, Illustrator and Lightroom Classic on Linux: installed from Adobe, GPU acceleration, pen tablets and plugins.
+- [Installing Collider](https://neutronproject.org/wiki/start/basics/install-collider/): Install Neutron on Linux and get Adobe Photoshop, Premiere Pro and the other Creative Cloud apps running: requirements and steps, end to end.
+- [Choosing a display scale](https://neutronproject.org/wiki/start/basics/display-scale/): Use a Windows scale step: 100, 125, 150, 175, 200, 225, 250 or 300%.
+- [Running your first app](https://neutronproject.org/wiki/start/basics/first-app/): You clicked Launch — here’s what to expect, and how to get to real work.
+- [Installing plugins](https://neutronproject.org/wiki/start/basics/plugins/): Third-party plugins, extension panels, scripts and audio plugins, from Collider or a terminal.
+- [Planned](https://neutronproject.org/wiki/start/basics/planned/): What’s planned but not built yet. No dates.
+- [Adobe apps on Linux: common questions](https://neutronproject.org/wiki/start/help/faq/): Can you run Adobe Photoshop, Premiere Pro and After Effects on Linux? Short answers on Neutron: requirements, GPUs, updates, plugins and cost.
+- [Known issues](https://neutronproject.org/wiki/start/help/known-issues/): Current problems across the apps, and what to do about them.
+- [Troubleshooting](https://neutronproject.org/wiki/start/help/troubleshooting/): First steps when something goes wrong.
+- [Report a problem](https://neutronproject.org/wiki/start/help/report-a-problem/): Where each kind of problem goes, and what to include.
+
+## Neutron
+
+- [What Neutron does](https://neutronproject.org/wiki/neutron/overview/what-it-is/): The engine, and the one rule that holds it together.
+- [Where the fixes live](https://neutronproject.org/wiki/neutron/architecture/where-fixes-live/): Adobe's apps aren't broken: they run fine on Windows. Wherever they misbehave under Wine, the gap is on Wine's side, and that's where Neutron patches.
+- [Plugins and extensions](https://neutronproject.org/wiki/neutron/features/plugins/): Third-party panels and audio plugins, in daily use.
+- [Notable fixes](https://neutronproject.org/wiki/neutron/fixes/notable-fixes/): Problems you’d have seen on earlier builds, one line each.
+- [The ten-second menu](https://neutronproject.org/wiki/neutron/fixes/edit-in-lag/): Why Lightroom’s “Edit in Photoshop” hung — and how a quarter-second file read explains it.
+- [Known issues](https://neutronproject.org/wiki/neutron/issues/known-issues/): Listed on one page for every app.
+- [How runtimes are versioned](https://neutronproject.org/wiki/neutron/runtimes/versioned-runtimes/): Proton-style: the repo is the recipe, releases are prebuilt trees.
+- [Advanced options](https://neutronproject.org/wiki/neutron/advanced/options/): Switches for testing and troubleshooting. Each one has a cost.
+
+## Collider
+
+- [What Collider is](https://neutronproject.org/wiki/collider/overview/what-it-is/): The launcher, and why it deliberately knows nothing about fixes.
+- [Installing Collider](https://neutronproject.org/wiki/collider/setup/install/): Collider is installed by neutron setup.
+- [Known issues](https://neutronproject.org/wiki/collider/issues/placeholder/): Listed on one page for every app.
+
+## Mud Hut
+
+- [What Mud Hut is](https://neutronproject.org/wiki/mudhut/overview/what-it-is/): Installs Adobe apps without hand-building a prefix.
+- [Capabilities](https://neutronproject.org/wiki/mudhut/features/placeholder/): Three ways to get Adobe apps in.
+- [Common install problems](https://neutronproject.org/wiki/mudhut/troubleshooting/placeholder/): When an install doesn’t go cleanly.
+
+## Photoshop
+
+- [Photoshop on Linux](https://neutronproject.org/wiki/photoshop/status/overview/): Run Adobe Photoshop 2026 and 2025 on Linux with Neutron: installed from Adobe, GPU canvas, pen tablets, filters and UXP plugins. Free and open source.
+- [Notable fixes](https://neutronproject.org/wiki/photoshop/fixes/placeholder/): Listed with every app’s fixes under Neutron → Fixes.
+- [Known issues](https://neutronproject.org/wiki/photoshop/issues/placeholder/): Listed on one page for every app.
+
+## Lightroom Classic
+
+- [Lightroom Classic on Linux](https://neutronproject.org/wiki/lightroom/status/overview/): Run Adobe Lightroom Classic on Linux with Neutron: large RAW imports, SD cards, AI Denoise, AI masking and Edit in Photoshop. Free and open source.
+- [The ten-second Edit-In menu](https://neutronproject.org/wiki/lightroom/fixes/edit-in-lag/): Filed in full under Neutron → Fixes.
+- [Known issues](https://neutronproject.org/wiki/lightroom/issues/placeholder/): Listed on one page for every app.
+
+## Premiere Pro
+
+- [Premiere Pro on Linux](https://neutronproject.org/wiki/premiere/status/overview/): Run Adobe Premiere Pro 2026 and 2025 on Linux with Neutron: GPU rendering, NVENC export, Dynamic Link, panels and VST3 audio plugins. Free and open source.
+- [Known issues](https://neutronproject.org/wiki/premiere/issues/placeholder/): Listed on one page for every app.
+
+## After Effects
+
+- [After Effects on Linux](https://neutronproject.org/wiki/aftereffects/status/overview/): Run Adobe After Effects 2026 and 2025 on Linux with Neutron: composition rendering, Dynamic Link with Premiere Pro, and third-party plugins. Free and open source.
+- [Known issues](https://neutronproject.org/wiki/aftereffects/issues/placeholder/): Listed on one page for every app.
+
+## Source code
+
+- [Neutron: the CLI, docs and issues](https://github.com/Nico-LaFoucate/Neutron)
+- [neutron-wine: the Wine runtime and every patch](https://github.com/Nico-LaFoucate/neutron-wine)
+- [Collider: the desktop app](https://github.com/Nico-LaFoucate/Collider)
+- [Mud Hut: the installer and updater](https://github.com/Nico-LaFoucate/Mud-Hut)

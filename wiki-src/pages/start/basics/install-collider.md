@@ -2,6 +2,7 @@
 title: Installing Collider
 status: guide
 sub: From a clean Linux machine to your first Adobe launch — the whole stack, end to end.
+description: Install Neutron on Linux and get Adobe Photoshop, Premiere Pro and the other Creative Cloud apps running: requirements and steps, end to end.
 ---
 
 **Collider** is the graphical front door to the whole stack. One command, `neutron setup`, installs everything underneath it — the [Neutron](/wiki/neutron/) compatibility engine, its patched Wine runtime, the Mud Hut installer and Collider itself — and from then on you install and launch your Adobe apps from Collider. This page walks the whole thing end to end.
