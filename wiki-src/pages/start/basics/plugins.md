@@ -35,15 +35,15 @@ They work on the prefix selected in Collider; add `--prefix <path>` to pick anot
 All inside the prefix:
 
 - **`.aex` or `.prm` files, or a folder of them:** `Program Files\Adobe\Common\Plug-ins\7.0\MediaCore`, shared by After Effects, Premiere Pro and Media Encoder.
-- **Photoshop plugin files** (`.8bf` and the other `.8b*` types): Photoshop's `Plug-ins` folder.
-- **`.aip` files:** Illustrator's `Plug-ins` folder.
+- **Photoshop plugin files** (`.8bf` and the other `.8b*` types): Photoshop's `Plug-ins` folder. *Experimental: Photoshop loading them from there isn't tested yet.*
+- **`.aip` files:** Illustrator's `Plug-ins` folder. *Experimental: Illustrator loading them from there isn't tested yet.*
 - **An extension package (`.zxp`):** `Program Files (x86)\Common Files\Adobe\CEP\extensions`, in a folder named after the extension.
 - **A UXP plugin (`.ccx`):** `Program Files\Common Files\Adobe\UXP\Plugins\External`, in a folder named after the plugin and its version.
 - **A script (`.jsx`, `.jsxbin`):** the scripts folder of the app you choose (for After Effects, `ScriptUI Panels`).
 - **A VST3 plugin (`.vst3` file or folder):** `Program Files\Common Files\VST3`.
-- **A vendor's installer (`.exe`, `.msi`):** wherever the installer puts it.
+- **A vendor's installer (`.exe`, `.msi`):** wherever the installer puts it. *`.msi` installers are experimental: only `.exe` installers are tested.*
 
-If a plugin is already there, the new one replaces it.
+If a plugin is already there, the new one replaces it. After Effects loads plugins from the shared folder: Gyroflow, Boris FX Mocha and Satori appear in its **Effect** menu.
 
 ## Audio plugins in Premiere Pro
 
@@ -69,7 +69,7 @@ If the Creative Cloud app ever installed UXP plugins into the prefix, it left a 
 
 Neutron checks a package's signature before it installs it. A damaged package is refused, and the extension that was already installed stays as it was.
 
-A package that isn't signed at all is installed with a note: the Adobe apps refuse to load it unless PlayerDebugMode is on, and its developer's instructions say how to turn that on.
+A package that isn't signed at all is installed with a note: the Adobe apps refuse to load it unless PlayerDebugMode is on, and its developer's instructions say how to turn that on. *Experimental: not tested with a real unsigned panel yet.*
 
 ## Not supported yet
 
