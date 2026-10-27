@@ -86,8 +86,8 @@ neutron plugins folder</div>
 <p>All inside the prefix:</p>
 <ul>
 <li><strong><code>.aex</code> or <code>.prm</code> files, or a folder of them:</strong> <code>Program Files\Adobe\Common\Plug-ins\7.0\MediaCore</code>, shared by After Effects, Premiere Pro and Media Encoder.</li>
-<li><strong>Photoshop plugin files</strong> (<code>.8bf</code> and the other <code>.8b*</code> types): Photoshop's <code>Plug-ins</code> folder. <em>Experimental: Photoshop loading them from there isn't tested yet.</em></li>
-<li><strong><code>.aip</code> files:</strong> Illustrator's <code>Plug-ins</code> folder. <em>Experimental: Illustrator loading them from there isn't tested yet.</em></li>
+<li><strong>Photoshop plugin files</strong> (<code>.8bf</code> and the other <code>.8b*</code> types), or a folder holding one with the files it needs: Photoshop's <code>Plug-ins</code> folder.</li>
+<li><strong><code>.aip</code> files:</strong> Illustrator's <code>Plug-ins</code> folder.</li>
 <li><strong>An extension package (<code>.zxp</code>):</strong> <code>Program Files (x86)\Common Files\Adobe\CEP\extensions</code>, in a folder named after the extension.</li>
 <li><strong>A UXP plugin (<code>.ccx</code>):</strong> <code>Program Files\Common Files\Adobe\UXP\Plugins\External</code>, in a folder named after the plugin and its version.</li>
 <li><strong>A script (<code>.jsx</code>, <code>.jsxbin</code>):</strong> the scripts folder of the app you choose (for After Effects, <code>ScriptUI Panels</code>).</li>
@@ -95,6 +95,7 @@ neutron plugins folder</div>
 <li><strong>A vendor's installer (<code>.exe</code>, <code>.msi</code>):</strong> wherever the installer puts it. <em><code>.msi</code> installers are experimental: only <code>.exe</code> installers are tested.</em></li>
 </ul>
 <p>If a plugin is already there, the new one replaces it. After Effects loads plugins from the shared folder: Gyroflow, Boris FX Mocha and Satori appear in its <strong>Effect</strong> menu.</p>
+<p>Tested in Photoshop with G'MIC-8bf, installed as its unzipped folder: it appears under <strong>Filter > GMIC</strong> and applies its filters to the image. Tested in Illustrator with anchorGrabber, a tool plugin: it appears at the bottom of the toolbar's <strong>All Tools</strong> list (the <strong>…</strong> button), under <strong>Add Ons</strong>, and works once dragged into the toolbar.</p>
 <h2>Audio plugins in Premiere Pro</h2>
 <p>Premiere Pro finds new audio plugins only on its very first launch. After you install one, with the vendor's installer or as a <code>.vst3</code>, load it:</p>
 <ol>
@@ -109,7 +110,7 @@ neutron plugins folder</div>
 <p>If the Creative Cloud app ever installed UXP plugins into the prefix, it left a plugin list behind, and Photoshop then loads only the plugins on that list. Neutron says so when it installs a <code>.ccx</code> into such a prefix.</p>
 <h2>Extension packages (.zxp)</h2>
 <p>Neutron checks a package's signature before it installs it. A damaged package is refused, and the extension that was already installed stays as it was.</p>
-<p>A package that isn't signed at all is installed with a note: the Adobe apps refuse to load it unless PlayerDebugMode is on, and its developer's instructions say how to turn that on. <em>Experimental: not tested with a real unsigned panel yet.</em></p>
+<p>A package that isn't signed at all is installed with a note: the Adobe apps list it under <strong>Window > Extensions</strong> but refuse to load it unless PlayerDebugMode is on, and its developer's instructions say how to turn that on. Tested in Premiere Pro with Adobe's own sample panel (PProPanel): it opened only after PlayerDebugMode was turned on.</p>
 <h2>Not supported yet</h2>
 <ul>
 <li><strong>Loose VST2 files</strong> (<code>.dll</code>): there's no single standard VST2 folder, so Neutron doesn't place them. A vendor's installer that includes VST2 plugins still puts them where it wants.</li>
