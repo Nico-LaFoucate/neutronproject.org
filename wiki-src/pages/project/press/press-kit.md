@@ -5,9 +5,9 @@ sub: Facts, screenshots and logos for writing about Neutron. Everything here has
 description: The Neutron press kit: what it is, which Adobe apps it runs on Linux, the tested setups, screenshots, logos and contact, for journalists and creators.
 ---
 
-<div class="press-todo"><p class="k">To fill: Nico's paragraph</p><p>One paragraph about Neutron in Nico's own words goes here.</p></div>
-
 Neutron runs Adobe's Creative Cloud apps on Linux: Photoshop, Premiere Pro, After Effects, Illustrator, Lightroom Classic, Media Encoder and Animate. You install the apps straight from Adobe and sign in with your own account. Neutron is free, open source and in beta.
+
+<div class="press-quote"><p>I'm Nico LaFoucate, I'm a creative of over 10 years. You might know me as one of the talents involved with Smack Studio on YouTube. I decided to swear off of Windows entirely two years ago because of its increasingly worse user experience. I have been a long-time tinkerer of Wine and a daily driver of Linux for the past two years. After I lost my full-time job, I needed to be able to use my own computer to do client work. It was out of this necessity that Neutron was born.</p><p class="by">Nico LaFoucate, creator of Neutron</p></div>
 
 ## Fact sheet
 
@@ -21,6 +21,7 @@ Neutron runs Adobe's Creative Cloud apps on Linux: Photoshop, Premiere Pro, Afte
 <div class="fr"><div class="fk">Used for paid client work</div><div class="fv">Premiere Pro, Photoshop, Lightroom Classic, After Effects and Media Encoder</div></div>
 <div class="fr"><div class="fk">Adobe builds tested</div><div class="fv">Each one listed with the date it was tested: <a class="ln" href="/wiki/start/basics/tested-builds/">Tested Adobe builds</a></div></div>
 <div class="fr"><div class="fk">The three parts</div><div class="fv"><strong>Neutron</strong>, the engine, with its own Wine runtime and a command line. <strong>Collider</strong>, the desktop app that sets everything up and launches the apps. <strong>Mud Hut</strong>, the installer that gets the apps from Adobe and keeps them updated.</div></div>
+<div class="fr"><div class="fk">How it's made</div><div class="fv">Neutron is built with assistance from AI tools. However, every change and fix is proposed, tested and signed off on by human hands.</div></div>
 <div class="fr"><div class="fk">Under the hood</div><div class="fv">Neutron's own Wine (Wine 11.10 with Staging and ntsync) carrying more than 260 patches written for these apps, plus DXVK and vkd3d-proton. Every patch is public and documented with the test that proved it.</div></div>
 <div class="fr"><div class="fk">Developed on</div><div class="fv">CachyOS, KDE Plasma (Wayland). Users also run it on Fedora, Ubuntu, Bazzite, Nobara and Arch, under GNOME and Hyprland.</div></div>
 <div class="fr"><div class="fk">Setup without a terminal</div><div class="fv">Tested on Fedora 44 (KDE Plasma), Ubuntu 26.04 (GNOME), Linux Mint 22.3 (Cinnamon) and Pop!_OS 24.04 (COSMIC)</div></div>
@@ -66,13 +67,11 @@ Click any screenshot for the full-size PNG. Shown on KDE Plasma (Wayland), Colli
 
 <div class="press-todo"><p class="k">To fill: clips</p><p>One or two 30 to 90 second clips of the apps at work.</p></div>
 
-**Coverage:** The Linux Experiment covered Neutron on October 10, 2026.
-
-<div class="press-todo"><p class="k">To fill: link</p><p>The Linux Experiment video.</p></div>
+**Coverage:** [The Linux Experiment](https://www.youtube.com/watch?v=eAeT63x338Y&t=203s) covered Neutron on October 10, 2026.
 
 ## Logos
 
-PNG with a transparent background, 800 × 800 (the app icon is 1024 × 1024). Click to download. Use them in articles, videos and links about Neutron.
+PNG with a transparent background, 800 × 800 (the app icon is 1024 × 1024). Click to download. They're free to use in articles, videos and links promoting Neutron.
 
 <div class="logos">
 <a class="logo light" href="/press/logos/neutron-logo-black.png"><img src="/press/logos/neutron-logo-black.png" alt="Neutron logo, black" loading="lazy"><span>Neutron, black</span></a>

@@ -115,6 +115,9 @@ code{font-family:var(--f-mono);font-size:.9em;background:rgba(127,184,255,.10);c
 .logo img{width:96px;height:96px;object-fit:contain}
 .logo span{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.06em;color:#5F6E85}
 .logo.dark span{color:var(--ink-dim)}
+.press-quote{max-width:var(--measure);border-left:2px solid var(--red);padding:4px 0 4px 20px;margin:4px 0 26px}
+.press-quote p{font-size:16.5px;line-height:1.65;color:var(--ink);margin:0 0 10px}
+.press-quote .by{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);margin:0}
 .press-todo{max-width:var(--measure);border:1px dashed var(--amber);border-radius:5px;padding:14px 18px;margin:0 0 20px;background:rgba(232,161,60,.06)}
 .press-todo .k{font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin:0 0 6px}
 .press-todo p{margin:0;color:var(--ink-dim)}

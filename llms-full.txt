@@ -914,9 +914,9 @@ https://neutronproject.org/wiki/project/press/press-kit/
 
 *Facts, screenshots and logos for writing about Neutron. Everything here has been tested. Checked October 28, 2026.*
 
-To fill: Nico's paragraphOne paragraph about Neutron in Nico's own words goes here.
-
 Neutron runs Adobe's Creative Cloud apps on Linux: Photoshop, Premiere Pro, After Effects, Illustrator, Lightroom Classic, Media Encoder and Animate. You install the apps straight from Adobe and sign in with your own account. Neutron is free, open source and in beta.
+
+I'm Nico LaFoucate, I'm a creative of over 10 years. You might know me as one of the talents involved with Smack Studio on YouTube. I decided to swear off of Windows entirely two years ago because of its increasingly worse user experience. I have been a long-time tinkerer of Wine and a daily driver of Linux for the past two years. After I lost my full-time job, I needed to be able to use my own computer to do client work. It was out of this necessity that Neutron was born.Nico LaFoucate, creator of Neutron
 
 ## Fact sheet
 
@@ -929,6 +929,7 @@ AppsPhotoshop, Premiere Pro, After Effects, Illustrator, Lightroom Classic, Medi
 Used for paid client workPremiere Pro, Photoshop, Lightroom Classic, After Effects and Media Encoder
 Adobe builds testedEach one listed with the date it was tested: Tested Adobe builds
 The three partsNeutron, the engine, with its own Wine runtime and a command line. Collider, the desktop app that sets everything up and launches the apps. Mud Hut, the installer that gets the apps from Adobe and keeps them updated.
+How it's madeNeutron is built with assistance from AI tools. However, every change and fix is proposed, tested and signed off on by human hands.
 Under the hoodNeutron's own Wine (Wine 11.10 with Staging and ntsync) carrying more than 260 patches written for these apps, plus DXVK and vkd3d-proton. Every patch is public and documented with the test that proved it.
 Developed onCachyOS, KDE Plasma (Wayland). Users also run it on Fedora, Ubuntu, Bazzite, Nobara and Arch, under GNOME and Hyprland.
 Setup without a terminalTested on Fedora 44 (KDE Plasma), Ubuntu 26.04 (GNOME), Linux Mint 22.3 (Cinnamon) and Pop!_OS 24.04 (COSMIC)
@@ -971,13 +972,11 @@ To fill: the Adobe appsPhotoshop with a document open, Premiere Pro's timeline, 
 
 To fill: clipsOne or two 30 to 90 second clips of the apps at work.
 
-**Coverage:** The Linux Experiment covered Neutron on October 10, 2026.
-
-To fill: linkThe Linux Experiment video.
+**Coverage:** [The Linux Experiment](https://www.youtube.com/watch?v=eAeT63x338Y&t=203s) covered Neutron on October 10, 2026.
 
 ## Logos
 
-PNG with a transparent background, 800 × 800 (the app icon is 1024 × 1024). Click to download. Use them in articles, videos and links about Neutron.
+PNG with a transparent background, 800 × 800 (the app icon is 1024 × 1024). Click to download. They're free to use in articles, videos and links promoting Neutron.
 
 Neutron, black
 Neutron, white
