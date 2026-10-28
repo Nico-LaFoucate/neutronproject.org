@@ -967,8 +967,12 @@ Photoshop 2026 (27.11) with a Curves adjustment layer. Neutron runtime 11.10-157
 Premiere Pro 2026 (26.5.2): a four-clip sequence on the timeline. Neutron runtime 11.10-157.
 After Effects 2026 (26.5): a composition with a title layer. Neutron runtime 11.10-158.
 Lightroom Classic (15.6) in the Develop module. Neutron runtime 11.10-158.
+Illustrator 2026 (30.8): a layout with a placed photo, type and a vector shape. Neutron runtime 11.10-158.
+InDesign 2026 (21.6): a page with a placed photo, a headline and a caption. Neutron runtime 11.10-158.
+Media Encoder 2026 (26.5.2): four clips exported to H.264. Neutron runtime 11.10-158.
+Audition 2026 (26.5) editing a stereo recording. Neutron runtime 11.10-158.
 
-Adobe product screenshots reprinted with permission from Adobe. The photos and footage in them are public domain or CC0, from Wikimedia Commons.
+Adobe product screenshots reprinted with permission from Adobe. The photos and footage in them are public domain or CC0, from Wikimedia Commons; the audio in Audition was made for this page.
 
 ### Collider
 

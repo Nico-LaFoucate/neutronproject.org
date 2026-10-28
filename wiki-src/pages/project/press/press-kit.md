@@ -61,9 +61,13 @@ Click any screenshot for the full-size PNG. All shown on KDE Plasma (Wayland).
 <figure><a href="/press/media/premiere-pro-2026.png"><img src="/press/media/premiere-pro-2026-1920.jpg" alt="Premiere Pro 2026 editing a sequence of four clips, with a clip's properties open" loading="lazy" width="1920" height="1082"></a><figcaption>Premiere Pro 2026 (26.5.2): a four-clip sequence on the timeline. Neutron runtime 11.10-157.</figcaption></figure>
 <figure><a href="/press/media/after-effects-2026.png"><img src="/press/media/after-effects-2026-1920.jpg" alt="After Effects 2026 with a waterfall composition and a title layer" loading="lazy" width="1920" height="1052"></a><figcaption>After Effects 2026 (26.5): a composition with a title layer. Neutron runtime 11.10-158.</figcaption></figure>
 <figure><a href="/press/media/lightroom-classic.png"><img src="/press/media/lightroom-classic-1920.jpg" alt="Lightroom Classic in the Develop module with a landscape photo and its histogram" loading="lazy" width="1920" height="1052"></a><figcaption>Lightroom Classic (15.6) in the Develop module. Neutron runtime 11.10-158.</figcaption></figure>
+<figure><a href="/press/media/illustrator-2026.png"><img src="/press/media/illustrator-2026-1920.jpg" alt="Illustrator 2026 with a layout: a placed landscape photo, a title and a green circle" loading="lazy" width="1920" height="1052"></a><figcaption>Illustrator 2026 (30.8): a layout with a placed photo, type and a vector shape. Neutron runtime 11.10-158.</figcaption></figure>
+<figure><a href="/press/media/indesign-2026.png"><img src="/press/media/indesign-2026-1920.jpg" alt="InDesign 2026 with a page: a mountain photo, a headline and a caption" loading="lazy" width="1920" height="1052"></a><figcaption>InDesign 2026 (21.6): a page with a placed photo, a headline and a caption. Neutron runtime 11.10-158.</figcaption></figure>
+<figure><a href="/press/media/media-encoder-2026.png"><img src="/press/media/media-encoder-2026-1920.jpg" alt="Media Encoder 2026 with four clips exported to H.264, each marked Done" loading="lazy" width="1920" height="1052"></a><figcaption>Media Encoder 2026 (26.5.2): four clips exported to H.264. Neutron runtime 11.10-158.</figcaption></figure>
+<figure><a href="/press/media/audition-2026.png"><img src="/press/media/audition-2026-1920.jpg" alt="Audition 2026 editing a stereo waveform with a selection" loading="lazy" width="1920" height="1052"></a><figcaption>Audition 2026 (26.5) editing a stereo recording. Neutron runtime 11.10-158.</figcaption></figure>
 </div>
 
-Adobe product screenshots reprinted with permission from Adobe. The photos and footage in them are public domain or CC0, from Wikimedia Commons.
+Adobe product screenshots reprinted with permission from Adobe. The photos and footage in them are public domain or CC0, from Wikimedia Commons; the audio in Audition was made for this page.
 
 ### Collider
 
