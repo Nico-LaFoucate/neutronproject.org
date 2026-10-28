@@ -181,10 +181,12 @@ You'll want these in place first:
 
 Download Collider
 
-Then open the file you downloaded, `Collider-x86_64.AppImage`:
+Then open the file you downloaded, `Collider-x86_64.AppImage`, from the Downloads folder in your file manager. On GNOME, Cinnamon and COSMIC, clicking it in your browser's download list won't start it.
 
 - **KDE Plasma:** in Dolphin, double-click the file, then click **Launch** and **Continue**.
-- **GNOME:** clicking the file in your browser won't start it. In Files, right-click the file, choose **Properties** and turn on **Executable as Program**. Close the window, then double-click the file.
+- **GNOME (Ubuntu, Fedora Workstation):** in Files, right-click the file, choose **Properties** and turn on **Executable as Program**. Close the window, then double-click the file.
+- **Cinnamon (Linux Mint):** in the file manager, right-click the file, choose **Properties**, open **Permissions** and tick **Allow executing file as program**. Close the window, then double-click the file.
+- **COSMIC (Pop!_OS):** in COSMIC Files, double-click the file and click **Set and launch**.
 
 Collider opens. Click **Set up**. If your system is missing packages Neutron needs, Collider shows what it will install and the exact command, with an **Install and continue** button. Your system asks for your password once, and setup carries on. If ntsync is off, the same step turns it on; it makes the apps much faster.
 
