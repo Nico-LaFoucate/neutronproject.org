@@ -277,6 +277,27 @@
           ]
         }
       ]
+    },
+    {
+      "label": "About",
+      "open": true,
+      "sections": [
+        {
+          "slug": "project",
+          "title": "The project",
+          "kind": "About",
+          "blurb": "Facts, screenshots and logos for writers and creators covering Neutron.",
+          "categories": [
+            {
+              "slug": "press",
+              "title": "Press",
+              "articles": [
+                "press-kit"
+              ]
+            }
+          ]
+        }
+      ]
     }
   ]
 }

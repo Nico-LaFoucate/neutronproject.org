@@ -59,6 +59,10 @@ Per-app status: https://neutronproject.org/#status (the status board). The whole
 
 - [After Effects on Linux](https://neutronproject.org/wiki/aftereffects/status/overview/): Run Adobe After Effects 2026 and 2025 on Linux with Neutron: composition rendering, Dynamic Link with Premiere Pro, and third-party plugins. Free and open source.
 
+## The project
+
+- [Press kit](https://neutronproject.org/wiki/project/press/press-kit/): The Neutron press kit: what it is, which Adobe apps it runs on Linux, the tested setups, screenshots, logos and contact, for journalists and creators.
+
 ## Source code
 
 - [Neutron: the CLI, docs and issues](https://github.com/Nico-LaFoucate/Neutron)
