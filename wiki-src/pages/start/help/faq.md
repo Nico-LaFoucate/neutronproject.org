@@ -28,11 +28,11 @@ Yes. Collider checks for updates and updates apps in place, so your preferences,
 
 ### Which Linux distributions and desktops work?
 
-Neutron is developed and tested on CachyOS with KDE Plasma (Wayland) and NVIDIA GPUs. Users also run it on Fedora, Ubuntu, Bazzite, Nobara and Arch, under GNOME and Hyprland. You need a 64-bit distribution with glibc 2.39 or newer, and a Wayland session; X11 support is experimental. Users' reports from their own setups are in [Compatibility reports](https://github.com/Nico-LaFoucate/Neutron/discussions/categories/compatibility-reports).
+Neutron is developed on CachyOS with KDE Plasma (Wayland). Users also run it on Fedora, Ubuntu, Bazzite, Nobara and Arch, under GNOME and Hyprland, on NVIDIA, AMD and Intel GPUs. You need a 64-bit distribution with glibc 2.39 or newer, and a Wayland session; X11 support is experimental. Users' reports from their own setups are in [Compatibility reports](https://github.com/Nico-LaFoucate/Neutron/discussions/categories/compatibility-reports).
 
 ### Does it work with AMD or Intel GPUs?
 
-Partly. NVIDIA is the tested path. On AMD, Photoshop 2026 and Premiere Pro 2026 use the GPU (Premiere through AMD's ROCm OpenCL), and Illustrator 2026 runs. A user reports Premiere Pro and Photoshop working on Intel Iris Xe.
+Yes. On AMD, Photoshop 2026 and Premiere Pro 2026 use the GPU (Premiere through AMD's ROCm OpenCL), and Illustrator 2026 runs. On Intel, Premiere Pro runs very well and Photoshop works on Iris Xe graphics, with Intel's OpenCL runtime and media driver installed. [Installing Collider](/wiki/start/basics/install-collider/) lists what to install for each.
 
 ### Do plugins work?
 

@@ -25,7 +25,7 @@ More on each: [Photoshop](/wiki/photoshop/status/overview/), [Premiere Pro](/wik
 
 ## Working the way you do on Windows
 
-- **GPU acceleration.** Premiere Pro renders on NVIDIA GPUs through CUDA and exports with NVENC hardware encoding. Photoshop draws its canvas on the GPU. On AMD, Photoshop and Premiere Pro 2026 use the GPU. A user reports Premiere Pro and Photoshop working on Intel Iris Xe.
+- **NVIDIA, AMD and Intel GPUs.** On NVIDIA, Premiere Pro renders through CUDA and exports with NVENC hardware encoding, and Photoshop draws its canvas on the GPU. On AMD, Photoshop and Premiere Pro 2026 use the GPU. On Intel, Premiere Pro runs very well and Photoshop works on Iris Xe graphics.
 - **Pen tablets.** Pressure, tilt, the eraser and the pen's side buttons.
 - **Two screens at different scales**, for example a 175% main screen next to a 100% pen display. Rotated screens work too.
 - **Drag and drop** files from your file manager into the apps.
@@ -35,7 +35,7 @@ More on each: [Photoshop](/wiki/photoshop/status/overview/), [Premiere Pro](/wik
 
 ## Where it runs
 
-Neutron is developed and tested on CachyOS with KDE Plasma (Wayland) and NVIDIA GPUs. Users also run it on Fedora, Ubuntu, Bazzite, Nobara and Arch, under GNOME and Hyprland.
+Neutron is developed on CachyOS with KDE Plasma (Wayland). Users also run it on Fedora, Ubuntu, Bazzite, Nobara and Arch, under GNOME and Hyprland, on NVIDIA, AMD and Intel GPUs. Setup without a terminal is tested on Fedora 44, Ubuntu 26.04, Linux Mint 22.3 and Pop!_OS 24.04.
 
 ## How it's built
 

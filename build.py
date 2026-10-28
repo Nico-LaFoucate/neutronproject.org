@@ -442,8 +442,8 @@ LLMS_SUMMARY = (
     "The apps are installed straight from Adobe with Adobe's own installer, and you sign in with your own Adobe account.")
 LLMS_ABOUT = (
     "Neutron has three parts: the `neutron` command line with its Wine runtime (the engine), Collider (the desktop "
-    "app) and Mud Hut (the installer and updater). It is developed and tested on CachyOS with KDE Plasma (Wayland) and "
-    "NVIDIA GPUs; users also run it on Fedora, Ubuntu, Bazzite, Nobara and Arch, under GNOME and Hyprland. Neutron is not "
+    "app) and Mud Hut (the installer and updater). It is developed on CachyOS with KDE Plasma (Wayland); users also "
+    "run it on Fedora, Ubuntu, Bazzite, Nobara and Arch, under GNOME and Hyprland, on NVIDIA, AMD and Intel GPUs. Neutron is not "
     "affiliated with Adobe. Not to be confused with OpenStack Neutron (cloud networking) or iZotope Neutron (an audio "
     "plugin).")
 LLMS_REPOS = [("Neutron: the CLI, docs and issues", "https://github.com/Nico-LaFoucate/Neutron"),

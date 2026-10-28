@@ -12,7 +12,7 @@ Neutron runs Adobe After Effects on Linux: After Effects 2026 and 2025, installe
 - **The composition viewer** renders, with its on-canvas overlays, rulers, guides and layer handles, at display refresh rate.
 - **Dynamic Link** with Premiere Pro, in both directions. Comps update live across the link.
 - **Plugins** from the shared plugin folder: Gyroflow, Boris FX Mocha and Satori appear in the **Effect** menu. See [Installing plugins](/wiki/start/basics/plugins/).
-- **GPUs**: NVIDIA is the tested path. After Effects hasn't been tried on AMD or Intel GPUs yet.
+- **GPUs**: After Effects runs on NVIDIA. Nobody has reported it on AMD or Intel yet; Neutron itself runs on all three, and [reports are welcome](https://github.com/Nico-LaFoucate/Neutron/discussions/22).
 
 ## Get it running
 

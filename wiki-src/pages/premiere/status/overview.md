@@ -9,12 +9,12 @@ Neutron runs Adobe Premiere Pro on Linux: Premiere Pro 2026 and 2025, installed 
 
 ## What works
 
-- **GPU (Mercury) rendering and timeline playback** on NVIDIA GPUs, through CUDA.
+- **GPU (Mercury) rendering and timeline playback**: through CUDA on NVIDIA, and through OpenCL on AMD (Premiere Pro 2026).
 - **Hardware NVENC export** that muxes natively into a valid MP4.
 - **Dynamic Link** with After Effects, in both directions.
 - **Panels**: Captioneer and other third-party panels are in daily use.
 - **VST3 audio plugins**: tested with FabFilter Pro-Q 4 and plugdata. Load a new one with Premiere's Audio Plug-in Manager: see [Installing plugins](/wiki/start/basics/plugins/).
-- **GPUs**: NVIDIA is the tested path. On AMD, Premiere Pro 2026 uses the GPU through AMD's ROCm OpenCL. A user reports Premiere Pro working on Intel Iris Xe with Intel's OpenCL runtime.
+- **GPUs**: NVIDIA, AMD and Intel. On AMD, Premiere Pro 2026 uses the GPU through AMD's ROCm OpenCL. On Intel, it runs very well on Iris Xe graphics with Intel's OpenCL runtime.
 
 ## Get it running
 

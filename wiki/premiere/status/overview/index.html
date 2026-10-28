@@ -79,12 +79,12 @@
 <p>Neutron runs Adobe Premiere Pro on Linux: Premiere Pro 2026 and 2025, installed straight from Adobe and signed in with your own Adobe account. It's in beta, stable for editing and delivery, and it has been used for paid client work.</p>
 <h2>What works</h2>
 <ul>
-<li><strong>GPU (Mercury) rendering and timeline playback</strong> on NVIDIA GPUs, through CUDA.</li>
+<li><strong>GPU (Mercury) rendering and timeline playback</strong>: through CUDA on NVIDIA, and through OpenCL on AMD (Premiere Pro 2026).</li>
 <li><strong>Hardware NVENC export</strong> that muxes natively into a valid MP4.</li>
 <li><strong>Dynamic Link</strong> with After Effects, in both directions.</li>
 <li><strong>Panels</strong>: Captioneer and other third-party panels are in daily use.</li>
 <li><strong>VST3 audio plugins</strong>: tested with FabFilter Pro-Q 4 and plugdata. Load a new one with Premiere's Audio Plug-in Manager: see <a class="ln" href="/wiki/start/basics/plugins/">Installing plugins</a>.</li>
-<li><strong>GPUs</strong>: NVIDIA is the tested path. On AMD, Premiere Pro 2026 uses the GPU through AMD's ROCm OpenCL. A user reports Premiere Pro working on Intel Iris Xe with Intel's OpenCL runtime.</li>
+<li><strong>GPUs</strong>: NVIDIA, AMD and Intel. On AMD, Premiere Pro 2026 uses the GPU through AMD's ROCm OpenCL. On Intel, it runs very well on Iris Xe graphics with Intel's OpenCL runtime.</li>
 </ul>
 <h2>Get it running</h2>
 <p><a class="ln" href="/wiki/start/basics/install-collider/">Install Collider</a>, install Premiere Pro from its Mud Hut tab, then see <a class="ln" href="/wiki/start/basics/first-app/">Running your first app</a>. Current problems, such as a 2026 thumbnail that can show "Media pending" after a project is reopened, are listed under <a class="ln" href="/wiki/start/help/known-issues/">Known issues</a>.</p>

@@ -14,7 +14,7 @@ Neutron runs Adobe Photoshop on Linux: Photoshop 2026 and 2025, installed straig
 - **Plugins**: filters such as G'MIC-8bf appear under **Filter**, and UXP plugins (`.ccx`) under **Plugins**. Install them from Collider's Plugins page: see [Installing plugins](/wiki/start/basics/plugins/).
 - **Copy and paste images** between Photoshop and Linux apps, in both directions, and **drag and drop** files in from your file manager.
 - **Edit in Photoshop** from Lightroom Classic.
-- **GPUs**: NVIDIA is the tested path. On AMD, Photoshop 2026 uses the GPU. A user reports Photoshop working on Intel Iris Xe.
+- **GPUs**: NVIDIA, AMD and Intel. Photoshop draws its canvas on the GPU on NVIDIA, and Photoshop 2026 uses the GPU on AMD. It works on Intel Iris Xe graphics.
 
 ## Get it running
 

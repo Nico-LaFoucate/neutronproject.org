@@ -94,7 +94,7 @@
 </ul>
 <h2>Working the way you do on Windows</h2>
 <ul>
-<li><strong>GPU acceleration.</strong> Premiere Pro renders on NVIDIA GPUs through CUDA and exports with NVENC hardware encoding. Photoshop draws its canvas on the GPU. On AMD, Photoshop and Premiere Pro 2026 use the GPU. A user reports Premiere Pro and Photoshop working on Intel Iris Xe.</li>
+<li><strong>NVIDIA, AMD and Intel GPUs.</strong> On NVIDIA, Premiere Pro renders through CUDA and exports with NVENC hardware encoding, and Photoshop draws its canvas on the GPU. On AMD, Photoshop and Premiere Pro 2026 use the GPU. On Intel, Premiere Pro runs very well and Photoshop works on Iris Xe graphics.</li>
 <li><strong>Pen tablets.</strong> Pressure, tilt, the eraser and the pen's side buttons.</li>
 <li><strong>Two screens at different scales</strong>, for example a 175% main screen next to a 100% pen display. Rotated screens work too.</li>
 <li><strong>Drag and drop</strong> files from your file manager into the apps.</li>
@@ -103,7 +103,7 @@
 <li><strong>Lightroom Classic</strong> imports from SD cards, and its masking, AI Denoise and Edit in Photoshop work.</li>
 </ul>
 <h2>Where it runs</h2>
-<p>Neutron is developed and tested on CachyOS with KDE Plasma (Wayland) and NVIDIA GPUs. Users also run it on Fedora, Ubuntu, Bazzite, Nobara and Arch, under GNOME and Hyprland.</p>
+<p>Neutron is developed on CachyOS with KDE Plasma (Wayland). Users also run it on Fedora, Ubuntu, Bazzite, Nobara and Arch, under GNOME and Hyprland, on NVIDIA, AMD and Intel GPUs. Setup without a terminal is tested on Fedora 44, Ubuntu 26.04, Linux Mint 22.3 and Pop!_OS 24.04.</p>
 <h2>How it's built</h2>
 <ul>
 <li><strong>Fixes go into the engine.</strong> When an Adobe app misbehaves, the fix goes into Neutron's own Wine, which carries more than 260 patches written for these apps. Each one is documented with the test that proved it. Because the fix lives in Wine, Adobe's next update doesn't undo it.</li>
