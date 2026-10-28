@@ -972,7 +972,7 @@ InDesign 2026 (21.6): a page with a placed photo, a headline and a caption. Neut
 Media Encoder 2026 (26.5.2): four clips exported to H.264. Neutron runtime 11.10-158.
 Audition 2026 (26.5) editing a stereo recording. Neutron runtime 11.10-158.
 
-Adobe product screenshots reprinted with permission from Adobe. The photos and footage in them are public domain or CC0, from Wikimedia Commons; the audio in Audition was made for this page.
+Adobe product screenshots reprinted with permission from Adobe. Neutron is not affiliated with or endorsed by Adobe; these screenshots follow Adobe's published guidelines for screenshots. The photos and footage in them are public domain or CC0, from Wikimedia Commons; the audio in Audition was made for this page.
 
 ### Collider
 

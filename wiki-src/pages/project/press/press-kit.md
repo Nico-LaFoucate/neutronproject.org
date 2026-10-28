@@ -67,7 +67,7 @@ Click any screenshot for the full-size PNG. All shown on KDE Plasma (Wayland).
 <figure><a href="/press/media/audition-2026.png"><img src="/press/media/audition-2026-1920.jpg" alt="Audition 2026 editing a stereo waveform with a selection" loading="lazy" width="1920" height="1052"></a><figcaption>Audition 2026 (26.5) editing a stereo recording. Neutron runtime 11.10-158.</figcaption></figure>
 </div>
 
-Adobe product screenshots reprinted with permission from Adobe. The photos and footage in them are public domain or CC0, from Wikimedia Commons; the audio in Audition was made for this page.
+Adobe product screenshots reprinted with permission from Adobe. Neutron is not affiliated with or endorsed by Adobe; these screenshots follow Adobe's published guidelines for screenshots. The photos and footage in them are public domain or CC0, from Wikimedia Commons; the audio in Audition was made for this page.
 
 ### Collider
 
