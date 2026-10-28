@@ -78,7 +78,7 @@ Adobe product screenshots reprinted with permission from Adobe. The photos and f
 <figure><a href="/press/media/collider-plugins.png"><img src="/press/media/collider-plugins.png" alt="Collider's Plugins page listing an extension panel, an effect plugin and a VST3 plugin" loading="lazy" width="1925" height="1260"></a><figcaption>The Plugins page: drop in plugin files, UXP plugins, extension packages or a vendor's installer. Shown: Captioneer, Gyroflow and FabFilter Pro-Q 4 (VST3).</figcaption></figure>
 </div>
 
-Collider 0.1.17 with the neutron CLI 1.0.0-beta.34.
+Collider 0.1.17 with the neutron CLI 1.0.0-beta.35.
 
 ## Video
 
