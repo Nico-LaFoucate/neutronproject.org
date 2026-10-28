@@ -159,7 +159,7 @@ https://neutronproject.org/wiki/start/basics/install-collider/
 
 *From a clean Linux machine to your first Adobe launch — the whole stack, end to end.*
 
-**Collider** is the graphical front door to the whole stack. One command, `neutron setup`, installs everything underneath it — the [Neutron](https://neutronproject.org/wiki/neutron/) compatibility engine, its patched Wine runtime, the Mud Hut installer and Collider itself — and from then on you install and launch your Adobe apps from Collider. This page walks the whole thing end to end.
+**Collider** is the graphical front door to the whole stack. Download it, click **Set up**, and it installs everything underneath it — the [Neutron](https://neutronproject.org/wiki/neutron/) compatibility engine, its patched Wine runtime and the Mud Hut installer — with no terminal needed. From then on you install and launch your Adobe apps from Collider. This page walks the whole thing end to end.
 
 Beta — read this firstNeutron is in beta. It's developed and tested on CachyOS with KDE Plasma (Wayland) and NVIDIA GPUs, and users also run it on Fedora, Ubuntu, Bazzite, Nobara and Arch, under GNOME and Hyprland as well as KDE. AMD GPUs are partly tested (see below); on Intel GPUs, a user reports Premiere Pro and Photoshop working. Things break, and you must bring your own legally licensed Adobe software.
 
@@ -171,22 +171,31 @@ You'll want these in place first:
 - **A Wayland session.** X11 isn't supported.
 - **KDE Plasma, GNOME or Hyprland.** Neutron is developed on KDE Plasma, and users also run it under GNOME and Hyprland. [Reports welcome](https://github.com/Nico-LaFoucate/Neutron/issues) from other desktops.
 - **A Vulkan-capable GPU with current drivers.** NVIDIA (with the open driver) is the tested path. On AMD, Photoshop 2026 and Premiere Pro 2026 use the GPU and Illustrator 2026 runs; Premiere needs AMD's ROCm OpenCL (`neutron doctor` checks for it). Hardware video encoding on AMD is new and testers haven't confirmed it yet; on Fedora and openSUSE it needs the full Mesa from RPM Fusion or Packman. On Intel, a user reports Premiere Pro and Photoshop working on an 11th-gen Iris Xe with Intel's OpenCL runtime and media driver installed (on Fedora: `intel-opencl intel-compute-runtime intel-media-driver`). [Reports welcome](https://github.com/Nico-LaFoucate/Neutron/issues).
-- **32-bit (multilib) system and graphics libraries**: Adobe's apps start 32-bit helper processes.
-- **Python 3** and **cabextract**.
+- **32-bit (multilib) system and graphics libraries**: Adobe's apps start 32-bit helper processes. If the 32-bit C library is missing, setup installs it for you.
+- **Python 3** and **cabextract**. If cabextract is missing, setup installs it for you.
 - **Your own licensed Adobe apps.** You sign in inside each app, the same as on Windows.
 - **A display scale that's a Windows step** (100, 125, 150, 175, 200, 225, 250 or 300%). See [Choosing a display scale](https://neutronproject.org/wiki/start/basics/display-scale/).
 - **Free disk space:** About 8 GB, plus your Adobe apps.
 
 ## Step 1 — Install Neutron
 
-In a terminal:
+Download Collider
+
+Then open the file you downloaded, `Collider-x86_64.AppImage`:
+
+- **KDE Plasma:** in Dolphin, double-click the file, then click **Launch** and **Continue**.
+- **GNOME:** clicking the file in your browser won't start it. In Files, right-click the file, choose **Properties** and turn on **Executable as Program**. Close the window, then double-click the file.
+
+Collider opens. Click **Set up**. If your system is missing packages Neutron needs, Collider shows what it will install and the exact command, with an **Install and continue** button. Your system asks for your password once, and setup carries on. If ntsync is off, the same step turns it on; it makes the apps much faster.
+
+Setup downloads neutron-wine and the Mud Hut installer from GitHub, Microsoft's Visual C++ runtimes and GDI+ from Microsoft, Microsoft's core fonts (their original installers, from a pinned mirror), and Adobe's Creative Cloud package from Adobe. When it's done, Collider is in your app menu and you can delete the file you downloaded.
+
+### Or in a terminal
 
 curl -LO https://github.com/Nico-LaFoucate/neutron/releases/latest/download/neutron
 python3 neutron setup
 
-`neutron setup` downloads neutron-wine and the Mud Hut installer from GitHub, Microsoft's Visual C++ runtimes and GDI+ from Microsoft, Microsoft's core fonts (their original installers, from a pinned mirror), and Adobe's Creative Cloud package from Adobe, and installs Collider with a menu entry. It may ask for your password once, to turn on ntsync, which makes the apps much faster.
-
-If you started from the Collider app instead, its **Set up** button runs the same setup.
+`neutron setup` does the same and installs Collider with a menu entry. If packages are missing, it shows the command and asks before installing them. It may ask for your password once.
 
 ## Step 2 — Add your Adobe apps
 
