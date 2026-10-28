@@ -838,7 +838,7 @@ footer{
       <div class="req">
         <span class="reqkey">Display server</span>
         <div class="reqval">
-          <p><b>Wayland.</b> Every fix here is developed and verified on a Wayland session. X11 isn't supported.</p>
+          <p><b>Wayland.</b> Every fix here is developed and verified on a Wayland session. X11 support is experimental.</p>
           <details class="why">
             <summary>Why Wayland, specifically</summary>
             <p>X11 applies a single global scaling factor across every connected display, so a mixed-resolution setup can only ever be correct on one of them. A colorist running a 4K reference monitor beside a 1080p interface display, or an illustrator working across a laptop panel and a pen display, hits that limit immediately — and it is architectural, not a bug awaiting a fix. Multi-monitor at differing resolutions and scales is ordinary in professional creative work, so Wayland is the target.</p>

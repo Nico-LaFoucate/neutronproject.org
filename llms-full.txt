@@ -168,7 +168,7 @@ Beta — read this firstNeutron is in beta. It's developed and tested on CachyOS
 You'll want these in place first:
 
 - **A 64-bit Linux distribution with glibc 2.39 or newer**: Ubuntu 24.04 or later, Fedora 40 or later, current Arch, CachyOS or Manjaro, or openSUSE Tumbleweed.
-- **A Wayland session.** X11 isn't supported.
+- **A Wayland session, or X11 (experimental).** Neutron is made for Wayland. X11 sessions, such as Linux Mint's default, run with experimental support: Neutron's fixes for Wayland are off there.
 - **KDE Plasma, GNOME or Hyprland.** Neutron is developed on KDE Plasma, and users also run it under GNOME and Hyprland. [Reports welcome](https://github.com/Nico-LaFoucate/Neutron/issues) from other desktops.
 - **A Vulkan-capable GPU with current drivers.** NVIDIA (with the open driver) is the tested path. On AMD, Photoshop 2026 and Premiere Pro 2026 use the GPU and Illustrator 2026 runs; Premiere needs AMD's ROCm OpenCL (`neutron doctor` checks for it). Hardware video encoding on AMD is new and testers haven't confirmed it yet; on Fedora and openSUSE it needs the full Mesa from RPM Fusion or Packman. On Intel, a user reports Premiere Pro and Photoshop working on an 11th-gen Iris Xe with Intel's OpenCL runtime and media driver installed (on Fedora: `intel-opencl intel-compute-runtime intel-media-driver`). [Reports welcome](https://github.com/Nico-LaFoucate/Neutron/issues).
 - **32-bit (multilib) system and graphics libraries**: Adobe's apps start 32-bit helper processes. If the 32-bit C library is missing, setup installs it for you.
@@ -444,7 +444,7 @@ Yes. Collider checks for updates and updates apps in place, so your preferences,
 
 ### Which Linux distributions and desktops work?
 
-Neutron is developed and tested on CachyOS with KDE Plasma (Wayland) and NVIDIA GPUs. Users also run it on Fedora, Ubuntu, Bazzite, Nobara and Arch, under GNOME and Hyprland. You need a 64-bit distribution with glibc 2.39 or newer, and a Wayland session: X11 isn't supported. Users' reports from their own setups are in [Compatibility reports](https://github.com/Nico-LaFoucate/Neutron/discussions/categories/compatibility-reports).
+Neutron is developed and tested on CachyOS with KDE Plasma (Wayland) and NVIDIA GPUs. Users also run it on Fedora, Ubuntu, Bazzite, Nobara and Arch, under GNOME and Hyprland. You need a 64-bit distribution with glibc 2.39 or newer, and a Wayland session; X11 support is experimental. Users' reports from their own setups are in [Compatibility reports](https://github.com/Nico-LaFoucate/Neutron/discussions/categories/compatibility-reports).
 
 ### Does it work with AMD or Intel GPUs?
 
@@ -512,7 +512,7 @@ Run `neutron doctor --prefix `. It checks the things that can stop an app from l
 
 ## An app refuses to launch
 
-- **"No Wayland session detected":** log in to a Wayland session. X11 isn't supported.
+- **"No Wayland or X11 session detected":** start the app from your desktop (Collider or the application menu), not over SSH or from a script.
 - **The runtime and the prefix don't match** (after a new runtime was installed): run `neutron update`, or `neutron prefix provision ` for one prefix.
 - **Mud Hut says neutron-wine isn't installed:** run `neutron setup` first.
 
@@ -745,9 +745,9 @@ Set `NEUTRON_WINE_VERSION=` to use a specific installed neutron-wine runtime ins
 
 ## Launch on X11
 
-X11 isn't supported. Setting `NEUTRON_ALLOW_X11=1` lets an app launch in an X11 session anyway.
+On an X11 session, Neutron uses Wine's X11 driver by itself; X11 support is experimental. `NEUTRON_ALLOW_X11=1` is only for a session Neutron can't identify, such as one without `XDG_SESSION_TYPE` set.
 
-**Risk:** many of Neutron's display and window fixes live in its Wayland driver, so they don't apply. It also switches the prefix's graphics driver to X11; a later Wayland launch switches it back. You're on your own: bug reports from X11 sessions aren't supported.
+**Risk:** many of Neutron's display and window fixes live in its Wayland driver, so they don't apply. It also switches the prefix's graphics driver to X11; a later Wayland launch switches it back. Reports from X11 sessions are welcome; say it's X11 in the report.
 
 ---
 

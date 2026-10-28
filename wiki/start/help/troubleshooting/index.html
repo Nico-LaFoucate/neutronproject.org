@@ -80,7 +80,7 @@
 <p>Run <code>neutron doctor --prefix &lt;prefix&gt;</code>. It checks the things that can stop an app from launching or running, and says what to do about each. Collider shows the same checks for the prefix you're using. Before an app's first launch, a line may say it's pending until that first launch; that's normal.</p>
 <h2>An app refuses to launch</h2>
 <ul>
-<li><strong>"No Wayland session detected":</strong> log in to a Wayland session. X11 isn't supported.</li>
+<li><strong>"No Wayland or X11 session detected":</strong> start the app from your desktop (Collider or the application menu), not over SSH or from a script.</li>
 <li><strong>The runtime and the prefix don't match</strong> (after a new runtime was installed): run <code>neutron update</code>, or <code>neutron prefix provision &lt;prefix&gt;</code> for one prefix.</li>
 <li><strong>Mud Hut says neutron-wine isn't installed:</strong> run <code>neutron setup</code> first.</li>
 </ul>

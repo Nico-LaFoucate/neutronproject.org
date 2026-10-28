@@ -82,7 +82,7 @@
 <p>You'll want these in place first:</p>
 <ul>
 <li><strong>A 64-bit Linux distribution with glibc 2.39 or newer</strong>: Ubuntu 24.04 or later, Fedora 40 or later, current Arch, CachyOS or Manjaro, or openSUSE Tumbleweed.</li>
-<li><strong>A Wayland session.</strong> X11 isn't supported.</li>
+<li><strong>A Wayland session, or X11 (experimental).</strong> Neutron is made for Wayland. X11 sessions, such as Linux Mint's default, run with experimental support: Neutron's fixes for Wayland are off there.</li>
 <li><strong>KDE Plasma, GNOME or Hyprland.</strong> Neutron is developed on KDE Plasma, and users also run it under GNOME and Hyprland. <a class="ln" href="https://github.com/Nico-LaFoucate/Neutron/issues">Reports welcome</a> from other desktops.</li>
 <li><strong>A Vulkan-capable GPU with current drivers.</strong> NVIDIA (with the open driver) is the tested path. On AMD, Photoshop 2026 and Premiere Pro 2026 use the GPU and Illustrator 2026 runs; Premiere needs AMD's ROCm OpenCL (<code>neutron doctor</code> checks for it). Hardware video encoding on AMD is new and testers haven't confirmed it yet; on Fedora and openSUSE it needs the full Mesa from RPM Fusion or Packman. On Intel, a user reports Premiere Pro and Photoshop working on an 11th-gen Iris Xe with Intel's OpenCL runtime and media driver installed (on Fedora: <code>intel-opencl intel-compute-runtime intel-media-driver</code>). <a class="ln" href="https://github.com/Nico-LaFoucate/Neutron/issues">Reports welcome</a>.</li>
 <li><strong>32-bit (multilib) system and graphics libraries</strong>: Adobe's apps start 32-bit helper processes. If the 32-bit C library is missing, setup installs it for you.</li>

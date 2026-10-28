@@ -10,7 +10,7 @@ Run `neutron doctor --prefix <prefix>`. It checks the things that can stop an ap
 
 ## An app refuses to launch
 
-- **"No Wayland session detected":** log in to a Wayland session. X11 isn't supported.
+- **"No Wayland or X11 session detected":** start the app from your desktop (Collider or the application menu), not over SSH or from a script.
 - **The runtime and the prefix don't match** (after a new runtime was installed): run `neutron update`, or `neutron prefix provision <prefix>` for one prefix.
 - **Mud Hut says neutron-wine isn't installed:** run `neutron setup` first.
 
