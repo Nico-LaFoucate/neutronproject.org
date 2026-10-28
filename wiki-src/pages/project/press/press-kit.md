@@ -52,7 +52,20 @@ The full list: [What Neutron does today](/wiki/start/basics/what-neutron-does/).
 
 ## Screenshots
 
-Click any screenshot for the full-size PNG. Shown on KDE Plasma (Wayland), Collider 0.1.16, Neutron runtime 11.10-157.
+Click any screenshot for the full-size PNG. All shown on KDE Plasma (Wayland).
+
+### The Adobe apps
+
+<div class="shots">
+<figure><a href="/press/media/photoshop-2026.png"><img src="/press/media/photoshop-2026-1920.jpg" alt="Photoshop 2026 with a landscape photo open and two Curves adjustment layers" loading="lazy" width="1920" height="1052"></a><figcaption>Photoshop 2026 (27.11) with a Curves adjustment layer. Neutron runtime 11.10-157.</figcaption></figure>
+<figure><a href="/press/media/premiere-pro-2026.png"><img src="/press/media/premiere-pro-2026-1920.jpg" alt="Premiere Pro 2026 editing a sequence of four clips, with a clip's properties open" loading="lazy" width="1920" height="1082"></a><figcaption>Premiere Pro 2026 (26.5.2): a four-clip sequence on the timeline. Neutron runtime 11.10-157.</figcaption></figure>
+<figure><a href="/press/media/after-effects-2026.png"><img src="/press/media/after-effects-2026-1920.jpg" alt="After Effects 2026 with a waterfall composition and a title layer" loading="lazy" width="1920" height="1052"></a><figcaption>After Effects 2026 (26.5): a composition with a title layer. Neutron runtime 11.10-158.</figcaption></figure>
+<figure><a href="/press/media/lightroom-classic.png"><img src="/press/media/lightroom-classic-1920.jpg" alt="Lightroom Classic in the Develop module with a landscape photo and its histogram" loading="lazy" width="1920" height="1052"></a><figcaption>Lightroom Classic (15.6) in the Develop module. Neutron runtime 11.10-158.</figcaption></figure>
+</div>
+
+Adobe product screenshots reprinted with permission from Adobe. The photos and footage in them are public domain or CC0, from Wikimedia Commons.
+
+### Collider
 
 <div class="shots">
 <figure><a href="/press/media/collider-library.png"><img src="/press/media/collider-library.png" alt="Collider's library: every Adobe app in a prefix, each with a Launch button" loading="lazy" width="1925" height="1260"></a><figcaption>Collider's library: each installed Adobe app, ready to launch.</figcaption></figure>
@@ -61,7 +74,7 @@ Click any screenshot for the full-size PNG. Shown on KDE Plasma (Wayland), Colli
 <figure><a href="/press/media/collider-plugins.png"><img src="/press/media/collider-plugins.png" alt="Collider's Plugins page listing an extension panel, an effect plugin and a VST3 plugin" loading="lazy" width="1925" height="1260"></a><figcaption>The Plugins page: drop in plugin files, UXP plugins, extension packages or a vendor's installer. Shown: Captioneer, Gyroflow and FabFilter Pro-Q 4 (VST3).</figcaption></figure>
 </div>
 
-<div class="press-todo"><p class="k">To fill: the Adobe apps</p><p>Photoshop with a document open, Premiere Pro's timeline, an After Effects composition and Lightroom Classic's Develop module, made from Nico's own photos and footage. Below them: “Adobe product screenshots reprinted with permission from Adobe.”</p></div>
+Collider 0.1.17 with the neutron CLI 1.0.0-beta.34.
 
 ## Video
 

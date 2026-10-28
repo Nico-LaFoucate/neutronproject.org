@@ -959,14 +959,25 @@ The full list: [What Neutron does today](https://neutronproject.org/wiki/start/b
 
 ## Screenshots
 
-Click any screenshot for the full-size PNG. Shown on KDE Plasma (Wayland), Collider 0.1.16, Neutron runtime 11.10-157.
+Click any screenshot for the full-size PNG. All shown on KDE Plasma (Wayland).
+
+### The Adobe apps
+
+Photoshop 2026 (27.11) with a Curves adjustment layer. Neutron runtime 11.10-157.
+Premiere Pro 2026 (26.5.2): a four-clip sequence on the timeline. Neutron runtime 11.10-157.
+After Effects 2026 (26.5): a composition with a title layer. Neutron runtime 11.10-158.
+Lightroom Classic (15.6) in the Develop module. Neutron runtime 11.10-158.
+
+Adobe product screenshots reprinted with permission from Adobe. The photos and footage in them are public domain or CC0, from Wikimedia Commons.
+
+### Collider
 
 Collider's library: each installed Adobe app, ready to launch.
 First run: Collider sets Neutron up without a terminal. When the system lacks a package Neutron needs, it shows the exact command and asks for the password once. An Arch-based system is shown.
 Mud Hut, the installer: download from Adobe, install from an offline package, copy a Windows install, or update installed apps.
 The Plugins page: drop in plugin files, UXP plugins, extension packages or a vendor's installer. Shown: Captioneer, Gyroflow and FabFilter Pro-Q 4 (VST3).
 
-To fill: the Adobe appsPhotoshop with a document open, Premiere Pro's timeline, an After Effects composition and Lightroom Classic's Develop module, made from Nico's own photos and footage. Below them: “Adobe product screenshots reprinted with permission from Adobe.”
+Collider 0.1.17 with the neutron CLI 1.0.0-beta.34.
 
 ## Video
 
