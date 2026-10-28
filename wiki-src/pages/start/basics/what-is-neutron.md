@@ -13,4 +13,4 @@ It comes as three separate pieces, each owning one job:
 - **[Collider](/wiki/collider/)** — the launcher. A desktop app that finds your installed apps, checks a prefix is healthy, launches it, and supervises it. It calls Neutron for anything compatibility-related and holds no fixes of its own.
 - **[Mud Hut](/wiki/mudhut/)** — the installer. Gets Adobe apps onto your machine without hand-building a prefix. Collider runs it from its Mud Hut tab; it also runs standalone in a terminal.
 
-Premiere Pro, Photoshop, and Lightroom Classic have been used for paid client work on this stack. See the [status board](/#status) for each application's current status, and [What Neutron does today](/wiki/start/basics/what-neutron-does/) for everything else it covers.
+Premiere Pro, Photoshop, Lightroom Classic, After Effects and Media Encoder have been used for paid client work on this stack. See the [status board](/#status) for each application's current status, and [What Neutron does today](/wiki/start/basics/what-neutron-does/) for everything else it covers.

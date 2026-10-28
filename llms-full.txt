@@ -50,7 +50,7 @@ It comes as three separate pieces, each owning one job:
 - **[Collider](https://neutronproject.org/wiki/collider/)** — the launcher. A desktop app that finds your installed apps, checks a prefix is healthy, launches it, and supervises it. It calls Neutron for anything compatibility-related and holds no fixes of its own.
 - **[Mud Hut](https://neutronproject.org/wiki/mudhut/)** — the installer. Gets Adobe apps onto your machine without hand-building a prefix. Collider runs it from its Mud Hut tab; it also runs standalone in a terminal.
 
-Premiere Pro, Photoshop, and Lightroom Classic have been used for paid client work on this stack. See the [status board](https://neutronproject.org/#status) for each application's current status, and [What Neutron does today](https://neutronproject.org/wiki/start/basics/what-neutron-does/) for everything else it covers.
+Premiere Pro, Photoshop, Lightroom Classic, After Effects and Media Encoder have been used for paid client work on this stack. See the [status board](https://neutronproject.org/#status) for each application's current status, and [What Neutron does today](https://neutronproject.org/wiki/start/basics/what-neutron-does/) for everything else it covers.
 
 ---
 
@@ -67,7 +67,7 @@ Neutron runs the Adobe Creative Cloud apps on Linux. You install them straight f
 - **Premiere Pro, Photoshop, After Effects, Illustrator, Lightroom Classic, Media Encoder and Animate** run on Creative Cloud 2026 and 2025.
 - **Audition and InDesign** run on 2026 through experimental profiles.
 - **Dynamic Link** works both ways between Premiere Pro and After Effects.
-- Premiere Pro, Photoshop and Lightroom Classic have been used for paid client work. After Effects has been used for day-to-day work.
+- Premiere Pro, Photoshop, Lightroom Classic, After Effects and Media Encoder have been used for paid client work.
 
 More on each: [Photoshop](https://neutronproject.org/wiki/photoshop/status/overview/), [Premiere Pro](https://neutronproject.org/wiki/premiere/status/overview/), [After Effects](https://neutronproject.org/wiki/aftereffects/status/overview/) and [Lightroom Classic](https://neutronproject.org/wiki/lightroom/status/overview/) on Linux, and [common questions](https://neutronproject.org/wiki/start/help/faq/).
 
@@ -237,7 +237,7 @@ What's planned but not built yet is listed under [Planned](https://neutronprojec
 
 ## Where this stands
 
-The apps furthest along are [Premiere Pro](https://neutronproject.org/wiki/premiere/), [Photoshop](https://neutronproject.org/wiki/photoshop/), and [Lightroom Classic](https://neutronproject.org/wiki/lightroom/) — all beta, all used for paid client work. After Effects, Illustrator, Media Encoder, Animate, Audition and InDesign run too. For the honest, current status of each, see the [status board](https://neutronproject.org/#status) on the home page.
+The apps furthest along are [Premiere Pro](https://neutronproject.org/wiki/premiere/), [Photoshop](https://neutronproject.org/wiki/photoshop/), and [Lightroom Classic](https://neutronproject.org/wiki/lightroom/) — all beta, all used for paid client work. After Effects and Media Encoder have been used for paid client work too, and Illustrator, Animate, Audition and InDesign run. For the honest, current status of each, see the [status board](https://neutronproject.org/#status) on the home page.
 
 Once Collider is installed and an app launches, head to [Running your first app](https://neutronproject.org/wiki/start/basics/first-app/).
 
@@ -894,7 +894,7 @@ https://neutronproject.org/wiki/aftereffects/status/overview/
 
 *What works in Adobe After Effects on Linux with Neutron, and how to get it running.*
 
-Neutron runs Adobe After Effects on Linux: After Effects 2026 and 2025, installed straight from Adobe and signed in with your own Adobe account. It's in beta, and it has been used for day-to-day work.
+Neutron runs Adobe After Effects on Linux: After Effects 2026 and 2025, installed straight from Adobe and signed in with your own Adobe account. It's in beta, and it has been used for paid client work.
 
 ## What works
 

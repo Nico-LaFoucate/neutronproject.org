@@ -5,7 +5,7 @@ sub: What works in Adobe After Effects on Linux with Neutron, and how to get it 
 description: Run Adobe After Effects 2026 and 2025 on Linux with Neutron: composition rendering, Dynamic Link with Premiere Pro, and third-party plugins. Free and open source.
 ---
 
-Neutron runs Adobe After Effects on Linux: After Effects 2026 and 2025, installed straight from Adobe and signed in with your own Adobe account. It's in beta, and it has been used for day-to-day work.
+Neutron runs Adobe After Effects on Linux: After Effects 2026 and 2025, installed straight from Adobe and signed in with your own Adobe account. It's in beta, and it has been used for paid client work.
 
 ## What works
 

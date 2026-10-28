@@ -83,6 +83,6 @@ What's planned but not built yet is listed under [Planned](/wiki/start/basics/pl
 
 ## Where this stands
 
-The apps furthest along are [Premiere Pro](/wiki/premiere/), [Photoshop](/wiki/photoshop/), and [Lightroom Classic](/wiki/lightroom/) — all beta, all used for paid client work. After Effects, Illustrator, Media Encoder, Animate, Audition and InDesign run too. For the honest, current status of each, see the [status board](/#status) on the home page.
+The apps furthest along are [Premiere Pro](/wiki/premiere/), [Photoshop](/wiki/photoshop/), and [Lightroom Classic](/wiki/lightroom/) — all beta, all used for paid client work. After Effects and Media Encoder have been used for paid client work too, and Illustrator, Animate, Audition and InDesign run. For the honest, current status of each, see the [status board](/#status) on the home page.
 
 Once Collider is installed and an app launches, head to [Running your first app](/wiki/start/basics/first-app/).
