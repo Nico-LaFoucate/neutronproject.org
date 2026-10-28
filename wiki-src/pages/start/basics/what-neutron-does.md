@@ -10,7 +10,7 @@ Neutron runs the Adobe Creative Cloud apps on Linux. You install them straight f
 ## The apps
 
 - **Premiere Pro, Photoshop, After Effects, Illustrator, Lightroom Classic, Media Encoder and Animate** run on Creative Cloud 2026 and 2025.
-- **Audition and InDesign** run on 2026 through experimental profiles.
+- **Audition and InDesign** run on Creative Cloud 2026.
 - **Dynamic Link** works both ways between Premiere Pro and After Effects.
 - Premiere Pro, Photoshop, Lightroom Classic, After Effects and Media Encoder have been used for paid client work.
 

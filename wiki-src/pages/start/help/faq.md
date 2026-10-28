@@ -8,7 +8,7 @@ schema: faq
 
 ### Can you run Adobe Photoshop and Premiere Pro on Linux?
 
-Yes, with Neutron. It runs Photoshop, Premiere Pro, After Effects, Illustrator, Lightroom Classic, Media Encoder and Animate on Creative Cloud 2026 and 2025, plus Audition and InDesign on 2026 through experimental profiles. Neutron is in beta; the [status board](/#status) shows where each app stands.
+Yes, with Neutron. It runs Photoshop, Premiere Pro, After Effects, Illustrator, Lightroom Classic, Media Encoder and Animate on Creative Cloud 2026 and 2025, plus Audition and InDesign on 2026. Neutron is in beta; the [status board](/#status) shows where each app stands.
 
 ### Do I need Windows or a virtual machine?
 

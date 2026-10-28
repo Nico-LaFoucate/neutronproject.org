@@ -1,6 +1,6 @@
 # Neutron: the full wiki
 
-> Neutron runs Adobe Creative Cloud apps on Linux: Photoshop, Premiere Pro, After Effects, Illustrator, Lightroom Classic, Media Encoder and Animate (Creative Cloud 2026 and 2025), plus Audition and InDesign on 2026 through experimental profiles. It is free, open source and in beta, and built on its own patched Wine runtime. The apps are installed straight from Adobe with Adobe's own installer, and you sign in with your own Adobe account.
+> Neutron runs Adobe Creative Cloud apps on Linux: Photoshop, Premiere Pro, After Effects, Illustrator, Lightroom Classic, Media Encoder and Animate (Creative Cloud 2026 and 2025), plus Audition and InDesign on 2026. It is free, open source and in beta, and built on its own patched Wine runtime. The apps are installed straight from Adobe with Adobe's own installer, and you sign in with your own Adobe account.
 
 Neutron has three parts: the `neutron` command line with its Wine runtime (the engine), Collider (the desktop app) and Mud Hut (the installer and updater). It is developed on CachyOS with KDE Plasma (Wayland); users also run it on Fedora, Ubuntu, Bazzite, Nobara and Arch, under GNOME and Hyprland, on NVIDIA, AMD and Intel GPUs. Neutron is not affiliated with Adobe. Not to be confused with OpenStack Neutron (cloud networking) or iZotope Neutron (an audio plugin).
 
@@ -15,8 +15,8 @@ Neutron has three parts: the `neutron` command line with its Wine runtime (the e
 - **Animate** (Beta): Canvas, panels and playback all work. Its home screen is sometimes blank — a bug that also happens on Windows — so start from File → New.
 - **After Effects** (Beta): The composition viewer and its on-canvas overlays render, at display refresh rate.
 - **Media Encoder** (Beta): Renders and displays correctly, and a full export completed and muxed properly end to end. Usable for real encoding work.
-- **Audition** (Likely): Tested on Creative Cloud 2026 (see the 2026 tab). Its fixes are in Neutron's Wine, so the 2025 build should run as well, but it hasn't been tried. Launches through an experimental profile.
-- **InDesign** (Likely): Tested on Creative Cloud 2026 (see the 2026 tab). Its fixes are in Neutron's Wine, so the 2025 build should run as well, but it hasn't been tried. Launches through an experimental profile.
+- **Audition** (Likely): Tested on Creative Cloud 2026 (see the 2026 tab). Its fixes are in Neutron's Wine, so the 2025 build should run as well, but it hasn't been tried.
+- **InDesign** (Likely): Tested on Creative Cloud 2026 (see the 2026 tab). Its fixes are in Neutron's Wine, so the 2025 build should run as well, but it hasn't been tried.
 - **Lightroom CC** (Planned): Planned. Distinct from Lightroom Classic. You can try it early with an experimental, unsupported profile.
 - **Dynamic Link** (Beta): A full round trip between Premiere Pro and After Effects works, and either app can open the other from its Dynamic Link menu (runtime 11.10-118 or later). Comps update live across the link.
 
@@ -29,8 +29,8 @@ Neutron has three parts: the `neutron` command line with its Wine runtime (the e
 - **Animate** (Beta): Adobe stopped updating Animate in 2024, so Creative Cloud 2026 installs the same app as 2025. It runs on this release: canvas, panels and playback all work. Its home screen is sometimes blank — a bug that also happens on Windows — so start from File → New.
 - **After Effects** (Beta): Installs and runs on this release. It has been used for day-to-day work.
 - **Media Encoder** (Beta): Installs and runs on this release.
-- **Audition** (Beta): Runs on this release through an experimental profile: recording, playback and effects work, and its Learn panel renders.
-- **InDesign** (Beta): Runs on this release through an experimental profile: new documents, typing and the Type → Font menu work.
+- **Audition** (Beta): Runs on this release: recording, playback and effects work, and its Learn panel renders.
+- **InDesign** (Beta): Runs on this release: new documents, typing and the Type → Font menu work.
 - **Lightroom CC** (Planned): Planned. Distinct from Lightroom Classic. You can try it early with an experimental, unsupported profile.
 - **Dynamic Link** (Beta): A full round trip between Premiere Pro and After Effects works on this release, and either app can open the other from its Dynamic Link menu — tested both ways (runtime 11.10-118 or later).
 
@@ -65,7 +65,7 @@ Neutron runs the Adobe Creative Cloud apps on Linux. You install them straight f
 ## The apps
 
 - **Premiere Pro, Photoshop, After Effects, Illustrator, Lightroom Classic, Media Encoder and Animate** run on Creative Cloud 2026 and 2025.
-- **Audition and InDesign** run on 2026 through experimental profiles.
+- **Audition and InDesign** run on Creative Cloud 2026.
 - **Dynamic Link** works both ways between Premiere Pro and After Effects.
 - Premiere Pro, Photoshop, Lightroom Classic, After Effects and Media Encoder have been used for paid client work.
 
@@ -423,7 +423,7 @@ https://neutronproject.org/wiki/start/help/faq/
 
 ### Can you run Adobe Photoshop and Premiere Pro on Linux?
 
-Yes, with Neutron. It runs Photoshop, Premiere Pro, After Effects, Illustrator, Lightroom Classic, Media Encoder and Animate on Creative Cloud 2026 and 2025, plus Audition and InDesign on 2026 through experimental profiles. Neutron is in beta; the [status board](https://neutronproject.org/#status) shows where each app stands.
+Yes, with Neutron. It runs Photoshop, Premiere Pro, After Effects, Illustrator, Lightroom Classic, Media Encoder and Animate on Creative Cloud 2026 and 2025, plus Audition and InDesign on 2026. Neutron is in beta; the [status board](https://neutronproject.org/#status) shows where each app stands.
 
 ### Do I need Windows or a virtual machine?
 
@@ -925,7 +925,7 @@ Made byNico LaFoucate and Ficus Media Group. An independent project, not affilia
 First public releaseOctober 8, 2026
 StatusBeta
 PriceFree. You need your own Adobe subscription.
-AppsPhotoshop, Premiere Pro, After Effects, Illustrator, Lightroom Classic, Media Encoder and Animate, on Creative Cloud 2026 and 2025. Dynamic Link works both ways between Premiere Pro and After Effects. Audition and InDesign run on 2026 through experimental profiles. Lightroom (the cloud app) is planned. Status board
+AppsPhotoshop, Premiere Pro, After Effects, Illustrator, Lightroom Classic, Media Encoder and Animate, on Creative Cloud 2026 and 2025. Dynamic Link works both ways between Premiere Pro and After Effects. Audition and InDesign run on 2026. Lightroom (the cloud app) is planned. Status board
 Used for paid client workPremiere Pro, Photoshop, Lightroom Classic, After Effects and Media Encoder
 Adobe builds testedEach one listed with the date it was tested: Tested Adobe builds
 The three partsNeutron, the engine, with its own Wine runtime and a command line. Collider, the desktop app that sets everything up and launches the apps. Mud Hut, the installer that gets the apps from Adobe and keeps them updated.

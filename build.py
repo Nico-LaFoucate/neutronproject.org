@@ -437,8 +437,8 @@ def build():
 
 LLMS_SUMMARY = (
     "Neutron runs Adobe Creative Cloud apps on Linux: Photoshop, Premiere Pro, After Effects, Illustrator, "
-    "Lightroom Classic, Media Encoder and Animate (Creative Cloud 2026 and 2025), plus Audition and InDesign on 2026 "
-    "through experimental profiles. It is free, open source and in beta, and built on its own patched Wine runtime. "
+    "Lightroom Classic, Media Encoder and Animate (Creative Cloud 2026 and 2025), plus Audition and InDesign on 2026. "
+    "It is free, open source and in beta, and built on its own patched Wine runtime. "
     "The apps are installed straight from Adobe with Adobe's own installer, and you sign in with your own Adobe account.")
 LLMS_ABOUT = (
     "Neutron has three parts: the `neutron` command line with its Wine runtime (the engine), Collider (the desktop "
