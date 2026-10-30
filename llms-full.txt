@@ -492,6 +492,10 @@ Only problems seen on current builds are listed here. Problems that have been fi
 
 - **The interface takes several seconds to paint in when the app starts.** Wait for it to finish. This comes from inside the app, not from Neutron.
 
+## Photoshop
+
+- **The Camera Raw Filter window can open with its title bar above the top of the screen, so it can't be moved.** Camera Raw still works: OK and Cancel are at the bottom, and F switches it to full screen. To get the title bar back, [report it](https://neutronproject.org/wiki/start/help/report-a-problem/) and we'll fix the saved window position for you.
+
 ## Premiere Pro
 
 - **Fast wheel-scrubbing on the timeline feels a bit late and jumpy.** No workaround yet.
