@@ -916,7 +916,7 @@ Neutron runs Adobe After Effects on Linux: After Effects 2026 and 2025, installe
 
 https://neutronproject.org/wiki/project/press/press-kit/
 
-*Facts, screenshots and logos for writing about Neutron. Everything here has been tested. Checked October 28, 2026.*
+*Facts, screenshots and logos for writing about Neutron. Everything here has been tested. Checked October 30, 2026.*
 
 Neutron runs Adobe's Creative Cloud apps on Linux: Photoshop, Premiere Pro, After Effects, Illustrator, Lightroom Classic, Media Encoder and Animate. You install the apps straight from Adobe and sign in with your own account. Neutron is free, open source and in beta.
 
@@ -989,7 +989,10 @@ Collider 0.1.17 with the neutron CLI 1.0.0-beta.35.
 
 ## Video
 
-To fill: clipsOne or two 30 to 90 second clips of the apps at work.
+Premiere Pro 2026 playing and scrubbing a sequence. MP4, 0:42.
+Animate 2024: a ball drawn frame by frame, then played. The drawing runs at four times speed. MP4, 0:48.
+
+Both recorded on KDE Plasma (Wayland), with no sound.
 
 **Coverage:** [The Linux Experiment](https://www.youtube.com/watch?v=eAeT63x338Y&t=203s) covered Neutron on October 10, 2026.
 

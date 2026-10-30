@@ -1,7 +1,7 @@
 ---
 title: Press kit
 status: guide
-sub: Facts, screenshots and logos for writing about Neutron. Everything here has been tested. Checked October 28, 2026.
+sub: Facts, screenshots and logos for writing about Neutron. Everything here has been tested. Checked October 30, 2026.
 description: The Neutron press kit: what it is, which Adobe apps it runs on Linux, the tested setups, screenshots, logos and contact, for journalists and creators.
 ---
 
@@ -82,7 +82,12 @@ Collider 0.1.17 with the neutron CLI 1.0.0-beta.35.
 
 ## Video
 
-<div class="press-todo"><p class="k">To fill: clips</p><p>One or two 30 to 90 second clips of the apps at work.</p></div>
+<div class="shots">
+<figure><video controls preload="none" poster="/press/media/premiere-pro-2026-clip.jpg" width="1920" height="1054"><source src="/press/media/premiere-pro-2026-clip.mp4" type="video/mp4"></video><figcaption>Premiere Pro 2026 playing and scrubbing a sequence. <a href="/press/media/premiere-pro-2026-clip.mp4">MP4</a>, 0:42.</figcaption></figure>
+<figure><video controls preload="none" poster="/press/media/animate-2024-clip.jpg" width="1920" height="1048"><source src="/press/media/animate-2024-clip.mp4" type="video/mp4"></video><figcaption>Animate 2024: a ball drawn frame by frame, then played. The drawing runs at four times speed. <a href="/press/media/animate-2024-clip.mp4">MP4</a>, 0:48.</figcaption></figure>
+</div>
+
+Both recorded on KDE Plasma (Wayland), with no sound.
 
 **Coverage:** [The Linux Experiment](https://www.youtube.com/watch?v=eAeT63x338Y&t=203s) covered Neutron on October 10, 2026.
 
