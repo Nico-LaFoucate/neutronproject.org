@@ -18,7 +18,7 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Neutron: Adobe Creative Suite, running on Linux.">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://neutronproject.org/#website","url":"https://neutronproject.org/","name":"Neutron","alternateName":["Neutron Project","Neutron: Adobe apps on Linux"],"inLanguage":"en-US"},{"@type":"SoftwareApplication","@id":"https://neutronproject.org/#software","name":"Neutron","alternateName":"Neutron Project","description":"Free, open-source compatibility engine that runs Adobe Creative Cloud apps on Linux, built on its own patched Wine runtime. The apps are installed straight from Adobe and signed in with your own Adobe account.","url":"https://neutronproject.org/","applicationCategory":"UtilitiesApplication","applicationSubCategory":"Compatibility layer","operatingSystem":"Linux","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"license":"https://www.gnu.org/licenses/old-licenses/lgpl-2.1.html","installUrl":"https://neutronproject.org/wiki/start/basics/install-collider/","image":"https://neutronproject.org/og-image.png","featureList":["Runs Adobe Photoshop, Premiere Pro, After Effects, Illustrator, Lightroom Classic, Media Encoder and Animate (Creative Cloud 2026 and 2025) on Linux","Audition and InDesign on Creative Cloud 2026","Dynamic Link between Premiere Pro and After Effects","Installs apps straight from Adobe with Adobe's own installer, without the Creative Cloud app","Adobe app updates in place, with a backup that is restored if an update fails","Runs on NVIDIA, AMD and Intel GPUs, with GPU acceleration in Photoshop and Premiere Pro (CUDA rendering and NVENC export on NVIDIA)","Pen tablets with pressure, tilt, eraser and side buttons","Third-party plugins, CEP and UXP panels, VST3 audio plugins and vendor installers"],"sameAs":["https://github.com/Nico-LaFoucate/Neutron","https://github.com/Nico-LaFoucate/neutron-wine","https://github.com/Nico-LaFoucate/Collider","https://github.com/Nico-LaFoucate/Mud-Hut"]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://neutronproject.org/#website","url":"https://neutronproject.org/","name":"Neutron","alternateName":["Neutron Project","Neutron: Adobe apps on Linux"],"inLanguage":"en-US"},{"@type":"SoftwareApplication","@id":"https://neutronproject.org/#software","name":"Neutron","alternateName":"Neutron Project","description":"Free, open-source compatibility engine that runs Adobe Creative Cloud apps on Linux, built on its own patched Wine runtime. The apps are installed straight from Adobe and signed in with your own Adobe account.","url":"https://neutronproject.org/","applicationCategory":"UtilitiesApplication","applicationSubCategory":"Compatibility layer","operatingSystem":"Linux","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"license":"https://www.gnu.org/licenses/old-licenses/lgpl-2.1.html","installUrl":"https://neutronproject.org/wiki/start/basics/install-collider/","image":"https://neutronproject.org/og-image.png","featureList":["Runs Adobe Photoshop, Premiere Pro, After Effects, Illustrator, Lightroom Classic, Media Encoder and Animate (Creative Cloud 2027, 2026 and 2025) on Linux","Audition and InDesign on Creative Cloud 2027 and 2026","Dynamic Link between Premiere Pro and After Effects","Installs apps straight from Adobe with Adobe's own installer, without the Creative Cloud app","Adobe app updates in place, with a backup that is restored if an update fails","Runs on NVIDIA, AMD and Intel GPUs, with GPU acceleration in Photoshop and Premiere Pro (CUDA rendering and NVENC export on NVIDIA)","Pen tablets with pressure, tilt, eraser and side buttons","Third-party plugins, CEP and UXP panels, VST3 audio plugins and vendor installers"],"sameAs":["https://github.com/Nico-LaFoucate/Neutron","https://github.com/Nico-LaFoucate/neutron-wine","https://github.com/Nico-LaFoucate/Collider","https://github.com/Nico-LaFoucate/Mud-Hut"]}]}</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -697,7 +697,8 @@ footer{
           <label for="release">Release</label>
           <select id="release" aria-label="Select Creative Cloud release">
             <option value="2025">Creative Cloud 2025</option>
-            <option value="2026" selected>Creative Cloud 2026</option>
+            <option value="2026">Creative Cloud 2026</option>
+            <option value="2027" selected>Creative Cloud 2027</option>
           </select>
         </div>
       </div>
@@ -762,7 +763,7 @@ footer{
       </div>
 
       <!-- ================= CC 2026 ================= -->
-      <div class="relset" data-rel="2026">
+      <div class="relset" data-rel="2026" hidden>
         <div class="row">
           <div class="app">Photoshop <span class="tier t-beta">Beta</span></div>
           <div class="bar"><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg"></span></div>
@@ -817,6 +818,59 @@ footer{
           <div class="app">Dynamic Link <span class="tier t-beta">Beta</span></div>
           <div class="bar"><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg"></span></div>
           <div class="detail">A full round trip between Premiere Pro and After Effects works on this release, and either app can open the other from its Dynamic Link menu — tested both ways (runtime 11.10-118 or later).</div>
+        </div>
+      </div>
+      <!-- ================= CC 2027 ================= -->
+      <div class="relset" data-rel="2027">
+        <div class="row">
+          <div class="app">Photoshop <span class="tier t-beta">Beta</span></div>
+          <div class="bar"><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg"></span></div>
+          <div class="detail">Runs on this release the same as 2026. Its tip videos play with runtime 11.10-206 or later.</div>
+        </div>
+        <div class="row">
+          <div class="app">Premiere Pro <span class="tier t-beta">Beta</span></div>
+          <div class="bar"><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg"></span></div>
+          <div class="detail">Runs on this release the same as 2026: projects, playback, Effect Controls and export.</div>
+        </div>
+        <div class="row">
+          <div class="app">Lightroom Classic <span class="tier t-beta">Beta</span></div>
+          <div class="bar"><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg"></span></div>
+          <div class="detail">Lightroom Classic 16 runs the same as 15.6: Library, Develop, AI Denoise, export and Edit In.</div>
+        </div>
+        <div class="row">
+          <div class="app">Illustrator <span class="tier t-beta">Beta</span></div>
+          <div class="bar"><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg"></span></div>
+          <div class="detail">Runs on this release the same as 2026. Installing it needs Mud Hut 0.3.11 or later (neutron update installs it).</div>
+        </div>
+        <div class="row">
+          <div class="app">Animate <span class="tier t-beta">Beta</span></div>
+          <div class="bar"><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg"></span></div>
+          <div class="detail">Runs on this release the same as 2026: canvas, drawing, frames and playback.</div>
+        </div>
+        <div class="row">
+          <div class="app">After Effects <span class="tier t-beta">Beta</span></div>
+          <div class="bar"><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg"></span></div>
+          <div class="detail">Runs on this release the same as 2026: compositions, preview and Render Queue export. With After Effects 2026 installed beside it, use Neutron 1.0.0-beta.42 or later.</div>
+        </div>
+        <div class="row">
+          <div class="app">Media Encoder <span class="tier t-beta">Beta</span></div>
+          <div class="bar"><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg"></span></div>
+          <div class="detail">Runs on this release the same as 2026: queue and export.</div>
+        </div>
+        <div class="row">
+          <div class="app">Audition <span class="tier t-beta">Beta</span></div>
+          <div class="bar"><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg"></span></div>
+          <div class="detail">Runs on this release the same as 2026: playback with level meters, effects and multitrack sessions.</div>
+        </div>
+        <div class="row">
+          <div class="app">InDesign <span class="tier t-beta">Beta</span></div>
+          <div class="bar"><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg on-beta"></span><span class="seg"></span></div>
+          <div class="detail">Runs on this release: new documents, typing, the Type → Font menu and PDF export.</div>
+        </div>
+        <div class="row">
+          <div class="app">Lightroom CC <span class="tier t-planned">Planned</span></div>
+          <div class="bar"><span class="seg"></span><span class="seg"></span><span class="seg"></span><span class="seg"></span><span class="seg"></span></div>
+          <div class="detail">Planned. Distinct from Lightroom Classic. You can try it early with an experimental, unsupported profile.</div>
         </div>
       </div>
     </div>

@@ -2,10 +2,10 @@
 title: Premiere Pro on Linux
 status: feature
 sub: What works in Adobe Premiere Pro on Linux with Neutron, and how to get it running.
-description: Run Adobe Premiere Pro 2026 and 2025 on Linux with Neutron: GPU rendering, NVENC export, Dynamic Link, panels and VST3 audio plugins. Free and open source.
+description: Run Adobe Premiere Pro 2027, 2026 and 2025 on Linux with Neutron: GPU rendering, NVENC export, Dynamic Link, panels and VST3 audio plugins. Free and open source.
 ---
 
-Neutron runs Adobe Premiere Pro on Linux: Premiere Pro 2026 and 2025, installed straight from Adobe and signed in with your own Adobe account. It's in beta, stable for editing and delivery, and it has been used for paid client work.
+Neutron runs Adobe Premiere Pro on Linux: Premiere Pro 2027, 2026 and 2025, installed straight from Adobe and signed in with your own Adobe account. It's in beta, stable for editing and delivery, and it has been used for paid client work.
 
 ## What works
 

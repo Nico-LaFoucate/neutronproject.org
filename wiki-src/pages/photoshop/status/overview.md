@@ -2,10 +2,10 @@
 title: Photoshop on Linux
 status: feature
 sub: What works in Adobe Photoshop on Linux with Neutron, and how to get it running.
-description: Run Adobe Photoshop 2026 and 2025 on Linux with Neutron: installed from Adobe, GPU canvas, pen tablets, filters and UXP plugins. Free and open source.
+description: Run Adobe Photoshop 2027, 2026 and 2025 on Linux with Neutron: installed from Adobe, GPU canvas, pen tablets, filters and UXP plugins. Free and open source.
 ---
 
-Neutron runs Adobe Photoshop on Linux: Photoshop 2026 and 2025, installed straight from Adobe and signed in with your own Adobe account. It's in beta, stable for day-to-day work, and it has been used for paid client work.
+Neutron runs Adobe Photoshop on Linux: Photoshop 2027, 2026 and 2025, installed straight from Adobe and signed in with your own Adobe account. It's in beta, stable for day-to-day work, and it has been used for paid client work.
 
 ## What works
 

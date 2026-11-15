@@ -134,7 +134,9 @@ APP_NAMES = {"PHSP": "Photoshop", "PPRO": "Premiere Pro", "AEFT": "After Effects
 APP_YEARS = {("PHSP", "27"): 2026, ("PHSP", "26"): 2025, ("PPRO", "26"): 2026, ("PPRO", "25"): 2025,
              ("AEFT", "26"): 2026, ("AEFT", "25"): 2025, ("ILST", "30"): 2026, ("ILST", "29"): 2025,
              ("AME", "26"): 2026, ("AME", "25"): 2025, ("FLPR", "24"): 2024, ("AUDT", "26"): 2026,
-             ("IDSN", "21"): 2026}
+             ("IDSN", "21"): 2026, ("PHSP", "28"): 2027, ("PPRO", "27"): 2027, ("AEFT", "27"): 2027,
+             ("ILST", "31"): 2027, ("AME", "27"): 2027, ("FLPR", "27"): 2027, ("AUDT", "27"): 2027,
+             ("IDSN", "22"): 2027}
 
 
 def _when(iso):
@@ -171,6 +173,8 @@ def tested_builds_md():
             for b in v.get("blocked", []):
                 rows.append(("", "- **%s:** %s is held back: %s" % (APP_NAMES[code], _build(b.get("build", "?")),
                                                                     b.get("reason", "it has a known problem"))))
+        # Newest first across the yearly versions (2027 above 2026); held-back builds last.
+        rows.sort(key=lambda r: r[0], reverse=True)
         if rows:
             out += ["## %s" % APP_NAMES[code], ""] + [r for _, r in rows] + [""]
     out.append("Per-app status, including what works in each app, is on the [status board](/#status).")
@@ -437,7 +441,7 @@ def build():
 
 LLMS_SUMMARY = (
     "Neutron runs Adobe Creative Cloud apps on Linux: Photoshop, Premiere Pro, After Effects, Illustrator, "
-    "Lightroom Classic, Media Encoder and Animate (Creative Cloud 2026 and 2025), plus Audition and InDesign on 2026. "
+    "Lightroom Classic, Media Encoder and Animate (Creative Cloud 2027, 2026 and 2025), plus Audition and InDesign on 2027 and 2026. "
     "It is free, open source and in beta, and built on its own patched Wine runtime. "
     "The apps are installed straight from Adobe with Adobe's own installer, and you sign in with your own Adobe account.")
 LLMS_ABOUT = (
