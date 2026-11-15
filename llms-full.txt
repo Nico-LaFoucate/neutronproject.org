@@ -964,7 +964,7 @@ Made byNico LaFoucate and Ficus Media Group. An independent project, not affilia
 First public releaseOctober 8, 2026
 StatusBeta
 PriceFree. You need your own Adobe subscription.
-AppsPhotoshop, Premiere Pro, After Effects, Illustrator, Lightroom Classic, Media Encoder and Animate, on Creative Cloud 2027, 2026 and 2025. Dynamic Link works both ways between Premiere Pro and After Effects. Audition and InDesign run on 2027 and 2026. Lightroom (the cloud app) is planned. Status board
+AppsPhotoshop, Premiere Pro, After Effects, Illustrator, Lightroom Classic, Media Encoder and Animate, on Creative Cloud 2027, 2026 and 2025. Dynamic Link works both ways between Premiere Pro and After Effects. Audition and InDesign run on 2027 and 2026. Lightroom (the cloud app) runs too. Status board
 Used for paid client workPremiere Pro, Photoshop, Lightroom Classic, After Effects and Media Encoder
 Adobe builds testedEach one listed with the date it was tested: Tested Adobe builds
 The three partsNeutron, the engine, with its own Wine runtime and a command line. Collider, the desktop app that sets everything up and launches the apps. Mud Hut, the installer that gets the apps from Adobe and keeps them updated.
