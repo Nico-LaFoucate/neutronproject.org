@@ -129,7 +129,7 @@ def markdown(text):
 VERIFIED = SRC / "data" / "verified.json"
 APP_NAMES = {"PHSP": "Photoshop", "PPRO": "Premiere Pro", "AEFT": "After Effects", "ILST": "Illustrator",
              "LTRM": "Lightroom Classic", "AME": "Media Encoder", "FLPR": "Animate", "AUDT": "Audition",
-             "IDSN": "InDesign"}
+             "IDSN": "InDesign", "LRCC": "Lightroom"}
 # The yearly name of each app's major version (Adobe's own naming); apps not here show the version only.
 APP_YEARS = {("PHSP", "27"): 2026, ("PHSP", "26"): 2025, ("PPRO", "26"): 2026, ("PPRO", "25"): 2025,
              ("AEFT", "26"): 2026, ("AEFT", "25"): 2025, ("ILST", "30"): 2026, ("ILST", "29"): 2025,
@@ -154,8 +154,7 @@ def _build(b):
 
 
 def tested_builds_md():
-    """The Markdown body of the Tested Adobe builds page, from the signed list. Apps the status board does not count
-    as supported (the Lightroom cloud app) are left out."""
+    """The Markdown body of the Tested Adobe builds page, from the signed list. Apps not in APP_NAMES are left out."""
     d = json.loads(VERIFIED.read_text(encoding="utf-8"))
     out = ["When you install or update an app, Mud Hut uses the newest build on this list. A newer build from Adobe is "
            "labeled \"Not yet tested by Neutron\" and stays your choice. This page is generated from the same signed "
@@ -441,7 +440,7 @@ def build():
 
 LLMS_SUMMARY = (
     "Neutron runs Adobe Creative Cloud apps on Linux: Photoshop, Premiere Pro, After Effects, Illustrator, "
-    "Lightroom Classic, Media Encoder and Animate (Creative Cloud 2027, 2026 and 2025), plus Audition and InDesign on 2027 and 2026. "
+    "Lightroom Classic, Media Encoder and Animate (Creative Cloud 2027, 2026 and 2025), plus Audition and InDesign on 2027 and 2026, and Lightroom (the cloud app). "
     "It is free, open source and in beta, and built on its own patched Wine runtime. "
     "The apps are installed straight from Adobe with Adobe's own installer, and you sign in with your own Adobe account.")
 LLMS_ABOUT = (

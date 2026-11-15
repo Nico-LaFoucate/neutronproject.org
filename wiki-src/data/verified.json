@@ -248,6 +248,13 @@
       "min_runtime": null,
       "date": "2026-10-16",
       "source": "clean-room prefix Lightroom (Mud Hut download (HDPIM)): Adobe Lightroom CC, LightroomNew"
+     },
+     {
+      "build": "10.0.202610291525",
+      "build_guid": "79a81dd3-6c30-452c-8adf-6ad0b6dc984c",
+      "min_runtime": "11.10-206",
+      "date": "2026-11-14",
+      "source": "2027 suite lab check 2026-11-14: installed from Adobe by Mud Hut; starts to its library (Cloud, All Photos, Edit) on runtime 11.10-205, 2 of 2, where 11.10-187 stops at startup 2 of 2; round buttons fixed on 205; on runtime 11.10-200 with the same start fix a local photo opened in Edit, Exposure changed and undone; also run on his desktop: Adobe Lightroom CC"
      }
     ],
     "blocked": []
