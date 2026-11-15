@@ -1,7 +1,7 @@
 ---
 title: Press kit
 status: guide
-sub: Facts, screenshots and logos for writing about Neutron. Everything here has been tested. Checked October 30, 2026.
+sub: Facts, screenshots and logos for writing about Neutron. Everything here has been tested. Checked November 15, 2026.
 description: The Neutron press kit: what it is, which Adobe apps it runs on Linux, the tested setups, screenshots, logos and contact, for journalists and creators.
 ---
 
